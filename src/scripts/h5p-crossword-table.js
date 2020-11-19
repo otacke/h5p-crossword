@@ -1,0 +1,950 @@
+import CrosswordCell from './h5p-crossword-cell';
+import Util from './h5p-crossword-util';
+
+/** Class representing the content */
+export default class CrosswordTable {
+  /**
+   * @constructor
+   * @param {object} params Parameters.
+   */
+  constructor(params = {}, callbacks) {
+    this.params = Util.extend({
+    }, params);
+
+    this.params.backgroundImage = this.params.backgroundImage || null;
+
+    // Callbacks
+    this.callbacks = callbacks || {};
+    this.callbacks.onInput = this.callbacks.onInput || (() => {});
+    this.callbacks.onFocus = this.callbacks.onFocus || (() => {});
+    this.callbacks.onRead = callbacks.onRead || (() => {});
+
+    // Current position and orientation in table
+    this.currentPosition = {};
+    this.currentOrientation = 'across';
+
+    // Max score
+    this.maxScore = null;
+
+    // Cells
+    this.cells = this.buildCells(this.params.dimensions, this.params.words);
+
+    // Create grid
+    this.content = this.buildGrid(this.params.dimensions, this.params.backgroundImage, this.params.contentId);
+
+    // Set tab index to first input element
+    [].concat(...this.cells)
+      .filter(cell => cell.getSolution() !== null)[0]
+      .setTabIndex('0');
+
+    // Event listener
+    this.content.addEventListener('keydown', (event) => {
+      if (this.disabled) {
+        return;
+      }
+
+      let i;
+      let result;
+
+      let target = event.target;
+
+      if (event.target.classList.contains('h5p-crossword-cell-content')) {
+        target = event.target.parentNode.parentNode;
+      }
+
+      switch (event.key) {
+        case 'ArrowRight':
+          event.preventDefault();
+
+          this.setcurrentOrientation('across', {
+            row: parseInt(target.dataset.row, 10),
+            column: parseInt(target.dataset.col, 10) + 1
+          });
+
+          this.moveTo({
+            row: parseInt(target.dataset.row, 10),
+            column: parseInt(target.dataset.col, 10) + 1
+          });
+          break;
+
+        case 'ArrowLeft':
+          event.preventDefault();
+
+          this.setcurrentOrientation('across', {
+            row: parseInt(target.dataset.row, 10),
+            column: parseInt(target.dataset.col, 10) - 1
+          });
+
+          this.moveTo({
+            row: parseInt(target.dataset.row, 10),
+            column: parseInt(target.dataset.col, 10) - 1
+          });
+          break;
+
+        case 'ArrowDown':
+          event.preventDefault();
+
+          this.setcurrentOrientation('across', {
+            row: parseInt(target.dataset.row, 10) + 1,
+            column: parseInt(target.dataset.col, 10)
+          });
+
+          this.moveTo({
+            row: parseInt(target.dataset.row, 10) + 1,
+            column: parseInt(target.dataset.col, 10)
+          });
+          break;
+
+        case 'ArrowUp':
+          event.preventDefault();
+
+          this.setcurrentOrientation('across', {
+            row: parseInt(target.dataset.row, 10) - 1,
+            column: parseInt(target.dataset.col, 10)
+          });
+
+          this.moveTo({
+            row: parseInt(target.dataset.row, 10) - 1,
+            column: parseInt(target.dataset.col, 10)
+          });
+          break;
+
+        case 'Home':
+          event.preventDefault();
+          if (event.ctrlKey) {
+            i = 0;
+            do {
+              let j = 0;
+              let result;
+              do {
+                result = this.moveTo({row: i, column: j});
+                j++;
+              } while (result === false);
+              i++;
+            } while (result === false);
+          }
+          else {
+            this.moveTo({row: parseInt(target.dataset.row, 10), column: 0});
+          }
+          break;
+
+        case 'End':
+          event.preventDefault();
+          if (event.ctrlKey) {
+            i = this.params.dimensions.rows - 1;
+            do {
+              let j = this.params.dimensions.columns - 1;
+              do {
+                result = this.moveTo({row: i, column: j});
+                j--;
+              } while (result === false);
+              i--;
+            } while (result === false);
+          }
+          else {
+            this.moveTo({
+              row: parseInt(target.dataset.row, 10),
+              column: document.querySelector('[data-row="' + target.dataset.row + '"]:last-of-type').dataset.col
+            });
+          }
+          break;
+
+        case 'PageUp':
+          event.preventDefault();
+          i = 0;
+          do {
+            result = this.moveTo({row: i, column: target.dataset.col});
+            i++;
+          } while (result === false);
+          break;
+
+        case 'PageDown':
+          event.preventDefault();
+          i = this.params.dimensions.rows - 1;
+          do {
+            result = this.moveTo({row: i, column: target.dataset.col});
+            i--;
+          } while (result === false);
+          break;
+
+        case 'Enter':
+          break;
+
+        case 'Space':
+          break;
+      }
+    });
+  }
+
+  /**
+   * Return the DOM for this class.
+   *
+   * @return {HTMLElement} DOM for this class.
+   */
+  getDOM() {
+    return this.content;
+  }
+
+  /**
+   * Build actual cells from parameters.
+   * @param {object} dimensions Dimensions of grid.
+   * @param {number} dimensions.rows Numvber of rows in grid.
+   * @param {columns} dimensions.columns Numvber of columns in grid.
+   * @param {object[]} cellParams Cell parameters.
+   */
+  buildCells(dimensions, cellParams = []) {
+    // Initial data for all cells.
+    const stemCells = Util.createArray(dimensions.rows, dimensions.columns);
+    for (let row = 0; row < dimensions.rows; row++) {
+      for (let column = 0; column < dimensions.columns; column++) {
+        stemCells[row][column] = {
+          row: row,
+          column: column,
+          solution: null,
+          id: null
+        };
+      }
+    }
+
+    // Inject more information into relevant stem cells
+    cellParams.forEach(cell => {
+      let row = cell.starty - 1;
+      let column = cell.startx - 1;
+
+      for (let i = 0; i < cell.answer.length; i++) {
+        if (cell.orientation === 'none') {
+          continue;
+        }
+
+        stemCells[row][column] = {
+          row: row,
+          column: column,
+          solution: cell.answer.substr(i, 1),
+          solutionLength: cell.answer.length,
+          solutionIndex: i + 1,
+          clue: cell.clue,
+          clueIdAcross: (cell.orientation === 'across') ? cell.clueId : stemCells[row][column].clueIdAcross,
+          clueIdDown: (cell.orientation === 'down') ? cell.clueId : stemCells[row][column].clueIdDown,
+          clueIdMarker: (i === 0) ? cell.clueId : stemCells[row][column].clueIdMarker
+        };
+
+        if (cell.orientation === 'down') {
+          row++;
+        }
+        else {
+          column++;
+        }
+      }
+    });
+
+    // Create grid cells from stem cells
+    const cells = Util.createArray(dimensions.rows, dimensions.columns);
+
+    [].concat(...stemCells).forEach(param => {
+      cells[param.row][param.column] = new CrosswordCell({
+        row: param.row,
+        column: param.column,
+        solution: param.solution,
+        solutionIndex: param.solutionIndex,
+        solutionLength: param.solutionLength,
+        width: 100 / dimensions.columns,
+        clueIdMarker: param.clueIdMarker,
+        clue: param.clue,
+        clueIdAcross: param.clueIdAcross,
+        clueIdDown: param.clueIdDown,
+        instantFeedback: this.params.instantFeedback,
+        a11y: {
+          correct: this.params.a11y.correct,
+          wrong: this.params.a11y.wrong,
+          empty: this.params.a11y.empty
+        }
+      },
+      {
+        onClick: (position => {
+          this.handleCellClick(position);
+        }),
+        onFocus: ((cell, event) => {
+          this.handleCellFocus(cell, event);
+        }),
+        onKeyup: (params => {
+          this.handleCellKeyup(params);
+        }),
+        onRead: (text => {
+          this.callbacks.onRead(text);
+        })
+      });
+    });
+
+    return cells;
+  }
+
+  /**
+   * Find cells that the solution word id marker and circle can be put into.
+   * @param {string} solutionWord Solution word.
+   * @return {CrosswordCell[]} Cells that can be used or null if no space.
+   */
+  findSolutionWordCells(solutionWord) {
+    if (!solutionWord || solutionWord === '') {
+      return [];
+    }
+
+    const result = [];
+
+    let canHaveSolutionWord = true;
+    let cells = [].concat(...this.cells).filter(cell => cell.getSolution() !== null);
+    solutionWord
+      .split('')
+      .forEach(character => {
+        if (canHaveSolutionWord === false) {
+          return;
+        }
+
+        // Try to find random cell that contains char looked for and has not been used
+        const candidateCells = Util.shuffleArray(cells.filter(cell => cell.getSolution() === character && result.indexOf(cell) === -1));
+        if (candidateCells.length === 0) {
+          canHaveSolutionWord = false;
+          return;
+        }
+
+        result.push(candidateCells[0]);
+      });
+
+    return (result.length === solutionWord.length) ? result : [];
+  }
+
+  /**
+   * Mark cells with solution word ids and circles if possible.
+   * @param {string} solutionWord Solution word.
+   * @return {boolean} True, if possibe, else false.
+   */
+  addSolutionWord(solutionWord) {
+    if (!solutionWord || solutionWord === '') {
+      return false;
+    }
+
+    const solutionWordCells = this.findSolutionWordCells(solutionWord);
+    solutionWordCells.forEach((cell, index) => {
+      cell.addSolutionWordIdMarker(index + 1);
+    });
+
+    return (solutionWordCells.length > 0);
+  }
+
+  /**
+   * Create grid table.
+   * @param {object} dim Dimensions.
+   * @param {number} dim.columns Number of columns.
+   * @param {number} dim.rows Number of rows.
+   * @return {HTMLElement} Grid table.
+   */
+  buildGrid(dim, backgroundImage, contentId) {
+    const table = document.createElement('table');
+    table.classList.add('h5p-crossword-grid');
+
+    if (backgroundImage) {
+      table.classList.add('h5p-crossword-grid-background-image');
+      const image = document.createElement('img');
+      H5P.setSource(image, backgroundImage, contentId);
+      table.style.backgroundImage = `url('${image.src}')`;
+    }
+
+    table.setAttribute('role', 'grid');
+    table.setAttribute('aria-label', this.params.a11y.crosswordGrid);
+
+    const tableBody = document.createElement('tbody');
+    tableBody.setAttribute('role', 'rowgroup');
+
+    for (let rowId = 0; rowId < dim.rows; rowId ++) {
+      const bodyRow = this.buildGridRow(dim, rowId);
+      tableBody.appendChild(bodyRow);
+    }
+
+    table.appendChild(tableBody);
+
+    return table;
+  }
+
+  /**
+   * Create grid row element.
+   * @param {object} dim Dimensions.
+   * @param {number} dim.columns Number of columns.
+   * @param {number} dim.rows Number of rows.
+   * @return {HTMLElement} Grid row element.
+   */
+  buildGridRow(dim, rowId) {
+    const row = document.createElement('tr');
+    row.setAttribute('role', 'row');
+
+    for (let columnId = 0; columnId < dim.columns; columnId++) {
+      row.appendChild(this.cells[rowId][columnId].getDOM());
+    }
+
+    return row;
+  }
+
+  /**
+   * Move cursor to
+   * @param {object} position Position.
+   * @param {number} position.row Row to move to.
+   * @param {number} position.column Columns to move to.
+   * @param {boolean} [keepFocus=false] If true, don't focus cell (but keep current focus).
+   */
+  moveTo(position = {}, keepFocus = false) {
+    // Check grid boundaries
+    if (position.row < 0 || position.row > this.params.dimensions.rows - 1) {
+      return false;
+    }
+    if (position.column < 0 || position.column > this.params.dimensions.columns - 1) {
+      return false;
+    }
+
+    const targetCell = this.cells[position.row][position.column];
+    if (!targetCell) {
+      return false;
+    }
+
+    // Reset grid cells' tab index
+    [].concat(...this.cells)
+      .forEach(cell => {
+        cell.setTabIndex('-1');
+      });
+
+    targetCell.setTabIndex('0');
+
+    this.currentPosition = position;
+    this.focusCell(position, keepFocus);
+
+    return true;
+  }
+
+
+  /**
+   * Get information for other components.
+   * @param {object} position Position.
+   * @param {number} position.row Cell row.
+   * @param {number} position.column Cell column.
+   * @return {object} Updates.
+   */
+  getUpdates(position) {
+    const updates = [];
+
+    const invertedOrientation = this.currentOrientation === 'across' ? 'down' : 'across';
+
+    // If cell at position is a crossection, retrieve complete answer for corresponding word
+    const invertedClueId = this.cells[position.row][position.column].getClueId(invertedOrientation);
+    if (invertedClueId) {
+      const invertedCells = [].concat(...this.cells).filter(cell => cell.getClueId(invertedOrientation) === invertedClueId);
+      const invertedText = invertedCells
+        .reduce((result, current) => {
+          return result + (current.answer || ' ');
+        }, '')
+        .replace(/[\s\uFEFF\xA0]+$/g, ''); // trim right spaces
+
+      updates.push({
+        clueId: invertedClueId,
+        orientation: invertedOrientation,
+        text: invertedText
+      });
+    }
+
+    // Retrieve complete answer for word belonging to cell at position
+    const clueId = this.cells[position.row][position.column].getClueId(this.currentOrientation);
+    const cells = [].concat(...this.cells).filter(cell => cell.getClueId(this.currentOrientation) === clueId);
+    const text = cells
+      .reduce((result, current) => {
+        return result + (current.answer || ' ');
+      }, '')
+      .replace(/[\s\uFEFF\xA0]+$/g, ''); // trim right spaces
+
+    updates.push({
+      clueId: clueId,
+      orientation: this.currentOrientation,
+      text: text
+    });
+
+    return updates;
+  }
+
+  /**
+   * Get answers in cells.
+   * @return {string[]} Answers in cells.
+   */
+  getAnswers() {
+    return [].concat(...this.cells).map(cell => cell.getAnswer());
+  }
+
+  /**
+   * Set answers (from previous state).
+   * @param {string[]} answers Answers in cells.
+   */
+  setAnswers(answers) {
+    [].concat(...this.cells).forEach((cell, index) => {
+      cell.setAnswer(answers[index] || '');
+
+      if (cell.getSolution()) {
+        const information = cell.getInformation();
+
+        // Update other components
+        this.callbacks.onInput({
+          answer: information.answer,
+          inputFieldUpdates: this.getUpdates(information.position),
+          clueId: information.clueId,
+          solutionWordId: information.solutionWordId || null
+        });
+      }
+    });
+  }
+
+  /**
+   * Get score.
+   * @return {number} Score.
+   */
+  getScore() {
+    return Math.max(0, [].concat(...this.cells)
+      .reduce((score, cell) => score += cell.getScore() || 0, 0));
+  }
+
+  /**
+   * GetMaxScore.
+   * @return {number} Maximum score.
+   */
+  getMaxScore() {
+    this.maxScore = this.maxScore || [].concat(...this.cells)
+      .reduce((score, cell) => score += (cell.getScore() !== undefined) ? 1 : 0, 0);
+
+    return this.maxScore;
+  }
+
+  /**
+   * Set current orientation. Will correct orientation if not possible for position.
+   * @param {string} orientation Requested orientation.
+   * @param {object} [position=this.currentPosition] Position.
+   * @param {number} [position.row] Position row.
+   * @param {number} [position.column] Position column.
+   * @return {string} New orientation.
+   */
+  setcurrentOrientation(orientation, position) {
+    if (orientation !== 'across' && orientation !== 'down') {
+      return;
+    }
+
+    // Require proper position object
+    position = position || this.currentPosition;
+    if (typeof position.row !== 'number' || typeof position.column !== 'number') {
+      return;
+    }
+    if (position.row < 0 || position.row > this.params.dimensions.rows - 1) {
+      return;
+    }
+    if (position.column < 0 || position.column > this.params.dimensions.columns - 1) {
+      return;
+    }
+
+    const cell = this.cells[position.row][position.column];
+    if (!cell.getSolution()) {
+      return; // Empty cell, no change of orientation required
+    }
+
+    // Check for possible orientations
+    const left = position.column > 0 && this.cells[position.row][position.column - 1].getSolution();
+    const right = position.column < this.params.dimensions.columns - 1 && this.cells[position.row][position.column + 1].getSolution();
+    const up = position.row > 0 && this.cells[position.row - 1][position.column].getSolution();
+    const down = position.row < this.params.dimensions.rows - 1 && this.cells[position.row + 1][position.column].getSolution();
+
+    if (orientation === 'across' && !left && !right) {
+      orientation = 'down';
+    }
+    else if (orientation === 'down' && !up && !down) {
+      orientation = 'across';
+    }
+    else if (!left && !right && !up && !down) {
+      orientation = 'across'; // Default for 1 character cells
+    }
+
+    this.currentOrientation = orientation;
+    return orientation;
+  }
+
+  /**
+   * Reset.
+   */
+  reset() {
+    [].concat(...this.cells).forEach(cell => {
+      cell.reset();
+    });
+
+    this.currentPosition = {};
+    this.currentOrientation = 'across';
+    this.maxScore = null;
+  }
+
+  /**
+   * Resize.
+   */
+  resize() {
+    // Didn't work well by just using CSS
+    const cellWidth = this.content.clientWidth / this.params.dimensions.columns;
+
+    // Magic number found by testing
+    this.content.style.fontSize = `${cellWidth / 2}px`;
+  }
+
+  /**
+   * Handle click on cell.
+   * @param {object} position Position.
+   * @param {number} position.row Position row.
+   * @param {number} position.column Position column.
+   * @param {boolean} [keepOrientation=false] If true, don't toggle orientation on repeated focus.
+   */
+  handleCellClick(position, keepOrientation = false) {
+    if (this.ignoreNextClick) {
+      this.ignoreNextClick = false;
+      return;
+    }
+
+    const cell = this.cells[position.row][position.column];
+    if (!cell.getSolution()) {
+      return;
+    }
+
+    if (!keepOrientation) {
+      // Default orientation to 'across', but toggle on repeated click if possible
+      if (!cell.getClueId('across')) {
+        this.setcurrentOrientation('down', position);
+      }
+      else if (this.currentPosition.row === position.row && this.currentPosition.column === position.column && this.currentOrientation === 'across') {
+        this.setcurrentOrientation('down', position);
+      }
+      else {
+        this.setcurrentOrientation('across', position);
+      }
+    }
+
+    this.currentPosition = position;
+
+    this.moveTo(position, true);
+  }
+
+  /**
+   * Handle receiving focus.
+   * @param {object} position Position.
+   * @param {number} position.row Position row.
+   * @param {number} position.column Position column.
+   * @param {Event} event FocusEvent.
+   */
+  handleCellFocus(position, event) {
+    const cell = this.cells[position.row][position.column];
+    if (!cell.getSolution()) {
+      return;
+    }
+
+    if (event.relatedTarget && (event.relatedTarget.classList.contains('h5p-crossword-cell') || event.relatedTarget.classList.contains('h5p-crossword-cell-content'))) {
+      return; // Focus already handled by click/key listeners.
+    }
+
+    // Getting focus from outside the grid by tabbing into it
+    this.setcurrentOrientation(this.currentOrientation, position);
+    this.handleCellClick(position, true);
+    this.ignoreNextClick = (typeof this.ignoreNextClick !== 'boolean') ? true : this.ignoreNextClick; // Can't determine first focus on click
+  }
+
+  /**
+   * Handle input from cell.
+   * @param {object} position Position.
+   * @param {number} position.row Position row.
+   * @param {number} position.column Position column.
+   * @param {boolean} keepPosition If true, don't move to next cell.
+   */
+  handleCellKeyup(params) {
+    if ((!this.currentOrientation || this.currentOrientation === 'across') && params.position.column < this.params.dimensions.columns - 1 && this.cells[params.position.row][params.position.column + 1].getSolution()) {
+      this.currentOrientation = 'across';
+      if (!params.keepPosition) {
+        this.focusCell({row: params.position.row, column: params.position.column + 1});
+      }
+    }
+    else if ((!this.currentOrientation || this.currentOrientation === 'down') && params.position.row < this.params.dimensions.rows - 1 && this.cells[params.position.row + 1][params.position.column].getSolution()) {
+      this.currentOrientation = 'down';
+      if (!params.keepPosition) {
+        this.focusCell({row: params.position.row + 1, column: params.position.column});
+      }
+    }
+
+    this.callbacks.onInput({
+      answer: params.answer,
+      inputFieldUpdates: this.getUpdates(params.position),
+      clueId: params.clueId,
+      solutionWordId: params.solutionWordId || null
+    });
+  }
+
+  /**
+   * Show solution.
+   */
+  showSolutions() {
+    [].concat(...this.cells).forEach(cell => {
+      cell.showSolutions();
+    });
+  }
+
+  /**
+   * Check answer.
+   * @return {object[]} Results of all cells with content.
+   */
+  checkAnswer() {
+    const results = [];
+
+    [].concat(...this.cells).forEach(cell => {
+      cell.checkAnswer();
+      const information = cell.getInformation();
+      if (information.solution) {
+        results.push(information);
+      }
+    });
+
+    return results;
+  }
+
+  /**
+   * Highlight word cells belonging to a cell.
+   * @param {object} position Position of cell.
+   * @param {number} position.row Position row.
+   * @param {number} position.column Position column.
+   * @param {string} [orientation='across'] Preferred orientation for crossings.
+   */
+  highlightWord(position, orientation = 'across') {
+    const clueId = this.cells[position.row][position.column].getClueId(orientation);
+    if (!clueId) {
+      return;
+    }
+
+    const wordElement = this.params.words.filter(word => word.clueId === clueId && word.orientation === orientation)[0];
+
+    [].concat(...this.cells)
+      .filter(cell => cell.getClueId(orientation) === clueId)
+      .forEach((cell, index) => {
+        const cellPosition = cell.getPosition();
+
+        const ariaLabelParams = {
+          row: cellPosition.row,
+          column: cellPosition.column,
+          clueId: clueId,
+          orientation: orientation,
+          clue: wordElement.clue,
+          position: index,
+          length: wordElement.answer.length
+        };
+        cell.setAriaLabel(this.buildAriaLabel(ariaLabelParams));
+
+        cell.highlight('normal');
+      });
+  }
+
+  /**
+   * Build aria label for cell.
+   * @param {object} params Parameters.
+   * @return {string} Aria label for cell.
+   */
+  buildAriaLabel(params) {
+    const gridPosition = `${this.params.a11y.row} ${params.row + 1}, ${this.params.a11y.column} ${params.column + 1}`;
+    const clue = `${params.clueId} ${this.params.a11y[params.orientation]}. ${params.clue}`;
+    const wordPosition = `${this.params.a11y.letterSevenOfNine.replace('@position', params.position + 1).replace('@length', params.length)}`;
+
+    return `${gridPosition}. ${clue}, ${wordPosition}.`;
+  }
+
+  /**
+   * Get focus.
+   * @return {object} Focus and orientation.
+   */
+  getFocus() {
+    return {
+      position: this.currentPosition,
+      orientation: this.currentOrientation
+    };
+  }
+
+  /**
+   * Get cell information for a complete word.
+   * @param {number} clueId Clue id.
+   * @param {string} [orientation=across] Orientation.
+   */
+  getWordInformation(clueId, orientation = 'across') {
+    if (!clueId) {
+      return '';
+    }
+
+    return [].concat(...this.cells)
+      .filter(cell => cell.getClueId(orientation) === clueId)
+      .map(cell => cell.getInformation());
+  }
+
+  /**
+   * Focus a cell including neighbors around it.
+   * @param {object} position Position of cell.
+   * @param {number} position.row Position row.
+   * @param {number} position.column Position column.
+   * @param {boolean} keepFocus If true, don't set focus.
+   */
+  focusCell(position, keepFocus = false) {
+    this.clearCellHighlights();
+
+    // Make sure there's no unfulfillable orientation
+    this.setcurrentOrientation(this.currentOrientation, position);
+
+    this.highlightWord(position, this.currentOrientation);
+
+    this.cells[position.row][position.column].highlight('focus');
+
+    // Report focus change
+    this.callbacks.onFocus({
+      clueId: this.cells[position.row][position.column].getClueId(this.currentOrientation),
+      orientation: this.currentOrientation
+    });
+
+    if (!keepFocus) {
+      this.cells[position.row][position.column].focus();
+    }
+  }
+
+  /**
+   * Clear all cells' highlights.
+   */
+  clearCellHighlights() {
+    [].concat(...this.cells).forEach(cell => {
+      cell.unhighlight();
+    });
+  }
+
+  /**
+   * Fill the grid.
+   * @param {object} Parameters.
+   */
+  fillGrid(params) {
+    const cells = [].concat(...this.cells)
+      .filter(cell => cell.getClueId(params.orientation) === params.clueId);
+
+    cells.forEach((cell, index) => {
+      cell.setAnswer(
+        params.text[index] || '',
+        (params.readOffset === -1) ? false : index === params.cursorPosition - params.readOffset
+      );
+
+      // At crossection, other input fields needs to be updated
+      if (cell.getClueId('down') && cell.getClueId('across')) {
+        const crossedWordInfos = (params.orientation === 'across') ?
+          this.getWordInformation(cell.getClueId('down'), 'down') :
+          this.getWordInformation(cell.getClueId('across'), 'across');
+
+        const inputFieldUpdates = [{
+          clueId: (params.orientation === 'across') ? cell.getClueId('down') : cell.getClueId('across'),
+          orientation: (params.orientation === 'across') ? 'down' : 'across',
+          text: crossedWordInfos.reduce((result, info) => {
+            return `${result}${info.answer || ' '}`;
+          }, '')
+        }];
+
+        this.callbacks.onInput({
+          inputFieldUpdates: inputFieldUpdates
+        });
+      }
+
+      // Solution word needs an update
+      const cellInformation = cell.getInformation();
+      if (cellInformation.solutionWordId) {
+        this.callbacks.onInput(cellInformation);
+      }
+    });
+
+    if (params.cursorPosition < cells.length) {
+      const position = cells[params.cursorPosition].position;
+      this.setcurrentOrientation(params.orientation, position);
+      this.moveTo(position, true);
+    }
+  }
+
+  /**
+   * Enable grid.
+   */
+  enable() {
+    [].concat(...this.cells).forEach(cell => {
+      cell.enable();
+    });
+
+    this.disabled = false;
+  }
+
+  /**
+   * Disable grid.
+   */
+  disable() {
+    this.disabled = true;
+    [].concat(...this.cells).forEach(cell => {
+      cell.disable();
+    });
+  }
+
+  /**
+   * Unhighlight all cells.
+   */
+  unhighlight() {
+    [].concat(...this.cells).forEach(cell => {
+      cell.unhighlight('focus');
+      cell.unhighlight('normal');
+
+      if (!this.params.instantFeedback) {
+        cell.setSolutionState();
+      }
+    });
+  }
+
+  /**
+   * Get correct responses pattern for xAPI.
+   * @return {string[]} Correct response for each cell.
+   */
+  getXAPICorrectResponsesPattern() {
+    const caseMatters = '{case_matters=false}';
+    const pattern = this.params.words
+      .map(word => {
+        return this.getWordInformation(word.clueId, word.orientation)
+          .map(info => info.solution)
+          .join('[,]');
+      })
+      .join('[,]');
+
+    return [`${caseMatters}${pattern}`];
+  }
+
+  /**
+   * Get current response for xAPI.
+   * @return {string} Responses for each cell joined by [,].
+   */
+  getXAPIResponse() {
+    return this.params.words
+      .map(word => {
+        return this.getWordInformation(word.clueId, word.orientation)
+          .map(info => info.answer || '')
+          .join('[,]');
+      })
+      .join('[,]');
+  }
+
+  /**
+   * Get xAPI description suitable for H5P's reporting module.
+   * @return {string} HTML with placeholders for fields to be filled in.
+   */
+  getXAPIDescription() {
+    return this.params.words
+      .map(word => {
+        const clue = `${word.clueId} ${word.orientation}: ${word.clue}`;
+
+        const placeholders = [];
+        while (placeholders.length < word.answer.length) {
+          placeholders.push(CrosswordTable.XAPI_PLACEHOLDER);
+        }
+        return `<p>${clue}</ br>${placeholders.join(' ')}</p>`;
+      })
+      .join('');
+  }
+}
+
+CrosswordTable.XAPI_PLACEHOLDER = '__________';
