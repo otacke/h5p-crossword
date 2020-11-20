@@ -73,7 +73,11 @@ export default class CrosswordContent {
         instantFeedback: this.params.instantFeedback,
         solutionWord: this.params.solutionWord,
         words: this.crosswordLayout.result,
-        a11y: this.params.a11y
+        a11y: this.params.a11y,
+        l10n: {
+          across: this.params.l10n.across,
+          down: this.params.l10n.down
+        }
       },
       {
         onInput: (params => {

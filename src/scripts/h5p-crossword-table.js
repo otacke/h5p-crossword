@@ -935,7 +935,7 @@ export default class CrosswordTable {
   getXAPIDescription() {
     return this.params.words
       .map(word => {
-        const clue = `${word.clueId} ${word.orientation}: ${word.clue}`;
+        const clue = `${word.clueId} ${this.params.l10n[word.orientation]}: ${word.clue}`;
 
         const placeholders = [];
         while (placeholders.length < word.answer.length) {
