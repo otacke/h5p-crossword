@@ -35,10 +35,14 @@ export default class Crossword extends H5P.Question {
         enableInstantFeedback: false
       },
       l10n: {
+        across: 'across',
+        down: 'down',
         checkAnswer: 'Check answer',
         couldNotGenerateCrossword: 'Could not generate a crossword with the given words. Please try again.',
         showSolution: 'Show solution',
-        tryAgain: 'Retry'
+        tryAgain: 'Retry',
+        extraClue: 'Extra clue',
+        closeWindow: 'Close window'
       },
       a11y: {
         crosswordGrid: 'Crossword grid. Use arrow keys to navigate and keyboard to enter characters. Use tab to use input fields instead.',
@@ -213,7 +217,7 @@ export default class Crossword extends H5P.Question {
 
       if (this.params.behaviour.enableRetry) {
         this.showButton('try-again');
-      }      
+      }
     };
 
     /**
