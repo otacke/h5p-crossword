@@ -236,6 +236,9 @@ export default class CrosswordContent {
     };
   }
 
+  /**
+   * Check answer.
+   */
   checkAnswer() {
     this.disable();
     const results = this.table.checkAnswer();
@@ -255,11 +258,19 @@ export default class CrosswordContent {
     this.inputarea.showSolutions(this.crosswordLayout.result);
   }
 
+  /**
+   * Handle input from input fields.
+   * @param {object} Parameters parameters.
+   */
   handleFieldInput(params) {
     this.table.fillGrid(params);
     this.answerGiven = true;
   }
 
+  /**
+   * Handle input from table.
+   * @param {object} Parameters parameters.
+   */
   handleTableInput(params) {
     if (this.solutionWord && params.solutionWordId) {
       this.solutionWord.setCell(params.solutionWordId - 1, params.answer);
@@ -276,6 +287,10 @@ export default class CrosswordContent {
     }
   }
 
+  /**
+   * Handle table getting focus.
+   * @param {object} Parameters parameters.
+   */
   handleTableFocus(params) {
     const wordData = this.crosswordLayout.result
       .filter(word => word.orientation !== 'none')
