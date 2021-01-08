@@ -209,6 +209,8 @@ export default class CrosswordInput {
           }
         }
 
+        inputField.value = Util.toUpperCase(inputField.value, Util.UPPERCASE_EXCEPTIONS);
+
         this.callbacks.onFieldInput({
           clueId: word.clueId,
           orientation: word.orientation,
@@ -227,7 +229,7 @@ export default class CrosswordInput {
         event.preventDefault();
 
         const text = event.clipboardData.getData('text');
-        inputField.value = text.substr(0, 1).toUpperCase();
+        inputField.value = Util.toUpperCase(text.substr(0, 1), Util.UPPERCASE_EXCEPTIONS);
       });
 
       const listLabel = this.params.a11y.resultFor
@@ -279,7 +281,7 @@ export default class CrosswordInput {
     params.forEach(param => {
       const fields = this.inputFields.filter(field => field.orientation === param.orientation && field.clueId === param.clueId);
       if (fields.length > 0 && param.text.trim().length > 0) {
-        fields[0].inputField.value = param.text;
+        fields[0].inputField.value = Util.toUpperCase(param.text, Util.UPPERCASE_EXCEPTIONS);
       }
     });
   }
@@ -327,7 +329,7 @@ export default class CrosswordInput {
       });
 
       // Prepare list item parameters
-      let inputChars = field.inputField.value.toUpperCase().split('');
+      let inputChars = (Util.toUpperCase(field.inputField.value, Util.UPPERCASE_EXCEPTIONS)).split('');
 
       let listItemParams = [];
       cellInfos.forEach((cellInfo, index) => {

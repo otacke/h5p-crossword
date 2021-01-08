@@ -104,6 +104,55 @@ class Util {
   }
 
   /**
+   * Convert string to uppercase with optional exceptions.
+   * @param {string} text Text to be converted to uppercase.
+   * @param {string[]} [exceptions=[]] List of characters to keep in lowercase or replace by others.
+   * @return {string|null} String in uppercase or null if text was no string.
+   */
+  static toUpperCase(text, exceptions = []) {
+    // Sanitize arguments
+    if (typeof text !== 'string') {
+      return null;
+    }
+
+    if (typeof exceptions === 'string') {
+      exceptions = exceptions
+        .split('')
+        .map(exception => ({lowerCase: exception, upperCase: exception}));
+    }
+
+    if (!Array.isArray(exceptions)) {
+      exceptions = [];
+    }
+
+    // Remove exceptions not containing valid values
+    exceptions = exceptions.filter(exception => {
+      return (
+        typeof exception.lowerCase === 'string' && exception.lowerCase.length === 1 &&
+        typeof exception.upperCase === 'string' && exception.upperCase.length === 1
+      );
+    });
+
+    // Replace lowerCase exception in text with placeholder
+    exceptions.forEach((exception, index) => {
+      while (text.indexOf(exception.lowerCase) !== -1) {
+        text = text.replace(exception.lowerCase, `[CROSSWORDPLACEHOLDER${index}]`);
+      }
+    });
+
+    text = text.toUpperCase();
+
+    // Replace placeholder in text with upperCase exception
+    exceptions.forEach((exception, index) => {
+      while (text.indexOf(`[CROSSWORDPLACEHOLDER${index}]`) !== -1) {
+        text = text.replace(`[CROSSWORDPLACEHOLDER${index}]`, exception.upperCase);
+      }
+    });
+
+    return text;
+  }
+
+  /**
    * Wait for DOM element to be attached to DOM.
    * @param {string} selector CSS selector for DOM element.
    * @param {function} success Function to call once element is attached.
@@ -136,6 +185,17 @@ class Util {
 Util.CONTROL_KEY_CODES = [
   8, 9, 13, 16, 17, 18, 19, 20, 27, 33, 34, 35, 36, 37, 38, 39, 40, 45, 46, 91,
   92, 93, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 144, 145
+];
+
+/**
+ * @constant {string[]} Exceptions for Util.toUpperCase
+ * Using text-transform: uppercase in CSS causes ß to be replaced by 'SS', not \u1e9e
+ */
+Util.UPPERCASE_EXCEPTIONS = [
+  {
+    lowerCase: 'ß',
+    upperCase: '\u1e9e' // LATIN CAPITAL LETTER SHARP S
+  }
 ];
 
 export default Util;

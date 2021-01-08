@@ -30,7 +30,7 @@ export default class CrosswordGenerator {
       .filter(word => word.answer && word.clue) // word and clue are mandatory
       .map(word => {
         const newWord = {
-          answer: word.answer.toUpperCase(),
+          answer: Util.toUpperCase(word.answer, Util.UPPERCASE_EXCEPTIONS),
           clue: word.clue,
           extraClue: word.extraClue
         };

@@ -89,7 +89,7 @@ export default class Crossword extends H5P.Question {
         );
       })
       .map(word => {
-        word.answer = Util.stripHTML(Util.htmlDecode(word.answer.toUpperCase()));
+        word.answer = Util.stripHTML(Util.htmlDecode(Util.toUpperCase(word.answer, Util.UPPERCASE_EXCEPTIONS)));
         word.clue = Util.stripHTML(Util.htmlDecode(word.clue));
         return word;
       });
@@ -119,7 +119,7 @@ export default class Crossword extends H5P.Question {
           },
           a11y: this.params.a11y,
           poolSize: this.params.behaviour.poolSize,
-          solutionWord: this.params.solutionWord.replace(/'\s'/g, '').toUpperCase(),
+          solutionWord: Util.toUpperCase(this.params.solutionWord.replace(/'\s'/g, ''), Util.UPPERCASE_EXCEPTIONS),
           words: this.params.words,
           previousState: this.previousState
         },

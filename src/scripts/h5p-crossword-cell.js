@@ -181,7 +181,8 @@ export default class CrosswordCell {
         return; // Not a character
       }
 
-      this.setAnswer(event.key.toUpperCase(), true);
+      this.setAnswer(Util.toUpperCase(event.key, Util.UPPERCASE_EXCEPTIONS), true);
+
       this.cellInput.value = '';
       this.callbacks.onKeyup(this.getInformation());
     });
@@ -265,7 +266,7 @@ export default class CrosswordCell {
    */
   getInformation() {
     return {
-      answer: (this.answer) ? this.answer.toUpperCase() : this.answer,
+      answer: (this.answer) ? Util.toUpperCase(this.answer, Util.UPPERCASE_EXCEPTIONS) : this.answer,
       clueIdAcross: this.params.clueIdAcross,
       clueIdDown: this.params.clueIdDown,
       position: this.position,
@@ -379,8 +380,8 @@ export default class CrosswordCell {
       this.answer = undefined;
     }
     else {
-      this.cellCanvas.innerText = answer.toUpperCase();
-      this.answer = answer.toUpperCase();
+      this.cellCanvas.innerText = Util.toUpperCase(answer, Util.UPPERCASE_EXCEPTIONS);
+      this.answer = Util.toUpperCase(answer, Util.UPPERCASE_EXCEPTIONS);
     }
 
     if (this.params.instantFeedback) {
