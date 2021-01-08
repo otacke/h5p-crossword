@@ -326,6 +326,26 @@ export default class CrosswordCell {
   }
 
   /**
+   * Check whether cell is filled.
+   * @return {boolean|null} True if filled, null if not filled but not expected, else false.
+   */
+  isFilled() {
+    if (!this.params.solution) {
+      return null;
+    }
+
+    if (this.params.solution === ' ') {
+      return null;
+    }
+
+    if (this.answer) {
+      return true;
+    }
+
+    return false;
+  }
+
+  /**
    * Set tab index.
    * @param {string} index Tab index.
    */

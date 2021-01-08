@@ -22,6 +22,7 @@ export default class CrosswordContent {
     this.callbacks = callbacks || {};
     this.callbacks.onInitialized = callbacks.onInitialized || (() => {});
     this.callbacks.onRead = callbacks.onRead || (() => {});
+    this.callbacks.onTableFilled = callbacks.onTableFilled || (() => {});
 
     this.answerGiven = false;
 
@@ -269,6 +270,10 @@ export default class CrosswordContent {
     }
 
     this.answerGiven = true;
+
+    if (this.table.isFilled()) {
+      this.callbacks.onTableFilled();
+    }
   }
 
   handleTableFocus(params) {

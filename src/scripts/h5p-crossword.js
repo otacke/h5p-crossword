@@ -124,6 +124,9 @@ export default class Crossword extends H5P.Question {
           previousState: this.previousState
         },
         {
+          onTableFilled: () => {
+            this.handleContentFilled();
+          },
           onInitialized: (result) => {
             this.handleContentInitialized(result);
           },
@@ -167,7 +170,7 @@ export default class Crossword extends H5P.Question {
       this.addButton('check-answer', this.params.l10n.checkAnswer, () => {
         this.checkAnswer();
         this.trigger(this.getXAPIAnswerEvent());
-      }, true, {
+      }, !this.params.behaviour.enableInstantFeedback, {
         'aria-label': this.params.a11y.check
       }, {});
 
@@ -229,6 +232,13 @@ export default class Crossword extends H5P.Question {
     };
 
     /**
+     * Handle content is filled.
+     */
+    this.handleContentFilled = () => {
+      this.checkAnswer();
+    };
+
+    /**
      * Check if result has been submitted or input has been given.
      * @return {boolean} True, if answer was given.
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
@@ -266,7 +276,10 @@ export default class Crossword extends H5P.Question {
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
      */
     this.resetTask = () => {
-      this.showButton('check-answer');
+      if (!this.params.behaviour.enableInstantFeedback) {
+        this.showButton('check-answer');
+      }
+
       this.hideButton('show-solution');
       this.hideButton('try-again');
 

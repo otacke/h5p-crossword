@@ -884,6 +884,14 @@ export default class CrosswordTable {
   }
 
   /**
+   * Check whether all relevant cells have been filled.
+   * @return {boolean} True, if all relevant cells have been filled, else false.
+   */
+  isFilled() {
+    return ![].concat(...this.cells).some(cell => cell.isFilled() === false);
+  }
+
+  /**
    * Unhighlight all cells.
    */
   unhighlight() {
