@@ -231,6 +231,19 @@
         "optional": true
       },
       {
+        "name": "backgroundColor",
+        "type": "text",
+        "label": "Background color",
+        "importance": "low",
+        "optional": true,
+        "default": "#173354",
+        "widget": "colorSelector",
+        "spectrum": {
+          "showInput": true,
+          "showInitial": true
+        }
+      },
+      {
         "name": "enableInstantFeedback",
         "label": "Enable instant feedback",
         "type": "boolean",

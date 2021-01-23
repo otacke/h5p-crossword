@@ -66,6 +66,7 @@ export default class CrosswordContent {
     this.table = new CrosswordTable(
       {
         backgroundImage: this.params.backgroundImage,
+        backgroundColor: this.params.backgroundColor,
         contentId: this.contentId,
         dimensions: {
           rows: this.crosswordLayout.rows,

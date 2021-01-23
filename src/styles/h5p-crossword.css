@@ -137,11 +137,6 @@
 }
 
 .h5p-crossword .h5p-crossword-cell.h5p-crossword-cell-empty {
-  background-color: #000000;
-}
-
-.h5p-crossword .h5p-crossword.grid .h5p-crossword-cell.h5p-crossword-cell-empty {
-  background-color: #000000;
 }
 
 .h5p-crossword .h5p-crossword-grid.h5p-crossword-grid-background-image  .h5p-crossword-cell.h5p-crossword-cell-empty {
