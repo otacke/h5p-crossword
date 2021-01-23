@@ -32,21 +32,11 @@
           },
           {
             "label": "Zeile",
-            "description": "Zeilennummer, in der die Antwort starten soll.",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "description": "Zeilennummer, in der die Antwort starten soll."
           },
           {
             "label": "Spalte",
-            "description": "Spaltennummer, in der die Antwort starten soll.",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "description": "Spaltennummer, in der die Antwort starten soll."
           },
           {
             "label": "Ausrichtung",
@@ -58,13 +48,7 @@
               {
                 "label": "senkrecht"
               }
-            ],
-            "default": "across",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            ]
           }
         ]
       }
@@ -111,6 +95,10 @@
         {
           "label": "Hintergrundbild",
           "description": "Wähle ein optionales Hintergrundbild. Es wird ohne Verzerrung skaliert, um in den Hintergrund zu passen."
+        },
+        {
+          "label": "Hintergrundfarbe",
+          "default": "#173354"
         },
         {
           "label": "Sofort-Rückmeldungen einschalten"

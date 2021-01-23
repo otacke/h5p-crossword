@@ -32,21 +32,11 @@
           },
           {
             "label": "Rij",
-            "description": "Rij-index waar het antwoord moet beginnen.",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "description": "Rij-index waar het antwoord moet beginnen."
           },
           {
             "label": "Kolom",
-            "description": "Kolomindex waar het antwoord moet beginnen.",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "description": "Kolomindex waar het antwoord moet beginnen."
           },
           {
             "label": "Oriëntatie",
@@ -58,13 +48,7 @@
               {
                 "label": "verticaal"
               }
-            ],
-            "default": "horizontaal",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            ]
           }
         ]
       }
@@ -111,6 +95,10 @@
         {
           "label": "Achtergrondafbeelding",
           "description": "Selecteer een optionele achtergrondafbeelding. Deze zal worden geschaald om bij de achtergrond te passen zonder deze uit te rekken."
+        },
+        {
+          "label": "Achtergrondkleur",
+          "default": "#173354"
         },
         {
           "label": "Directe feedback mogelijk maken"

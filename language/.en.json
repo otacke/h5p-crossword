@@ -32,21 +32,11 @@
           },
           {
             "label": "Row",
-            "description": "Row index where the answer should start.",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "description": "Row index where the answer should start."
           },
           {
             "label": "Column",
-            "description": "Column index where the answer should start.",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "description": "Column index where the answer should start."
           },
           {
             "label": "Orientation",
@@ -58,13 +48,7 @@
               {
                 "label": "down"
               }
-            ],
-            "default": "across",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            ]
           }
         ]
       }
@@ -111,6 +95,10 @@
         {
           "label": "Background image",
           "description": "Select an optional background image. It will be scaled to fit the background without stretching it."
+        },
+        {
+          "label": "Background color",
+          "default": "#173354"
         },
         {
           "label": "Enable instant feedback"
