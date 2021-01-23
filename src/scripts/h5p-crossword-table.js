@@ -502,8 +502,19 @@ export default class CrosswordTable {
    * @return {number} Score.
    */
   getScore() {
-    return Math.max(0, [].concat(...this.cells)
-      .reduce((score, cell) => score += cell.getScore() || 0, 0));
+    let score;
+
+    if (this.params.scoreWords) {
+      score = this.params.words.reduce((score, word) => {
+        return score + this.getWordScore(word.clueId, word.orientation);
+      }, 0);
+    }
+    else {
+      score = [].concat(...this.cells)
+        .reduce((score, cell) => score += cell.getScore() || 0, 0);
+    }
+
+    return Math.max(0, score);
   }
 
   /**
@@ -511,10 +522,41 @@ export default class CrosswordTable {
    * @return {number} Maximum score.
    */
   getMaxScore() {
-    this.maxScore = this.maxScore || [].concat(...this.cells)
-      .reduce((score, cell) => score += (cell.getScore() !== undefined) ? 1 : 0, 0);
+    if (this.params.scoreWords) {
+      this.maxScore = this.params.words.length;
+    }
+    else {
+      this.maxScore = this.maxScore || [].concat(...this.cells)
+        .reduce((score, cell) => score += (cell.getScore() !== undefined) ? 1 : 0, 0);
+    }
 
     return this.maxScore;
+  }
+
+  /**
+   * Get score for single word.
+   * @param {number} clueId ClueId of word.
+   * @param {string} orientation Requested orientation.
+   * @return {number} 1 if complete word is correct, -1 if something is wrong, 0 else;
+   */
+  getWordScore(clueId, orientation = 'across') {
+    const wordInformation = this.getWordInformation(clueId, orientation);
+
+    const wordScore = wordInformation.reduce((score, info) => {
+      if (score === -1 || info.score === -1) {
+        return -1; // Word is wrong
+      }
+
+      const currentScore = (info.score === 1 || info.score === undefined) ? 1 : 0;
+
+      return score + currentScore;
+    }, 0);
+
+    if (wordScore === -1) {
+      return -1;
+    }
+
+    return (wordScore === wordInformation.length) ? 1 : 0;
   }
 
   /**
@@ -686,6 +728,28 @@ export default class CrosswordTable {
     [].concat(...this.cells).forEach(cell => {
       cell.showSolutions();
     });
+  }
+
+  /**
+   * Check answer.
+   * @return {object[]} Results of all words.
+   */
+  checkAnswerWords() {
+    const results = this.params.words.map(word => {
+      return {
+        clueId: word.clueId,
+        orientation: word.orientation,
+        answer: word.answer,
+        score: this.getWordScore(word.clueId, word.orientation)
+      };
+    });
+
+    // Mark cells on table
+    [].concat(...this.cells).forEach(cell => {
+      cell.checkAnswer();
+    });
+
+    return results;
   }
 
   /**
@@ -915,9 +979,15 @@ export default class CrosswordTable {
     const caseMatters = '{case_matters=false}';
     const pattern = this.params.words
       .map(word => {
-        return this.getWordInformation(word.clueId, word.orientation)
-          .map(info => info.solution)
-          .join('[,]');
+        const characters = this.getWordInformation(word.clueId, word.orientation)
+          .map(info => info.solution);
+
+        if (this.params.scoreWords) {
+          return characters.join('');
+        }
+        else {
+          return characters.join('[,]');
+        }
       })
       .join('[,]');
 
@@ -931,9 +1001,13 @@ export default class CrosswordTable {
   getXAPIResponse() {
     return this.params.words
       .map(word => {
-        return this.getWordInformation(word.clueId, word.orientation)
-          .map(info => info.answer || '')
-          .join('[,]');
+        const characters = this.getWordInformation(word.clueId, word.orientation);
+        if (this.params.scoreWords) {
+          return characters.map(info => info.answer || ' ').join('');
+        }
+        else {
+          return characters.map(info => info.answer || '').join('[,]');
+        }
       })
       .join('[,]');
   }
@@ -948,9 +1022,15 @@ export default class CrosswordTable {
         const clue = `${word.clueId} ${this.params.l10n[word.orientation]}: ${word.clue}`;
 
         const placeholders = [];
-        while (placeholders.length < word.answer.length) {
+        if (this.params.scoreWords) {
           placeholders.push(CrosswordTable.XAPI_PLACEHOLDER);
         }
+        else {
+          while (placeholders.length < word.answer.length) {
+            placeholders.push(CrosswordTable.XAPI_PLACEHOLDER);
+          }
+        }
+
         return `<p>${clue}</ br>${placeholders.join(' ')}</p>`;
       })
       .join('');

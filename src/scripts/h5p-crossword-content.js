@@ -65,6 +65,7 @@ export default class CrosswordContent {
     // Table
     this.table = new CrosswordTable(
       {
+        scoreWords: this.params.scoreWords,
         backgroundImage: this.params.backgroundImage,
         backgroundColor: this.params.backgroundColor,
         contentId: this.contentId,
@@ -242,8 +243,15 @@ export default class CrosswordContent {
    */
   checkAnswer() {
     this.disable();
-    const results = this.table.checkAnswer();
-    this.inputarea.checkAnswer(results);
+
+    if (this.params.scoreWords) {
+      const results = this.table.checkAnswerWords();
+      this.inputarea.checkAnswerWords(results);
+    }
+    else {
+      const results = this.table.checkAnswer();
+      this.inputarea.checkAnswer(results);
+    }
   }
 
   /**

@@ -275,6 +275,7 @@ export default class CrosswordCell {
       clueIdAcross: this.params.clueIdAcross,
       clueIdDown: this.params.clueIdDown,
       position: this.position,
+      score: this.getScore(),
       solution: this.params.solution,
       solutionWordId: this.solutionWordId || null
     };
@@ -315,8 +316,12 @@ export default class CrosswordCell {
    * @return {number} Wrong: -1; Missing: 0; Correct 1
    */
   getScore() {
-    if (!this.params.solution || this.params.solution === ' ') {
-      return; // empty or space
+    if (!this.params.solution) {
+      return; // Empty
+    }
+
+    if (this.params.solution === ' ' && (!this.answer || this.answer.trim() === '')) {
+      return; // Space not relevant for score
     }
 
     if (!this.answer || this.answer.trim() === '') {

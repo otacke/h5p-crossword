@@ -251,6 +251,15 @@
         "default": false
       },
       {
+        "name": "scoreWords",
+        "state": "new",
+        "label": "Score words",
+        "description": "If this option is enabled, correct words will be counted in order to determine the score. Otherwise, correct characters will be counted.",
+        "type": "boolean",
+        "importance": "low",
+        "default": true
+      },
+      {
         "name": "enableRetry",
         "label": "Enable \"Retry\"",
         "type": "boolean",

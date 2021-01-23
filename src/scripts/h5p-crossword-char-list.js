@@ -89,8 +89,10 @@ export default class CrosswordCharList {
    * Build single list item.
    * @param {object} params Parameters.
    * @param {string} params.result Result (neutral|correct|wrong).
+   * @param {string} params.ariaLabel Aria label.
    * @param {HTMLElement} [params.scoreExplanation] Score explanation.
    * @param {string} [params.char] Character to display.
+   * @param {boolean} [scoreWords] If true, will change display.
    * @return {HTMLElement} List item.
    */
   buildListItem(params) {
@@ -103,6 +105,10 @@ export default class CrosswordCharList {
     // Visual style
     if (params.result === 'neutral') {
       charWrapper.classList.add('h5p-crossword-solution-no-input');
+
+      if (params.char === ' ') {
+        charWrapper.classList.add('h5p-crossword-solution-no-char');
+      }
     }
     else if (params.result === 'correct') {
       charWrapper.classList.add('h5p-crossword-solution-correct');

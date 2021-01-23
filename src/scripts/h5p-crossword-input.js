@@ -303,6 +303,46 @@ export default class CrosswordInput {
     }
   }
 
+  checkAnswerWords(params) {
+    // ScorePoints
+    this.scorePoints = this.scorePoints || new H5P.Question.ScorePoints();
+
+    this.inputFields.forEach(field => {
+      field.solution.show();
+
+      const matchingResult = params
+        .filter(param => param.clueId === field.clueId && param.orientation === field.orientation)
+        .shift();
+
+      let scoreExplanation, result;
+      const ariaLabels = [];
+      ariaLabels.push(matchingResult.answer);
+
+      if (matchingResult.score === -1) {
+        scoreExplanation = this.scorePoints.getElement(false);
+        result = 'wrong';
+        ariaLabels.push(this.params.a11y.wrong);
+        ariaLabels.push(`-1 ${this.params.a11y.point}`);
+      }
+      else if (matchingResult.score === 1) {
+        scoreExplanation = this.scorePoints.getElement(true);
+        result = 'correct';
+        ariaLabels.push(this.params.a11y.correct);
+        ariaLabels.push(`1 ${this.params.a11y.point}`);
+      }
+      else {
+        result = 'neutral';
+      }
+
+      field.solution.setChars([{
+        ariaLabel: `${ariaLabels.join('. ')}.`,
+        char: matchingResult.answer,
+        result: result,
+        scoreExplanation: scoreExplanation
+      }]);
+    });
+  }
+
   /**
    * Check answers.
    * @param {object[]} params Parameters.
@@ -374,7 +414,7 @@ export default class CrosswordInput {
 
         listItemParams.push({
           ariaLabel: `${ariaLabels.join('. ')}.`,
-          char: char,
+          char: char || '&nbsp;',
           result: result,
           scoreExplanation: scoreExplanation
         });

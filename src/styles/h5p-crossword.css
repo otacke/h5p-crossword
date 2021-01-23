@@ -341,7 +341,10 @@
   color: #b5691c;
   display: inline-block;
   height: 1em;
-  width: 1em;
+}
+
+.h5p-crossword .h5p-crossword-input-fields-group-solution-word > span.h5p-crossword-input-fields-group-solution-char-wrapper.h5p-crossword-solution-no-input.h5p-crossword-solution-no-char {
+  width: 1em;  
 }
 
 .h5p-crossword .h5p-crossword-input-fields-group-solution-word > span.h5p-crossword-input-fields-group-solution-char-wrapper.h5p-crossword-solution-correct {
