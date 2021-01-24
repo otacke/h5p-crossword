@@ -143,6 +143,11 @@ export default class Crossword extends H5P.Question {
       // Register content with H5P.Question
       this.setContent(this.content.getDOM());
 
+      // Previous state might have been a filled table
+      if (this.params.behaviour.enableInstantFeedback && this.content.isTableFilled()) {
+        this.checkAnswer();
+      }
+
       // Content may need a resize once it's displayed (media queries or pseudo elements)
       Util.waitForDOM('.h5p-crossword-input-container', () => {
         setTimeout(() => {
@@ -197,6 +202,10 @@ export default class Crossword extends H5P.Question {
      * Check answer.
      */
     this.checkAnswer = () => {
+      if (!this.content) {
+        return; // Call by previous state, not ready yet
+      }
+
       this.content.checkAnswer();
 
       this.hideButton('check-answer');

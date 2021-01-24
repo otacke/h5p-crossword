@@ -255,6 +255,14 @@ export default class CrosswordContent {
   }
 
   /**
+   * Check whether all relevant cells have been filled.
+   * @return {boolean} True, if all relevant cells have been filled, else false.
+   */
+  isTableFilled() {
+    return this.table.isFilled();
+  }
+
+  /**
    * Show solution.
    */
   showSolutions() {
@@ -291,7 +299,7 @@ export default class CrosswordContent {
 
     this.answerGiven = true;
 
-    if (this.table.isFilled()) {
+    if (this.isTableFilled()) {
       this.callbacks.onTableFilled();
     }
   }
