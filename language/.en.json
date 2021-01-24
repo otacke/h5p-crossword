@@ -104,6 +104,10 @@
           "label": "Enable instant feedback"
         },
         {
+          "label": "Score words",
+          "description": "If this option is enabled, words will be counted in order to determine the score. Otherwise, correct characters will be counted."
+        },
+        {
           "label": "Enable \"Retry\""
         },
         {

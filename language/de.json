@@ -104,6 +104,10 @@
           "label": "Sofort-Rückmeldungen einschalten"
         },
         {
+          "label": "Wörter zählen",
+          "description": "Wenn diese Einstellung gewählt ist, werden Wörter für die Bewertung gezählt. Andernfalls werden Zeichen gezählt."
+        },
+        {
           "label": "\"Wiederholen\"-Button anzeigen"
         },
         {
