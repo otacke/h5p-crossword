@@ -28,7 +28,7 @@
           },
           {
             "label": "Fixiere Wort im Gitter",
-            "description": "Wähle diese Option, wenn di das Wort an einer bestimmten Stelle im Gitter fixieren möchtest."
+            "description": "Wähle diese Option, wenn du das Wort an einer bestimmten Stelle im Gitter fixieren möchtest."
           },
           {
             "label": "Zeile",
@@ -157,7 +157,7 @@
       "fields": [
         {
           "label": "Beschreibung Kreuzwortgitter",
-          "default": "Kreuzwortgitter. Benutze die Pfeiltasten zum Use arrow keys to navigate und die Tastatur zum Eingeben von Zeichen. Nutze Tab, um stattdessen Eingabefelder zu verwenden."
+          "default": "Kreuzwortgitter. Benutze die Pfeiltasten und die Tastatur zum Eingeben von Zeichen. Nutze die Tabulatortaste, um stattdessen Eingabefelder zu verwenden."
         },
         {
           "label": "Spalte",
