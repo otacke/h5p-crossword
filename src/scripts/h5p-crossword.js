@@ -68,6 +68,13 @@ export default class Crossword extends H5P.Question {
       }
     }, this.params);
 
+    // Set buttons
+    this.initialButtons = {
+      check: !this.params.behaviour.enableInstantFeedback,
+      showSolution: this.params.behaviour.enableSolutionsButton,
+      retry: this.params.behaviour.enableRetry
+    };
+
     const defaultLanguage = (extras.metadata) ? extras.metadata.defaultLanguage || 'en' : 'en';
     this.languageTag = Util.formatLanguageCode(defaultLanguage);
 
@@ -179,21 +186,21 @@ export default class Crossword extends H5P.Question {
       this.addButton('check-answer', this.params.l10n.checkAnswer, () => {
         this.checkAnswer();
         this.trigger(this.getXAPIAnswerEvent());
-      }, !this.params.behaviour.enableInstantFeedback, {
+      }, this.initialButtons.check, {
         'aria-label': this.params.a11y.check
       }, {});
 
       // Show solution button
       this.addButton('show-solution', this.params.l10n.showSolution, () => {
         this.showSolutions();
-      }, false, {
+      }, this.initialButtons.showSolution, {
         'aria-label': this.params.a11y.showSolution
       }, {});
 
       // Retry button
       this.addButton('try-again', this.params.l10n.tryAgain, () => {
         this.resetTask();
-      }, false, {
+      }, this.initialButtons.retry, {
         'aria-label': this.params.a11y.retry
       }, {});
     };
@@ -277,6 +284,7 @@ export default class Crossword extends H5P.Question {
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-4}
      */
     this.showSolutions = () => {
+      this.hideButton('check-answer');
       this.hideButton('show-solution');
 
       this.content.showSolutions();
@@ -289,12 +297,27 @@ export default class Crossword extends H5P.Question {
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
      */
     this.resetTask = () => {
-      if (!this.params.behaviour.enableInstantFeedback) {
+
+      if (this.initialButtons.check) {
         this.showButton('check-answer');
       }
+      else {
+        this.hideButton('check-answer');
+      }
 
-      this.hideButton('show-solution');
-      this.hideButton('try-again');
+      if (this.initialButtons.showSolution) {
+        this.showButton('show-solution');
+      }
+      else {
+        this.hideButton('show-solution');
+      }
+
+      if (this.initialButtons.retry) {
+        this.showButton('try-again');
+      }
+      else {
+        this.hideButton('try-again');
+      }
 
       this.trigger('resize');
 

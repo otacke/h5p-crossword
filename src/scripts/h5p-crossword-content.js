@@ -266,6 +266,8 @@ export default class CrosswordContent {
    * Show solution.
    */
   showSolutions() {
+    this.disable();
+
     this.table.showSolutions();
 
     if (this.solutionWord) {
