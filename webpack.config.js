@@ -31,6 +31,7 @@ module.exports = {
     filename: 'h5p-crossword.js',
     path: path.resolve(__dirname, 'dist')
   },
+  target: ['web', 'es5'], // Damn you, IE11!
   module: {
     rules: [
       {
