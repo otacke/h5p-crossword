@@ -259,6 +259,15 @@
         "default": true
       },
       {
+        "name": "applyPenalties",
+        "label": "Apply penalties",
+        "description": "If this option is enabled, each wrong answer will be given a penalty score of -1.",
+        "type": "boolean",
+        "importance": "low",
+        "default": false,
+        "optional": true
+      },
+      {
         "name": "enableRetry",
         "label": "Enable \"Retry\"",
         "type": "boolean",

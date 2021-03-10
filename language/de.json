@@ -108,6 +108,10 @@
           "description": "Wenn diese Einstellung gewählt ist, werden Wörter für die Bewertung gezählt. Andernfalls werden Zeichen gezählt."
         },
         {
+          "label": "Punktabzug",
+          "description": "Wenn diese Einstellung gewählt ist, wird für jede falsche Antwort ein Punkt abgezogen."
+        },
+        {
           "label": "\"Wiederholen\"-Button anzeigen"
         },
         {

@@ -253,6 +253,7 @@ export default class CrosswordTable {
         clueIdAcross: param.clueIdAcross,
         clueIdDown: param.clueIdDown,
         instantFeedback: this.params.instantFeedback,
+        applyPenalties: this.params.applyPenalties,
         backgroundColor: this.params.backgroundColor,
         hasBackgroundImage: !!this.params.backgroundImage,
         a11y: {

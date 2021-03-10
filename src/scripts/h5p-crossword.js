@@ -34,6 +34,7 @@ export default class Crossword extends H5P.Question {
         enableRetry: true,
         enableInstantFeedback: false,
         scoreWords: true,
+        applyPenalties: false,
         backgroundColor: '#173354'
       },
       l10n: {
@@ -117,6 +118,7 @@ export default class Crossword extends H5P.Question {
       this.content = new CrosswordContent(
         {
           scoreWords: this.params.behaviour.scoreWords,
+          applyPenalties: this.params.behaviour.applyPenalties,
           backgroundImage: this.params.behaviour.backgroundImage,
           backgroundColor: this.params.behaviour.backgroundColor,
           contentId: this.contentId,

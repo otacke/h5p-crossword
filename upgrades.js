@@ -17,6 +17,19 @@ H5PUpgrades['H5P.Crossword'] = (function () {
         parameters.behaviour.scoreWords = false;
 
         finished(null, parameters, extras);
+      },
+      /**
+       * Asynchronous content upgrade hook.
+       *
+       * Add new applyPenalties parameter, was true by default.
+       *
+       * @param {Object} parameters
+       * @param {function} finished
+       */
+      3: function (parameters, finished, extras) {
+        parameters.behaviour.applyPenalties = true;
+
+        finished(null, parameters, extras);
       }
     }
   };

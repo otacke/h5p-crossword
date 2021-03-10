@@ -35,7 +35,7 @@
             "description": "답이 시작되는 행 인덱스"
           },
           {
-            "label": "Column",           
+            "label": "Column",
             "description": "답이 시작되는 열 인덱스"
           },
           {
@@ -106,6 +106,10 @@
         {
           "label": "단어 채점하기",
           "description": "이 옵션이 활성화되면 점수를 결정하기 위해 단어가 카운트됩니다. 그렇지 않으면 올바른 문자가 카운트됩니다."
+        },
+        {
+          "label": "Apply penalties",
+          "description": "If this option is enabled, each wrong answer will be given a penalty score of -1."
         },
         {
           "label": "\"Retry\"(재시도) 활성화"
@@ -211,7 +215,7 @@
           "default": "빈 칸"
         },
         {
-        "description": "현재 위치 알리기. @position 와 @length 는 변수이고 각 값에 의해 대체됩니다.",
+          "description": "현재 위치 알리기. @position 와 @length 는 변수이고 각 값에 의해 대체됩니다.",
           "label": "글자",
           "default": "@length 중 Letter @position 위치"
         },

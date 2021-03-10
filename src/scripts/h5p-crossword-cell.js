@@ -328,7 +328,7 @@ export default class CrosswordCell {
       return 0; // missing or space
     }
     else if (this.answer !== this.params.solution) {
-      return -1; // wrong
+      return (this.params.applyPenalties) ? -1 : 0; // wrong
     }
     else {
       return 1; // correct
