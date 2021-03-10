@@ -388,6 +388,7 @@ export default class CrosswordCell {
   setSolutionState(state) {
     this.cell.classList.remove('h5p-crossword-solution-correct');
     this.cell.classList.remove('h5p-crossword-solution-wrong');
+    this.cell.classList.remove('h5p-crossword-solution-neutral');
 
     if (state) {
       const className = 'h5p-crossword-solution' + ((state) ? `-${state}` : '');
@@ -502,9 +503,17 @@ export default class CrosswordCell {
       this.setSolutionState();
     }
     else {
-      this.setSolutionState('wrong');
-      if (read) {
-        this.callbacks.onRead(this.params.a11y.wrong);
+      if (this.params.applyPenalties) {
+        this.setSolutionState('wrong');
+        if (read) {
+          this.callbacks.onRead(this.params.a11y.wrong);
+        }
+      }
+      else {
+        this.setSolutionState('neutral');
+        if (read) {
+          this.callbacks.onRead(this.params.a11y.wrong);
+        }
       }
     }
   }

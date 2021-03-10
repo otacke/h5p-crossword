@@ -393,11 +393,14 @@ export default class CrosswordInput {
             scoreExplanation = this.scorePoints.getElement(true);
           }
         }
-        else {
+        else if (this.params.applyPenalties) {
           result = 'wrong';
-          if (!cellAlreadyScored && this.params.applyPenalties) {
+          if (!cellAlreadyScored) {
             scoreExplanation = this.scorePoints.getElement(false);
           }
+        }
+        else {
+          result = 'neutral';
         }
 
         const ariaLabels = [];
