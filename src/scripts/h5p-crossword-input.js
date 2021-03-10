@@ -395,7 +395,7 @@ export default class CrosswordInput {
         }
         else {
           result = 'wrong';
-          if (!cellAlreadyScored) {
+          if (!cellAlreadyScored && this.params.applyPenalties) {
             scoreExplanation = this.scorePoints.getElement(false);
           }
         }

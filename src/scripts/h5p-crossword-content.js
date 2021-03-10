@@ -113,6 +113,7 @@ export default class CrosswordContent {
         words: this.crosswordLayout.result.filter(word => word.orientation !== 'none'),
         contentId: this.contentId,
         overlayContainer: this.content,
+        applyPenalties: this.params.applyPenalties,
         l10n: {
           across: this.params.l10n.across,
           down: this.params.l10n.down,
