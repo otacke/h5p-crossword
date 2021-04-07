@@ -303,7 +303,7 @@ export default class CrosswordContent {
 
     this.answerGiven = true;
 
-    if (this.isTableFilled()) {
+    if (params.checkFilled && this.isTableFilled()) {
       this.callbacks.onTableFilled();
     }
   }

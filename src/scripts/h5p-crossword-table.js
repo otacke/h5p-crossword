@@ -492,7 +492,8 @@ export default class CrosswordTable {
           answer: information.answer,
           inputFieldUpdates: this.getUpdates(information.position),
           clueId: information.clueId,
-          solutionWordId: information.solutionWordId || null
+          solutionWordId: information.solutionWordId || null,
+          checkFilled: true
         });
       }
     });
@@ -718,7 +719,8 @@ export default class CrosswordTable {
       answer: params.answer,
       inputFieldUpdates: this.getUpdates(params.position),
       clueId: params.clueId,
-      solutionWordId: params.solutionWordId || null
+      solutionWordId: params.solutionWordId || null,
+      checkFilled: true
     });
   }
 
@@ -927,6 +929,11 @@ export default class CrosswordTable {
       this.setcurrentOrientation(params.orientation, position);
       this.moveTo(position, true);
     }
+
+    // Check if table is filled
+    this.callbacks.onInput({
+      checkFilled: true
+    });
   }
 
   /**
