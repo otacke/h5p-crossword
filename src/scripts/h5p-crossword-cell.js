@@ -348,7 +348,7 @@ export default class CrosswordCell {
       return null;
     }
 
-    if (this.answer) {
+    if (this.answer && this.answer !== ' ') {
       return true;
     }
 
