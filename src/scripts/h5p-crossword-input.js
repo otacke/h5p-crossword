@@ -209,7 +209,7 @@ export default class CrosswordInput {
           }
         }
 
-        inputField.value = Util.toUpperCase(inputField.value, Util.UPPERCASE_EXCEPTIONS);
+        this.setInputFieldValue(inputField, inputField.value);
 
         this.callbacks.onFieldInput({
           clueId: word.clueId,
@@ -229,7 +229,7 @@ export default class CrosswordInput {
         event.preventDefault();
 
         const text = event.clipboardData.getData('text');
-        inputField.value = Util.toUpperCase(text.substr(0, 1), Util.UPPERCASE_EXCEPTIONS);
+        this.setInputFieldValue(inputField, text.substr(0, inputField.getAttribute('maxLength')));
       });
 
       const listLabel = this.params.a11y.resultFor
@@ -257,6 +257,38 @@ export default class CrosswordInput {
   }
 
   /**
+   * Set input field value.
+   *
+   * @param {HTMLElement} field Input field.
+   * @param {string} value Value.
+   * @param {object} [params={}] Parameters.
+   * @param {boolean} [params.forceValue] If true, that exact (uppercase) value will be used.
+   */
+  setInputFieldValue(field, value, params = {}) {
+    value = Util.toUpperCase(value, Util.UPPERCASE_EXCEPTIONS);
+
+    /*
+     * If `forceValue` is set to true, we could keep the crossword cells and
+     * the input fields in sync perfectly, but then editing the input fields
+     * becomes very awkward if there are blanks within.
+     */
+    let newValue = '';
+    if (!params.forceValue) {
+      for (let char of value.split('')) {
+        if (char === ' ') {
+          break;
+        }
+        newValue = `${newValue}${char}`;
+      }
+    }
+    else {
+      newValue = value;
+    }
+
+    field.value = Util.toUpperCase(newValue, Util.UPPERCASE_EXCEPTIONS);
+  }
+
+  /**
    * Build aria label for cell.
    * @param {object} params Parameters.
    * @return {string} Aria label for cell.
@@ -281,7 +313,7 @@ export default class CrosswordInput {
     params.forEach(param => {
       const fields = this.inputFields.filter(field => field.orientation === param.orientation && field.clueId === param.clueId);
       if (fields.length > 0 && param.text.trim().length > 0) {
-        fields[0].inputField.value = Util.toUpperCase(param.text, Util.UPPERCASE_EXCEPTIONS);
+        this.setInputFieldValue(fields[0].inputField, param.text);
       }
     });
   }
@@ -442,7 +474,8 @@ export default class CrosswordInput {
       }
       param = param[0];
 
-      field.inputField.value = param.answer;
+      this.setInputFieldValue(field.inputField, param.answer);
+
       field.inputField.readOnly = true;
       field.inputField.removeAttribute('disabled');
 
@@ -460,7 +493,7 @@ export default class CrosswordInput {
    */
   reset() {
     this.inputFields.forEach(field => {
-      field.inputField.value = '';
+      this.setInputFieldValue(field.inputField, '');
       field.inputField.readOnly = false;
 
       field.clue.classList.remove('h5p-crossword-input-fields-group-clue-highlight-focus');
