@@ -29,3 +29,5 @@ some browsers don't support, you'll have to add a polyfill.
 
 The build process will also move the source files into one distribution file and
 minify the code.
+
+For more information on how to use those distribution files in H5P, please have a look at https://youtu.be/xEgBJaRUBGg and the H5P developer guide at https://h5p.org/library-development.
