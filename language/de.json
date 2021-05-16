@@ -144,7 +144,7 @@
         },
         {
           "label": "Kein Kreuzworträtsel möglich",
-          "default": "Es konnte kein Kreuzworträtsel aus den gegebenen Wörtern erzeugt werden. Bitte versuche es erneut."
+          "default": "Es konnte kein Kreuzworträtsel aus den gegebenen Wörtern erzeugt werden. Bitte versuche es erneut mit weniger Wörtern oder mit Wörtern, die mehr Buchstaben gemein haben."
         },
         {
           "label": "Extra-Hinweis",

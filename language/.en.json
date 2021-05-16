@@ -144,7 +144,7 @@
         },
         {
           "label": "Cannot create crossword",
-          "default": "Could not generate a crossword with the given words. Please try again."
+          "default": "Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common."
         },
         {
           "label": "Extra clue",

@@ -41,7 +41,7 @@ export default class Crossword extends H5P.Question {
         across: 'across',
         down: 'down',
         checkAnswer: 'Check answer',
-        couldNotGenerateCrossword: 'Could not generate a crossword with the given words. Please try again.',
+        couldNotGenerateCrossword: 'Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common.',
         showSolution: 'Show solution',
         tryAgain: 'Retry',
         extraClue: 'Extra clue',
