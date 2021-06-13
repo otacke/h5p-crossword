@@ -108,8 +108,8 @@
           "description": "이 옵션이 활성화되면 점수를 결정하기 위해 단어가 카운트됩니다. 그렇지 않으면 올바른 문자가 카운트됩니다."
         },
         {
-          "label": "Apply penalties",
-          "description": "If this option is enabled, each wrong answer will be given a penalty score of -1."
+          "label": "벌칙 적용",
+          "description": "활성화하면 각 오답에 -1점의 벌점이 주어집니다."
         },
         {
           "label": "\"Retry\"(재시도) 활성화"
