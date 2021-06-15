@@ -286,7 +286,7 @@ export default class CrosswordContent {
    * @return {boolean} True, if all relevant cells have been filled, else false.
    */
   isTableFilled() {
-    return this.table.isFilled();
+    return this.table && this.table.isFilled();
   }
 
   /**

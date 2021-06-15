@@ -259,7 +259,12 @@ export default class Crossword extends H5P.Question {
      * Handle content is filled.
      */
     this.handleContentFilled = () => {
-      this.checkAnswer();
+      if (this.getScore() === this.getMaxScore()) {
+        this.checkAnswer();
+      }
+      else {
+        this.showButton('check-answer');
+      }
     };
 
     /**
