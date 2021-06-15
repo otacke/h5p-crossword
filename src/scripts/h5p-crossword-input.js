@@ -209,7 +209,7 @@ export default class CrosswordInput {
           }
         }
 
-        this.setInputFieldValue(inputField, inputField.value);
+        this.setInputFieldValue(inputField, inputField.value, {forceValue: true});
 
         this.callbacks.onFieldInput({
           clueId: word.clueId,
