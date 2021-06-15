@@ -147,6 +147,10 @@
           "default": "Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common."
         },
         {
+          "label": "Cannot create crossword (too few words)",
+          "default": "Could not generate a crossword. You need at least two words."
+        },
+        {
           "label": "Extra clue",
           "default": "Extra clue"
         },

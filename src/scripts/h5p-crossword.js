@@ -42,6 +42,7 @@ export default class Crossword extends H5P.Question {
         down: 'down',
         checkAnswer: 'Check answer',
         couldNotGenerateCrossword: 'Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common.',
+        couldNotGenerateCrosswordTooFewWords: 'Could not generate a crossword. You need at least two words.',
         showSolution: 'Show solution',
         tryAgain: 'Retry',
         extraClue: 'Extra clue',
@@ -125,6 +126,7 @@ export default class Crossword extends H5P.Question {
           instantFeedback: this.params.behaviour.enableInstantFeedback,
           l10n: {
             couldNotGenerateCrossword: this.params.l10n.couldNotGenerateCrossword,
+            couldNotGenerateCrosswordTooFewWords: this.params.l10n.couldNotGenerateCrosswordTooFewWords,
             across: this.params.l10n.across,
             down: this.params.l10n.down,
             extraClue: this.params.l10n.extraClue,

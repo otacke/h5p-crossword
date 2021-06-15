@@ -335,6 +335,13 @@
         "default": "Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common."
       },
       {
+        "name": "couldNotGenerateCrosswordTooFewWords",
+        "type": "text",
+        "label": "Cannot create crossword (too few words)",
+        "importance": "low",
+        "default": "Could not generate a crossword. You need at least two words."
+      },
+      {
         "name": "extraClue",
         "type": "text",
         "label": "Extra clue",

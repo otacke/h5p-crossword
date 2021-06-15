@@ -147,6 +147,10 @@
           "default": "주어진 단어로 크로스워드를 생성할 수 없습니다. 다시 시도하십시오."
         },
         {
+          "label": "Cannot create crossword (too few words)",
+          "default": "Could not generate a crossword. You need at least two words."
+        },
+        {
           "label": "추가 단서",
           "default": "추가 단서"
         },

@@ -147,6 +147,10 @@
           "default": "Es konnte kein Kreuzworträtsel aus den gegebenen Wörtern erzeugt werden. Bitte versuche es erneut mit weniger Wörtern oder mit Wörtern, die mehr Buchstaben gemein haben."
         },
         {
+          "label": "Kein Kreuzworträtsel möglich (zu wenig Wörter)",
+          "default": "Es konnte kein Kreuzworträtsel erzeugt werden. Du benötigst wenigstens zwei Wörter."
+        },
+        {
           "label": "Extra-Hinweis",
           "default": "Extra-Hinweis"
         },

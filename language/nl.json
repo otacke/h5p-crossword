@@ -147,6 +147,10 @@
           "default": "Er kan geen kruiswoordpuzzel met de gegeven woorden worden gemaakt. Probeer het nog eens."
         },
         {
+          "label": "Cannot create crossword (too few words)",
+          "default": "Could not generate a crossword. You need at least two words."
+        },
+        {
           "label": "Extra aanwijzing",
           "default": "Extra aanwijzing"
         },

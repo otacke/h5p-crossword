@@ -31,21 +31,41 @@ export default class CrosswordContent {
       this.crosswordLayout = this.params.previousState.crosswordLayout;
     }
     else {
-      const crosswordGenerator = new CrosswordGenerator({
-        words: params.words,
-        config: {
-          poolSize: params.poolSize
-        }
-      });
-      const grid = crosswordGenerator.getSquareGrid(20);
+      let errorMessage;
+      let crosswordGenerator;
+      let grid;
 
-      if (!grid) {
+      if (params.words.length < 2) {
+        errorMessage = params.l10n.couldNotGenerateCrosswordTooFewWords;
+      }
+      else {
+        crosswordGenerator = new CrosswordGenerator({
+          words: params.words,
+          config: {
+            poolSize: params.poolSize
+          }
+        });
+        grid = crosswordGenerator.getSquareGrid(20);
+
+        if (!grid) {
+          errorMessage = params.l10n.couldNotGenerateCrossword;
+        }
+      }
+
+      if (errorMessage) {
         const message = document.createElement('div');
         message.classList.add('h5p-crossword-message');
-        message.innerText = params.l10n.couldNotGenerateCrossword;
+        message.innerText = errorMessage;
         this.content.appendChild(message);
 
-        console.warn('H5P.Crossword: Could not generate a crossword. Bad words:', crosswordGenerator.getBadWords());
+        console.warn(`H5P.Crossword: ${errorMessage}`);
+        if (crosswordGenerator) {
+          const badWords = crosswordGenerator.getBadWords()
+            .map(badWord => badWord.answer)
+            .join(', ');
+
+          console.warn(`H5P.Crossword: Word(s) left out: ${badWords}.`);
+        }
         this.couldNotGenerateCrossword = true;
 
         this.callbacks.onInitialized(false);
