@@ -55,7 +55,7 @@
     },
     {
       "label": "전체 해답",
-      "description": "선택사항으로 그리드의 특정 문자에서 파생될 수 있는 솔루션 단어를 추가합니다. 참고: 이 기능에 대한 접근성 지원은 아직 없습니다."
+      "description": "선택사항으로 그리드의 특정 문자에서 파생될 수 있는 솔루션 단어를 추가합니다. It will only be visible if all its characters can be found in the crossword. 참고: 이 기능에 대한 접근성 지원은 아직 없습니다."
     },
     {
       "label": "전체 피드백",

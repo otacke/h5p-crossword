@@ -55,7 +55,7 @@
     },
     {
       "label": "Lösungswort",
-      "description": "Du kannst optional ein Lösungswort angeben, das aus den Buchstaben im Gitter abgeleitet werden kann. Hinweis: Bisher ist diese Funktion nicht barrierefrei implementiert."
+      "description": "Du kannst optional ein Lösungswort angeben, das aus den Buchstaben im Gitter abgeleitet werden kann. Es wird nur sichtbar sein, wenn es genügend passende Buchstaben im Kreuzworträtsel gibt. Hinweis: Bisher ist diese Funktion nicht barrierefrei implementiert."
     },
     {
       "label": "Gesamtrückmeldung",

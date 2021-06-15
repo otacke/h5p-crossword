@@ -55,7 +55,7 @@
     },
     {
       "label": "Het woord voor de totaaloplossing",
-      "description": "Voeg eventueel een oplossingswoord toe dat kan worden afgeleid uit bepaalde tekens op het raster. Let op: Er is nog geen  toegankelijkheidsondersteuning voor deze functie."
+      "description": "Voeg eventueel een oplossingswoord toe dat kan worden afgeleid uit bepaalde tekens op het raster. It will only be visible if all its characters can be found in the crossword. Let op: Er is nog geen  toegankelijkheidsondersteuning voor deze functie."
     },
     {
       "label": "Algehele feedback",

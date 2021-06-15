@@ -55,7 +55,7 @@
     },
     {
       "label": "Overall solution word",
-      "description": "Optionally add a solution word that can be derived from particular characters on the grid. Please note: There's no accessibility support for this feature yet."
+      "description": "Optionally add a solution word that can be derived from particular characters on the grid. It will only be visible if all its characters can be found in the crossword. Please note: There's no accessibility support for this feature yet."
     },
     {
       "label": "Overall Feedback",

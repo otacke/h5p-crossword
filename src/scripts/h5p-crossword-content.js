@@ -99,12 +99,17 @@ export default class CrosswordContent {
     this.content.appendChild(tableWrapper);
 
     const canHaveSolutionWord = this.table.addSolutionWord(this.params.solutionWord);
-    if (this.params.solutionWord !== '' && canHaveSolutionWord) {
-      this.solutionWord = new CrosswordSolutionWord({
-        solutionWord: this.params.solutionWord,
-        tableWidth: this.crosswordLayout.cols
-      });
-      tableWrapper.appendChild(this.solutionWord.getDOM());
+    if (this.params.solutionWord !== '') {
+      if (canHaveSolutionWord) {
+        this.solutionWord = new CrosswordSolutionWord({
+          solutionWord: this.params.solutionWord,
+          tableWidth: this.crosswordLayout.cols
+        });
+        tableWrapper.appendChild(this.solutionWord.getDOM());
+      }
+      else {
+        console.warn('H5P.Crossword: There are not enough matching characters for the overall solution word in the crossword.');
+      }
     }
 
     // Input Area
