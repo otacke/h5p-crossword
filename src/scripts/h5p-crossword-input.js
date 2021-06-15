@@ -185,6 +185,8 @@ export default class CrosswordInput {
           return;
         }
 
+        inputField.select();
+
         setTimeout(() => {
           this.callbacks.onFieldInput({
             clueId: word.clueId,
