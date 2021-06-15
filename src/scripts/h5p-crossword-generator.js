@@ -167,7 +167,9 @@ export default class CrosswordGenerator {
           const positionBest = this.findPositionForWord(wordElement.answer);
           if (!positionBest) {
             // make the new group (if needed)
-            if (this.groups.length - 1 === groupId) this.groups.push([]);
+            if (this.groups.length - 1 === groupId) {
+              this.groups.push([]);
+            }
             // place the answer in the next group
             this.groups[groupId + 1].push(wordElement);
           }
@@ -337,8 +339,6 @@ export default class CrosswordGenerator {
    * @return {boolean} True, if word can be placed.
    */
   canPlaceAnswerAt(answer, position) {
-    let intersections = 0;
-
     if (position.row < 0 || position.row >= this.cells.length || position.column < 0 || position.column >= this.cells[position.row].length) {
       return false; // out of bounds
     }
@@ -397,7 +397,6 @@ export default class CrosswordGenerator {
         if (result === false) {
           return false;
         }
-        intersections += result;
       }
     }
     else if (position.orientation === 'down') {
@@ -457,14 +456,13 @@ export default class CrosswordGenerator {
         if (result === false) {
           return false;
         }
-        intersections += result;
       }
     }
     else {
       throw 'Invalid Orientation';
     }
 
-    return intersections;
+    return true;
   }
 
   /**
