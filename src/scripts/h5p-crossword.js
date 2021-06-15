@@ -92,7 +92,7 @@ export default class Crossword extends H5P.Question {
     }
 
     // Only support uppercase
-    this.params.words = this.params.words
+    this.params.words = (this.params.words || [])
       .filter(word => {
         return (
           typeof word.answer !== 'undefined' &&
