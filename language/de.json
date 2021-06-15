@@ -151,6 +151,11 @@
           "default": "Es konnte kein Kreuzworträtsel erzeugt werden. Du benötigst wenigstens zwei Wörter."
         },
         {
+          "label": "Problematische Wörter",
+          "description": "Liste Wörter auf, die beim Generieren des Kreuzworträtsels nicht gesetzt werden konnten. @words ist ein Platzhalter, der durch die tatsächlichen Problematischen Wörter ersetzt wird.",
+          "default": "Problematische Wörter: @words"
+        },
+        {
           "label": "Extra-Hinweis",
           "default": "Extra-Hinweis"
         },

@@ -151,6 +151,11 @@
           "default": "Could not generate a crossword. You need at least two words."
         },
         {
+          "label": "Probematic words",
+          "description": "List words that caused trouble while generating the crossword. @words is a placeholder that will be replaced by the actual problematic words.",
+          "default": "Problematic word(s): @words"
+        },
+        {
           "label": "Extra aanwijzing",
           "default": "Extra aanwijzing"
         },

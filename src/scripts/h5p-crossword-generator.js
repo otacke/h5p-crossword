@@ -344,6 +344,20 @@ export default class CrosswordGenerator {
     }
 
     if (position.orientation === 'across') {
+      // Check if a duplicate word is trying to be put on a previous placed word
+      for (let i = 0; i < answer.length; i++) {
+        const cellValue = this.cells[position.row][position.column + i];
+
+        if (!cellValue || cellValue.char !== answer[i]) {
+          continue;
+        }
+        else {
+          if (i === answer.length - 1) {
+            return false;
+          }
+        }
+      }
+
       if (position.column + answer.length > this.cells[position.row].length) {
         return false; // out of bounds (word too long)
       }
@@ -387,6 +401,20 @@ export default class CrosswordGenerator {
       }
     }
     else if (position.orientation === 'down') {
+      // Check if a duplicate word is trying to be put on a previous placed word
+      for (let i = 0; i < answer.length; i++) {
+        const cellValue = this.cells[position.row + i][position.column];
+
+        if (!cellValue || cellValue.char !== answer[i]) {
+          continue;
+        }
+        else {
+          if (i === answer.length - 1) {
+            return false;
+          }
+        }
+      }
+
       if (position.row + answer.length > this.cells.length) {
         return false; // out of bounds
       }

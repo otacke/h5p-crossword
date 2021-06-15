@@ -53,21 +53,24 @@ export default class CrosswordContent {
       }
 
       if (errorMessage) {
+        // Add list of problematic words to error message
+        if (crosswordGenerator) {
+          const badWords = crosswordGenerator
+            .getBadWords()
+            .map(badWord => `${badWord.answer}`)
+            .join(', ');
+
+          errorMessage = `${errorMessage} ${params.l10n.problematicWords.replace(/@words/g, badWords)}`;
+        }
+
         const message = document.createElement('div');
         message.classList.add('h5p-crossword-message');
         message.innerText = errorMessage;
         this.content.appendChild(message);
 
         console.warn(`H5P.Crossword: ${errorMessage}`);
-        if (crosswordGenerator) {
-          const badWords = crosswordGenerator.getBadWords()
-            .map(badWord => badWord.answer)
-            .join(', ');
 
-          console.warn(`H5P.Crossword: Word(s) left out: ${badWords}.`);
-        }
         this.couldNotGenerateCrossword = true;
-
         this.callbacks.onInitialized(false);
         return;
       }

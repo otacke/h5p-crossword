@@ -342,6 +342,14 @@
         "default": "Could not generate a crossword. You need at least two words."
       },
       {
+        "name": "probematicWords",
+        "type": "text",
+        "label": "Probematic words",
+        "description": "List words that caused trouble while generating the crossword. @words is a placeholder that will be replaced by the actual problematic words.",
+        "importance": "low",
+        "default": "Problematic word(s): @words"
+      },
+      {
         "name": "extraClue",
         "type": "text",
         "label": "Extra clue",
