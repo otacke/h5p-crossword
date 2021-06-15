@@ -312,7 +312,7 @@ export default class CrosswordInput {
   fillFields(params) {
     params.forEach(param => {
       const fields = this.inputFields.filter(field => field.orientation === param.orientation && field.clueId === param.clueId);
-      if (fields.length > 0 && param.text.trim().length > 0) {
+      if (fields.length > 0) {
         this.setInputFieldValue(fields[0].inputField, param.text);
       }
     });

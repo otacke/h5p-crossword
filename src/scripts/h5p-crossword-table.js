@@ -699,20 +699,30 @@ export default class CrosswordTable {
    * @param {object} position Position.
    * @param {number} position.row Position row.
    * @param {number} position.column Position column.
-   * @param {boolean} keepPosition If true, don't move to next cell.
+   * @param {boolean} [nextPositionOffset = 1] Next position offset.
    */
   handleCellKeyup(params) {
-    if ((!this.currentOrientation || this.currentOrientation === 'across') && params.position.column < this.params.dimensions.columns - 1 && this.cells[params.position.row][params.position.column + 1].getSolution()) {
-      this.currentOrientation = 'across';
-      if (!params.keepPosition) {
-        this.focusCell({row: params.position.row, column: params.position.column + 1});
-      }
+    if (params.nextPositionOffset === undefined) {
+      params.nextPositionOffset = 1;
     }
-    else if ((!this.currentOrientation || this.currentOrientation === 'down') && params.position.row < this.params.dimensions.rows - 1 && this.cells[params.position.row + 1][params.position.column].getSolution()) {
+
+    if (
+      (!this.currentOrientation || this.currentOrientation === 'across') &&
+      params.position.column + params.nextPositionOffset >= 0 &&
+      params.position.column + params.nextPositionOffset < this.params.dimensions.columns &&
+      this.cells[params.position.row][params.position.column + params.nextPositionOffset].getSolution()
+    ) {
+      this.currentOrientation = 'across';
+      this.focusCell({row: params.position.row, column: params.position.column + params.nextPositionOffset});
+    }
+    else if (
+      (!this.currentOrientation || this.currentOrientation === 'down') &&
+      params.position.row + params.nextPositionOffset >= 0 &&
+      params.position.row + params.nextPositionOffset < this.params.dimensions.rows &&
+      this.cells[params.position.row + params.nextPositionOffset][params.position.column].getSolution()
+    ) {
       this.currentOrientation = 'down';
-      if (!params.keepPosition) {
-        this.focusCell({row: params.position.row + 1, column: params.position.column});
-      }
+      this.focusCell({row: params.position.row + params.nextPositionOffset, column: params.position.column});
     }
 
     this.callbacks.onInput({

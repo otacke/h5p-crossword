@@ -160,9 +160,12 @@ export default class CrosswordCell {
       }
 
       if (event.key === 'Delete' || event.key === 'Backspace') {
+        const nextPositionOffset = this.getAnswer() ? 0 : -1;
+
         this.setAnswer('');
         const cellInformation = this.getInformation();
         cellInformation.keepPosition = true;
+        cellInformation.nextPositionOffset = nextPositionOffset;
         this.cellInput.value = '';
         this.callbacks.onKeyup(cellInformation);
       }
@@ -215,9 +218,12 @@ export default class CrosswordCell {
       if (Util.CONTROL_KEY_CODES.indexOf(event.keyCode) !== -1) {
         // Delete and Backspace
         if (event.keyCode === 8 || event.keyCode === 46) {
+          const nextPositionOffset = this.getAnswer() ? 0 : -1;
+
           this.setAnswer('');
           const cellInformation = this.getInformation();
           cellInformation.keepPosition = true;
+          cellInformation.nextPositionOffset = nextPositionOffset;
           this.cellInput.value = '';
           this.callbacks.onKeyup(cellInformation);
         }
