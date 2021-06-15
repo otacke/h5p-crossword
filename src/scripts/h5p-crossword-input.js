@@ -209,7 +209,7 @@ export default class CrosswordInput {
           }
         }
 
-        this.setInputFieldValue(inputField, inputField.value, {forceValue: true});
+        this.setInputFieldValue(inputField, inputField.value);
 
         this.callbacks.onFieldInput({
           clueId: word.clueId,
@@ -262,15 +262,15 @@ export default class CrosswordInput {
    * @param {HTMLElement} field Input field.
    * @param {string} value Value.
    * @param {object} [params={}] Parameters.
-   * @param {boolean} [params.forceValue] If true, that exact (uppercase) value will be used.
+   * @param {boolean} [params.forceValue=true] If true, that exact (uppercase) value will be used.
    */
-  setInputFieldValue(field, value, params = {}) {
+  setInputFieldValue(field, value, params = {forceValue: true}) {
     value = Util.toUpperCase(value, Util.UPPERCASE_EXCEPTIONS);
 
     /*
      * If `forceValue` is set to true, we could keep the crossword cells and
      * the input fields in sync perfectly, but then editing the input fields
-     * becomes very awkward if there are blanks within.
+     * may become very awkward if there are blanks within. Let's wait ...
      */
     let newValue = '';
     if (!params.forceValue) {
