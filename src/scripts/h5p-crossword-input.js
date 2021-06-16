@@ -337,6 +337,10 @@ export default class CrosswordInput {
     }
   }
 
+  /**
+   * Check answer for words.
+   * @param {object} params Parameters.
+   */
   checkAnswerWords(params) {
     // ScorePoints
     this.scorePoints = this.scorePoints || new H5P.Question.ScorePoints();
@@ -370,7 +374,7 @@ export default class CrosswordInput {
 
       field.solution.setChars([{
         ariaLabel: `${ariaLabels.join('. ')}.`,
-        char: matchingResult.answer,
+        char: field.inputField.value,
         result: result,
         scoreExplanation: scoreExplanation
       }]);
