@@ -133,7 +133,7 @@ export default class CrosswordCell {
     cellInput.classList.add('h5p-crossword-cell-content');
     cellInput.setAttribute('type', 'text');
     cellInput.setAttribute('maxLength', 1);
-    cellInput.setAttribute('autocomplete', 'new-password');
+    cellInput.setAttribute('autocomplete', 'new-password'); // 'off' doesn't suffice for all browsers
     cellInput.setAttribute('autocorrect', 'off');
     cellInput.setAttribute('spellcheck', 'false');
     cellInput.setAttribute('tabindex', '-1');
