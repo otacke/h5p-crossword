@@ -1,4 +1,4 @@
-import "../styles/h5p-crossword.css";
+import "../styles/h5p-crossword.scss";
 import Crossword from "../scripts/h5p-crossword";
 
 // Load library
