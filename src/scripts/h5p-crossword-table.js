@@ -112,16 +112,7 @@ export default class CrosswordTable {
         case 'Home':
           event.preventDefault();
           if (event.ctrlKey) {
-            i = 0;
-            do {
-              let j = 0;
-              let result;
-              do {
-                result = this.moveTo({row: i, column: j});
-                j++;
-              } while (result === false);
-              i++;
-            } while (result === false);
+            this.moveTo({row: 0, column: 0});
           }
           else {
             this.moveTo({row: parseInt(target.dataset.row), column: 0});
@@ -131,15 +122,10 @@ export default class CrosswordTable {
         case 'End':
           event.preventDefault();
           if (event.ctrlKey) {
-            i = this.params.dimensions.rows - 1;
-            do {
-              let j = this.params.dimensions.columns - 1;
-              do {
-                result = this.moveTo({row: i, column: j});
-                j--;
-              } while (result === false);
-              i--;
-            } while (result === false);
+            this.moveTo({
+              row: this.params.dimensions.rows - 1,
+              column: this.params.dimensions.columns - 1
+            });
           }
           else {
             this.moveTo({
