@@ -136,7 +136,7 @@ export default class CrosswordCell {
     cellInput.setAttribute('autocomplete', 'new-password');
     cellInput.setAttribute('autocorrect', 'off');
     cellInput.setAttribute('spellcheck', 'false');
-    cellInput.setAttribute('tabIndex', '-1');
+    cellInput.setAttribute('tabindex', '-1');
 
     cellInput.addEventListener('input', (event) => {
       event.preventDefault();
@@ -372,10 +372,10 @@ export default class CrosswordCell {
 
     // Cell with character or empty cell
     if (this.cellInput) {
-      this.cellInput.setAttribute('tabIndex', index);
+      this.cellInput.setAttribute('tabindex', index);
     }
     else {
-      this.cell.setAttribute('tabIndex', index);
+      this.cell.setAttribute('tabindex', index);
     }
   }
 
@@ -539,7 +539,7 @@ export default class CrosswordCell {
   enable() {
     if (this.cellInput) {
       if (this.previousTabIndex) {
-        this.cell.setAttribute('tabIndex', this.previousTabIndex);
+        this.cell.setAttribute('tabindex', this.previousTabIndex);
       }
       this.cellInput.removeAttribute('disabled');
     }
@@ -556,8 +556,8 @@ export default class CrosswordCell {
     if (this.cellInput) {
       this.cellInput.setAttribute('disabled', 'disabled');
     }
-    this.previousTabIndex = this.cell.getAttribute('tabIndex');
-    this.cell.removeAttribute('tabIndex');
+    this.previousTabIndex = this.cell.getAttribute('tabindex');
+    this.cell.removeAttribute('tabindex');
   }
 
   /**

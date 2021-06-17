@@ -68,7 +68,7 @@ export default class CrosswordCharList {
             this.list.setAttribute('aria-expanded', 'true');
             if (char) {
               // Focus on previously tabbed element
-              char.setAttribute('tabIndex', '0');
+              char.setAttribute('tabindex', '0');
               char.focus();
             }
           }
@@ -99,7 +99,7 @@ export default class CrosswordCharList {
     const charWrapper = document.createElement('span');
     charWrapper.classList.add('h5p-crossword-input-fields-group-solution-char-wrapper');
     charWrapper.setAttribute('role', 'listitem');
-    charWrapper.setAttribute('tabIndex', '-1');
+    charWrapper.setAttribute('tabindex', '-1');
     charWrapper.setAttribute('aria-label', params.ariaLabel);
 
     // Visual style
@@ -142,7 +142,7 @@ export default class CrosswordCharList {
           event.preventDefault();
           if (event.target.previousSibling) {
             event.target.setAttribute('tabindex', '-1');
-            event.target.previousSibling.setAttribute('tabIndex', '0');
+            event.target.previousSibling.setAttribute('tabindex', '0');
             event.target.previousSibling.focus();
           }
           break;
@@ -154,7 +154,7 @@ export default class CrosswordCharList {
           event.preventDefault();
           if (event.target.nextSibling) {
             event.target.setAttribute('tabindex', '-1');
-            event.target.nextSibling.setAttribute('tabIndex', '0');
+            event.target.nextSibling.setAttribute('tabindex', '0');
             event.target.nextSibling.focus();
           }
           break;
@@ -164,7 +164,7 @@ export default class CrosswordCharList {
           event.preventDefault();
           if (event.target !== firstChild) {
             event.target.setAttribute('tabindex', '-1');
-            firstChild.setAttribute('tabIndex', '0');
+            firstChild.setAttribute('tabindex', '0');
             firstChild.focus();
           }
           break;
@@ -174,7 +174,7 @@ export default class CrosswordCharList {
           event.preventDefault();
           if (event.target !== lastChild) {
             event.target.setAttribute('tabindex', '-1');
-            lastChild.setAttribute('tabIndex', '0');
+            lastChild.setAttribute('tabindex', '0');
             lastChild.focus();
           }
           break;
@@ -221,15 +221,15 @@ export default class CrosswordCharList {
    * Enable.
    */
   enable() {
-    // Retrieve previous tabIndex states.
-    if (this.tabIndexState && this.tabIndexState.list) {
-      this.list.setAttribute('tabIndex', this.tabIndexState.list);
+    // Retrieve previous tabindex states.
+    if (this.tabindexState && this.tabindexState.list) {
+      this.list.setAttribute('tabindex', this.tabindexState.list);
     }
 
-    if (this.tabIndexState && this.tabIndexState.listItems) {
+    if (this.tabindexState && this.tabindexState.listItems) {
       const listChildren = this.list.children;
       for (let i = 0; i < listChildren.length; i++) {
-        listChildren[i].setAttribute('tabIndex', this.tabIndexState.listItems[i]);
+        listChildren[i].setAttribute('tabindex', this.tabindexState.listItems[i]);
       }
     }
   }
@@ -238,20 +238,20 @@ export default class CrosswordCharList {
    * Disable.
    */
   disable() {
-    // Store current tabIndex states.
+    // Store current tabindex states.
     const listItems = [];
     const listChildren = this.list.children;
     for (let i = 0; i < listChildren.length; i++) {
-      listItems.push(listChildren[i].getAttribute('tabIndex'));
-      listChildren[i].setAttribute('tabIndex', '-1');
+      listItems.push(listChildren[i].getAttribute('tabindex'));
+      listChildren[i].setAttribute('tabindex', '-1');
     }
 
-    this.tabIndexState = {
-      list: this.list.getAttribute('tabIndex'),
+    this.tabindexState = {
+      list: this.list.getAttribute('tabindex'),
       listItems: listItems
     };
 
-    this.list.setAttribute('tabIndex', '-1');
+    this.list.setAttribute('tabindex', '-1');
   }
 
   /**
@@ -263,6 +263,6 @@ export default class CrosswordCharList {
     this.list.setAttribute('tabindex', '0');
 
     this.charMarked = null;
-    this.tabIndexState = null;
+    this.tabindexState = null;
   }
 }
