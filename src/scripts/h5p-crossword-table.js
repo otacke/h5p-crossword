@@ -57,13 +57,13 @@ export default class CrosswordTable {
           event.preventDefault();
 
           this.setcurrentOrientation('across', {
-            row: parseInt(target.dataset.row, 10),
-            column: parseInt(target.dataset.col, 10) + 1
+            row: parseInt(target.dataset.row),
+            column: parseInt(target.dataset.col) + 1
           });
 
           this.moveTo({
-            row: parseInt(target.dataset.row, 10),
-            column: parseInt(target.dataset.col, 10) + 1
+            row: parseInt(target.dataset.row),
+            column: parseInt(target.dataset.col) + 1
           });
           break;
 
@@ -71,13 +71,13 @@ export default class CrosswordTable {
           event.preventDefault();
 
           this.setcurrentOrientation('across', {
-            row: parseInt(target.dataset.row, 10),
-            column: parseInt(target.dataset.col, 10) - 1
+            row: parseInt(target.dataset.row),
+            column: parseInt(target.dataset.col) - 1
           });
 
           this.moveTo({
-            row: parseInt(target.dataset.row, 10),
-            column: parseInt(target.dataset.col, 10) - 1
+            row: parseInt(target.dataset.row),
+            column: parseInt(target.dataset.col) - 1
           });
           break;
 
@@ -85,13 +85,13 @@ export default class CrosswordTable {
           event.preventDefault();
 
           this.setcurrentOrientation('across', {
-            row: parseInt(target.dataset.row, 10) + 1,
-            column: parseInt(target.dataset.col, 10)
+            row: parseInt(target.dataset.row) + 1,
+            column: parseInt(target.dataset.col)
           });
 
           this.moveTo({
-            row: parseInt(target.dataset.row, 10) + 1,
-            column: parseInt(target.dataset.col, 10)
+            row: parseInt(target.dataset.row) + 1,
+            column: parseInt(target.dataset.col)
           });
           break;
 
@@ -99,13 +99,13 @@ export default class CrosswordTable {
           event.preventDefault();
 
           this.setcurrentOrientation('across', {
-            row: parseInt(target.dataset.row, 10) - 1,
-            column: parseInt(target.dataset.col, 10)
+            row: parseInt(target.dataset.row) - 1,
+            column: parseInt(target.dataset.col)
           });
 
           this.moveTo({
-            row: parseInt(target.dataset.row, 10) - 1,
-            column: parseInt(target.dataset.col, 10)
+            row: parseInt(target.dataset.row) - 1,
+            column: parseInt(target.dataset.col)
           });
           break;
 
@@ -124,7 +124,7 @@ export default class CrosswordTable {
             } while (result === false);
           }
           else {
-            this.moveTo({row: parseInt(target.dataset.row, 10), column: 0});
+            this.moveTo({row: parseInt(target.dataset.row), column: 0});
           }
           break;
 
@@ -143,7 +143,7 @@ export default class CrosswordTable {
           }
           else {
             this.moveTo({
-              row: parseInt(target.dataset.row, 10),
+              row: parseInt(target.dataset.row),
               column: document.querySelector('[data-row="' + target.dataset.row + '"]:last-of-type').dataset.col
             });
           }

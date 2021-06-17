@@ -366,7 +366,7 @@ export default class CrosswordCell {
    * @param {string} index Tab index.
    */
   setTabIndex(index) {
-    if (isNaN(parseInt(index, 10))) {
+    if (isNaN(parseInt(index))) {
       return;
     }
 
