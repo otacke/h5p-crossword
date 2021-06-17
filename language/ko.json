@@ -248,7 +248,7 @@
         {
           "label": "풀기 결과",
           "description": "@score 와 @total 은 변수이고 각 값에 의해 대체됩니다.",
-          "default": "전체 @total 점 중 @score 점을 획득하였습니다."
+          "default": "전체 @total 점 중 @score 점을 획득하였습니다"
         }
       ]
     }

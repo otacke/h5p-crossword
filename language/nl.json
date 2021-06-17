@@ -248,7 +248,7 @@
         {
           "label": "Jouw resultaat",
           "description": "@score en @total zijn variabelen en zullen worden vervangen door hun respectievelijke waarden.",
-          "default": "Je hebt @score van de @total punten."
+          "default": "Je hebt @score van de @total punten"
         }
       ]
     }

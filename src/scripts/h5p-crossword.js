@@ -67,7 +67,7 @@ export default class Crossword extends H5P.Question {
         check: 'Check the characters. The responses will be marked as correct, incorrect, or unanswered.',
         showSolution: 'Show the solution. The crossword will be filled with its correct solution.',
         retry: 'Retry the task. Reset all responses and start the task over again.',
-        yourResult: 'You got @score out of @total points.'
+        yourResult: 'You got @score out of @total points'
       }
     }, this.params);
 
@@ -85,6 +85,9 @@ export default class Crossword extends H5P.Question {
     for (let word in this.params.l10n) {
       this.params.l10n[word] = Util.stripHTML(Util.htmlDecode(this.params.l10n[word]));
     }
+
+    // H5P.Question will add a . after yourResult for readspeaker
+    this.params.a11y.yourResult = this.params.a11y.yourResult.replace(/\.$/, '');
 
     // this.previousState now holds the saved content state of the previous session
     this.previousState = this.extras.previousState || {};

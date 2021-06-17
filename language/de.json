@@ -248,7 +248,7 @@
         {
           "label": "Dein Ergebnis",
           "description": "@score und @total sind Variablen und werden durch die entsprechenden Werte ersetzt.",
-          "default": "Du hast @score von @total Punkten erreicht."
+          "default": "Du hast @score von @total Punkten erreicht"
         }
       ]
     }

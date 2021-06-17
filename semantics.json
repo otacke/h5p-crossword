@@ -509,7 +509,7 @@
         "label": "Your result",
         "description": "@score and @total are variables and will be replaced by their respective values.",
         "importance": "low",
-        "default": "You got @score out of @total points."
+        "default": "You got @score out of @total points"
       }
     ]
   }
