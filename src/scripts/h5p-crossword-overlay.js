@@ -41,7 +41,6 @@ export default class Overlay {
     this.content = document.createElement('div');
     this.content.classList.add(`${this.params.styleBase}-content`);
     this.content.appendChild(this.params.content);
-    this.overlay.appendChild(this.content);
 
     this.buttonClose = document.createElement('button');
     this.buttonClose.classList.add(`${this.params.styleBase}-button-close`);
@@ -50,6 +49,8 @@ export default class Overlay {
       this.callbacks.onClose();
     });
     this.overlay.appendChild(this.buttonClose);
+
+    this.overlay.appendChild(this.content);
 
     // Trap focus if overlay is visible
     document.addEventListener('focus', event => {
