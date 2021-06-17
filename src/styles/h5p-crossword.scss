@@ -372,7 +372,8 @@
     z-index: 3;
     display: inline-flex;
     flex-wrap: wrap;
-    padding-right: 1.615384615em; /* This supposedly fixed some glitch on some browser */
+    /* Compensating the value in https://github.com/h5p/h5p-question/blob/3676a7053120fcfe439747d7bcc8206755d7b4c3/styles/question.css#L327 */
+    padding-right: 1.615384615em;
     padding-bottom: .5em;
     padding-left: .5em;
 
