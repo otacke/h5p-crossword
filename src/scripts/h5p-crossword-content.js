@@ -45,7 +45,7 @@ export default class CrosswordContent {
             poolSize: params.poolSize
           }
         });
-        grid = crosswordGenerator.getSquareGrid(20);
+        grid = crosswordGenerator.getSquareGrid(CrosswordContent.MAXIMUM_TRIES);
 
         if (!grid) {
           errorMessage = params.l10n.couldNotGenerateCrossword;
@@ -376,3 +376,6 @@ export default class CrosswordContent {
     this.clueAnnouncer.reset();
   }
 }
+
+/** @constant {number} Maximum number of tries to generate crossword grid */
+CrosswordContent.MAXIMUM_TRIES = 20;
