@@ -18,6 +18,7 @@ export default class CrosswordInput {
 
     this.callbacks = callbacks || {};
     this.callbacks.onFieldInput = this.callbacks.onFieldInput || (() => {});
+    this.callbacks.onRead = callbacks.onRead || (() => {});
 
     // Input fields
     this.inputFields = [];
@@ -47,7 +48,10 @@ export default class CrosswordInput {
       {
         onClose: () => {
           this.handleOverlayClosed();
-        }
+        },
+        onRead: (text => {
+          this.callbacks.onRead(text);
+        })        
       }
     );
     params.overlayContainer.appendChild(this.overlay.getDOM());

@@ -153,6 +153,9 @@ export default class CrosswordContent {
       {
         onFieldInput: (params => {
           this.handleFieldInput(params);
+        }),
+        onRead: (text => {
+          this.callbacks.onRead(text);
         })
       }
     );

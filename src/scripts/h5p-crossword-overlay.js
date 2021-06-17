@@ -24,6 +24,7 @@ export default class Overlay {
 
     this.callbacks = callbacks;
     this.callbacks.onClose = callbacks.onClose || (() => {});
+    this.callbacks.onRead = callbacks.onRead || (() => {});
 
     this.isVisible = false;
     this.focusableElements = [];
@@ -149,6 +150,21 @@ export default class Overlay {
       this.updateFocusableElements();
       if (this.focusableElements.length > 0) {
         this.focusableElements[0].focus();
+      }
+
+      // Read text content or image content
+      const text = this.overlay.querySelector('.h5p-advanced-text');
+      let image;
+
+      if (text) {
+        this.callbacks.onRead(text.innerText);
+      }
+      else {
+        image = this.overlay.querySelector('.h5p-image > img');
+      }
+
+      if (image) {
+        this.callbacks.onRead(image.getAttribute('alt') || '');
       }
 
       this.isVisible = true;
