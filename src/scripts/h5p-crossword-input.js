@@ -51,7 +51,7 @@ export default class CrosswordInput {
         },
         onRead: (text => {
           this.callbacks.onRead(text);
-        })        
+        })
       }
     );
     params.overlayContainer.appendChild(this.overlay.getDOM());
@@ -184,43 +184,41 @@ export default class CrosswordInput {
         }, 0); // selectionStart will be 0 before DOM rendered
       });
 
-      inputField.addEventListener('click', () => {
-        if (this.disabled) {
-          return;
-        }
-
-        inputField.select();
-
-        setTimeout(() => {
-          this.callbacks.onFieldInput({
-            clueId: word.clueId,
-            orientation: word.orientation,
-            cursorPosition: Math.min(inputField.selectionStart, word.answer.length - 1),
-            text: inputField.value,
-            readOffset: -1 // don't read
-          });
-        }, 0); // selectionStart will be 0 before DOM rendered
-      });
+      // Make the input field "overwrite" instead "add" characters
+      inputField.addEventListener('keypress', () => {
+        const start = inputField.selectionStart;
+        inputField.value = `${inputField.value.substr(0, start)}${inputField.value.substr(start + 1)}`;
+        inputField.selectionEnd = start;
+      }, false);
 
       // Only update table if input is valid or using arrow keys
       inputField.addEventListener('keyup', (event) => {
-        if (this.disabled) {
-          return;
-        }
-
         if (Util.CONTROL_KEY_CODES.indexOf(event.keyCode) !== -1) {
-          if ([8, 37, 38, 39, 40, 46].indexOf(event.keyCode) === -1) {
-            // None of backspace, left, right, up, down, delete
+          if ([8, 35, 36, 37, 38, 39, 40, 46].indexOf(event.keyCode) === -1) {
+            // None of backspace, home, end, left, right, up, down, delete
             return;
           }
         }
 
+        // Sync cursor position in table
+        let cursorPosition = inputField.selectionStart;
+        if (event.code === 'Home' || event.code === 'ArrowUp') {
+          cursorPosition = 0;
+        }
+        else if (event.code === 'End' || event.code === 'ArrowDown') {
+          cursorPosition = Math.min(
+            inputField.value.length,
+            inputField.getAttribute('maxLength') - 1
+          );
+        }
+
         this.setInputFieldValue(inputField, inputField.value);
+        inputField.setSelectionRange(cursorPosition, cursorPosition);
 
         this.callbacks.onFieldInput({
           clueId: word.clueId,
           orientation: word.orientation,
-          cursorPosition: inputField.selectionStart,
+          cursorPosition: cursorPosition,
           text: inputField.value,
           readOffset: ([8, 37, 38, 39, 40, 46].indexOf(event.keyCode) === -1) ? 1 : 0
         });
