@@ -54,10 +54,10 @@ export default class CrosswordCharList {
       const char = this.charMarked || this.list.firstChild;
 
       const currentExpandedState = this.list.getAttribute('aria-expanded');
-      switch (event.keyCode) {
-        case 13: // Enter
+      switch (event.code) {
+        case 'Enter': // Enter
         // intentional fallthrough
-        case 32: // Space
+        case 'Space': // Space
           if (event.target !== event.currentTarget) {
             // Ignore children
             return;
