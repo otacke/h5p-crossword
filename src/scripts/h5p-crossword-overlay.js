@@ -189,7 +189,10 @@ export default class Overlay {
    */
   resize() {
     if (this.container) {
-      this.content.style.maxHeight = `calc(${this.container.offsetHeight}px - 7em)`;
+      this.content.style.maxHeight = `calc(${this.container.offsetHeight}px - ${Overlay.CONTENT_MARGIN})`;
     }
   }
 }
+
+/** @constant {string} Content margin. */
+Overlay.CONTENT_MARGIN = '7em';
