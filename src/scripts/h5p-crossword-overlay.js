@@ -84,6 +84,7 @@ export default class Overlay {
       this.content.removeChild(this.content.firstChild);
     }
     this.content.appendChild(content);
+    this.content.scrollTop = 0;
   }
 
   /**
