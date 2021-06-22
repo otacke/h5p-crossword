@@ -43,10 +43,10 @@
             "description": "Orientation for the answer.",
             "options": [
               {
-                "label": "across"
+                "label": "Across"
               },
               {
-                "label": "down"
+                "label": "Down"
               }
             ]
           }

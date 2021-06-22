@@ -119,11 +119,11 @@
           "options": [
             {
               "value": "across",
-              "label": "across"
+              "label": "Across"
             },
             {
               "value": "down",
-              "label": "down"
+              "label": "Down"
             }
           ],
           "default": "across",

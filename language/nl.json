@@ -43,10 +43,10 @@
             "description": "Oriëntatie voor het antwoord.",
             "options": [
               {
-                "label": "horizontaal"
+                "label": "Horizontaal"
               },
               {
-                "label": "verticaal"
+                "label": "Verticaal"
               }
             ]
           }

@@ -43,10 +43,10 @@
             "description": "Ausrichtung der Antwort.",
             "options": [
               {
-                "label": "waagerecht"
+                "label": "Waagerecht"
               },
               {
-                "label": "senkrecht"
+                "label": "Senkrecht"
               }
             ]
           }
