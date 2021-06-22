@@ -143,8 +143,8 @@
           "default": "해답 보이기"
         },
         {
-          "label": "크로스워드를 생성할 수 없습니다.",
-          "default": "주어진 단어로 크로스워드를 생성할 수 없습니다. 다시 시도하십시오."
+          "label": "Cannot create crossword",
+          "default": "주어진 단어로 크로스워드를 생성할 수 없습니다. 다시 시도하십시오. If you are using fixed words, please make sure that their position doesn't prevent other words from being placed."
         },
         {
           "label": "Cannot create crossword (too few words)",

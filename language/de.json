@@ -143,7 +143,7 @@
           "default": "Lösung anzeigen"
         },
         {
-          "label": "Kein Kreuzworträtsel möglich",
+          "label": "Cannot create crossword",
           "default": "Es konnte kein Kreuzworträtsel aus den gegebenen Wörtern erzeugt werden. Bitte versuche es erneut mit weniger Wörtern oder mit Wörtern, die mehr Buchstaben gemein haben."
         },
         {
