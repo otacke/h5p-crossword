@@ -232,9 +232,10 @@ export default class Crossword extends H5P.Question {
       const textScore = H5P.Question.determineOverallFeedback(
         this.params.overallFeedback, score / maxScore);
 
+      // H5P.Question expects ':num' and ':total'
       const ariaMessage = this.params.a11y.yourResult
-        .replace('@score', score)
-        .replace('@total', maxScore);
+        .replace('@score', ':num')
+        .replace('@total', ':total');
 
       this.setFeedback(
         textScore,
