@@ -88,7 +88,7 @@ export default class CrosswordInput {
       wrapperClue.classList.add('h5p-crossword-input-fields-group-wrapper-clue');
       wrapper.appendChild(wrapperClue);
 
-      const clueId = document.createElement('span');
+      const clueId = document.createElement('div');
       clueId.classList.add('h5p-crossword-input-fields-group-clue-id');
       clueId.innerText = word.clueId;
       wrapperClue.appendChild(clueId);
