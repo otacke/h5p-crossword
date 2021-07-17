@@ -287,7 +287,7 @@
   .h5p-crossword-input-fields-group-extra-clue {
     background: none;
     border: none;
-    color: #3e8de8;
+    color: $color-joubelui-button;
     cursor: pointer;
     padding-left: 0.3em;
   }
@@ -313,11 +313,11 @@
     &:not(.h5p-crossword-disabled) .h5p-crossword-input-fields-group-extra-clue {
       &:focus,
       &:hover {
-        color: #1356a3;
+        color: $color-joubelui-button-hover;
       }
 
       &:active {
-        color: #104888;
+        color: $color-joubelui-button-active;
       }
     }
   }
