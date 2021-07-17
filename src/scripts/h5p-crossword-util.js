@@ -198,4 +198,7 @@ Util.UPPERCASE_EXCEPTIONS = [
   }
 ];
 
+/** @constant {string} Placeholder in text input fields */
+Util.CHARACTER_PLACEHOLDER = '\uff3f';
+
 export default Util;

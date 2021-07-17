@@ -165,6 +165,8 @@ export default class CrosswordInput {
       inputField.setAttribute('autocorrect', 'off');
       inputField.setAttribute('maxLength', word.answer.length);
       inputField.setAttribute('spellcheck', 'false');
+      this.setInputFieldValue(inputField, ''); // Initialize with placeholders
+
       wrapper.appendChild(inputField);
 
       // Highlight cells in grid and set focus to entry cell
@@ -287,6 +289,19 @@ export default class CrosswordInput {
     }
     else {
       newValue = value;
+
+      // Set placeholders
+      const placeholder = new Array(field.maxLength + 1).join(Util.CHARACTER_PLACEHOLDER);
+      newValue = placeholder
+        .split('')
+        .map((char, index) => {
+          if (newValue.length > index && newValue[index] !== ' ') {
+            return newValue[index];
+          }
+
+          return char;
+        })
+        .join('');
     }
 
     field.value = Util.toUpperCase(newValue, Util.UPPERCASE_EXCEPTIONS);

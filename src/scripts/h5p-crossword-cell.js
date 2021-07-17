@@ -417,7 +417,10 @@ export default class CrosswordCell {
       this.answer = undefined;
     }
     else {
-      this.cellCanvas.innerText = Util.toUpperCase(answer, Util.UPPERCASE_EXCEPTIONS);
+      this.cellCanvas.innerText = Util.toUpperCase(
+        answer.replace(new RegExp(Util.CHARACTER_PLACEHOLDER, 'g'), ' '),
+        Util.UPPERCASE_EXCEPTIONS
+      );
       this.answer = Util.toUpperCase(answer, Util.UPPERCASE_EXCEPTIONS);
     }
 

@@ -354,6 +354,7 @@
   }
 
   .h5p-crossword-input-fields-group-input {
+    letter-spacing: 0.1em;
     margin-top: 0.25em;
     text-transform: uppercase;
     width: calc(100% - 8px); /* 8px = padding + border-width, TODO: Set in JS */
