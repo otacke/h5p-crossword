@@ -249,7 +249,7 @@
   .h5p-crossword-input-container {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 30%;
   }
 
   .h5p-crossword-input-fields-group {
@@ -669,7 +669,7 @@
 @media screen and (min-width: $breakpoint-clues-column-clues-row) {
   .h5p-crossword .h5p-crossword-input-container {
     flex-direction: row;
-    width: 100%;
+    width: 50%;
 
     .h5p-crossword-input-fields-group {
       margin-top: 0;
