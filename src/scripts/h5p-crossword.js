@@ -127,335 +127,364 @@ export default class Crossword extends H5P.Question {
         word.clue = Util.stripHTML(Util.htmlDecode(word.clue));
         return word;
       });
+  }
 
-    /**
-     * Register the DOM elements with H5P.Question
-     */
-    this.registerDomElements = () => {
-      // Register task introduction text
-      if (this.params.taskDescription && this.params.taskDescription !== '') {
-        this.introduction = document.createElement('div');
-        this.introduction.innerHTML = this.params.taskDescription;
-        this.setIntroduction(this.introduction);
-      }
+  /**
+   * Register the DOM elements with H5P.Question
+   */
+  registerDomElements() {
+    // Register task introduction text
+    if (this.params.taskDescription && this.params.taskDescription !== '') {
+      this.introduction = document.createElement('div');
+      this.introduction.innerHTML = this.params.taskDescription;
+      this.setIntroduction(this.introduction);
+    }
 
-      this.content = new CrosswordContent(
-        {
-          scoreWords: this.params.behaviour.scoreWords,
-          applyPenalties: this.params.behaviour.applyPenalties,
-          theme: this.params.theme,
-          contentId: this.contentId,
-          instantFeedback: this.params.behaviour.enableInstantFeedback,
-          l10n: {
-            couldNotGenerateCrossword: this.params.l10n.couldNotGenerateCrossword,
-            couldNotGenerateCrosswordTooFewWords: this.params.l10n.couldNotGenerateCrosswordTooFewWords,
-            problematicWords: this.params.l10n.problematicWords,
-            across: this.params.l10n.across,
-            down: this.params.l10n.down,
-            extraClue: this.params.l10n.extraClue,
-            closeWindow: this.params.l10n.closeWindow
-          },
-          a11y: this.params.a11y,
-          poolSize: this.params.behaviour.poolSize,
-          solutionWord: Util.toUpperCase(this.params.solutionWord.replace(/'\s'/g, ''), Util.UPPERCASE_EXCEPTIONS),
-          words: this.params.words,
-          previousState: this.previousState
+    this.content = new CrosswordContent(
+      {
+        scoreWords: this.params.behaviour.scoreWords,
+        applyPenalties: this.params.behaviour.applyPenalties,
+        theme: this.params.theme,
+        contentId: this.contentId,
+        instantFeedback: this.params.behaviour.enableInstantFeedback,
+        l10n: {
+          couldNotGenerateCrossword: this.params.l10n.couldNotGenerateCrossword,
+          couldNotGenerateCrosswordTooFewWords: this.params.l10n.couldNotGenerateCrosswordTooFewWords,
+          problematicWords: this.params.l10n.problematicWords,
+          across: this.params.l10n.across,
+          down: this.params.l10n.down,
+          extraClue: this.params.l10n.extraClue,
+          closeWindow: this.params.l10n.closeWindow
         },
-        {
-          onTableFilled: () => {
-            this.handleContentFilled();
-          },
-          onInitialized: (result) => {
-            this.handleContentInitialized(result);
-          },
-          onRead: text => {
-            this.handleRead(text);
-          }
+        a11y: this.params.a11y,
+        poolSize: this.params.behaviour.poolSize,
+        solutionWord: Util.toUpperCase(this.params.solutionWord.replace(/'\s'/g, ''), Util.UPPERCASE_EXCEPTIONS),
+        words: this.params.words,
+        previousState: this.previousState
+      },
+      {
+        onTableFilled: () => {
+          this.handleContentFilled();
+        },
+        onInitialized: (result) => {
+          this.handleContentInitialized(result);
+        },
+        onRead: text => {
+          this.handleRead(text);
         }
-      );
-
-      // Register content with H5P.Question
-      this.setContent(this.content.getDOM());
-
-      // Previous state might have been a filled table
-      if (this.params.behaviour.enableInstantFeedback && this.content.isTableFilled()) {
-        this.checkAnswer();
       }
+    );
 
-      // Content may need a resize once it's displayed (media queries or pseudo elements)
-      Util.waitForDOM('.h5p-crossword-input-container', () => {
-        setTimeout(() => {
-          this.trigger('resize');
-        }, 100);
-      });
-    };
+    // Register content with H5P.Question
+    this.setContent(this.content.getDOM());
 
-    /**
-     * Handle content initialized.
-     * @param {boolean} result initialization success.
-     */
-    this.handleContentInitialized = (result) => {
-      if (result) {
-        // Register Buttons
-        this.addButtons();
-      }
+    // Previous state might have been a filled table
+    if (this.params.behaviour.enableInstantFeedback && this.content.isTableFilled()) {
+      this.checkAnswer();
+    }
 
-      this.on('resize', () => {
-        this.content.resize();
-      });
-    };
-
-    /**
-     * Add all the buttons that shall be passed to H5P.Question.
-     */
-    this.addButtons = () => {
-      // Check answer button
-      this.addButton('check-answer', this.params.l10n.checkAnswer, () => {
-        this.checkAnswer();
-        this.trigger(this.getXAPIAnswerEvent());
-      }, this.initialButtons.check, {
-        'aria-label': this.params.a11y.check
-      }, {});
-
-      // Show solution button
-      this.addButton('show-solution', this.params.l10n.showSolution, () => {
-        this.showSolutions();
-      }, this.initialButtons.showSolution, {
-        'aria-label': this.params.a11y.showSolution
-      }, {});
-
-      // Retry button
-      this.addButton('try-again', this.params.l10n.tryAgain, () => {
-        this.resetTask();
-      }, this.initialButtons.retry, {
-        'aria-label': this.params.a11y.retry
-      }, {});
-    };
-
-    /**
-     * Check answer.
-     */
-    this.checkAnswer = () => {
-      if (!this.content) {
-        return; // Call by previous state, not ready yet
-      }
-
-      this.content.checkAnswer();
-
-      this.hideButton('check-answer');
-
-      const score = this.getScore();
-      const maxScore = this.getMaxScore();
-
-      const textScore = H5P.Question.determineOverallFeedback(
-        this.params.overallFeedback, score / maxScore);
-
-      // H5P.Question expects ':num' and ':total'
-      const ariaMessage = this.params.a11y.yourResult
-        .replace('@score', ':num')
-        .replace('@total', ':total');
-
-      this.setFeedback(
-        textScore,
-        score,
-        maxScore,
-        ariaMessage
-      );
-
-      if (this.params.behaviour.enableSolutionsButton) {
-        this.showButton('show-solution');
-      }
-
-      if (this.params.behaviour.enableRetry) {
-        this.showButton('try-again');
-      }
-    };
-
-    /**
-     * Let H5P.Question read some text.
-     * @param {string} text Text to read.
-     */
-    this.handleRead = (text) => {
-      this.read(text);
-    };
-
-    /**
-     * Handle content is filled.
-     */
-    this.handleContentFilled = () => {
-      if (this.getScore() === this.getMaxScore()) {
-        this.checkAnswer();
-      }
-      else {
-        this.showButton('check-answer');
-      }
-    };
-
-    /**
-     * Check if result has been submitted or input has been given.
-     * @return {boolean} True, if answer was given.
-     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
-     */
-    this.getAnswerGiven = () => this.content.getAnswerGiven();
-
-    /**
-     * Get latest score.
-     * @return {number} latest score.
-     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-2}
-     */
-    this.getScore = () => this.content.getScore();
-
-    /**
-     * Get maximum possible score.
-     * @return {number} Score necessary for mastering.
-     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-3}
-     */
-    this.getMaxScore = () => this.content.getMaxScore();
-
-    /**
-     * Show solutions.
-     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-4}
-     */
-    this.showSolutions = () => {
-      this.hideButton('check-answer');
-      this.hideButton('show-solution');
-
-      this.content.showSolutions();
-
-      this.trigger('resize');
-    };
-
-    /**
-     * Reset task.
-     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
-     */
-    this.resetTask = () => {
-
-      if (this.initialButtons.check) {
-        this.showButton('check-answer');
-      }
-      else {
-        this.hideButton('check-answer');
-      }
-
-      if (this.initialButtons.showSolution) {
-        this.showButton('show-solution');
-      }
-      else {
-        this.hideButton('show-solution');
-      }
-
-      if (this.initialButtons.retry) {
-        this.showButton('try-again');
-      }
-      else {
-        this.hideButton('try-again');
-      }
-
-      this.trigger('resize');
-
-      this.removeFeedback();
-
-      this.content.reset();
-      this.content.enable();
-    };
-
-    /**
-     * Get xAPI data.
-     * @return {object} XAPI statement.
-     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
-     */
-    this.getXAPIData = () => ({
-      statement: this.getXAPIAnswerEvent().data.statement
+    // Content may need a resize once it's displayed (media queries or pseudo elements)
+    Util.waitForDOM('.h5p-crossword-input-container', () => {
+      setTimeout(() => {
+        this.trigger('resize');
+      }, 100);
     });
+  }
 
-    /**
-     * Build xAPI answer event.
-     * @return {H5P.XAPIEvent} XAPI answer event.
-     */
-    this.getXAPIAnswerEvent = () => {
-      const xAPIEvent = this.createXAPIEvent('answered');
-      xAPIEvent.setScoredResult(this.getScore(), this.getMaxScore(), this,
-        true, this.isPassed());
-      xAPIEvent.data.statement.result.response = this.content.getXAPIResponse();
+  /**
+   * Handle content initialized.
+   * @param {boolean} result initialization success.
+   */
+  handleContentInitialized(result) {
+    if (result) {
+      // Register Buttons
+      this.addButtons();
+    }
 
-      return xAPIEvent;
+    this.on('resize', () => {
+      this.content.resize();
+    });
+  }
+
+  /**
+   * Add all the buttons that shall be passed to H5P.Question.
+   */
+  addButtons() {
+    // Check answer button
+    this.addButton('check-answer', this.params.l10n.checkAnswer, () => {
+      this.checkAnswer();
+      this.trigger(this.getXAPIAnswerEvent());
+    }, this.initialButtons.check, {
+      'aria-label': this.params.a11y.check
+    }, {});
+
+    // Show solution button
+    this.addButton('show-solution', this.params.l10n.showSolution, () => {
+      this.showSolutions();
+    }, this.initialButtons.showSolution, {
+      'aria-label': this.params.a11y.showSolution
+    }, {});
+
+    // Retry button
+    this.addButton('try-again', this.params.l10n.tryAgain, () => {
+      this.resetTask();
+    }, this.initialButtons.retry, {
+      'aria-label': this.params.a11y.retry
+    }, {});
+  }
+
+  /**
+   * Check answer.
+   */
+  checkAnswer() {
+    if (!this.content) {
+      return; // Call by previous state, not ready yet
+    }
+
+    this.content.checkAnswer();
+
+    this.hideButton('check-answer');
+
+    const score = this.getScore();
+    const maxScore = this.getMaxScore();
+
+    const textScore = H5P.Question.determineOverallFeedback(
+      this.params.overallFeedback, score / maxScore);
+
+    // H5P.Question expects ':num' and ':total'
+    const ariaMessage = this.params.a11y.yourResult
+      .replace('@score', ':num')
+      .replace('@total', ':total');
+
+    this.setFeedback(
+      textScore,
+      score,
+      maxScore,
+      ariaMessage
+    );
+
+    if (this.params.behaviour.enableSolutionsButton) {
+      this.showButton('show-solution');
+    }
+
+    if (this.params.behaviour.enableRetry) {
+      this.showButton('try-again');
+    }
+  }
+
+  /**
+   * Let H5P.Question read some text.
+   * @param {string} text Text to read.
+   */
+  handleRead(text) {
+    this.read(text);
+  }
+
+  /**
+   * Handle content is filled.
+   */
+  handleContentFilled() {
+    if (this.getScore() === this.getMaxScore()) {
+      this.checkAnswer();
+    }
+    else {
+      this.showButton('check-answer');
+    }
+  }
+
+  /**
+   * Check if result has been submitted or input has been given.
+   * @return {boolean} True, if answer was given.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
+   */
+  getAnswerGiven() {
+    if (!this.content) {
+      return false;
+    }
+
+    return this.content.getAnswerGiven();
+  }
+
+  /**
+   * Get latest score.
+   * @return {number} latest score.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-2}
+   */
+  getScore() {
+    if (!this.content) {
+      return 0;
+    }
+
+    return this.content.getScore();
+  }
+
+  /**
+   * Get maximum possible score.
+   * @return {number} Score necessary for mastering.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-3}
+   */
+  getMaxScore() {
+    if (!this.content) {
+      return 0;
+    }
+
+    return this.content.getMaxScore();
+  }
+
+  /**
+   * Show solutions.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-4}
+   */
+  showSolutions() {
+    if (!this.content) {
+      return;
+    }
+
+    this.hideButton('check-answer');
+    this.hideButton('show-solution');
+
+    this.content.showSolutions();
+
+    this.trigger('resize');
+  }
+
+  /**
+   * Reset task.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
+   */
+  resetTask() {
+    if (!this.content) {
+      return;
+    }
+
+    if (this.initialButtons.check) {
+      this.showButton('check-answer');
+    }
+    else {
+      this.hideButton('check-answer');
+    }
+
+    if (this.initialButtons.showSolution) {
+      this.showButton('show-solution');
+    }
+    else {
+      this.hideButton('show-solution');
+    }
+
+    if (this.initialButtons.retry) {
+      this.showButton('try-again');
+    }
+    else {
+      this.hideButton('try-again');
+    }
+
+    this.trigger('resize');
+
+    this.removeFeedback();
+
+    this.content.reset();
+    this.content.enable();
+  }
+
+  /**
+   * Get xAPI data.
+   * @return {object} XAPI statement.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
+   */
+  getXAPIData() {
+    return {
+      statement: this.getXAPIAnswerEvent().data.statement
     };
+  }
 
-    /**
-     * Create an xAPI event for Dictation.
-     *
-     * @param {string} verb Short id of the verb we want to trigger.
-     * @return {H5P.XAPIEvent} Event template.
-     */
-    this.createXAPIEvent = (verb) => {
-      const xAPIEvent = this.createXAPIEventTemplate(verb);
-      Util.extend(
-        xAPIEvent.getVerifiedStatementValue(['object', 'definition']),
-        this.getxAPIDefinition());
-      return xAPIEvent;
-    };
+  /**
+   * Build xAPI answer event.
+   * @return {H5P.XAPIEvent} XAPI answer event.
+   */
+  getXAPIAnswerEvent() {
+    const xAPIEvent = this.createXAPIEvent('answered');
+    xAPIEvent.setScoredResult(this.getScore(), this.getMaxScore(), this,
+      true, this.isPassed());
+    xAPIEvent.data.statement.result.response = this.content.getXAPIResponse();
 
-    /**
-     * Get the xAPI definition for the xAPI object.
-     *
-     * @return {object} XAPI definition.
-     */
-    this.getxAPIDefinition = () => {
-      const definition = {};
-      definition.name = {};
-      definition.name[this.languageTag] = this.getTitle();
-      definition.name['en-US'] = definition.name[this.languageTag]; // Fallback
-      definition.description = {};
-      definition.description[this.languageTag] = `${this.getDescription()}`;
-      definition.description['en-US'] = definition.description[this.languageTag]; // Fallback
-      definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
-      definition.interactionType = 'fill-in';
-      definition.correctResponsesPattern = this.content.getXAPICorrectResponsesPattern();
+    return xAPIEvent;
+  }
 
-      return definition;
-    };
+  /**
+   * Create an xAPI event for Dictation.
+   *
+   * @param {string} verb Short id of the verb we want to trigger.
+   * @return {H5P.XAPIEvent} Event template.
+   */
+  createXAPIEvent(verb) {
+    const xAPIEvent = this.createXAPIEventTemplate(verb);
+    Util.extend(
+      xAPIEvent.getVerifiedStatementValue(['object', 'definition']),
+      this.getxAPIDefinition());
+    return xAPIEvent;
+  }
 
-    /**
-     * Determine whether the task has been passed by the user.
-     *
-     * @return {boolean} True if user passed or task is not scored.
-     */
-    this.isPassed = () => this.getScore() >= this.getMaxScore() || !this.getMaxScore() || this.getMaxScore() === 0;
+  /**
+   * Get the xAPI definition for the xAPI object.
+   *
+   * @return {object} XAPI definition.
+   */
+  getxAPIDefinition() {
+    const definition = {};
+    definition.name = {};
+    definition.name[this.languageTag] = this.getTitle();
+    definition.name['en-US'] = definition.name[this.languageTag]; // Fallback
+    definition.description = {};
+    definition.description[this.languageTag] = `${this.getDescription()}`;
+    definition.description['en-US'] = definition.description[this.languageTag]; // Fallback
+    definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
+    definition.interactionType = 'fill-in';
+    definition.correctResponsesPattern = this.content.getXAPICorrectResponsesPattern();
 
-    /**
-     * Get tasks title.
-     *
-     * @return {string} Title.
-     */
-    this.getTitle = () => {
-      let raw;
-      if (this.extras.metadata) {
-        raw = this.extras.metadata.title;
-      }
-      raw = raw || Crossword.DEFAULT_DESCRIPTION;
+    return definition;
+  }
 
-      // H5P Core function: createTitle
-      return H5P.createTitle(raw);
-    };
+  /**
+   * Determine whether the task has been passed by the user.
+   *
+   * @return {boolean} True if user passed or task is not scored.
+   */
+  isPassed() {
+    return this.getScore() >= this.getMaxScore() || !this.getMaxScore() || this.getMaxScore() === 0;
+  }
 
-    /**
-     * Get tasks description.
-     * @return {string} Description.
-     */
-    this.getDescription = () => {
-      const introduction = this.params.taskDescription || Crossword.DEFAULT_DESCRIPTION;
-      const fields = this.content.getXAPIDescription();
-      return `${introduction}${fields}`;
-    };
+  /**
+   * Get tasks title.
+   *
+   * @return {string} Title.
+   */
+  getTitle() {
+    let raw;
+    if (this.extras.metadata) {
+      raw = this.extras.metadata.title;
+    }
+    raw = raw || Crossword.DEFAULT_DESCRIPTION;
 
-    /**
-     * Answer call to return the current state.
-     * @return {object} Current state.
-     */
-    this.getCurrentState = () => {
-      return this.content.getCurrentState();
-    };
+    // H5P Core function: createTitle
+    return H5P.createTitle(raw);
+  }
+
+  /**
+   * Get tasks description.
+   * @return {string} Description.
+   */
+  getDescription() {
+    const introduction = this.params.taskDescription || Crossword.DEFAULT_DESCRIPTION;
+    const fields = this.content.getXAPIDescription();
+    return `${introduction}${fields}`;
+  }
+
+  /**
+   * Answer call to return the current state.
+   * @return {object} Current state.
+   */
+  getCurrentState() {
+    return this.content.getCurrentState();
   }
 
   /**
