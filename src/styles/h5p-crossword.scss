@@ -263,17 +263,18 @@
   .h5p-crossword-input-fields-group-wrapper {
     display: flex;
     flex-direction: column;
-    margin-top: 0.5em;
+    margin-bottom: 1em;
   }
 
   .h5p-crossword-input-fields-group-wrapper-clue {
-    align-items: center;
+    align-items: baseline;
     display: flex;
     flex-direction: row;
     line-height: 1.25em;
 
     .h5p-crossword-input-fields-group-clue-id {
       border-radius: 50%;
+      flex-shrink: 0;
       font-style: italic;
       height: 1.75em;
       line-height: 1.75em;
@@ -282,20 +283,22 @@
       width: 1.75em;
     }
 
-    .h5p-crossword-input-fields-group-clue {
-      padding-right: 0.5em;
-    }
+    .h5p-crossword-input-fields-group-clue-content {
+      .h5p-crossword-input-fields-group-clue {
+        padding-right: 0.5em;
+      }
 
-    .h5p-crossword-input-fields-group-answer-length {
-      font-style: italic;
-    }
+      .h5p-crossword-input-fields-group-answer-length {
+        font-style: italic;
+      }
 
-    .h5p-crossword-input-fields-group-extra-clue {
-      background: none;
-      border: none;
-      color: $color-joubelui-button;
-      cursor: pointer;
-      padding-left: 0.3em;
+      .h5p-crossword-input-fields-group-extra-clue {
+        background: none;
+        border: none;
+        color: $color-joubelui-button;
+        cursor: pointer;
+        padding-left: 0.3em;
+      }      
     }
 
     &.h5p-crossword-input-fields-group-clue-highlight-focus .h5p-crossword-input-fields-group-clue-id {

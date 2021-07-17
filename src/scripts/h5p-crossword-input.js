@@ -93,15 +93,19 @@ export default class CrosswordInput {
       clueId.innerText = word.clueId;
       wrapperClue.appendChild(clueId);
 
+      const clueContent = document.createElement('div');
+      clueContent.classList.add('h5p-crossword-input-fields-group-clue-content');
+      wrapperClue.appendChild(clueContent);
+
       const clue = document.createElement('span');
       clue.classList.add('h5p-crossword-input-fields-group-clue');
       clue.innerText = word.clue;
-      wrapperClue.appendChild(clue);
+      clueContent.appendChild(clue);
 
       const answerLength = document.createElement('span');
       answerLength.classList.add('h5p-crossword-input-fields-group-answer-length');
       answerLength.innerText = `(${word.answer.length})`;
-      wrapperClue.appendChild(answerLength);
+      clueContent.appendChild(answerLength);
 
       // Optional extra clue info symbol for opening popup
       if (word.extraClue) {
@@ -120,7 +124,7 @@ export default class CrosswordInput {
           };
           extraClue.setAttribute('aria-label', this.params.a11y.extraClueFor.replace('@clue', this.buildAriaLabel(ariaLabelParams)));
           extraClue.setAttribute('title', this.params.l10n.extraClue);
-          wrapperClue.appendChild(extraClue);
+          clueContent.appendChild(extraClue);
 
           extraClue.addEventListener('click', () => {
             if (this.disabled) {
