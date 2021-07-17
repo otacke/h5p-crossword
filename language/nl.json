@@ -85,20 +85,61 @@
       ]
     },
     {
-      "label": "Gedragsinstellingen",
-      "description": "Met deze opties kun je controleren hoe de taak zich gedraagt.",
+      "label": "Theme",
       "fields": [
-        {
-          "label": "Aantal te tonen woorden",
-          "description": "Maak een willekeurige partij woorden uit de groep. De partij zal altijd minstens alle woorden bevatten die in het raster zijn vastgelegd, ongeacht deze instelling. Een lege waarde of 0 betekent dat alle woorden worden gebruikt."
-        },
         {
           "label": "Achtergrondafbeelding",
           "description": "Selecteer een optionele achtergrondafbeelding. Deze zal worden geschaald om bij de achtergrond te passen zonder deze uit te rekken."
         },
         {
           "label": "Achtergrondkleur",
+          "description": "Choose a background color. It will either be used instead of a background image or as background for transparent areas.",
           "default": "#173354"
+        },
+        {
+          "label": "Grid color",
+          "description": "Choose a color for the grid.",
+          "default": "#000000"
+        },
+        {
+          "label": "Cell background color",
+          "description": "Choose the background color for a table cell.",
+          "default": "#ffffff"
+        },
+        {
+          "label": "Cell text color",
+          "description": "Choose the text color for a table cell.",
+          "default": "#000000"
+        },
+        {
+          "label": "Clue id color",
+          "description": "Choose the color of the clue id inside a table cell.",
+          "default": "#606060"
+        },
+        {
+          "label": "Cell background color (highlighted)",
+          "description": "Choose the background color for a table cell that is highlighted.",
+          "default": "#3e8de8"
+        },
+        {
+          "label": "Cell text color (highlighted)",
+          "description": "Choose the text color for a table cell that is highlighted.",
+          "default": "#ffffff"
+        },
+        {
+          "label": "Cell id color (highlighted)",
+          "description": "Choose the color of the clue id inside a table cell that is highlighted.",
+          "default": "#e0e0e0"
+        }
+      ]
+    },
+    {
+      "label": "Gedragsinstellingen",
+      "description": "Met deze opties kun je controleren hoe de taak zich gedraagt.",
+      "fields": [
+        {
+          "label": "Aantal te tonen woorden",
+          "description": "Maak een willekeurige partij woorden uit de groep. De partij zal altijd minstens alle woorden bevatten die in het raster zijn vastgelegd, ongeacht deze instelling. Een lege waarde of 0 betekent dat alle woorden worden gebruikt."
         },
         {
           "label": "Directe feedback mogelijk maken"

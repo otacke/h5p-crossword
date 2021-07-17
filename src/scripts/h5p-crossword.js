@@ -29,13 +29,15 @@ export default class Crossword extends H5P.Question {
     // Make sure all variables are set
     this.params = Util.extend({
       solutionWord: '',
+      theme: {
+        backgroundColor: '#173354'
+      },
       behaviour: {
         enableSolutionsButton: true,
         enableRetry: true,
         enableInstantFeedback: false,
         scoreWords: true,
-        applyPenalties: false,
-        backgroundColor: '#173354'
+        applyPenalties: false
       },
       l10n: {
         across: 'across',
@@ -70,6 +72,23 @@ export default class Crossword extends H5P.Question {
         yourResult: 'You got @score out of @total points'
       }
     }, this.params);
+
+    /*
+     * Remove values that match the default, so the regular stylesheet values
+     * will be used to still allow CSS overrides via H5P's hook.
+     */
+    this.params.theme = this.getDifference(
+      this.params.theme,
+      {
+        gridColor: '#000000',
+        cellBackgroundColor: '#ffffff',
+        cellColor: '#000000',
+        clueIdColor: '#606060',
+        cellBackgroundColorHighlight: '#3e8de8',
+        cellColorHighlight: '#ffffff',
+        clueIdColorHighlight: '#e0e0e0'
+      }
+    );
 
     // Set buttons
     this.initialButtons = {
@@ -124,8 +143,7 @@ export default class Crossword extends H5P.Question {
         {
           scoreWords: this.params.behaviour.scoreWords,
           applyPenalties: this.params.behaviour.applyPenalties,
-          backgroundImage: this.params.behaviour.backgroundImage,
-          backgroundColor: this.params.behaviour.backgroundColor,
+          theme: this.params.theme,
           contentId: this.contentId,
           instantFeedback: this.params.behaviour.enableInstantFeedback,
           l10n: {
@@ -438,6 +456,21 @@ export default class Crossword extends H5P.Question {
     this.getCurrentState = () => {
       return this.content.getCurrentState();
     };
+  }
+
+  /**
+   * Compute shallow difference of two objects.
+   * @param {object} minuend Object to subtract from.
+   * @param {object} subtrahend Object to subtract from minuend.
+   */
+  getDifference(minuend, subtrahend) {
+    for (let property in subtrahend) {
+      if (minuend[property] === subtrahend[property]) {
+        delete minuend[property];
+      }
+    }
+
+    return minuend; // Yes, technically that was changed in-place already ...
   }
 }
 

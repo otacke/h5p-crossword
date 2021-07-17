@@ -207,6 +207,134 @@
     ]
   },
   {
+    "name": "theme",
+    "type": "group",
+    "label": "Theme",
+    "importance": "low",
+    "fields": [
+      {
+        "name": "backgroundImage",
+        "label": "Background image",
+        "type": "image",
+        "description": "Select an optional background image. It will be scaled to fit the background without stretching it.",
+        "importance": "low",
+        "optional": true
+      },
+      {
+        "name": "backgroundColor",
+        "type": "text",
+        "label": "Background color",
+        "description": "Choose a background color. It will either be used instead of a background image or as background for transparent areas.",
+        "importance": "low",
+        "optional": true,
+        "default": "#173354",
+        "widget": "colorSelector",
+        "spectrum": {
+          "showInput": true,
+          "showInitial": true
+        }
+      },
+      {
+        "name": "gridColor",
+        "type": "text",
+        "label": "Grid color",
+        "description": "Choose a color for the grid.",
+        "importance": "low",
+        "optional": true,
+        "default": "#000000",
+        "widget": "colorSelector",
+        "spectrum": {
+          "showInput": true,
+          "showInitial": true
+        }
+      },
+      {
+        "name": "cellBackgroundColor",
+        "type": "text",
+        "label": "Cell background color",
+        "description": "Choose the background color for a table cell.",
+        "importance": "low",
+        "optional": true,
+        "default": "#ffffff",
+        "widget": "colorSelector",
+        "spectrum": {
+          "showInput": true,
+          "showInitial": true
+        }
+      },
+      {
+        "name": "cellColor",
+        "type": "text",
+        "label": "Cell text color",
+        "description": "Choose the text color for a table cell.",
+        "importance": "low",
+        "optional": true,
+        "default": "#000000",
+        "widget": "colorSelector",
+        "spectrum": {
+          "showInput": true,
+          "showInitial": true
+        }
+      },
+      {
+        "name": "clueIdColor",
+        "type": "text",
+        "label": "Clue id color",
+        "description": "Choose the color of the clue id inside a table cell.",
+        "importance": "low",
+        "optional": true,
+        "default": "#606060",
+        "widget": "colorSelector",
+        "spectrum": {
+          "showInput": true,
+          "showInitial": true
+        }
+      },
+      {
+        "name": "cellBackgroundColorHighlight",
+        "type": "text",
+        "label": "Cell background color (highlighted)",
+        "description": "Choose the background color for a table cell that is highlighted.",
+        "importance": "low",
+        "optional": true,
+        "default": "#3e8de8",
+        "widget": "colorSelector",
+        "spectrum": {
+          "showInput": true,
+          "showInitial": true
+        }
+      },
+      {
+        "name": "cellColorHighlight",
+        "type": "text",
+        "label": "Cell text color (highlighted)",
+        "description": "Choose the text color for a table cell that is highlighted.",
+        "importance": "low",
+        "optional": true,
+        "default": "#ffffff",
+        "widget": "colorSelector",
+        "spectrum": {
+          "showInput": true,
+          "showInitial": true
+        }
+      },
+      {
+        "name": "clueIdColorHighlight",
+        "type": "text",
+        "label": "Cell id color (highlighted)",
+        "description": "Choose the color of the clue id inside a table cell that is highlighted.",
+        "importance": "low",
+        "optional": true,
+        "default": "#e0e0e0",
+        "widget": "colorSelector",
+        "spectrum": {
+          "showInput": true,
+          "showInitial": true
+        }
+      }
+    ]
+  },
+  {
     "name": "behaviour",
     "type": "group",
     "label": "Behavioural settings",
@@ -221,27 +349,6 @@
         "importance": "low",
         "description": "Create a randomized batch of words from the pool. The batch will always contain at least all the words that were fixed on the grid regardless of this setting. An empty value or 0 means to use all words.",
         "optional": true
-      },
-      {
-        "name": "backgroundImage",
-        "label": "Background image",
-        "type": "image",
-        "description": "Select an optional background image. It will be scaled to fit the background without stretching it.",
-        "importance": "low",
-        "optional": true
-      },
-      {
-        "name": "backgroundColor",
-        "type": "text",
-        "label": "Background color",
-        "importance": "low",
-        "optional": true,
-        "default": "#173354",
-        "widget": "colorSelector",
-        "spectrum": {
-          "showInput": true,
-          "showInitial": true
-        }
       },
       {
         "name": "enableInstantFeedback",

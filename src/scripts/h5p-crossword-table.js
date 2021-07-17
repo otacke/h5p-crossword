@@ -11,7 +11,7 @@ export default class CrosswordTable {
     this.params = Util.extend({
     }, params);
 
-    this.params.backgroundImage = this.params.backgroundImage || null;
+    this.params.theme.backgroundImage = this.params.theme.backgroundImage || null;
 
     // Callbacks
     this.callbacks = callbacks || {};
@@ -30,7 +30,7 @@ export default class CrosswordTable {
     this.cells = this.buildCells(this.params.dimensions, this.params.words);
 
     // Create grid
-    this.content = this.buildGrid(this.params.dimensions, this.params.backgroundImage, this.params.contentId);
+    this.content = this.buildGrid(this.params);
 
     // Set tab index to first input element
     [].concat(...this.cells)
@@ -240,8 +240,8 @@ export default class CrosswordTable {
         clueIdDown: param.clueIdDown,
         instantFeedback: this.params.instantFeedback,
         applyPenalties: this.params.applyPenalties,
-        backgroundColor: this.params.backgroundColor,
-        hasBackgroundImage: !!this.params.backgroundImage,
+        hasBackgroundImage: !!this.params.theme.backgroundImage,
+        theme: this.params.theme,
         a11y: {
           correct: this.params.a11y.correct,
           wrong: this.params.a11y.wrong,
@@ -321,19 +321,23 @@ export default class CrosswordTable {
 
   /**
    * Create grid table.
-   * @param {object} dim Dimensions.
-   * @param {number} dim.columns Number of columns.
-   * @param {number} dim.rows Number of rows.
+   * @param {object} params Parameters.
+   * @param {object} params.dimensions Dimensions.
+   * @param {number} params.dimensions.columns Number of columns.
+   * @param {number} params.dimensions.dim.rows Number of rows.
+   * @param {object} params.theme Theme.
+   * @param {number} params.contentId Content id.
    * @return {HTMLElement} Grid table.
    */
-  buildGrid(dim, backgroundImage, contentId) {
+  buildGrid(params) {
     const table = document.createElement('table');
     table.classList.add('h5p-crossword-grid');
+    table.style.backgroundColor = params.theme.backgroundColor;
 
-    if (backgroundImage) {
+    if (params.theme.backgroundImage) {
       table.classList.add('h5p-crossword-grid-background-image');
       const image = document.createElement('img');
-      H5P.setSource(image, backgroundImage, contentId);
+      H5P.setSource(image, params.theme.backgroundImage, params.contentId);
       table.style.backgroundImage = `url('${image.src}')`;
     }
 
@@ -343,8 +347,8 @@ export default class CrosswordTable {
     const tableBody = document.createElement('tbody');
     tableBody.setAttribute('role', 'rowgroup');
 
-    for (let rowId = 0; rowId < dim.rows; rowId ++) {
-      const bodyRow = this.buildGridRow(dim, rowId);
+    for (let rowId = 0; rowId < params.dimensions.rows; rowId ++) {
+      const bodyRow = this.buildGridRow(params.dimensions, rowId);
       tableBody.appendChild(bodyRow);
     }
 

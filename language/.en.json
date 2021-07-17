@@ -85,20 +85,61 @@
       ]
     },
     {
-      "label": "Behavioural settings",
-      "description": "These options will let you control how the task behaves.",
+      "label": "Theme",
       "fields": [
-        {
-          "label": "Number of words to be shown",
-          "description": "Create a randomized batch of words from the pool. The batch will always contain at least all the words that were fixed on the grid regardless of this setting. An empty value or 0 means to use all words."
-        },
         {
           "label": "Background image",
           "description": "Select an optional background image. It will be scaled to fit the background without stretching it."
         },
         {
           "label": "Background color",
+          "description": "Choose a background color. It will either be used instead of a background image or as background for transparent areas.",
           "default": "#173354"
+        },
+        {
+          "label": "Grid color",
+          "description": "Choose a color for the grid.",
+          "default": "#000000"
+        },
+        {
+          "label": "Cell background color",
+          "description": "Choose the background color for a table cell.",
+          "default": "#ffffff"
+        },
+        {
+          "label": "Cell text color",
+          "description": "Choose the text color for a table cell.",
+          "default": "#000000"
+        },
+        {
+          "label": "Clue id color",
+          "description": "Choose the color of the clue id inside a table cell.",
+          "default": "#606060"
+        },
+        {
+          "label": "Cell background color (highlighted)",
+          "description": "Choose the background color for a table cell that is highlighted.",
+          "default": "#3e8de8"
+        },
+        {
+          "label": "Cell text color (highlighted)",
+          "description": "Choose the text color for a table cell that is highlighted.",
+          "default": "#ffffff"
+        },
+        {
+          "label": "Cell id color (highlighted)",
+          "description": "Choose the color of the clue id inside a table cell that is highlighted.",
+          "default": "#e0e0e0"
+        }
+      ]
+    },
+    {
+      "label": "Behavioural settings",
+      "description": "These options will let you control how the task behaves.",
+      "fields": [
+        {
+          "label": "Number of words to be shown",
+          "description": "Create a randomized batch of words from the pool. The batch will always contain at least all the words that were fixed on the grid regardless of this setting. An empty value or 0 means to use all words."
         },
         {
           "label": "Enable instant feedback"

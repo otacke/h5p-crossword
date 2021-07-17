@@ -13,8 +13,7 @@ export default class CrosswordCell {
     this.params = Util.extend({
       instantFeedback: false,
       clueIdMarker: null,
-      solution: null,
-      backgroundColor: '#173354'
+      solution: null
     }, params);
 
     // Callbacks
@@ -66,7 +65,7 @@ export default class CrosswordCell {
       this.cell.setAttribute('aria-label', this.params.a11y.empty);
 
       if (!this.params.hasBackgroundImage) {
-        this.cell.style.backgroundColor = this.params.backgroundColor;
+        this.cell.style.backgroundColor = this.params.theme.backgroundColor;
       }
     }
 

@@ -85,20 +85,61 @@
       ]
     },
     {
-      "label": "Verhaltenseinstellungen",
-      "description": "Diese Optionen legen fest, wie die Aufgabe im Detail funktioniert.",
+      "label": "Theme",
       "fields": [
-        {
-          "label": "Anzahl der zu zeigenden Wörter",
-          "description": "Erstelle eine zufällige Auswahl der Wörter. Die Auswahl wird immer mindestens die Wörter enthalten, die im Gitter fixiert wurden. Ein leerer Wert oder 0 bedeutet alle Wörter."
-        },
         {
           "label": "Hintergrundbild",
           "description": "Wähle ein optionales Hintergrundbild. Es wird ohne Verzerrung skaliert, um in den Hintergrund zu passen."
         },
         {
           "label": "Hintergrundfarbe",
+          "description": "Wähle eine Hintergrundfarbe. Sie wird entweder statt eines Hintergrundbildes benutzt oder dort wo das Bild transparent ist.",
           "default": "#173354"
+        },
+        {
+          "label": "Gitterfarbe",
+          "description": "Wähle eine Farbe für das Gitter.",
+          "default": "#000000"
+        },
+        {
+          "label": "Hintergrundfarbe für Zelle",
+          "description": "Wähle die Hintergrundfarbe einer Tabellenzelle.",
+          "default": "#ffffff"
+        },
+        {
+          "label": "Textfarbe für Zelle",
+          "description": "Wähle die Textfarbe einer Tabellenzelle.",
+          "default": "#000000"
+        },
+        {
+          "label": "Farbe der Hinweisnummer",
+          "description": "Wähle die Farbe der Hinweisnummer innerhalb einer Tabellenzelle.",
+          "default": "#606060"
+        },
+        {
+          "label": "Hintergrundfarbe für Zelle (ausgewählt)",
+          "description": "Wähle die Hintergrundfarbe einer ausgewählten Tabellenzelle.",
+          "default": "#3e8de8"
+        },
+        {
+          "label": "Textfarbe für Zelle (ausgewählt)",
+          "description": "Wähle die Textfarbe einer ausgewählten Tabellenzelle.",
+          "default": "#ffffff"
+        },
+        {
+          "label": "Farbe der Hinweisnummer (ausgewählt)",
+          "description": "Wähle die Farbe der Hinweisnummer innerhalb einer ausgewählten Tabellenzelle.",
+          "default": "#e0e0e0"
+        }
+      ]
+    },
+    {
+      "label": "Verhaltenseinstellungen",
+      "description": "Diese Optionen legen fest, wie die Aufgabe im Detail funktioniert.",
+      "fields": [
+        {
+          "label": "Anzahl der zu zeigenden Wörter",
+          "description": "Erstelle eine zufällige Auswahl der Wörter. Die Auswahl wird immer mindestens die Wörter enthalten, die im Gitter fixiert wurden. Ein leerer Wert oder 0 bedeutet alle Wörter."
         },
         {
           "label": "Sofort-Rückmeldungen einschalten"
