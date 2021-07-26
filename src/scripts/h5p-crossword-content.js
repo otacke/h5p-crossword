@@ -277,7 +277,7 @@ export default class CrosswordContent {
    * @return {object} Current state.
    */
   getCurrentState() {
-    if (this.params.words.length < 2) {
+    if (this.params.words.length < 2 || !this.table) {
       return;
     }
 
