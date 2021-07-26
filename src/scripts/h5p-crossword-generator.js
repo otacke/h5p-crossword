@@ -349,7 +349,7 @@ export default class CrosswordGenerator {
         const cellValue = this.cells[position.row][position.column + i];
 
         if (!cellValue || cellValue.char !== answer[i]) {
-          continue;
+          break;
         }
         else {
           if (i === answer.length - 1) {
@@ -405,7 +405,7 @@ export default class CrosswordGenerator {
         const cellValue = this.cells[position.row + i][position.column];
 
         if (!cellValue || cellValue.char !== answer[i]) {
-          continue;
+          break;
         }
         else {
           if (i === answer.length - 1) {
