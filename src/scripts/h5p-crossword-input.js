@@ -195,6 +195,17 @@ export default class CrosswordInput {
         const start = inputField.selectionStart;
         inputField.value = `${inputField.value.substr(0, start)}${inputField.value.substr(start + 1)}`;
         inputField.selectionEnd = start;
+
+        clearTimeout(this.tableUpdateTimeout);
+        this.tableUpdateTimeout = setTimeout(() => {
+          this.callbacks.onFieldInput({
+            clueId: word.clueId,
+            orientation: word.orientation,
+            cursorPosition: Math.min(inputField.selectionStart, word.answer.length - 1),
+            text: inputField.value,
+            readOffset: -1 // don't read
+          });
+        }, 0); // selectionStart will be 0 before DOM rendered
       }, false);
 
       // Only update table if input is valid or using arrow keys
