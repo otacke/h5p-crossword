@@ -1,9 +1,9 @@
 {
   "title": "Crossword",
   "description": "Crossword puzzle for H5P",
-  "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 0,
+  "majorVersion": 0,
+  "minorVersion": 4,
+  "patchVersion": 2,
   "runnable": 1,
   "author": "Language Training Center GmbH, Oliver Tacke",
   "license": "MIT",
