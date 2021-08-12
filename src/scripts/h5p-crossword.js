@@ -284,8 +284,9 @@ export default class Crossword extends H5P.Question {
    * Handle content is filled.
    */
   handleContentFilled() {
-    if (this.getScore() === this.getMaxScore()) {
+    if (this.getMaxScore() > 0 && this.getScore() === this.getMaxScore()) {
       this.checkAnswer();
+      this.trigger(this.getXAPIAnswerEvent());
     }
     else {
       this.showButton('check-answer');
