@@ -454,7 +454,7 @@ export default class CrosswordInput {
 
         let result;
         let scoreExplanation;
-        if (!cellInfo.answer || cellInfo.answer.trim() === '') {
+        if (!cellInfo.answer || cellInfo.answer.trim() === '' || cellInfo.answer === Util.CHARACTER_PLACEHOLDER) {
           result = 'neutral';
         }
         else if (cellInfo.answer === cellInfo.solution) {
