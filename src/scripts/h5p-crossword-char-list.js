@@ -184,7 +184,7 @@ export default class CrosswordCharList {
     // Char field
     const char = document.createElement('span');
     char.classList.add('h5p-crossword-input-fields-group-solution-char');
-    char.innerHTML = (!params.char || params.char.trim() === ' ') ? '&nbsp;' : params.char;
+    char.innerHTML = (!params.char || params.char.trim() === ' ') ? '&nbsp;' : Util.toUpperCase(params.char, Util.UPPERCASE_EXCEPTIONS);
     charWrapper.appendChild(char);
 
     return charWrapper;
