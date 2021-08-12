@@ -406,7 +406,7 @@ export default class CrosswordInput {
 
       field.solution.setChars([{
         ariaLabel: `${ariaLabels.join('. ')}.`,
-        char: field.inputField.value,
+        char: field.inputField.value.replace(Util.CHARACTER_PLACEHOLDER, ' '),
         result: result,
         scoreExplanation: scoreExplanation
       }]);
@@ -487,7 +487,7 @@ export default class CrosswordInput {
 
         listItemParams.push({
           ariaLabel: `${ariaLabels.join('. ')}.`,
-          char: char || '&nbsp;',
+          char: char.replace(Util.CHARACTER_PLACEHOLDER, ' ') || '&nbsp;',
           result: result,
           scoreExplanation: scoreExplanation
         });

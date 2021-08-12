@@ -325,7 +325,7 @@ export default class CrosswordCell {
       return; // Empty
     }
 
-    if (this.params.solution === ' ' && (!this.answer || this.answer.trim() === '')) {
+    if (this.params.solution === ' ' && (!this.answer || this.answer.trim() === '' || this.answer === Util.CHARACTER_PLACEHOLDER)) {
       return; // Space not relevant for score
     }
 
@@ -507,7 +507,7 @@ export default class CrosswordCell {
         this.callbacks.onRead(this.params.a11y.correct);
       }
     }
-    else if (answer === '') {
+    else if (answer === '' || answer === Util.CHARACTER_PLACEHOLDER) {
       this.setSolutionState();
     }
     else {

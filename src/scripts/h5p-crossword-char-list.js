@@ -106,7 +106,7 @@ export default class CrosswordCharList {
     if (params.result === 'neutral') {
       charWrapper.classList.add('h5p-crossword-solution-no-input');
 
-      if (params.char === ' ') {
+      if (params.char === ' ' || params.char === Util.CHARACTER_PLACEHOLDER) {
         charWrapper.classList.add('h5p-crossword-solution-no-char');
       }
     }
