@@ -104,7 +104,8 @@ export default class CrosswordInput {
 
       const answerLength = document.createElement('span');
       answerLength.classList.add('h5p-crossword-input-fields-group-answer-length');
-      answerLength.innerText = `(${word.answer.length})`;
+
+      answerLength.innerText = `(${word.answer.split(' ').map(part => part.length).join(',')})`;
       clueContent.appendChild(answerLength);
 
       // Optional extra clue info symbol for opening popup
