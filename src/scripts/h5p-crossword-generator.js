@@ -610,6 +610,7 @@ export default class CrosswordGenerator {
     const rows = cells.length;
     const cols = cells[0].length;
     const result = [];
+    let nextClueId = 1;
 
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < cols; c++) {
@@ -627,7 +628,7 @@ export default class CrosswordGenerator {
             startx: c + 1,
             starty: r + 1,
             orientation: 'down',
-            clueId: result.length + 1
+            clueId: nextClueId
           });
         }
 
@@ -639,8 +640,12 @@ export default class CrosswordGenerator {
             startx: c + 1,
             starty: r + 1,
             orientation: 'across',
-            clueId: result.length + 1
+            clueId: nextClueId
           });
+        }
+
+        if (cell.down && cell.down.isStartOfWord || cell.across && cell.across.isStartOfWord) {
+          nextClueId++;
         }
       }
     }
