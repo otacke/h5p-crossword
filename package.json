@@ -29,13 +29,10 @@
     "css-loader": "^6.2.0",
     "eslint": "^7.32.0",
     "mini-css-extract-plugin": "^2.2.0",
-    "regenerator-runtime": "^0.13.9",
     "sass": "^1.38.0",
+    "regenerator-runtime": "^0.13.9",
     "sass-loader": "^12.1.0",
     "webpack": "^5.50.0",
     "webpack-cli": "^4.8.0"
-  },
-  "dependencies": {
-    "detect-browser": "^5.2.0"
   }
 }
