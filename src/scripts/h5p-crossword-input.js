@@ -1,6 +1,7 @@
 import Overlay from './h5p-crossword-overlay';
 import Util from './h5p-crossword-util';
 import CrosswordCharList from './h5p-crossword-char-list';
+import { detect as detectBrowser } from 'detect-browser';
 
 /** Class representing the content */
 export default class CrosswordInput {
@@ -19,6 +20,9 @@ export default class CrosswordInput {
     this.callbacks = callbacks || {};
     this.callbacks.onFieldInput = this.callbacks.onFieldInput || (() => {});
     this.callbacks.onRead = callbacks.onRead || (() => {});
+
+    const browserInfo = detectBrowser();
+    this.isChromeOnAndroid = browserInfo.name === 'chrome' && browserInfo.os === 'Android OS';
 
     // Input fields
     this.inputFields = [];
@@ -306,18 +310,23 @@ export default class CrosswordInput {
     else {
       newValue = value;
 
-      // Set placeholders
-      const placeholder = new Array(field.maxLength + 1).join(Util.CHARACTER_PLACEHOLDER);
-      newValue = placeholder
-        .split('')
-        .map((char, index) => {
-          if (newValue.length > index && newValue[index] !== ' ') {
-            return newValue[index];
-          }
+      /*
+       * Chrome on Android doesn't enter anything when placeholders are set
+       */
+      if (!this.isChromeOnAndroid) {
+        // Set placeholders
+        const placeholder = new Array(field.maxLength + 1).join(Util.CHARACTER_PLACEHOLDER);
+        newValue = placeholder
+          .split('')
+          .map((char, index) => {
+            if (newValue.length > index && newValue[index] !== ' ') {
+              return newValue[index];
+            }
 
-          return char;
-        })
-        .join('');
+            return char;
+          })
+          .join('');
+      }
     }
 
     field.value = Util.toUpperCase(newValue, Util.UPPERCASE_EXCEPTIONS);
