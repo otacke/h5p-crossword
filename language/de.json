@@ -5,10 +5,10 @@
       "description": "Beschreibe deine Aufgabe hier."
     },
     {
-      "label": "words",
+      "label": "Wörter",
       "widgets": [
         {
-          "label": "Vorgabe"
+          "label": "Eingabemaske"
         }
       ],
       "entity": "Wort",
@@ -149,7 +149,7 @@
           "description": "Wenn diese Einstellung gewählt ist, werden Wörter für die Bewertung gezählt. Andernfalls werden Zeichen gezählt."
         },
         {
-          "label": "Punktabzug",
+          "label": "Strafpunkte vergeben",
           "description": "Wenn diese Einstellung gewählt ist, wird für jede falsche Antwort ein Punkt abgezogen."
         },
         {
@@ -184,7 +184,7 @@
           "default": "Lösung anzeigen"
         },
         {
-          "label": "Cannot create crossword",
+          "label": "Es kann kein Kreuzworträtsel generiert werden",
           "default": "Es konnte kein Kreuzworträtsel aus den gegebenen Wörtern erzeugt werden. Bitte versuche es erneut mit weniger Wörtern oder mit Wörtern, die mehr Buchstaben gemein haben."
         },
         {
@@ -289,7 +289,7 @@
         {
           "label": "Dein Ergebnis",
           "description": "@score und @total sind Variablen und werden durch die entsprechenden Werte ersetzt.",
-          "default": "Du hast @score von @total Punkten erreicht"
+          "default": "Du hast @score von @total Punkten erreicht."
         }
       ]
     }
