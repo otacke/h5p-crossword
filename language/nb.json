@@ -28,7 +28,7 @@
           },
           {
             "label": "Fest ord til rutenett.",
-            "description": "Huk av dersom du ønsker å feste ordet til et spesifikk posisjon i rutenettet."
+            "description": "Huk av dersom du ønsker å feste ordet til en spesifikk posisjon i rutenettet."
           },
           {
             "label": "Rad",
@@ -55,7 +55,7 @@
     },
     {
       "label": "Løsningsord",
-      "description": "Velg om du vil legge til et løsningsord som tas ut fra enkelte bokstaver i rutenettet. Løsningsordet vil kun vises dersom alle de korrekte bokstavene i det er på plass i kryssordet. Merk: Det er ingen tilgjengelighetsstøtte for denne funksjonen enda."
+      "description": "Velg om du vil legge til et løsningsord som tas ut fra enkelte bokstaver i rutenettet. Løsningsordet vil kun vises dersom alle de korrekte bokstavene er på plass i kryssordet. Merk: Det er ingen tilgjengelighetsstøtte for denne funksjonen enda."
     },
     {
       "label": "Generell tilbakemelding",
@@ -66,18 +66,18 @@
               "label": "Standard"
             }
           ],
-          "label": "DefinerDefine custom feedback for any score range",
-          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
-          "entity": "range",
+          "label": "Definer standard tilbakemelding for alle poengsummer",
+          "description": "Klikk på \"Legg til poengområde\" knappen for å legge til de områdene du behøver. Eksempel: 0-20% Lav poengsum, 21-91% Middels poengsum, 91-100% Høy poengsum!",
+          "entity": "område",
           "field": {
             "fields": [
               {
-                "label": "Score Range"
+                "label": "Poengområde"
               },
               {},
               {
-                "label": "Feedback for defined score range",
-                "placeholder": "Fill in the feedback"
+                "label": "Tilbakemelding for definert poengområde",
+                "placeholder": "Fyll inn tilbakemelding"
               }
             ]
           }
@@ -85,211 +85,211 @@
       ]
     },
     {
-      "label": "Theme",
+      "label": "Tema",
       "fields": [
         {
-          "label": "Background image",
-          "description": "Select an optional background image. It will be scaled to fit the background without stretching it."
+          "label": "Bakgrunnsbilde",
+          "description": "Velg et valgfritt bakgrunnsbilde. Det vil bli skalert til å passe til bakgrunnen uten at bildet blir strukket."
         },
         {
-          "label": "Background color",
-          "description": "Choose a background color. It will either be used instead of a background image or as background for transparent areas.",
+          "label": "Bakgrunnsfarge",
+          "description": "Velg en bakgrunnsfarge. Den vil enten bli brukt i stedet for bakgrunnsbilde eller som bakgrunn for transparente områder.",
           "default": "#173354"
         },
         {
-          "label": "Grid color",
-          "description": "Choose a color for the grid.",
+          "label": "Rutenett-farge",
+          "description": "Velg rutenettets farge.",
           "default": "#000000"
         },
         {
-          "label": "Cell background color",
-          "description": "Choose the background color for a table cell.",
+          "label": "Bakgrunnsfarge for bokstavceller",
+          "description": "Velg en bakgrunnsfarge for cellene som kan huse bokstaver.",
           "default": "#ffffff"
         },
         {
-          "label": "Cell text color",
-          "description": "Choose the text color for a table cell.",
+          "label": "Tekstfarge i bokstavcellene",
+          "description": "Velg tekstfargen til cellene som kan huse bokstaver.",
           "default": "#000000"
         },
         {
-          "label": "Clue id color",
-          "description": "Choose the color of the clue id inside a table cell.",
+          "label": "Farge på hint-id",
+          "description": "Velg fargen på hint-id'en i bokstavcellene.",
           "default": "#606060"
         },
         {
-          "label": "Cell background color (highlighted)",
-          "description": "Choose the background color for a table cell that is highlighted.",
+          "label": "Bakgrunnsfarge for valgt rute (fremhevet)",
+          "description": "Velg hvilken bakgrunnsfarge som skal vises når en rute i kryssodet er valgt og fremhevet.",
           "default": "#3e8de8"
         },
         {
-          "label": "Cell text color (highlighted)",
-          "description": "Choose the text color for a table cell that is highlighted.",
+          "label": "Tekstfarge ved valgt rute (fremhevet)",
+          "description": "Velg hvilken tekstfarge som skal vises når en rute i kryssordet er valgt og fremhevet.",
           "default": "#ffffff"
         },
         {
-          "label": "Cell id color (highlighted)",
-          "description": "Choose the color of the clue id inside a table cell that is highlighted.",
+          "label": "Id-farge ved valgt rute (fremhevet)",
+          "description": "Velg hvilken id-farge som skal vises når en rute i kryssordet er valgt og fremhevet.",
           "default": "#e0e0e0"
         }
       ]
     },
     {
-      "label": "Behavioural settings",
-      "description": "These options will let you control how the task behaves.",
+      "label": "Innstillinger for oppgaveoppførsel",
+      "description": "Disse valgene gir deg kontroll over hvordan oppgaven oppfører seg.",
       "fields": [
         {
-          "label": "Number of words to be shown",
-          "description": "Create a randomized batch of words from the pool. The batch will always contain at least all the words that were fixed on the grid regardless of this setting. An empty value or 0 means to use all words."
+          "label": "Antall ord som skal vises.",
+          "description": "Lag en tilfeldig samling av ord fra databasen. Samlingen vil minimum alltid innholde de ordene som er festet til rutenettet uavhenig av denne innstillingen. Er dette feltet tomt har verdien 0, betyr dette at alle ordene benyttes."
         },
         {
-          "label": "Enable instant feedback"
+          "label": "Aktiver umiddelbar tilbakemeldingEnable instant feedback"
         },
         {
-          "label": "Score words",
-          "description": "If this option is enabled, words will be counted in order to determine the score. Otherwise, correct characters will be counted."
+          "label": "Gi poeng for ord",
+          "description": "Dersom dette er valgt, er det antall ord summeres og som gir poeng. Ellers er det riktige bokstaver som summeres."
         },
         {
-          "label": "Apply penalties",
-          "description": "If this option is enabled, each wrong answer will be given a penalty score of -1."
+          "label": "Gi straff",
+          "description": "Dersom dette er valgt, vil hvert feilaktige svar gi en straff på -1 poeng. "
         },
         {
-          "label": "Enable \"Retry\""
+          "label": "Aktiver \"Prøv igjen\""
         },
         {
-          "label": "Enable \"Solution\""
+          "label": "Aktiver \"Fasit\""
         }
       ]
     },
     {
-      "label": "User interface",
+      "label": "Brukergrensesnitt",
       "fields": [
         {
-          "label": "Label for across",
-          "default": "Across"
+          "label": "Etikett for vannrett",
+          "default": "Vannrett"
         },
         {
-          "label": "Label for down",
-          "default": "Down"
+          "label": "Etikett for loddrett",
+          "default": "Loddrett"
         },
         {
-          "label": "Text for \"Check\" button",
-          "default": "Check"
+          "label": "Tekst for \"Sjekk\"-knapp",
+          "default": "Sjekk"
         },
         {
-          "label": "Text for \"Retry\" button",
-          "default": "Retry"
+          "label": "Tekst for \"Prøv på igjen\"-knapp",
+          "default": "Prøv igjen"
         },
         {
-          "label": "Text for \"Show solution\" button",
-          "default": "Show solution"
+          "label": "Tekst for \"Vis fasit\"-knapp",
+          "default": "Vis fasit"
         },
         {
-          "label": "Cannot create crossword",
-          "default": "Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common. If you are using fixed words, please make sure that their position doesn't prevent other words from being placed."
+          "label": "Kan ikke opprette kryssord",
+          "default": "Kunne ikke generere kryssord basert på de definerte ord. Vennligst prøv på nytt med færre ord, samt ord som har flere bokstaver til felles. Dersom du bruker ord som er festede ord, sørg for at deres posisjon ikke forhindrer andre ord i å finne en plassering."
         },
         {
-          "label": "Cannot create crossword (too few words)",
-          "default": "Could not generate a crossword. You need at least two words."
+          "label": "Kan ikke opprette kryssord (for få ord)",
+          "default": "Kunne ikke generere kryssord. Du trenger minimum to ord."
         },
         {
-          "label": "Probematic words",
-          "description": "List words that caused trouble while generating the crossword. @words is a placeholder that will be replaced by the actual problematic words.",
-          "default": "Problematic word(s): @words"
+          "label": "Problematiske ord",
+          "description": "Oppgi ord som forårsaket problemer ved generering av kryssordet. @words er en plassholder som vil bli erstattet med de faktiske problem-ordene.",
+          "default": "Problematiske ord: @words"
         },
         {
-          "label": "Extra clue",
-          "default": "Extra clue"
+          "label": "Ekstra hint",
+          "default": "Ekstra hint"
         },
         {
-          "label": "Close window",
-          "default": "Close window"
+          "label": "Steng vindu",
+          "default": "Steng vindu"
         }
       ]
     },
     {
-      "label": "Readspeaker",
+      "label": "Tekstoppleser",
       "fields": [
         {
-          "label": "Crossword grid description",
-          "default": "Crossword grid. Use arrow keys to navigate and keyboard to enter characters. Use tab to use input fields instead."
+          "label": "Forklaring for rutenett",
+          "default": "Kryssord-rutenett. Bruk piltastene for å navigere og tastaturet til å skrive inn bokstavene. Bruk tab for å navigere og fylle inn ordene i feltene under hintene i stedet."
         },
         {
-          "label": "Column",
-          "default": "Column"
+          "label": "Kolonne",
+          "default": "Kolonne"
         },
         {
-          "label": "Row",
-          "default": "Row"
+          "label": "Rad",
+          "default": "Rad"
         },
         {
-          "label": "Across",
-          "default": "Across"
+          "label": "Vannrett",
+          "default": "Vannrett"
         },
         {
-          "label": "Down",
-          "default": "Down"
+          "label": "Loddrett",
+          "default": "Loddrett"
         },
         {
-          "label": "Empty",
-          "default": "Empty"
+          "label": "Tom",
+          "default": "Tom"
         },
         {
-          "description": "Result announcer. @clue is a variable and will be replaced by the respective clue.",
-          "label": "Result for",
-          "default": "Result for: @clue"
+          "description": "Oppgir resultat. @clue er en variabel og vil bli byttet ut med det respektive hintet.",
+          "label": "Resultat for",
+          "default": "Resultat for: @clue"
         },
         {
-          "label": "Correct",
-          "default": "Correct"
+          "label": "Riktig",
+          "default": "Riktig"
         },
         {
-          "label": "Wrong",
-          "default": "Wrong"
+          "label": "Feil",
+          "default": "Feil"
         },
         {
-          "label": "Point",
-          "default": "point"
+          "label": "Poeng",
+          "default": "poeng"
         },
         {
-          "description": "Solution announcer. @clue and @solution are variables and will be replaced by the respective values.",
-          "label": "Solution for",
-          "default": "For @clue the solution is: @solution"
+          "description": "Oppgir løsning. @clue og @solution er variabler og vil bli byttet ut med sine respektive verdier.",
+          "label": "Løsning for",
+          "default": "For @clue er løsningen: @solution"
         },
         {
-          "description": "Extra clue announcer. @clue is a variable and will be replaced by the respective value.",
-          "label": "Extra clue for",
-          "default": "Open extra clue for @clue"
+          "description": "Oppgir ekstra hint. @clue er variabler og vil bli byttet ut med sine respektive verdier.",
+          "label": "Ekstra hint for",
+          "default": "Åpne ekstra hint for @clue"
         },
         {
-          "label": "Empty cell",
-          "default": "Empty cell"
+          "label": "Tom rute",
+          "default": "Tom rute"
         },
         {
-          "description": "Announcing the current position. @position and @length are variables and will be replaced by their respective values.",
-          "label": "Letter",
-          "default": "Letter @position of @length"
+          "description": "Oppgir den nåværende posisjonen. @position og @length er variabler og vil bli byttet ut med sine respektive verdier.",
+          "label": "Bokstav",
+          "default": "Bokstav @position av @length"
         },
         {
-          "description": "Announcing the word length. @length is a variable and will be replaced by the respective value.",
-          "label": "Length of word",
-          "default": "@length letter word"
+          "description": "Oppgir ordets lengde. @length er en variablel og vil bli byttet ut med sin respektive verdi.",
+          "label": "Ordets lengde",
+          "default": "@length bokstavers ord"
         },
         {
-          "label": "Assistive technology description for \"Check\" button",
-          "default": "Check the characters. The responses will be marked as correct, incorrect, or unanswered."
+          "label": "Hjelpemiddel-beskrivelse for \"Sjekk\"-knapp",
+          "default": "Sjekk bokstavene. Svarene vil merkes som riktig, feil eller ubesvart."
         },
         {
-          "label": "Assistive technology description for \"Show Solution\" button",
-          "default": "Show the solution. The crossword will be filled with its correct solution."
+          "label": "Hjelpemiddel-beskrivelse for \"Vis fasit\"-knapp",
+          "default": "Vis fasiten. Kryssordet vi bli korrekt fylt ut."
         },
         {
-          "label": "Assistive technology description for \"Retry\" button",
-          "default": "Retry the task. Reset all responses and start the task over again."
+          "label": "Hjelpemiddel-beskrivelse for \"Prøv igjen\"-knapp",
+          "default": "Prøv oppgaven på nytt. Nullstill alle svar og start oppgaven på nytt."
         },
         {
-          "label": "Your result",
-          "description": "@score and @total are variables and will be replaced by their respective values.",
-          "default": "You got @score out of @total points."
+          "label": "Ditt resultat",
+          "description": "@score og @total er variabler og vil bli byttet ut med sine respektive verdier",
+          "default": "Du fikk @score av @total poeng."
         }
       ]
     }
