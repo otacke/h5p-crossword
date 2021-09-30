@@ -192,7 +192,11 @@ export default class CrosswordInput {
       });
 
       // Make the input field "overwrite" instead "add" characters
-      inputField.addEventListener('keydown', () => {
+      inputField.addEventListener('keydown', (event) => {
+        if (Util.CONTROL_KEY_CODES.indexOf(event.keyCode) !== -1) {
+          return;
+        }
+
         const start = inputField.selectionStart;
         inputField.value = `${inputField.value.substr(0, start)}${inputField.value.substr(start + 1)}`;
         inputField.selectionEnd = start;
