@@ -67,7 +67,7 @@
             }
           ],
           "label": "Definer standard tilbakemelding for alle poengsummer",
-          "description": "Klikk på \"Legg til poengområde\" knappen for å legge til de områdene du behøver. Eksempel: 0-20% Lav poengsum, 21-91% Middels poengsum, 91-100% Høy poengsum!",
+          "description": "Klikk på \"Legg til poengområde\"-knappen for å legge til de områdene du behøver. Eksempel: 0-20% Lav poengsum, 21-91% Middels poengsum, 91-100% Høy poengsum!",
           "entity": "område",
           "field": {
             "fields": [
@@ -102,18 +102,18 @@
           "default": "#000000"
         },
         {
-          "label": "Bakgrunnsfarge for bokstavceller",
-          "description": "Velg en bakgrunnsfarge for cellene som kan huse bokstaver.",
+          "label": "Bakgrunnsfarge for bokstruter",
+          "description": "Velg en bakgrunnsfarge for rutene som kan huse bokstaver.",
           "default": "#ffffff"
         },
         {
-          "label": "Tekstfarge i bokstavcellene",
-          "description": "Velg tekstfargen til cellene som kan huse bokstaver.",
+          "label": "Tekstfarge i bokstavrutene",
+          "description": "Velg tekstfargen til rutene som kan huse bokstaver.",
           "default": "#000000"
         },
         {
           "label": "Farge på hint-id",
-          "description": "Velg fargen på hint-id'en i bokstavcellene.",
+          "description": "Velg fargen på hint-id'en i bokstavrutene.",
           "default": "#606060"
         },
         {
@@ -139,14 +139,14 @@
       "fields": [
         {
           "label": "Antall ord som skal vises.",
-          "description": "Lag en tilfeldig samling av ord fra databasen. Samlingen vil minimum alltid innholde de ordene som er festet til rutenettet uavhenig av denne innstillingen. Er dette feltet tomt har verdien 0, betyr dette at alle ordene benyttes."
+          "description": "Lag en tilfeldig samling av ord fra databasen. Samlingen vil minimum alltid innholde de ordene som er festet til rutenettet uavhenig av denne innstillingen. Er dette feltet tomt eller har verdien 0, betyr dette at alle ordene benyttes."
         },
         {
-          "label": "Aktiver umiddelbar tilbakemeldingEnable instant feedback"
+          "label": "Aktiver umiddelbar tilbakemelding"
         },
         {
           "label": "Gi poeng for ord",
-          "description": "Dersom dette er valgt, er det antall ord summeres og som gir poeng. Ellers er det riktige bokstaver som summeres."
+          "description": "Dersom dette er valgt, er det antall ord som summeres og gir poeng. Ellers er det riktige bokstaver som summeres."
         },
         {
           "label": "Gi straff",
@@ -185,7 +185,7 @@
         },
         {
           "label": "Kan ikke opprette kryssord",
-          "default": "Kunne ikke generere kryssord basert på de definerte ord. Vennligst prøv på nytt med færre ord, samt ord som har flere bokstaver til felles. Dersom du bruker ord som er festede ord, sørg for at deres posisjon ikke forhindrer andre ord i å finne en plassering."
+          "default": "Kunne ikke generere kryssord basert på de definerte ord. Vennligst prøv på nytt med færre ord, samt ord som har flere bokstaver til felles. Dersom du bruker ord som er festet, sørg for at deres posisjon ikke forhindrer andre ord i å finne en plassering."
         },
         {
           "label": "Kan ikke opprette kryssord (for få ord)",
