@@ -1,6 +1,6 @@
 {
   "name": "h5p-crossword",
-  "version": "0.4.4",
+  "version": "0.4.8",
   "description": "Example H5P Content Type for getting started",
   "private": true,
   "scripts": {
@@ -20,19 +20,19 @@
   "author": "Language Training Center GmbH, Oliver Tacke",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.15.4",
+    "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
     "@babel/plugin-transform-destructuring": "^7.14.7",
     "@babel/preset-env": "^7.15.6",
     "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",
-    "css-loader": "^6.2.0",
+    "css-loader": "^6.3.0",
     "eslint": "^7.32.0",
     "mini-css-extract-plugin": "^2.3.0",
-    "sass": "^1.41.1",
+    "sass": "^1.42.1",
     "regenerator-runtime": "^0.13.9",
     "sass-loader": "^12.1.0",
-    "webpack": "^5.53.0",
+    "webpack": "^5.55.1",
     "webpack-cli": "^4.8.0"
   }
 }
