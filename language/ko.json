@@ -67,7 +67,7 @@
             }
           ],
           "label": "점수 범위에 대한 사용자 정의 피드백 정의",
-          "description": "필요한 만큼 범위를 추가하려면 \"Add range\" 버튼을 클릭합니다. 예: 0-20% 집중이 필요합니다, 21-91% 조금 더 노력해보세요, 91-100% 훌륭해요!",
+          "description": "필요한 만큼 범위를 추가하려면 \"범위 추가\" 버튼을 클릭합니다. 예: 0-20% 집중이 필요합니다, 21-91% 조금 더 노력해보세요, 91-100% 훌륭해요!",
           "entity": "점수 범위",
           "field": {
             "fields": [
@@ -184,17 +184,17 @@
           "default": "해답 보이기"
         },
         {
-          "label": "Cannot create crossword",
-          "default": "주어진 단어로 크로스워드를 생성할 수 없습니다. 다시 시도하십시오. If you are using fixed words, please make sure that their position doesn't prevent other words from being placed."
+          "label": "가로 세로 낱말을 만들 수 없습니다.",
+          "default": "주어진 단어로 가로 세로 낱말을 생성할 수 없습니다. 다시 시도하십시오. 고정된 단어를 사용한다면, 그 단어들의 위치가 다른 단어들이 위치되는 것을 막지 않도록 하세요."
         },
         {
-          "label": "Cannot create crossword (too few words)",
-          "default": "Could not generate a crossword. You need at least two words."
+          "label": "가로 세로 낱말을 만들 수 없습니다.(너무 적은 단어)",
+          "default": "가로 세로 낱말을 생성할 수 없습니다. 적어도 두 단어가 필요합니다."
         },
         {
-          "label": "Probematic words",
-          "description": "List words that caused trouble while generating the crossword. @words is a placeholder that will be replaced by the actual problematic words.",
-          "default": "Problematic word(s): @words"
+          "label": "문제가 있는 단어",
+          "description": "가로 세로 낱말을 생성하는 동안 문제가 생기는 단어들을 목록으로 만드세요. @words 자리표시자로 실제 문제가 발생하는 단어로 대체합니다.",
+          "default": "문제가 발생하는 단어: @words"
         },
         {
           "label": "추가 단서",
