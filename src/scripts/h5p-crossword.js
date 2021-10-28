@@ -49,7 +49,8 @@ export default class Crossword extends H5P.Question {
         showSolution: 'Show solution',
         tryAgain: 'Retry',
         extraClue: 'Extra clue',
-        closeWindow: 'Close window'
+        closeWindow: 'Close window',
+        submitAnswer: 'Submit',
       },
       a11y: {
         crosswordGrid: 'Crossword grid. Use arrow keys to navigate and keyboard to enter characters. Use tab to use input fields instead.',
@@ -216,7 +217,10 @@ export default class Crossword extends H5P.Question {
       this.trigger(this.getXAPIAnswerEvent());
     }, this.initialButtons.check, {
       'aria-label': this.params.a11y.check
-    }, {});
+    }, {
+      contentData: this.extras,
+      textIfSubmitting: this.params.l10n.submitAnswer,
+    });
 
     // Show solution button
     this.addButton('show-solution', this.params.l10n.showSolution, () => {
