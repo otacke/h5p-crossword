@@ -63,7 +63,7 @@
           "field": {
             "fields": [
               {
-                "label": "Rango de Puntaje"
+                "label": "Rango del Puntaje"
               },
               {},
               {
@@ -175,6 +175,10 @@
           "label": "Texto para botón \"Comprobar\""
         },
         {
+          "default": "Enviar",
+          "label": "Texto para botón \"Enviar\""
+        },
+        {
           "default": "Reintentar",
           "label": "Texto para botón \"Reintentar\""
         },
@@ -183,25 +187,26 @@
           "label": "Texto para botón \"Mostrar solución\""
         },
         {
-          "default": "No se pudo generar un crucigrama con las palabras dadas. Por favor inténtelo de nuevo con menos palabras o con palabras que tengan más caracteres en común. Si usted está usando palabras fijas, por favor asegúrese de que su posición no impida que se coloquen otras palabras.",
+          "default": "No se pudo generar un crucigrama con las palabras dadas. Por favor intente nuevamente con menos palabras, o con palabras que tengan más caracteres en común. Si usted está usando palabras fijadas, por favor asegúrese de que sus posiciones no impidan que se coloquen otras palabras.",
           "label": "No se puede crear crucigrama"
         },
         {
-          "default": "No se pudo generar un crucigrama. Usted necesita al menos dos palabras.",
+          "description": "Enlistar palabras que causaron problemas al generar el crucigrama. @words es un reemplazable que será remplazado por las palabras problemáticas auténticas.",
+          "default": "No se pudo generar un crucigrama. Usted necesita por lo menos dos palabras.",
           "label": "No se puede crear crucigrama (muy pocas palabras)"
         },
         {
-          "description": "Enlistar palabras que causaron problemas al generar el crucigrama. @words es un reemplazable que será remplazado por las palabras problemáticas auténticas.",
           "default": "Palabra(s) problemática(s): @words",
-          "label": "Palabras problemáticas"
+          "label": "Palabras problemáticas",
+          "description": "Enlistar palabras que causaron problema al generar el rompecabezas. @words es un reemplazable que será remplazado por las palabras problemáticas actuales."
         },
         {
-          "default": "Pista extra",
-          "label": "Pista extra"
+          "default": "Clave extra",
+          "label": "Clave extra"
         },
         {
-          "default": "Cerrar ventana",
-          "label": "Cerrar ventana"
+          "label": "Cerrar ventana",
+          "default": "Cerrar ventana"
         }
       ],
       "label": "Interfaz del usuario"
