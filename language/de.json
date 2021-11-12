@@ -176,6 +176,10 @@
           "default": "Überprüfen"
         },
         {
+          "label": "Beschriftung des \"Absenden\"-Buttons",
+          "default": "Submit"
+        },
+        {
           "label": "Beschriftung des \"Wiederholen\"-Buttons",
           "default": "Wiederholen"
         },

@@ -67,7 +67,7 @@
             }
           ],
           "label": "점수 범위에 대한 사용자 정의 피드백 정의",
-          "description": "필요한 만큼 범위를 추가하려면 \"Add range\" 버튼을 클릭합니다. 예: 0-20% 집중이 필요합니다, 21-91% 조금 더 노력해보세요, 91-100% 훌륭해요!",
+          "description": "필요한 만큼 범위를 추가하려면 \"범위 추가\" 버튼을 클릭합니다. 예: 0-20% 집중이 필요합니다, 21-91% 조금 더 노력해보세요, 91-100% 훌륭해요!",
           "entity": "점수 범위",
           "field": {
             "fields": [
@@ -93,42 +93,42 @@
         },
         {
           "label": "배경색",
-          "description": "Choose a background color. It will either be used instead of a background image or as background for transparent areas.",
+          "description": "배경색을 선택하세요. 배경이미지 혹은 투명한 영역에 대한 배경으로 사용됩니다.",
           "default": "#173354"
         },
         {
-          "label": "Grid color",
-          "description": "Choose a color for the grid.",
+          "label": "격자 색",
+          "description": "격자의 색을 선택하세요.",
           "default": "#000000"
         },
         {
-          "label": "Cell background color",
-          "description": "Choose the background color for a table cell.",
+          "label": "칸 배경색",
+          "description": "표의 칸 배경색을 선택하세요.",
           "default": "#ffffff"
         },
         {
-          "label": "Cell text color",
-          "description": "Choose the text color for a table cell.",
+          "label": "표의 칸 글자색",
+          "description": "표의 칸 글자색을 선택하세요.",
           "default": "#000000"
         },
         {
-          "label": "Clue id color",
-          "description": "Choose the color of the clue id inside a table cell.",
+          "label": "낱말 힌트 아이디 색",
+          "description": "표의 칸 안에 낱말 힌트 아이디 색을 선택하세요.",
           "default": "#606060"
         },
         {
-          "label": "Cell background color (highlighted)",
-          "description": "Choose the background color for a table cell that is highlighted.",
+          "label": "표의 칸 배경색(강조됨)",
+          "description": "강조되는 표의 칸 색깔을 선택하세요.",
           "default": "#3e8de8"
         },
         {
-          "label": "Cell text color (highlighted)",
-          "description": "Choose the text color for a table cell that is highlighted.",
+          "label": "표의 칸 글자 색(강조됨)",
+          "description": "강조되는 표의 칸 문자색을 선택하세요.",
           "default": "#ffffff"
         },
         {
-          "label": "Cell id color (highlighted)",
-          "description": "Choose the color of the clue id inside a table cell that is highlighted.",
+          "label": "표의 칸 아이디 색(강조됨)",
+          "description": "강조되는 표 칸안의 낱말 힌트 아이디 색을 선택하세요.",
           "default": "#e0e0e0"
         }
       ]
@@ -176,6 +176,10 @@
           "default": "확인"
         },
         {
+          "label": "Text for \"Submit\" button",
+          "default": "Submit"
+        },
+        {
           "label": "\"Retry\"(재시도) 버튼 텍스트",
           "default": "재시도"
         },
@@ -184,17 +188,17 @@
           "default": "해답 보이기"
         },
         {
-          "label": "Cannot create crossword",
-          "default": "주어진 단어로 크로스워드를 생성할 수 없습니다. 다시 시도하십시오. If you are using fixed words, please make sure that their position doesn't prevent other words from being placed."
+          "label": "가로 세로 낱말을 만들 수 없습니다.",
+          "default": "주어진 단어로 가로 세로 낱말을 생성할 수 없습니다. 다시 시도하십시오. 고정된 단어를 사용한다면, 그 단어들의 위치가 다른 단어들이 위치되는 것을 막지 않도록 하세요."
         },
         {
-          "label": "Cannot create crossword (too few words)",
-          "default": "Could not generate a crossword. You need at least two words."
+          "label": "가로 세로 낱말을 만들 수 없습니다.(너무 적은 단어)",
+          "default": "가로 세로 낱말을 생성할 수 없습니다. 적어도 두 단어가 필요합니다."
         },
         {
-          "label": "Probematic words",
-          "description": "List words that caused trouble while generating the crossword. @words is a placeholder that will be replaced by the actual problematic words.",
-          "default": "Problematic word(s): @words"
+          "label": "문제가 있는 단어",
+          "description": "가로 세로 낱말을 생성하는 동안 문제가 생기는 단어들을 목록으로 만드세요. @words 자리표시자로 실제 문제가 발생하는 단어로 대체합니다.",
+          "default": "문제가 발생하는 단어: @words"
         },
         {
           "label": "추가 단서",

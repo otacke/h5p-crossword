@@ -1,26 +1,26 @@
 {
   "semantics": [
     {
-      "label": "Task description",
-      "description": "Describe your task here."
+      "label": "დავალების აღწერა",
+      "description": "თქვენი დავალება აღწერეთ აქ."
     },
     {
-      "label": "words",
+      "label": "სიტყვები",
       "widgets": [
         {
-          "label": "Default"
+          "label": "ნაგულისხმევი"
         }
       ],
-      "entity": "Word",
+      "entity": "სიტყვა",
       "field": {
-        "label": "Word",
+        "label": "სიტყვა",
         "fields": [
           {
-            "label": "Clue",
-            "description": "Clue that should point to the answer."
+            "label": "მინიშნება",
+            "description": "მინიშნება, რომელიც მიუთითებს პასუხზე."
           },
           {
-            "label": "Answer",
+            "label": "პასუხი",
             "description": "Answer to the clue."
           },
           {
