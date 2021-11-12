@@ -72,7 +72,7 @@
           "field": {
             "fields": [
               {
-                "label": "Tranche de score"
+                "label": "Fourchette de score"
               },
               {},
               {
