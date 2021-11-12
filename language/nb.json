@@ -175,6 +175,10 @@
           "label": "Tekst for \"Sjekk\"-knapp",
           "default": "Sjekk"
         },
+         {
+          "label": "Tekst for \"Legg inn\"-knapp",
+          "default": "Legg inn"
+        },
         {
           "label": "Tekst for \"Prøv på igjen\"-knapp",
           "default": "Prøv igjen"
