@@ -2,7 +2,7 @@
   "semantics": [
     {
       "label": "Oppgavebeskrivelse",
-      "description": "Beskriv oppgaven din her."
+      "description": "Beskriv oppgava di her."
     },
     {
       "label": "ord",
@@ -32,15 +32,15 @@
           },
           {
             "label": "Rad",
-            "description": "Rad-nummeret svaret skal starte fra."
+            "description": "Radnummeret svaret skal starte fra."
           },
           {
             "label": "Kolonne",
-            "description": "Kolonne-nummeret svaret skal starte fra."
+            "description": "Kolonnenummeret svaret skal starte fra."
           },
           {
             "label": "Retning",
-            "description": "Svarets retning.",
+            "description": "Retninga på svaret.",
             "options": [
               {
                 "label": "Vannrett"
@@ -55,7 +55,7 @@
     },
     {
       "label": "Løsningsord",
-      "description": "Velg om du vil legge til et løsningsord som tas ut fra enkelte bokstaver i rutenettet. Løsningsordet vil kun vises dersom alle de korrekte bokstavene er på plass i kryssordet. Merk: Det er ingen tilgjengelighetsstøtte for denne funksjonen enda."
+      "description": "Velg om du vil legge til et løsningsord som som er satt sammen av bokstaver i rutenettet. Løsningsordet vil kun vises dersom alle de korrekte bokstavene er på plass i kryssordet. Merk: Det er ingen tilgjengelighetsstøtte for denne funksjonen enda."
     },
     {
       "label": "Generell tilbakemelding",
@@ -67,7 +67,7 @@
             }
           ],
           "label": "Definer standard tilbakemelding for alle poengsummer",
-          "description": "Klikk på \"Legg til poengområde\"-knappen for å legge til de områdene du behøver. Eksempel: 0-20% Lav poengsum, 21-91% Middels poengsum, 91-100% Høy poengsum!",
+          "description": "Klikk på \"Legg til poengområde\"-knappen for å legge til de områdene du behøver. Eksempel: 0-49 % Lav poengsum, 50-79 % Middels poengsum, 80-100 % Høy poengsum!",
           "entity": "område",
           "field": {
             "fields": [
@@ -89,16 +89,16 @@
       "fields": [
         {
           "label": "Bakgrunnsbilde",
-          "description": "Velg et valgfritt bakgrunnsbilde. Det vil bli skalert til å passe til bakgrunnen uten at bildet blir strukket."
+          "description": "Sett inn et valgfritt bakgrunnsbilde. Bildet vil bli skalert til å passe til bakgrunnen. Detvil ikke bli strukket."
         },
         {
           "label": "Bakgrunnsfarge",
-          "description": "Velg en bakgrunnsfarge. Den vil enten bli brukt i stedet for bakgrunnsbilde eller som bakgrunn for transparente områder.",
+          "description": "Velg en bakgrunnsfarge. Fargen vil bli brukt i stedet for bakgrunnsbilde, eller som bakgrunn for transparente områder.",
           "default": "#173354"
         },
         {
           "label": "Rutenett-farge",
-          "description": "Velg rutenettets farge.",
+          "description": "Velg en farge for rutenettet.",
           "default": "#000000"
         },
         {
@@ -107,50 +107,50 @@
           "default": "#ffffff"
         },
         {
-          "label": "Tekstfarge i bokstavrutene",
-          "description": "Velg tekstfargen til rutene som kan huse bokstaver.",
+          "label": "Skriftfarge i bokstavrutene",
+          "description": "Velg en skriftfarge for rutene som kan huse bokstaver.",
           "default": "#000000"
         },
         {
           "label": "Farge på hint-id",
-          "description": "Velg fargen på hint-id'en i bokstavrutene.",
+          "description": "Velg fargen på hint-id-en i bokstavrutene.",
           "default": "#606060"
         },
         {
-          "label": "Bakgrunnsfarge for valgt rute (fremhevet)",
-          "description": "Velg hvilken bakgrunnsfarge som skal vises når en rute i kryssodet er valgt og fremhevet.",
+          "label": "Bakgrunnsfarge for valgt rute",
+          "description": "Velg bakgrunnsfargen for ei bokstavrute som er valgt og framheva.",
           "default": "#3e8de8"
         },
         {
-          "label": "Tekstfarge ved valgt rute (fremhevet)",
-          "description": "Velg hvilken tekstfarge som skal vises når en rute i kryssordet er valgt og fremhevet.",
+          "label": "Tekstfarge for valgt rute",
+          "description": "Velg skriftfargen i ei boktavrute som er valgt og fremheva.",
           "default": "#ffffff"
         },
         {
-          "label": "Id-farge ved valgt rute (fremhevet)",
-          "description": "Velg hvilken id-farge som skal vises når en rute i kryssordet er valgt og fremhevet.",
+          "label": "Id-farge ved valgt rute",
+          "description": "Velg id-fargen ved ei bokstavrute som er valgt og fremheva.",
           "default": "#e0e0e0"
         }
       ]
     },
     {
       "label": "Innstillinger for oppgaveoppførsel",
-      "description": "Disse valgene gir deg kontroll over hvordan oppgaven oppfører seg.",
+      "description": "Disse valga gir deg kontroll over hvordan oppgava oppfører seg.",
       "fields": [
         {
           "label": "Antall ord som skal vises.",
-          "description": "Lag en tilfeldig samling av ord fra databasen. Samlingen vil minimum alltid innholde de ordene som er festet til rutenettet uavhenig av denne innstillingen. Er dette feltet tomt eller har verdien 0, betyr dette at alle ordene benyttes."
+          "description": "Lag ei tilfeldig samling av ord fra databasen. Samlingen vil alltid som et minimum innholde de orda som er festa til rutenettet. Er dette feltet tomt eller har verdien 0, betyr dette at alle orda brukes."
         },
         {
           "label": "Aktiver umiddelbar tilbakemelding"
         },
         {
           "label": "Gi poeng for ord",
-          "description": "Dersom dette er valgt, er det antall ord som summeres og gir poeng. Ellers er det riktige bokstaver som summeres."
+          "description": "Dersom denne funksjonen er valgt, er det antall ord som summeres og gir poeng. Ellers er det antall korrekte bokstaver som gir poeng."
         },
         {
           "label": "Gi straff",
-          "description": "Dersom dette er valgt, vil hvert feilaktige svar gi en straff på -1 poeng. "
+          "description": "Dersom denne funskjonen er valgt, vil hvert svar som er feil gi et fratrekk på ett poeng. "
         },
         {
           "label": "Aktiver \"Prøv igjen\""
@@ -189,15 +189,15 @@
         },
         {
           "label": "Kan ikke opprette kryssord",
-          "default": "Kunne ikke generere kryssord basert på de definerte ord. Vennligst prøv på nytt med færre ord, samt ord som har flere bokstaver til felles. Dersom du bruker ord som er festet, sørg for at deres posisjon ikke forhindrer andre ord i å finne en plassering."
+          "default": "Det er ikke mulig å opprette kryssord basert på de definerte orda. Vær snill og prøv på nytt med færre ord, og velg ord som har flere bokstaver til felles. Dersom du bruker ord som er festa til en bestemt posisjon, sørg for at posisjonen deres ikke hindrer at andre ord kan finne ei plassering."
         },
         {
           "label": "Kan ikke opprette kryssord (for få ord)",
-          "default": "Kunne ikke generere kryssord. Du trenger minimum to ord."
+          "default": "Du trenger minimum to ord for å opprette et kryssord."
         },
         {
           "label": "Problematiske ord",
-          "description": "Oppgi ord som forårsaket problemer ved generering av kryssordet. @words er en plassholder som vil bli erstattet med de faktiske problem-ordene.",
+          "description": "Oppgi ord som forårsaket problemer ved generering av kryssordet. @words er en plassholder som vil bli erstatta med orda du oppgir.",
           "default": "Problematiske ord: @words"
         },
         {
@@ -215,7 +215,7 @@
       "fields": [
         {
           "label": "Forklaring for rutenett",
-          "default": "Kryssord-rutenett. Bruk piltastene for å navigere og tastaturet til å skrive inn bokstavene. Bruk tab for å navigere og fylle inn ordene i feltene under hintene i stedet."
+          "default": "Kryssord-rutenett. Bruk piltastene for å navigere, og bruk tastaturet for å skrive inn bokstavene. Om du heller vil skrive inn orda i felta under hinta, bruk tab for å navigere og tastaturet for å skrive."
         },
         {
           "label": "Kolonne",
@@ -238,7 +238,7 @@
           "default": "Tom"
         },
         {
-          "description": "Oppgir resultat. @clue er en variabel og vil bli byttet ut med det respektive hintet.",
+          "description": "Oppgir resultat. @clue er en variabel og vil bli bytta ut med det respektive hintet.",
           "label": "Resultat for",
           "default": "Resultat for: @clue"
         },
@@ -255,12 +255,12 @@
           "default": "poeng"
         },
         {
-          "description": "Oppgir løsning. @clue og @solution er variabler og vil bli byttet ut med sine respektive verdier.",
+          "description": "Oppgir løsning. @clue og @solution er variabler som vil bli bytta ut med sine respektive verdier.",
           "label": "Løsning for",
-          "default": "For @clue er løsningen: @solution"
+          "default": "For @clue er løsninga: @solution"
         },
         {
-          "description": "Oppgir ekstra hint. @clue er variabler og vil bli byttet ut med sine respektive verdier.",
+          "description": "Oppgir ekstra hint. @clue er variabler som vil bli bytta ut med sin respektive verdier.",
           "label": "Ekstra hint for",
           "default": "Åpne ekstra hint for @clue"
         },
@@ -269,30 +269,30 @@
           "default": "Tom rute"
         },
         {
-          "description": "Oppgir den nåværende posisjonen. @position og @length er variabler og vil bli byttet ut med sine respektive verdier.",
+          "description": "Oppgir den nåværende posisjonen. @position og @length er variabler og vil bli bytta ut med sine respektive verdier.",
           "label": "Bokstav",
           "default": "Bokstav @position av @length"
         },
         {
-          "description": "Oppgir ordets lengde. @length er en variablel og vil bli byttet ut med sin respektive verdi.",
-          "label": "Ordets lengde",
-          "default": "@length bokstavers ord"
+          "description": "Oppgir lengden på ordet. @length er en variablel og vil bli bytta ut med sin respektive verdi.",
+          "label": "Ordlengde",
+          "default": "Ordet har @length bokstaver."
         },
         {
-          "label": "Hjelpemiddel-beskrivelse for \"Sjekk\"-knapp",
-          "default": "Sjekk bokstavene. Svarene vil merkes som riktig, feil eller ubesvart."
+          "label": "Tekstalternativ for \"Sjekk\"-knapp",
+          "default": "Sjekk bokstavene. Svara vil merkes som rett, feil eller ubesvart."
         },
         {
-          "label": "Hjelpemiddel-beskrivelse for \"Vis fasit\"-knapp",
+          "label": "Tekstalternativ for \"Vis fasit\"-knapp",
           "default": "Vis fasiten. Kryssordet vi bli korrekt fylt ut."
         },
         {
-          "label": "Hjelpemiddel-beskrivelse for \"Prøv igjen\"-knapp",
-          "default": "Prøv oppgaven på nytt. Nullstill alle svar og start oppgaven på nytt."
+          "label": "Tekstalternativ for \"Prøv igjen\"-knapp",
+          "default": "Prøv kryssordet en gang til. Nullstill alle svara og start på nytt."
         },
         {
           "label": "Ditt resultat",
-          "description": "@score og @total er variabler og vil bli byttet ut med sine respektive verdier",
+          "description": "@score og @total er variabler og vil bli bytta ut med sine respektive verdier",
           "default": "Du fikk @score av @total poeng."
         }
       ]
