@@ -151,7 +151,7 @@
           "description": "Aukera hau gaituz gero, erantzun oker bakoitzak -1 puntuko penalizazioa izango du."
         },
         {
-          "label": "Gaitu \"Berriz saiatu\""
+          "label": "Gaitu \"Saiatu berriro\""
         },
         {
           "label": "Gaitu \"Erantzuna\""
@@ -175,12 +175,12 @@
           "default": "Egiaztatu"
         },
         {
-          "label": "Text for \"Submit\" button",
-          "default": "Submit"
+          "label": "Testua \"Bidali\" botiarentzat",
+          "default": "Bidali"
         },
         {
           "label": "\"Saiatu berriro\" botoiarentzako testua",
-          "default": "Berriz saiatu"
+          "default": "Saiatu berriro"
         },
         {
           "default": "Erakutsi erantzuna",
@@ -254,8 +254,8 @@
           "default": "puntu"
         },
         {
-          "label": "Honentzako emaitza:",
-          "default": "@clue pistaren emaitza hau da: @solution",
+          "label": "Honentzako erantzuna:",
+          "default": "@clue pistaren erantzuna hau da: @solution",
           "description": "Erantzunaren iragarlea. @clue eta @solution euren balioekin ordezkatuko diren aldagaiak dira."
         },
         {
@@ -283,10 +283,10 @@
         },
         {
           "default": "Erakutsi erantzuna. Gurutzegrama emaitza zuzenekin beteko da.",
-          "label": "\"Erakutsi emaitza\" botoiaren laguntza-teknologientzako etiketa"
+          "label": "\"Erakutsi erantzuna\" botoiaren laguntza-teknologientzako etiketa"
         },
         {
-          "label": "\"Berriz saiatu\" botoiaren laguntza-teknologientzako etiketa",
+          "label": "\"Saiatu berriro\" botoiaren laguntza-teknologientzako etiketa",
           "default": "Zeregina berriz egiten saiatu. Berrabiarazi erantzun guztiak eta hasi zeregina berriz."
         },
         {
