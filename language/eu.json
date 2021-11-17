@@ -183,8 +183,8 @@
           "default": "Saiatu berriro"
         },
         {
-          "default": "Erakutsi erantzuna",
-          "label": "\"Erakutsi erantzuna\" botoiaren testua"
+          "default": "Erakutsi emaitza",
+          "label": "\"Erakutsi emaitza\" botoiaren testua"
         },
         {
           "label": "Ezin da gurutzegrama sortu",
@@ -282,8 +282,8 @@
           "default": "Egiaztatu karaktereak. Erantzuna zuzen, oker edo erantzun gabeko gisa markatuko da."
         },
         {
-          "default": "Erakutsi erantzuna. Gurutzegrama emaitza zuzenekin beteko da.",
-          "label": "\"Erakutsi erantzuna\" botoiaren laguntza-teknologientzako etiketa"
+          "default": "Erakutsi emaitza. Gurutzegrama emaitza zuzenekin beteko da.",
+          "label": "\"Erakutsi emaitza\" botoiaren laguntza-teknologientzako etiketa"
         },
         {
           "label": "\"Saiatu berriro\" botoiaren laguntza-teknologientzako etiketa",
