@@ -8,12 +8,12 @@
       "label": "words",
       "widgets": [
         {
-          "label": "Default"
+          "label": "Výchozí"
         }
       ],
       "entity": "Word",
       "field": {
-        "label": "Word",
+        "label": "slov",
         "fields": [
           {
             "label": "Clue",

@@ -67,7 +67,7 @@
             }
           ],
           "label": "Definieer aangepaste feedback voor elke scorereeks",
-          "description": "Druk op de knop \"Voeg scorereeks toe\" om zoveel reeksen toe te voegen als nodig is. Voorbeeld: 0-20% Onvoldoende score, 21-91% Gemiddelde score, 91-100% Uitstekende score!",
+          "description": "Druk op de \"Voeg scorereeks\"-knop om zoveel reeksen toe te voegen als nodig. Voorbeeld: 0-20% Onvoldoende, 21-91% Gemiddelde score, 91-100% Uitstekende score!",
           "entity": "reeks",
           "field": {
             "fields": [
@@ -77,7 +77,7 @@
               {},
               {
                 "label": "Feedback voor de gedefinieerde scorereeks",
-                "placeholder": "Vul de aangepaste feedback in"
+                "placeholder": "Vul de feedback in"
               }
             ]
           }
@@ -197,7 +197,7 @@
         },
         {
           "label": "Probematic words",
-          "description": "List words that caused trouble while generating the crossword. @words is a placeholder that will be replaced by the actual problematic words.",
+          "description": "Maak een lijst van woorden die problemen veroorzaakten bij het genereren van de kruiswoordpuzzel. @words is een plaatshouder die zal worden vervangen door de werkelijke problematische woorden.",
           "default": "Problematic word(s): @words"
         },
         {
@@ -211,7 +211,7 @@
       ]
     },
     {
-      "label": "Readspeaker",
+      "label": "Voorlezer",
       "fields": [
         {
           "label": "Plaatsbeschrijving van de kruiswoordpuzzel",
