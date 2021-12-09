@@ -27,7 +27,7 @@
             "label": "Ekstra hint"
           },
           {
-            "label": "Fest ord til rutenett.",
+            "label": "Fest ord til rutenett",
             "description": "Huk av dersom du ønsker å feste ordet til en spesifikk posisjon i rutenettet."
           },
           {
@@ -55,7 +55,7 @@
     },
     {
       "label": "Løsningsord",
-      "description": "Velg om du vil legge til et løsningsord som som er satt sammen av bokstaver i rutenettet. Løsningsordet vil kun vises dersom alle de korrekte bokstavene er på plass i kryssordet. Merk: Det er ingen tilgjengelighetsstøtte for denne funksjonen enda."
+      "description": "Velg om du vil legge til et løsningsord som er satt sammen av bokstaver i rutenettet. Løsningsordet vil kun vises dersom alle de korrekte bokstavene er på plass i kryssordet. Merk: Det er ingen tilgjengelighetsstøtte for denne funksjonen enda."
     },
     {
       "label": "Generell tilbakemelding",
@@ -138,7 +138,7 @@
       "description": "Disse valga gir deg kontroll over hvordan oppgava oppfører seg.",
       "fields": [
         {
-          "label": "Antall ord som skal vises.",
+          "label": "Antall ord som skal vises",
           "description": "Lag ei tilfeldig samling av ord fra databasen. Samlingen vil alltid som et minimum innholde de orda som er festa til rutenettet. Er dette feltet tomt eller har verdien 0, betyr dette at alle orda brukes."
         },
         {
@@ -150,7 +150,7 @@
         },
         {
           "label": "Gi straff",
-          "description": "Dersom denne funskjonen er valgt, vil hvert svar som er feil gi et fratrekk på ett poeng. "
+          "description": "Dersom denne funskjonen er valgt, vil hvert svar som er feil gi et fratrekk på ett poeng."
         },
         {
           "label": "Aktiver \"Prøv igjen\""
@@ -175,7 +175,7 @@
           "label": "Tekst for \"Sjekk\"-knapp",
           "default": "Sjekk"
         },
-         {
+        {
           "label": "Tekst for \"Legg inn\"-knapp",
           "default": "Legg inn"
         },
@@ -276,7 +276,7 @@
         {
           "description": "Oppgir lengden på ordet. @length er en variablel og vil bli bytta ut med sin respektive verdi.",
           "label": "Ordlengde",
-          "default": "Ordet har @length bokstaver."
+          "default": "Ordet har @length bokstaver"
         },
         {
           "label": "Tekstalternativ for \"Sjekk\"-knapp",
@@ -292,7 +292,7 @@
         },
         {
           "label": "Ditt resultat",
-          "description": "@score og @total er variabler og vil bli bytta ut med sine respektive verdier",
+          "description": "@score og @total er variabler og vil bli bytta ut med sine respektive verdier.",
           "default": "Du fikk @score av @total poeng."
         }
       ]
