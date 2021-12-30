@@ -63,7 +63,7 @@
           "field": {
             "fields": [
               {
-                "label": "Rango de Puntaje"
+                "label": "Rango del Puntaje"
               },
               {},
               {
@@ -82,7 +82,7 @@
           ]
         }
       ],
-      "label": "Retroalimentación global"
+      "label": "Retroalimentación Global"
     },
     {
       "fields": [
