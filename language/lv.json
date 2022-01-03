@@ -198,7 +198,7 @@
         {
           "label": "Problemātiskie vārdi",
           "default": "Problemātiskais(-i) vārds(-i): @words",
-          "description": "Uzskaitiet vārdus, kas radīja problēmas krustvārdu mīklas ģenerēšanas laikā. @words ir vietturis, kas tiks aizstāts ar faktiskajiem problemātiskajiem vārdiem."
+          "description": "Uzskaitīt vārdus, kas radīja problēmas krustvārdu mīklas ģenerēšanas laikā. @words ir vietturis, kas tiks aizstāts ar faktiskajiem problemātiskajiem vārdiem."
         },
         {
           "label": "Papildu pavediens",
@@ -270,7 +270,7 @@
         },
         {
           "label": "Burts",
-          "default": "Burta @pozīcija ar @garumu",
+          "default": "Burts @position no @length",
           "description": "Pašreizējās pozīcijas paziņošana. @position un @length ir mainīgie, un tie tiks aizstāti ar to attiecīgajām vērtībām."
         },
         {
@@ -284,7 +284,7 @@
         },
         {
           "default": "Parādīt risinājumu. Krustvārdu mīkla tiks aizpildīta ar pareizo risinājumu.",
-          "label": "Asistīvo tehnoloģiju apraksts pogai \"Rādīt risinājumu\""
+          "label": "Pogas \"Rādīt risinājumu\" apraksts asistīvajām tehnoloģijām"
         },
         {
           "label": "Pogas \"Mēģināt vēlreiz\" apraksts priekš asistīvajām tehnoloģijām",
