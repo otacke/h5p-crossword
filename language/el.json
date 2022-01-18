@@ -176,8 +176,8 @@
           "default": "Έλεγχος"
         },
         {
-          "label": "Text for \"Submit\" button",
-          "default": "Submit"
+          "label": "Κείμενο για το κουμπί \"Υποβολή\"",
+          "default": "Υποβολή"
         },
         {
           "label": "Κείμενο για το κουμπί \"Επανάληψη\"",
