@@ -138,6 +138,16 @@ export default class CrosswordCell {
     cellInput.setAttribute('tabindex', '-1');
 
     cellInput.addEventListener('input', (event) => {
+      if (!this.enabled) {
+        return;
+      }
+
+      this.setAnswer(Util.toUpperCase(event.data, Util.UPPERCASE_EXCEPTIONS), true);
+      this.cellInput.value = '';
+      const cellInformation = this.getInformation();
+
+      this.callbacks.onKeyup(cellInformation);
+
       event.preventDefault();
     });
 
@@ -151,6 +161,11 @@ export default class CrosswordCell {
      */
     cellInput.addEventListener('keydown', (event) => {
       if (!this.enabled) {
+        return;
+      }
+
+      if (event.repeat) {
+        event.preventDefault(); // Skip InputEvent that would repeat
         return;
       }
 
@@ -171,30 +186,6 @@ export default class CrosswordCell {
     });
 
     /*
-     * Keypress listener. Required to get all quick keypresses for chars
-     */
-    cellInput.addEventListener('keypress', (event) => {
-      event.preventDefault();
-
-      if (!this.enabled || event.repeat) {
-        return;
-      }
-
-      if (!event.key || event.key === 'Unidentified') {
-        return; // Use keyup as fallback for old browsers
-      }
-
-      if (event.key.length > 1) {
-        return; // Not a character
-      }
-
-      this.setAnswer(Util.toUpperCase(event.key, Util.UPPERCASE_EXCEPTIONS), true);
-
-      this.cellInput.value = '';
-      this.callbacks.onKeyup(this.getInformation());
-    });
-
-    /*
      * keyup listener, used particularly for Android that doesn't
      * provide event.key and doesn't check maxlength on input -
      * workaround by retrieving first character
@@ -208,9 +199,8 @@ export default class CrosswordCell {
         return; // Already handled by keydown/keypress
       }
 
-      event.preventDefault();
-
       if (event.repeat) {
+        event.preventDefault(); // Skip InputEvent that would repeat
         return;
       }
 
@@ -226,24 +216,6 @@ export default class CrosswordCell {
           this.cellInput.value = '';
           this.callbacks.onKeyup(cellInformation);
         }
-      }
-      else if ((event.keyCode === 187 || event.keyCode === 192) && event.key === 'Dead') {
-        return; // Skip accent keys
-      }
-      else {
-        // All printable symbols including numbers, Unicode, etc.
-        if (
-          this.cellInput.value.substr(0, 1) === '' &&
-          event.keyCode !== 229 // Some weird Android keyCode
-        ) {
-          return; // Could be non-valid accent combination
-        }
-
-        this.setAnswer(this.cellInput.value, true);
-        this.cellInput.value = '';
-        const cellInformation = this.getInformation();
-
-        this.callbacks.onKeyup(cellInformation);
       }
     });
 
