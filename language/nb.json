@@ -63,10 +63,10 @@
         {
           "widgets": [
             {
-              "label": "Forhåndsinnstilling"
+              "label": "Forhandsinnstilling"
             }
           ],
-          "label": "Legg inn tilbakemeldinger for poengområdene",
+          "label": "Opprett poengområder og legg inn tilbakemeldinger.",
           "description": "Klikk på knappen \"Legg til poengområde\" og legg til så mange poengområder du trenger. Eksempel: 0–40 % Svakt resultat, 41–80 % Gjennomsnittlig resultat, 81–100 % Flott resultat!",
           "entity": "Område",
           "field": {
@@ -77,7 +77,7 @@
               {},
               {
                 "label": "Tilbakemelding for definert poengområde",
-                "placeholder": "Skriv inn tilbakemelding"
+                "placeholder": "Skriv inn tilbakemelding."
               }
             ]
           }
