@@ -129,10 +129,10 @@ export default class CrosswordGenerator {
 
         const startOrientation = this.getRandomOrientation();
         if (startOrientation === 'across') {
-          column -= Math.floor(wordElement.answer.length / 2);
+          column -= Math.floor(Util.unicodeLength(wordElement.answer) / 2);
         }
         else {
-          row -= Math.floor(wordElement.answer.length / 2);
+          row -= Math.floor(Util.unicodeLength(wordElement.answer) / 2);
         }
 
         if (this.canPlaceAnswerAt(wordElement.answer, {row: row, column: column, orientation: startOrientation}) !== false) {
@@ -267,7 +267,8 @@ export default class CrosswordGenerator {
    * @param {number} charIndex Index of character.
    */
   addCellToGrid(wordElement, position, charIndex) {
-    const char = wordElement.answer.charAt(charIndex);
+
+    const char = Util.unicodeCharAt(wordElement.answer, charIndex);
     if (this.cells[position.row][position.column] === null) {
       this.cells[position.row][position.column] = {char: char};
 
@@ -296,12 +297,12 @@ export default class CrosswordGenerator {
    */
   placeAnswerAt(wordElement, position) {
     if (position.orientation === 'across') {
-      for (let column = position.column, i = 0; column < position.column + wordElement.answer.length; column++, i++) {
+      for (let column = position.column, i = 0; column < position.column + Util.unicodeLength(wordElement.answer); column++, i++) {
         this.addCellToGrid(wordElement, {row: position.row, column: column, orientation: position.orientation}, i);
       }
     }
     else if (position.orientation === 'down') {
-      for (let row = position.row, i = 0; row < position.row + wordElement.answer.length; row++, i++) {
+      for (let row = position.row, i = 0; row < position.row + Util.unicodeLength(wordElement.answer); row++, i++) {
         this.addCellToGrid(wordElement, {row: row, column: position.column, orientation: position.orientation}, i);
       }
     }
@@ -345,20 +346,20 @@ export default class CrosswordGenerator {
 
     if (position.orientation === 'across') {
       // Check if a duplicate word is trying to be put on a previous placed word
-      for (let i = 0; i < answer.length; i++) {
+      for (let i = 0; i < Util.unicodeLength(answer); i++) {
         const cellValue = this.cells[position.row][position.column + i];
 
         if (!cellValue || cellValue.char !== answer[i]) {
           break;
         }
         else {
-          if (i === answer.length - 1) {
+          if (i === Util.unicodeLength(answer) - 1) {
             return false;
           }
         }
       }
 
-      if (position.column + answer.length > this.cells[position.row].length) {
+      if (position.column + Util.unicodeLength(answer) > this.cells[position.row].length) {
         return false; // out of bounds (word too long)
       }
 
@@ -366,25 +367,25 @@ export default class CrosswordGenerator {
         return false; // can't have a word directly to the left
       }
 
-      if (position.column + answer.length < this.cells[position.row].length && this.cells[position.row][position.column + answer.length] !== null) {
+      if (position.column + Util.unicodeLength(answer) < this.cells[position.row].length && this.cells[position.row][position.column + Util.unicodeLength(answer)] !== null) {
         return false; // can't have word directly to the right
       }
 
       // check the row above to make sure there isn't another word
       // running parallel. It is ok if there is a character above, only if
       // the character below it intersects with the current word
-      for (let row = position.row - 1, column = position.column, i = 0; row >= 0 && column < position.column + answer.length; column++, i++) {
+      for (let row = position.row - 1, column = position.column, i = 0; row >= 0 && column < position.column + Util.unicodeLength(answer); column++, i++) {
         const isEmpty = (this.cells[row][column] === null);
-        const isIntersection = this.cells[position.row][column] !== null && this.cells[position.row][column]['char'] === answer.charAt(i);
+        const isIntersection = this.cells[position.row][column] !== null && this.cells[position.row][column]['char'] === Util.unicodeCharAt(answer, i);
         if (!isEmpty && !isIntersection) {
           return false;
         }
       }
 
       // same deal as above, we just search in the row below the word
-      for (let r = position.row + 1, c = position.column, i = 0; r < this.cells.length && c < position.column + answer.length; c++, i++) {
+      for (let r = position.row + 1, c = position.column, i = 0; r < this.cells.length && c < position.column + Util.unicodeLength(answer); c++, i++) {
         const isEmpty = (this.cells[r][c] === null);
-        const isIntersection = this.cells[position.row][c] !== null && this.cells[position.row][c]['char'] === answer.charAt(i);
+        const isIntersection = this.cells[position.row][c] !== null && this.cells[position.row][c]['char'] === Util.unicodeCharAt(answer, i);
         if (!isEmpty && !isIntersection) {
           return false;
         }
@@ -392,8 +393,8 @@ export default class CrosswordGenerator {
 
       // check to make sure we aren't overlapping a char (that doesn't match)
       // and get the count of intersections
-      for (let c = position.column, i = 0; c < position.column + answer.length; c++, i++) {
-        const result = this.canPlaceCharAt(answer.charAt(i), {row: position.row, column: c});
+      for (let c = position.column, i = 0; c < position.column + Util.unicodeLength(answer); c++, i++) {
+        const result = this.canPlaceCharAt(Util.unicodeCharAt(answer, i), {row: position.row, column: c});
         if (result === false) {
           return false;
         }
@@ -401,20 +402,20 @@ export default class CrosswordGenerator {
     }
     else if (position.orientation === 'down') {
       // Check if a duplicate word is trying to be put on a previous placed word
-      for (let i = 0; i < answer.length; i++) {
+      for (let i = 0; i < Util.unicodeLength(answer); i++) {
         const cellValue = this.cells[position.row + i][position.column];
 
         if (!cellValue || cellValue.char !== answer[i]) {
           break;
         }
         else {
-          if (i === answer.length - 1) {
+          if (i === Util.unicodeLength(answer) - 1) {
             return false;
           }
         }
       }
 
-      if (position.row + answer.length > this.cells.length) {
+      if (position.row + Util.unicodeLength(answer) > this.cells.length) {
         return false; // out of bounds
       }
 
@@ -422,7 +423,7 @@ export default class CrosswordGenerator {
         return false; // can't have a word directly above
       }
 
-      if (position.row + answer.length < this.cells.length && this.cells[position.row + answer.length][position.column] !== null) {
+      if (position.row + Util.unicodeLength(answer) < this.cells.length && this.cells[position.row + Util.unicodeLength(answer)][position.column] !== null) {
         return false; // can't have a word directly below
       }
 
@@ -430,9 +431,9 @@ export default class CrosswordGenerator {
       // word running parallel. It is ok if there is a character to the
       // left, only if the character to the right intersects with the
       // current word
-      for (let column = position.column - 1, row = position.row, i = 0; column >= 0 && row < position.row + answer.length; row++, i++) {
+      for (let column = position.column - 1, row = position.row, i = 0; column >= 0 && row < position.row + Util.unicodeLength(answer); row++, i++) {
         const isEmpty = this.cells[row][column] === null;
-        const isIntersection = this.cells[row][position.column] !== null && this.cells[row][position.column]['char'] === answer.charAt(i);
+        const isIntersection = this.cells[row][position.column] !== null && this.cells[row][position.column]['char'] === Util.unicodeCharAt(answer, i);
         const can_place_here = isEmpty || isIntersection;
         if (!can_place_here) {
           return false;
@@ -440,9 +441,9 @@ export default class CrosswordGenerator {
       }
 
       // same deal, but look at the column to the right
-      for (let column = position.column + 1, row = position.row, i = 0; row < position.row + answer.length && column < this.cells[row].length; row++, i++) {
+      for (let column = position.column + 1, row = position.row, i = 0; row < position.row + Util.unicodeLength(answer) && column < this.cells[row].length; row++, i++) {
         const isEmpty = this.cells[row][column] === null;
-        const isIntersection = this.cells[row][position.column] !== null && this.cells[row][position.column]['char'] === answer.charAt(i);
+        const isIntersection = this.cells[row][position.column] !== null && this.cells[row][position.column]['char'] === Util.unicodeCharAt(answer, i);
         const can_place_here = isEmpty || isIntersection;
         if (!can_place_here) {
           return false;
@@ -451,8 +452,8 @@ export default class CrosswordGenerator {
 
       // check to make sure we aren't overlapping a char (that doesn't match)
       // and get the count of intersections
-      for (let row = position.row, i = 0; row < position.row + answer.length; row++, i++) {
-        const result = this.canPlaceCharAt(answer.charAt(i, 1), {row: row, column: position.column});
+      for (let row = position.row, i = 0; row < position.row + Util.unicodeLength(answer); row++, i++) {
+        const result = this.canPlaceCharAt(Util.unicodeCharAt(answer, i), {row: row, column: position.column});
         if (result === false) {
           return false;
         }
@@ -474,8 +475,8 @@ export default class CrosswordGenerator {
     // check the char_index for every letter, and see if we can put it there
     const bestPositions = [];
 
-    for (let i = 0; i < answer.length; i++) {
-      const possibleLocations = this.indexChar[answer.charAt(i)];
+    for (let i = 0; i < Util.unicodeLength(answer); i++) {
+      const possibleLocations = this.indexChar[Util.unicodeCharAt(answer, i)];
       if (!possibleLocations) {
         continue;
       }
@@ -572,7 +573,7 @@ export default class CrosswordGenerator {
         return -1;
       }
       else {
-        return b.answer.length - a.answer.length;
+        return Util.unicodeLength(b.answer) - Util.unicodeLength(a.answer);
       }
     });
   }

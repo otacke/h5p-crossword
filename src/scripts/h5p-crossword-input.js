@@ -105,7 +105,7 @@ export default class CrosswordInput {
       const answerLength = document.createElement('span');
       answerLength.classList.add('h5p-crossword-input-fields-group-answer-length');
 
-      answerLength.innerText = `(${word.answer.split(' ').map(part => part.length).join(',')})`;
+      answerLength.innerText = `(${word.answer.split(' ').map(part => Util.unicodeLength(part)).join(',')})`;
       clueContent.appendChild(answerLength);
 
       // Optional extra clue info symbol for opening popup
@@ -163,14 +163,12 @@ export default class CrosswordInput {
         clueId: word.clueId,
         orientation: word.orientation,
         clue: word.clue,
-        length: word.answer.length
+        length: Util.unicodeLength(word.answer)
       };
       inputField.setAttribute('aria-label', this.buildAriaLabel(ariaLabelParams));
       inputField.setAttribute('autocomplete', 'off');
       inputField.setAttribute('autocorrect', 'off');
-      inputField.setAttribute('maxLength', word.answer.length);
       inputField.setAttribute('spellcheck', 'false');
-      this.setInputFieldValue(inputField, ''); // Initialize with placeholders
 
       wrapper.appendChild(inputField);
 
@@ -184,7 +182,10 @@ export default class CrosswordInput {
           this.callbacks.onFieldInput({
             clueId: word.clueId,
             orientation: word.orientation,
-            cursorPosition: Math.min(inputField.selectionStart, word.answer.length - 1),
+            cursorPosition: Math.min(
+              this.getInputFieldSelectionStart(inputField),
+              Util.unicodeLength(word.answer) - 1
+            ),
             text: inputField.value,
             readOffset: -1 // don't read
           });
@@ -197,9 +198,10 @@ export default class CrosswordInput {
           return;
         }
 
-        const start = inputField.selectionStart;
-        inputField.value = `${inputField.value.substr(0, start + 1)}${inputField.value.substr(start + 1)}`;
-        inputField.selectionEnd = start + 1;
+        const codePointStart = inputField.selectionStart;
+        const start = this.getInputFieldSelectionStart(inputField);
+        inputField.value = `${Util.unicodeSubstring(inputField.value, 0, start)}${Util.unicodeSubstring(inputField.value, start + 1)}`;
+        inputField.selectionEnd = codePointStart;
 
         /*
          * Samsung's virtual keyboard of Android devices may add redundant
@@ -221,8 +223,8 @@ export default class CrosswordInput {
           this.callbacks.onFieldInput({
             clueId: word.clueId,
             orientation: word.orientation,
-            cursorPosition: Math.min(start + 1, word.answer.length - 1),
-            text: after,
+            cursorPosition: Math.min(this.getInputFieldSelectionStart(inputField), Util.unicodeLength(word.answer) - 1),
+            text: inputField.value,
             readOffset: -1 // don't read
           });
         }, 0); // selectionStart will be 0 before DOM rendered
@@ -242,19 +244,22 @@ export default class CrosswordInput {
         }
 
         // Sync cursor position in table
-        let cursorPosition = inputField.selectionStart;
+        let cursorPosition = this.getInputFieldSelectionStart(inputField);
         if (event.code === 'Home' || event.code === 'ArrowUp') {
           cursorPosition = 0;
         }
         else if (event.code === 'End' || event.code === 'ArrowDown') {
           cursorPosition = Math.min(
-            inputField.value.length,
-            inputField.getAttribute('maxLength') - 1
+            Util.unicodeLength(inputField.value),
+            this.inputFields.find(inField => inField.inputField === inputField).maxLength - 1
           );
         }
 
         this.setInputFieldValue(inputField, inputField.value);
-        inputField.setSelectionRange(cursorPosition, cursorPosition);
+        inputField.setSelectionRange(
+          Util.unicodeSubstring(inputField.value, 0, cursorPosition).length,
+          Util.unicodeSubstring(inputField.value, 0, cursorPosition).length
+        );
 
         this.callbacks.onFieldInput({
           clueId: word.clueId,
@@ -273,8 +278,24 @@ export default class CrosswordInput {
 
         event.preventDefault();
 
-        const text = event.clipboardData.getData('text');
-        this.setInputFieldValue(inputField, text.substr(0, inputField.getAttribute('maxLength')));
+        let pasteText = event.clipboardData.getData('text');
+
+        const start = this.getInputFieldSelectionStart(inputField);
+        const maxLength = this.inputFields.find(inField => inField.inputField === inputField).maxLength;
+
+        // text up to start position + pasted text
+        let text = `${Util.unicodeSubstring(inputField.value, 0, start)}${pasteText}`;
+        const cursorPosition = Math.min(Util.unicodeLength(text), maxLength);
+
+        // attach text up to maxLength
+        text = `${text}${Util.unicodeSubstring(inputField.value, start + Util.unicodeLength(text) - 1, maxLength)}`;
+
+        this.setInputFieldValue(inputField, text);
+
+        inputField.setSelectionRange(
+          Util.unicodeSubstring(inputField.value, 0, cursorPosition).length,
+          Util.unicodeSubstring(inputField.value, 0, cursorPosition).length
+        );
       });
 
       const listLabel = this.params.a11y.resultFor
@@ -292,8 +313,11 @@ export default class CrosswordInput {
         inputField: inputField,
         orientation: word.orientation,
         clueId: word.clueId,
-        solution: solution
+        solution: solution,
+        maxLength: Util.unicodeLength(word.answer)
       });
+
+      this.setInputFieldValue(inputField, ''); // Initialize with placeholders
 
       inputFieldsGroup.appendChild(wrapper);
     });
@@ -374,7 +398,7 @@ export default class CrosswordInput {
      */
     let newValue = '';
     if (!params.forceValue) {
-      for (let char of value.split('')) {
+      for (let char of Util.unicodeSplitChars(value)) {
         if (char === ' ') {
           break;
         }
@@ -385,12 +409,12 @@ export default class CrosswordInput {
       newValue = value;
 
       // Set placeholders
-      const placeholder = new Array(field.maxLength + 1).join(Util.CHARACTER_PLACEHOLDER);
+      const placeholder = new Array(this.inputFields.find(inField => inField.inputField === field).maxLength + 1).join(Util.CHARACTER_PLACEHOLDER);
       newValue = placeholder
         .split('')
         .map((char, index) => {
-          if (newValue.length > index && newValue[index] !== ' ') {
-            return newValue[index];
+          if (Util.unicodeLength(newValue) > index && Util.unicodeCharAt(newValue, index) !== ' ') {
+            return Util.unicodeCharAt(newValue, index);
           }
 
           return char;
@@ -399,6 +423,15 @@ export default class CrosswordInput {
     }
 
     field.value = Util.toUpperCase(newValue, Util.UPPERCASE_EXCEPTIONS);
+  }
+
+  /**
+   * Get input field selection start considering unicode graphemes.
+   * @param {HTMLElement} inputField Text input field.
+   * @return {number} Selection start considering unicode graphemes.
+   */
+  getInputFieldSelectionStart(inputField) {
+    return Util.unicodeLength(inputField.value.substring(0, inputField.selectionStart));
   }
 
   /**
@@ -529,7 +562,7 @@ export default class CrosswordInput {
         scorePointsAwarded.push(cellInfo.position);
 
         // Fill up inputs with space
-        const char = (inputChars.length > index) ? inputChars[index] : ' ';
+        const char = (Util.unicodeLength(inputChars) > index) ? Util.unicodeCharAt(inputChars, index) : ' ';
 
         let result;
         let scoreExplanation;

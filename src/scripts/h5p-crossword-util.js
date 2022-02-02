@@ -1,3 +1,5 @@
+import charRegex from 'char-regex';
+
 /** Class for utility functions */
 class Util {
   /**
@@ -104,6 +106,64 @@ class Util {
   }
 
   /**
+   * Get substring considering unicode graphemes.
+   * @param {string} text Text to get substring from.
+   * @param {number} start Start index.
+   * @param {number} [end] End index.
+   * @return {string} Substring considering unicode graphemes.
+   */
+  static unicodeSubstring(text, start, end) {
+    if (typeof text !== 'string'
+      || typeof start !== 'number'
+      || (typeof end !== 'number' && end !== undefined)) {
+      return '';
+    }
+
+    return text
+      .replace(Util.ANSI_REGEXP, '')
+      .match(charRegex())
+      .slice(start, end)
+      .join('');
+  }
+
+  /**
+   * Get number of unicode graphemes.
+   * @param {string} text Text to count graphemes in.
+   * @return {number} Number of unicode graphemes.
+   */
+  static unicodeLength(text) {
+    if (typeof text !== 'string' || text === '') {
+      return 0;
+    }
+
+    return text
+      .replace(Util.ANSI_REGEXP, '')
+      .match(charRegex()).length;
+  }
+
+  /**
+   * Get unicode grapheme at specified position.
+   * @param {string} text Text to get grapheme from.
+   * @param {number} index Position.
+   * @return {string} Grapheme at specified position.
+   */
+  static unicodeCharAt(text, index) {
+    if (typeof text !== 'string') {
+      return '';
+    }
+
+    text = text
+      .replace(Util.ANSI_REGEXP, '')
+      .match(charRegex());
+
+    if (text.length < index + 1) {
+      return '';
+    }
+
+    return text[index];
+  }
+
+  /**
    * Convert string to uppercase with optional exceptions.
    * @param {string} text Text to be converted to uppercase.
    * @param {string[]} [exceptions=[]] List of characters to keep in lowercase or replace by others.
@@ -197,6 +257,18 @@ Util.UPPERCASE_EXCEPTIONS = [
     upperCase: '\u1e9e' // LATIN CAPITAL LETTER SHARP S
   }
 ];
+
+/**
+ * @constant {RegExp} Regular expression for matching ANSI escape codes.
+ * @see {@link https://github.com/chalk/ansi-regex}
+ */
+Util.ANSI_REGEXP = new RegExp(
+  [
+    '[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]+)*|[a-zA-Z\\d]+(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)',
+    '(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-nq-uy=><~]))'
+  ].join('|'),
+  'g'
+);
 
 /** @constant {string} Placeholder in text input fields */
 Util.CHARACTER_PLACEHOLDER = '\uff3f';

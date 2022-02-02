@@ -239,7 +239,8 @@ export default class CrosswordCell {
    * @return {string} Current answer.
    */
   getCurrentAnswer() {
-    return this.cell.innerText.substr(0, 1);
+    return Util.unicodeCharAt(this.cell.innerText, 0);
+    // return this.cell.innerText.substr(0, 1);
   }
 
   /**

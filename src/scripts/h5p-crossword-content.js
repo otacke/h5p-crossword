@@ -3,6 +3,7 @@ import CrosswordInput from './h5p-crossword-input';
 import CrosswordTable from './h5p-crossword-table';
 import CrosswordSolutionWord from './h5p-crossword-solution-word';
 import CrosswordGenerator from './h5p-crossword-generator';
+import Util from './h5p-crossword-util';
 
 /** Class representing the content */
 export default class CrosswordContent {
@@ -374,7 +375,7 @@ export default class CrosswordContent {
         clue: wordData[0].clue,
         orientation: this.params.l10n[wordData[0].orientation],
         clueId: wordData[0].clueId,
-        answerLength: wordData[0].answer.length
+        answerLength: Util.unicodeLength(wordData[0].answer)
       });
     }
 

@@ -197,7 +197,7 @@ export default class CrosswordTable {
       let row = cell.starty - 1;
       let column = cell.startx - 1;
 
-      for (let i = 0; i < cell.answer.length; i++) {
+      for (let i = 0; i < Util.unicodeLength(cell.answer); i++) {
         if (cell.orientation === 'none') {
           continue;
         }
@@ -205,8 +205,8 @@ export default class CrosswordTable {
         stemCells[row][column] = {
           row: row,
           column: column,
-          solution: cell.answer.substr(i, 1),
-          solutionLength: cell.answer.length,
+          solution: Util.unicodeCharAt(cell.answer, i),
+          solutionLength: Util.unicodeLength(cell.answer),
           solutionIndex: i + 1,
           clue: cell.clue,
           clueIdAcross: (cell.orientation === 'across') ? cell.clueId : stemCells[row][column].clueIdAcross,
@@ -298,7 +298,7 @@ export default class CrosswordTable {
         result.push(candidateCells[0]);
       });
 
-    return (result.length === solutionWord.length) ? result : [];
+    return (Util.unicodeLength(result) === Util.unicodeLength(solutionWord)) ? result : [];
   }
 
   /**
@@ -801,7 +801,7 @@ export default class CrosswordTable {
           orientation: orientation,
           clue: wordElement.clue,
           position: index,
-          length: wordElement.answer.length
+          length: Util.unicodeLength(wordElement.answer)
         };
         cell.setAriaLabel(this.buildAriaLabel(ariaLabelParams));
 
@@ -895,7 +895,7 @@ export default class CrosswordTable {
 
     cells.forEach((cell, index) => {
       cell.setAnswer(
-        params.text[index] || '',
+        Util.unicodeCharAt(params.text, index) || '',
         (params.readOffset === -1) ? false : index === params.cursorPosition - params.readOffset
       );
 
@@ -1035,7 +1035,7 @@ export default class CrosswordTable {
           placeholders.push(CrosswordTable.XAPI_PLACEHOLDER);
         }
         else {
-          while (placeholders.length < word.answer.length) {
+          while (placeholders.length < Util.unicodeLength(word.answer)) {
             placeholders.push(CrosswordTable.XAPI_PLACEHOLDER);
           }
         }
