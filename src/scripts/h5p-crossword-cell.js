@@ -137,9 +137,33 @@ export default class CrosswordCell {
     cellInput.setAttribute('spellcheck', 'false');
     cellInput.setAttribute('tabindex', '-1');
 
+    cellInput.addEventListener('paste', (event) => {
+      if (!this.enabled) {
+        return;
+      }
+
+      let pasteText = event.clipboardData.getData('text');
+      if (!pasteText || pasteText.trim() === '') {
+        return;
+      }
+      pasteText = Util.unicodeSubstring(event.clipboardData.getData('text').replace(/\n/g, ''), 0, 1);
+
+      this.setAnswer(Util.toUpperCase(pasteText, Util.UPPERCASE_EXCEPTIONS), true);
+      this.cellInput.value = '';
+      const cellInformation = this.getInformation();
+
+      this.callbacks.onKeyup(cellInformation);
+
+      event.preventDefault();
+    });
+
     cellInput.addEventListener('input', (event) => {
       if (!this.enabled) {
         return;
+      }
+
+      if (event.data === null) {
+        return; // pasting will yield null
       }
 
       this.setAnswer(Util.toUpperCase(event.data, Util.UPPERCASE_EXCEPTIONS), true);
