@@ -166,6 +166,8 @@ export default class CrosswordCell {
         return; // pasting will yield null
       }
 
+      // TODO: Allow to enter Multiple symbols!
+
       this.setAnswer(Util.toUpperCase(event.data, Util.UPPERCASE_EXCEPTIONS), true);
       this.cellInput.value = '';
       const cellInformation = this.getInformation();
@@ -413,8 +415,12 @@ export default class CrosswordCell {
       this.answer = undefined;
     }
     else {
+      let newText = `${this.cellCanvas.innerText}${answer}`;
+      // Allow to enter combined symbols
+      newText = (Util.unicodeLength(newText) > 1) ? answer : Util.unicodeCharAt(newText, 0);
+
       this.cellCanvas.innerText = Util.toUpperCase(
-        answer.replace(new RegExp(Util.CHARACTER_PLACEHOLDER, 'g'), ' '),
+        newText.replace(new RegExp(Util.CHARACTER_PLACEHOLDER, 'g'), ' '),
         Util.UPPERCASE_EXCEPTIONS
       );
       this.answer = Util.toUpperCase(answer, Util.UPPERCASE_EXCEPTIONS);
