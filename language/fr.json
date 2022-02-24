@@ -21,14 +21,14 @@
           },
           {
             "label": "Réponse",
-            "description": "La réponse à l'indice."
+            "description": "Réponse correspondant à l'indice."
           },
           {
             "label": "Indice supplémentaire"
           },
           {
             "label": "Fixer le mot sur la grille",
-            "description": "Cocher si vous voulez fixer le mot à une position particulière sur la grille."
+            "description": "Cocher si vous désirez fixer le mot à une position particulière sur la grille."
           },
           {
             "label": "Ligne",
@@ -54,11 +54,11 @@
       }
     },
     {
-      "label": "Overall solution word",
-      "description": "Optionally add a solution word that can be derived from particular characters on the grid. It will only be visible if all its characters can be found in the crossword. Please note: There's no accessibility support for this feature yet."
+      "label": "Mot solution",
+      "description": "Ajouter un mot solution optionnel qui peut être découvert à partir de certaines lettres sur la grille. Sera seulement visible si chacune de ses lettres peuvent être trouvées dans le mot-croisé. Veuillez noter qu'il n'y a pour l'instant aucun support pour les technologies d'accessibilité pour cette fonctionnalité."
     },
     {
-      "label": "Retour général",
+      "label": "Feedback général",
       "fields": [
         {
           "widgets": [
@@ -66,8 +66,8 @@
               "label": "Par défaut"
             }
           ],
-          "label": "Define custom feedback for any score range",
-          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "label": "Définissez des feedbacks pour différents intervalles de scores",
+          "description": "Cliquez sur le bouton \"Ajouter Intervalle\" pour ajouter autant d'intervalles de score que vous souhaitez. Exemple: 0-20% Mauvais score, 21-91% Score moyen, 91-100% Score excellent !",
           "entity": "range",
           "field": {
             "fields": [
@@ -76,8 +76,8 @@
               },
               {},
               {
-                "label": "Retour pour cette tranche de score",
-                "placeholder": "Entrer le message de retour"
+                "label": "Feedback pour cette fourchette de scores",
+                "placeholder": "Saisir le message de feedback"
               }
             ]
           }
@@ -89,11 +89,11 @@
       "fields": [
         {
           "label": "Image d'arrière-plan",
-          "description": "Sélectionner une image d’arrière-plan en option. Elle sera mise à l’échelle pour s'adapter à l'arrière-plan sans être étirée."
+          "description": "Sélectionnez une image d'arrière-plan pour votre activité (facultatif). Elle sera mise à l’échelle pour s'adapter à l'arrière-plan sans être étirée."
         },
         {
           "label": "Couleur d'arrière-plan",
-          "description": "Choisir une couleur d'arrière-plan. Elle sera utilisée au lieu de l'image d’arrière-plan ou comme arrière-plan dans les zones transparentes.",
+          "description": "Choisir une couleur d'arrière-plan. Elle sera utilisée soit pour remplacer l'image de fond ou comme arrière-plan pour les zones transparentes.",
           "default": "#173354"
         },
         {
@@ -102,66 +102,67 @@
           "default": "#000000"
         },
         {
-          "label": "Couleur d'arrière-plan d'une cellule",
-          "description": "Choisir la couleur d'arrière-plan d'une cellule du tableau.",
+          "label": "Couleur de fond des cellules",
+          "description": "Choisir une couleur de fond pour les cellules.",
           "default": "#ffffff"
         },
         {
-          "label": "Couleur du texte d'une cellule",
-          "description": "Choisir la couleur du texte d'une cellule du tableau.",
+          "label": "Couleur de texte des cellules",
+          "description": "Choisir une couleur de texte pour les cellules.",
           "default": "#000000"
         },
         {
-          "label": "Clue id color",
-          "description": "Choose the color of the clue id inside a table cell.",
+          "label": "Couleur des indices numériques",
+          "description": "Choisir la couleur des indices numériques dans les cellules du tableau.",
           "default": "#606060"
         },
         {
-          "label": "Couleur d'arrière-plan d'une cellule (mise en avant)",
-          "description": "Choisir la couleur d'arrière-plan d'une cellule du tableau quand elle est mise en avant.",
+          "label": "Couleurs de fond des cellules sélectionnées",
+          "description": "Choisir une couleurs de fond pour les cellules sélectionnées.",
           "default": "#3e8de8"
         },
         {
-          "label": "Couleur du texte d'une cellule (mise en avant)",
-          "description": "Choisir la couleur du texte d'une cellule du tableau quand elle est mise en avant.",
+          "label": "Couleurs de texte des cellules sélectionnées",
+          "description": "Choisir une couleurs de texte pour les cellules sélectionnées.",
           "default": "#ffffff"
         },
         {
-          "label": "Cell id color (highlighted)",
-          "description": "Choose the color of the clue id inside a table cell that is highlighted.",
+          "label": "Couleur des indices numériques des cellules sélectionnées",
+          "description": "Choisir la couleur des indices numériques dans les cellules des cellules sélectionnées",
           "default": "#e0e0e0"
         }
       ]
     },
     {
-      "label": "Contextes comportementaux",
-      "description": "Ces options vous permettront de contrôler le comportement de la tâche.",
+      "label": "Options de comportement",
+      "description": "Ces options permettent de contrôler le comportement de l'activité.",
       "fields": [
         {
           "label": "Nombre de mots à afficher",
-          "description": "Créer un lot aléatoire de mots à partir de l'ensemble. Le lot contiendra toujours au moins tous les mots qui ont été fixés sur la grille quel que soit ce paramètre. Une valeur vide ou 0 signifie qu'il faut utiliser tous les mots."
+          "description": "Crée une sélection aléatoire de mots. Cette sélection va toujours contenir tous les mots qui sont fixés sur la grille, peu importe la valeur de ce paramètre. Une valeur vide ou de 0 signifie qu'il faut d'utiliser tous les mots."
         },
         {
-          "label": "Activer le retour instantané"
+          "label": "Activer le feedback instantané"
         },
         {
-          "label": "Noter les mots",
-          "description": "Si cette option est activée, les mots seront comptés afin de déterminer la note. Sinon, les caractères corrects seront comptés."
+          "label": "Score par mot",
+          "description": "Si cette option est activée, les mots seront comptés pour déterminer le score. Autrement le score sera calculé par caractère."
         },
         {
-          "label": "Appliquer des pénalités",
-          "description": "Si cette option est activée, chaque mauvaise réponse recevra une pénalité de -1."
+          "label": "Appliquer les pénalités",
+          "description": "Si cette option est activée, chaque réponse incorrecte entrainera une pénalité de -1 point au score."
         },
         {
-          "label": "Activer \"Recommencer\""
+          "label": "Activer le bouton \"Recommencer\""
         },
         {
-          "label": "Activer \"Solution\""
+          "label": "Activer le bouton \"Solution\""
         }
       ]
     },
     {
-      "label": "Options et textes",
+      "label": "Interface utilisateur",
+      "importance": "low",
       "fields": [
         {
           "label": "Étiquette pour Horizontal",
@@ -172,35 +173,39 @@
           "default": "Vertical"
         },
         {
-          "label": "Texte du bouton \"Vérifier\"",
+          "label": "Étiquette pour le bouton \"Vérifier\"",
           "default": "Vérifier"
         },
         {
-          "label": "Text for \"Submit\" button",
-          "default": "Submit"
+          "label": "Étiquette pour le bouton \"Envoyer\"",
+          "default": "Envoyer"
+          
         },
         {
-          "label": "Texte du bouton \"Recommencer\"",
+          "label": "Étiquette pour le bouton \"Recommencer\"",
           "default": "Recommencer"
         },
         {
-          "label": "Texte du bouton \"Voir la solution\"",
-          "default": "Voir la solution"
+          "label": "Étiquette pour le bouton \"Afficher la solution\"",
+          "default": "Afficher la solution"
         },
         {
-          "label": "Impossible de créer les mots croisés",
-          "default": "Impossible de générer les mots croisés avec les mots donnés. Veuillez réessayer avec moins de mots ou des mots qui ont plus de caractères en commun. Si vous utilisez des mots fixes, assurez-vous que leur position n’empêche pas les autres mots d’être placés."
+          "label": "Impossible de générer le mot-croisé",
+          "default": "Impossible de générer le mot-croisé avec les mots saisis. Veuillez réessayer avec moins de mots ou utiliser des mots qui ont plus de caractères en commun. Si vous utilisez des mots à position fixe, veuillez vous assurer que leur position n'empêche pas les autres mots d'être placés sur la grille."
+        
         },
         {
-          "label": "Impossible de créer des mots croisés (trop peu de mots)",
-          "default": "Impossible de générer les mots croisés. Il faut au moins deux mots."
+          "label": "Impossible de générer le mot-croisé (trop peu de mots)",
+          "default": "Impossible de générer le mot-croisé. Vous devez saisir au moins deux mots."
+        
         },
         {
           "label": "Mots problématiques",
-          "description": "Liste les mots qui ont causé des problèmes lors de la génération des mots croisés. @words est un espace réservé qui sera remplacé par les mots problématiques réels.",
+          "description": "Liste des mots qui ont causé des problèmes lors de la génération du mot-croisé. L'identifiant @words sera remplacé par la liste de mots problématiques.",
           "default": "Mot(s) problématique(s): @words"
         },
         {
+
           "label": "Indice supplémentaire",
           "default": "Indice supplémentaire"
         },
@@ -211,12 +216,12 @@
       ]
     },
     {
-      "label": "Consigne",
+      "label": "Lecteur d'écran",
       "fields": [
         {
-          "label": "Description de la grille de mots croisés",
-          "default": "Grille de mots croisés. Utilisez les touches arLigne pour naviguer et clavier pour entrer des caractères. Utilisez l’onglet pour utiliser les champs de saisie à la place."
-        },
+          "label": "Description de la grille du mot-croisé",
+          "default": "Utiliser les touches fléchées pour naviguer et les lettres du clavier pour saisir les caractères. Utiliser Tab pour faire usage des champs d'entrée au lieu de la grille."
+      },
         {
           "label": "Colonne",
           "default": "Colonne"
@@ -238,61 +243,61 @@
           "default": "Vide"
         },
         {
-          "description": "Annonce des résultats. @clue est une variable et sera remplacée par l’indice respectif.",
-          "label": "Résultat pour",
-          "default": "Résultat pour : @clue"
+          "description": "Annonce du résultat. La variable @clue sera remplacée par l'indice concerné.",
+          "label": "Résultat",
+          "default": "Résultat pour: @clue"
         },
         {
           "label": "Correct",
           "default": "Correct"
         },
         {
-          "label": "Faux",
-          "default": "Faux"
+          "label": "Incorrect",
+          "default": "Incorrect"
         },
         {
           "label": "Point",
           "default": "point"
         },
         {
-          "description": "Annonce de la solution. @clue et @solution sont des variables et seront remplacées par leurs valeurs respectives.",
+          "description": "Annonce de la solution. Les variables @clue et @solution seront remplacées par l'indice et la solution, respectivement.",
           "label": "Solution pour",
-          "default": "Pour @clue la solution est : @solution"
+          "default": "Pour @clue, la solution est: @solution"
         },
         {
-          "description": "Annonce d’indices supplémentaire. @clue est une variable et sera remplacée par la valeur correspondante.",
+          "description": "Annonce d'indice supplémentaire. La variable @clue sera remplacée par l'indice.",
           "label": "Indice supplémentaire pour",
-          "default": "Ouvrir l'indice supplémentaire pour @clue"
+          "default": "Afficher l'indice supplémentaire pour @clue"
         },
         {
           "label": "Cellule vide",
           "default": "Cellule vide"
         },
         {
-          "description": "Annonce de la position actuelle. @position et @length sont des variables et seront remplacées par leurs valeurs respectives.",
+          "description": "Annonce la position actuelle. Les variables @position et @length seront remplacées par la position et la longueur du mot, respectivement.",
           "label": "Lettre",
-          "default": "Lettre @position sur @length"
+          "default": "Lettre @position de @length"
         },
         {
-          "description": "Annonce de la longueur du mot. @length est une variable et sera remplacée par la valeur correspondante.",
+          "description": "Annonce de la longueur du mot. La variable @length sera remplacée par la longueur du mot.",
           "label": "Longueur du mot",
-          "default": "@length lettre du mot"
+          "default": "Mot de @length lettres"
         },
         {
-          "label": "Assistive technology description for \"Check\" button",
-          "default": "Check the characters. The responses will be marked as correct, incorrect, or unanswered."
+          "label": "Description du bouton \"Vérifier\" pour technogies d'accessibilité ",
+          "default": "Vérifier les caractères. Les réponses seront marquées correctes, incorrectes ou sans réponse."
         },
         {
-          "label": "Assistive technology description for \"Show Solution\" button",
-          "default": "Show the solution. The crossword will be filled with its correct solution."
+          "label": "Description du bouton \"Afficher la solution\" pour technogies d'accessibilité",
+          "default": "Afficher la solution. Le mot-croisé sera ensuite rempli avec la solution correcte."
         },
         {
-          "label": "Assistive technology description for \"Retry\" button",
-          "default": "Retry the task. Reset all responses and start the task over again."
+          "label": "Description du bouton \"Recommencer\" pour technogies d'accessibilité",
+          "default": "Recommencer la tâche. Réinitialise toutes les réponses et redémarre l'activité."
         },
         {
           "label": "Votre résultat",
-          "description": "@score et @total sont des variables qui seront remplacées par leurs valeurs respectives.",
+          "description": "Les variables @score et @total seront remplacées par le score obtenu et le score maximum, respectivement.",
           "default": "Vous avez obtenu @score sur @total points."
         }
       ]
