@@ -201,13 +201,28 @@ export default class CrosswordInput {
         inputField.value = `${inputField.value.substr(0, start)}${inputField.value.substr(start + 1)}`;
         inputField.selectionEnd = start;
 
+        /*
+         * Samsung's virtual keyboard of Android devices may add redundant
+         * characters that lead to wrong input. The workaround enforces to
+         * only add one character by comparing the inputField.value before and
+         * after the glitch happens and computing the true difference.
+         */
+        const before = Util.toUpperCase(inputField.value, Util.UPPERCASE_EXCEPTIONS);
+
         clearTimeout(this.tableUpdateTimeout);
         this.tableUpdateTimeout = setTimeout(() => {
+          const after = this.applySamsungWorkaround(
+            before,
+            Util.toUpperCase(inputField.value, Util.UPPERCASE_EXCEPTIONS)
+          );
+          this.setInputFieldValue(inputField, after);
+          inputField.setSelectionRange(after.length, after.length);
+
           this.callbacks.onFieldInput({
             clueId: word.clueId,
             orientation: word.orientation,
-            cursorPosition: Math.min(inputField.selectionStart, word.answer.length - 1),
-            text: inputField.value,
+            cursorPosition: Math.min(after.length, word.answer.length - 1),
+            text: after,
             readOffset: -1 // don't read
           });
         }, 0); // selectionStart will be 0 before DOM rendered
@@ -215,6 +230,10 @@ export default class CrosswordInput {
 
       // Only update table if input is valid or using arrow keys
       inputField.addEventListener('keyup', (event) => {
+        if (event.keyCode === 229) {
+          return; // workaround for Android specific code
+        }
+
         if (Util.CONTROL_KEY_CODES.indexOf(event.keyCode) !== -1) {
           if ([8, 35, 36, 37, 38, 39, 40, 46].indexOf(event.keyCode) === -1) {
             // None of backspace, home, end, left, right, up, down, delete
@@ -280,6 +299,61 @@ export default class CrosswordInput {
     });
 
     return inputFieldsGroup;
+  }
+
+  /**
+   * Fix Samsung virtual keyboard glitch
+   * @param {string} before Value of text before Samsung glitch.
+   * @param {string} after Value of text after Samsung glitch.
+   * @return {string} Value of text that should be rendered.
+   */
+  applySamsungWorkaround(before = '', after = '') {
+    // Make strings have same length
+    while (before.length < after.length) {
+      before = `${before}${Util.CHARACTER_PLACEHOLDER}`;
+    }
+    while (after.length < before.length) {
+      after = `${after}${Util.CHARACTER_PLACEHOLDER}`;
+    }
+
+    // Compute expected diff between before and after
+    const trueDiff = [];
+    for (let i = before.length - 1; i >= 0; i--) {
+      if (before[i] === after[i]) {
+        trueDiff[i] = Util.CHARACTER_PLACEHOLDER;
+      }
+      else if (i + 1 < before.length && trueDiff[i + 1] !== '＿') {
+        trueDiff[i] = trueDiff[i + 1];
+        trueDiff[i + 1] = Util.CHARACTER_PLACEHOLDER;
+      }
+      else {
+        trueDiff[i] = after[i];
+      }
+    }
+
+    // Build expected value to be rendered
+    let result = [];
+    let placeholder = ' ';
+    for (let i = before.length - 1; i >= 0; i--) {
+      if (trueDiff[i] !== Util.CHARACTER_PLACEHOLDER) {
+        placeholder = Util.CHARACTER_PLACEHOLDER;
+      }
+
+      let nextChar;
+      if (trueDiff[i] !== Util.CHARACTER_PLACEHOLDER) {
+        nextChar = trueDiff[i];
+      }
+      else if (before[i] !== Util.CHARACTER_PLACEHOLDER) {
+        nextChar = before[i];
+      }
+      else {
+        nextChar = placeholder;
+      }
+
+      result[i] = nextChar;
+    }
+
+    return result.join('').trimRight();
   }
 
   /**
