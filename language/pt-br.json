@@ -156,12 +156,12 @@
           "label": "Ativar \"Tentar Novamente\""
         },
         {
-          "label": "Ativar Solução"
+          "label": "Ativar \"Solução\""
         }
       ]
     },
     {
-      "label": "Interface do usuário",
+      "label": "Interface de usuário",
       "fields": [
         {
           "label": "Rótulo para horizontal",
