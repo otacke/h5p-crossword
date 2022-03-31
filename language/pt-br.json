@@ -8,7 +8,7 @@
       "label": "palavras",
       "widgets": [
         {
-          "label": "Padrão"
+          "label": "Default"
         }
       ],
       "entity": "Palavra",
@@ -63,21 +63,21 @@
         {
           "widgets": [
             {
-              "label": "Default"
+              "label": "Padrão"
             }
           ],
-          "label": "Define custom feedback for any score range",
-          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
-          "entity": "range",
+          "label": "Definir feedback personalizado para qualquer faixa de pontuação",
+          "description": "Clique no botão \"Adicionar faixa\" para adicionar quantos intervalos você precisar. Exemplo: 0-20% Pontuação Ruim, 21-91% Pontuação Média, 91-100% Pontuação Ótima!",
+          "entity": "faixa",
           "field": {
             "fields": [
               {
-                "label": "Score Range"
+                "label": "Faixa de Pontuação"
               },
               {},
               {
-                "label": "Feedback for defined score range",
-                "placeholder": "Fill in the feedback"
+                "label": "Feedback para a faixa de pontuação definida",
+                "placeholder": "Preencha o feedback"
               }
             ]
           }
