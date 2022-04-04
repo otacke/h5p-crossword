@@ -8,7 +8,7 @@
       "label": "palavras",
       "widgets": [
         {
-          "label": "Default"
+          "label": "Padrão"
         }
       ],
       "entity": "Palavra",
@@ -156,7 +156,7 @@
           "label": "Ativar \"Tentar Novamente\""
         },
         {
-          "label": "Ativar \"Solução\""
+          "label": "Ativar Solução"
         }
       ]
     },
