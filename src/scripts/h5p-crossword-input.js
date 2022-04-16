@@ -70,7 +70,7 @@ export default class CrosswordInput {
    * @param {object} params Parameters.
    */
   buildInputFieldsGroup(params) {
-    params.words = params.words.sort((word1, word2) => word1.orientation < word2.orientation);
+    params.words = params.words.sort((word1, word2) => word1.clueId - word2.clueId);
 
     const inputFieldsGroup = document.createElement('div');
     inputFieldsGroup.classList.add('h5p-crossword-input-fields-group');
