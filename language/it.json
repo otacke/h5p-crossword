@@ -77,6 +77,10 @@
               {
                 "label": "Feedback per un intervallo di punteggio definito",
                 "placeholder": "Compila il feedback"
+              },
+              {
+                "placeholder": "Fill in the feedback",
+                "label": "Feedback for defined score range"
               }
             ]
           }
@@ -92,35 +96,43 @@
         },
         {
           "label": "Colore di sfondo",
-          "description": "Scegli un colore di sfondo. Verrà utilizzato al posto di un'immagine di sfondo o come sfondo per aree trasparenti."
+          "description": "Scegli un colore di sfondo. Verrà utilizzato al posto di un'immagine di sfondo o come sfondo per aree trasparenti.",
+          "default": "#173354"
         },
         {
           "label": "Colore griglia",
-          "description": "Scegli un colore per la griglia."
+          "description": "Scegli un colore per la griglia.",
+          "default": "#000000"
         },
         {
           "label": "Colore di sfondo della cella",
-          "description": "Scegli il colore di sfondo per una cella della tabella."
+          "description": "Scegli il colore di sfondo per una cella della tabella.",
+          "default": "#ffffff"
         },
         {
           "label": "Colore del testo della cella",
-          "description": "Scegli il colore del testo per una cella della tabella."
+          "description": "Scegli il colore del testo per una cella della tabella.",
+          "default": "#000000"
         },
         {
           "label": "Colore ID indizio",
-          "description": "Scegli il colore dell'ID indizio all'interno di una cella di tabella."
+          "description": "Scegli il colore dell'ID indizio all'interno di una cella di tabella.",
+          "default": "#606060"
         },
         {
           "label": "Colore di sfondo della cella (evidenziato)",
-          "description": "Scegli il colore di sfondo per una cella della tabella che viene evidenziata."
+          "description": "Scegli il colore di sfondo per una cella della tabella che viene evidenziata.",
+          "default": "#3e8de8"
         },
         {
           "label": "Colore del testo della cella (evidenziato)",
-          "description": "Scegli il colore del testo per una cella della tabella che viene evidenziata."
+          "description": "Scegli il colore del testo per una cella della tabella che viene evidenziata.",
+          "default": "#ffffff"
         },
         {
           "label": "Colore ID cella (evidenziato)",
-          "description": "Scegli il colore dell'ID indizio all'interno di una cella della tabella che è evidenziata."
+          "description": "Scegli il colore dell'ID indizio all'interno di una cella della tabella che è evidenziata.",
+          "default": "#e0e0e0"
         }
       ]
     },
