@@ -77,6 +77,10 @@
               {
                 "label": "定義されたスコア範囲のフィードバック",
                 "placeholder": "フィードバックを記入してください"
+              },
+              {
+                "placeholder": "Fill in the feedback",
+                "label": "Feedback for defined score range"
               }
             ]
           }
@@ -92,35 +96,43 @@
         },
         {
           "label": "背景色",
-          "description": "背景色を選択します。背景画像の代わりに、または透明な領域の背景として使用されます。"
+          "description": "背景色を選択します。背景画像の代わりに、または透明な領域の背景として使用されます。",
+          "default": "#173354"
         },
         {
           "label": "グリッドカラー",
-          "description": "グリッドの色を選択します。"
+          "description": "グリッドの色を選択します。",
+          "default": "#000000"
         },
         {
           "label": "セルの背景色",
-          "description": "表セルの背景色を選択します。"
+          "description": "表セルの背景色を選択します。",
+          "default": "#ffffff"
         },
         {
           "label": "セルの文字色",
-          "description": "表セルの文字色を選択します。"
+          "description": "表セルの文字色を選択します。",
+          "default": "#000000"
         },
         {
           "label": "手がかりとなる色",
-          "description": "テーブルセル内の手がかりとなるIDの色を選択します。"
+          "description": "テーブルセル内の手がかりとなるIDの色を選択します。",
+          "default": "#606060"
         },
         {
           "label": "セルの背景色（ハイライト表示）",
-          "description": "ハイライトされているテーブルセルの背景色を選択します。"
+          "description": "ハイライトされているテーブルセルの背景色を選択します。",
+          "default": "#3e8de8"
         },
         {
           "label": "セルの文字色（ハイライト表示）",
-          "description": "ハイライトされた表セルの文字色を選択します。"
+          "description": "ハイライトされた表セルの文字色を選択します。",
+          "default": "#ffffff"
         },
         {
           "label": "セルIDの色（ハイライト表示）",
-          "description": "テーブルセル内の手がかりIDがハイライトされる色を選択します。"
+          "description": "テーブルセル内の手がかりIDがハイライトされる色を選択します。",
+          "default": "#e0e0e0"
         }
       ]
     },
