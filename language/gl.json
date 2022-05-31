@@ -58,7 +58,7 @@
       "description": "Engade opcionalmente unha palabra de solución que se pode derivar dun grupo particular de caracteres na grella. Só será visible se todos os seus caracteres pódense atopar na grella. Por favor, lembra que aínda non hai soporte de accesibilidade para esta característica."
     },
     {
-      "label": "Comentario xeral",
+      "label": "Retroalimentación Xeral",
       "fields": [
         {
           "widgets": [
@@ -66,8 +66,8 @@
               "label": "Por defecto"
             }
           ],
-          "label": "Definir comentarios por defecto para calquera rango de puntuación",
-          "description": "Preme o botón \"Engadir rango\" para engadir tantos rangos como precises. Exemplo: 0-20% Mala puntuación, 21-91% Puntuación media, 91-100% Puntuación estupenda!",
+          "label": "Definir retroalimentación personalizada para calquera rango de puntuación",
+          "description": "Preme o botón \"Engadir rango\" para engadir tantos rangos como precises. Exemplo: 0-20% Mala Puntuación, 21-91% Puntuación Media, 91-100% Puntuación Xenial!",
           "entity": "rango",
           "field": {
             "fields": [
@@ -76,8 +76,8 @@
               },
               {},
               {
-                "label": "Comentarios para o rango de puntuación definido",
-                "placeholder": "Escribe o comentario"
+                "label": "Retroalimentación para o rango de puntuación definido",
+                "placeholder": "Escribe a túa retroalimentación"
               }
             ]
           }
@@ -134,12 +134,12 @@
       ]
     },
     {
-      "label": "Configuración do comportamento",
+      "label": "Configuración de comportamento",
       "description": "Estas opcións permiten controlar o comportamento da tarefa.",
       "fields": [
         {
           "label": "Número de palabras amosadas",
-          "description": "Crea un grupo de palabras entre as palabras dispoñibles. Este grupo sempre conterá polo menos todas as palabras fixadas na grella independentemente do valor desta configuración. Un valor baleiro de 0  indica que se usarán todas as palabras."
+          "description": "Crea un grupo de palabras entre as palabras dispoñibles. Este grupo sempre conterá polo menos todas as palabras fixadas na grella independentemente do valor desta configuración. Un valor baleiro de 0 indica que se usarán todas as palabras."
         },
         {
           "label": "Activar comentarios instantáneos"
