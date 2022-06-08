@@ -211,6 +211,7 @@
       ]
     },
     {
+      "label": "Leitor de Tela",
       "fields": [
         {
           "label": "Descrição da grade de palavras cruzadas",
@@ -294,8 +295,7 @@
           "description": "@score e @total são variáveis e serão substituídas por seus respectivos valores.",
           "default": "Você conseguiu @score de @total de pontos."
         }
-      ],
-      "label": "Leitor de Tela"
+      ]
     }
   ]
 }

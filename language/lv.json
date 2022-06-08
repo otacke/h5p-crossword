@@ -6,13 +6,18 @@
     },
     {
       "label": "vārdi",
+      "widgets": [
+        {
+          "label": "Pēc noklusējuma"
+        }
+      ],
       "entity": "Vārds",
       "field": {
         "label": "Vārds",
         "fields": [
           {
-            "description": "Mājiens, kuram vajadzētu norādīt uz atbildi.",
-            "label": "Pavediens"
+            "label": "Pavediens",
+            "description": "Mājiens, kuram vajadzētu norādīt uz atbildi."
           },
           {
             "label": "Atbilde",
@@ -46,12 +51,7 @@
             ]
           }
         ]
-      },
-      "widgets": [
-        {
-          "label": "Pēc noklusējuma"
-        }
-      ]
+      }
     },
     {
       "label": "Vispārējā risinājuma vārds",
@@ -67,6 +67,7 @@
             }
           ],
           "label": "Iestatiet pielāgotu atgriezenisko saiti katram rezultātu diapazonam",
+          "description": "Klikšķiniet pogu \"Pievienot diapazonu\", lai pievienotu tik diapazonus cik vēlaties. Piemēram, 0-20% Slikts rezultāts, 21-91% Viduvējs rezultāts, 91-100% Lielisks rezultāts!",
           "entity": "diapazons",
           "field": {
             "fields": [
@@ -79,8 +80,7 @@
                 "placeholder": "Aizpildiet atgriezenisko saiti"
               }
             ]
-          },
-          "description": "Klikšķiniet pogu \"Pievienot diapazonu\", lai pievienotu tik diapazonus cik vēlaties. Piemēram, 0-20% Slikts rezultāts, 21-91% Viduvējs rezultāts, 91-100% Lielisks rezultāts!"
+          }
         }
       ]
     },
@@ -108,8 +108,8 @@
         },
         {
           "label": "Šūnas teksta krāsa",
-          "default": "#000000",
-          "description": "Izvēlieties tabulas šūnas teksta krāsu."
+          "description": "Izvēlieties tabulas šūnas teksta krāsu.",
+          "default": "#000000"
         },
         {
           "label": "Pavediena ID krāsa",
@@ -118,8 +118,8 @@
         },
         {
           "label": "Šūnas fona krāsa (izcelta)",
-          "default": "#3e8de8",
-          "description": "Izvēlieties fona krāsu izceltai tabulas šūnai."
+          "description": "Izvēlieties fona krāsu izceltai tabulas šūnai.",
+          "default": "#3e8de8"
         },
         {
           "label": "Šūnas teksta krāsa (izcelta)",
@@ -134,6 +134,8 @@
       ]
     },
     {
+      "label": "Uzvedības iestatījumi",
+      "description": "Šie iestatījumi ļaus jums kontrolēt uzdevuma uzvedību.",
       "fields": [
         {
           "label": "Parādāmo vārdu skaits",
@@ -143,8 +145,8 @@
           "label": "Iespējot tūlītēju atgriezenisko saiti"
         },
         {
-          "description": "Ja šī opcija ir iespējota, lai noteiktu punktu skaitu, tiks izmantots vārdu skaits. Pretējā gadījumā tiks skaitītas pareizās rakstzīmes.",
-          "label": "Skaitīt vārdus"
+          "label": "Skaitīt vārdus",
+          "description": "Ja šī opcija ir iespējota, lai noteiktu punktu skaitu, tiks izmantots vārdu skaits. Pretējā gadījumā tiks skaitītas pareizās rakstzīmes."
         },
         {
           "label": "Piemērot sodus",
@@ -156,16 +158,14 @@
         {
           "label": "Iespējot \"Risinājums\""
         }
-      ],
-      "label": "Uzvedības iestatījumi",
-      "description": "Šie iestatījumi ļaus jums kontrolēt uzdevuma uzvedību."
+      ]
     },
     {
       "label": "Lietotāja saskarne",
       "fields": [
         {
-          "default": "Horizontāli",
-          "label": "Horizontāles etiķete"
+          "label": "Horizontāles etiķete",
+          "default": "Horizontāli"
         },
         {
           "label": "Vertikāles etiķete",
@@ -180,8 +180,8 @@
           "default": "Iesniegt"
         },
         {
-          "default": "Mēģināt vēlreiz",
-          "label": "Pogas \"Mēģināt vēlreiz\" teksts"
+          "label": "Pogas \"Mēģināt vēlreiz\" teksts",
+          "default": "Mēģināt vēlreiz"
         },
         {
           "label": "Pogas \"Parādīt risinājumu\" teksts",
@@ -197,8 +197,8 @@
         },
         {
           "label": "Problemātiskie vārdi",
-          "default": "Problemātiskais(-i) vārds(-i): @words",
-          "description": "Uzskaitīt vārdus, kas radīja problēmas krustvārdu mīklas ģenerēšanas laikā. @words ir vietturis, kas tiks aizstāts ar faktiskajiem problemātiskajiem vārdiem."
+          "description": "Uzskaitīt vārdus, kas radīja problēmas krustvārdu mīklas ģenerēšanas laikā. @words ir vietturis, kas tiks aizstāts ar faktiskajiem problemātiskajiem vārdiem.",
+          "default": "Problemātiskais(-i) vārds(-i): @words"
         },
         {
           "label": "Papildu pavediens",
@@ -238,9 +238,9 @@
           "default": "Tukšs"
         },
         {
+          "description": "Rezultātu paziņotājs. @clue ir mainīgais, un tas tiks aizstāts ar attiecīgo pavedienu.",
           "label": "Rezultāts",
-          "default": "Rezultāts: @clue",
-          "description": "Rezultātu paziņotājs. @clue ir mainīgais, un tas tiks aizstāts ar attiecīgo pavedienu."
+          "default": "Rezultāts: @clue"
         },
         {
           "label": "Pareizi",
@@ -255,9 +255,9 @@
           "default": "punkts"
         },
         {
+          "description": "Risinājumu paziņotājs. @clue un @solution ir mainīgie, un tie tiks aizstāti ar attiecīgajām vērtībām.",
           "label": "Risinājums priekš",
-          "default": "@clue risinājums ir: @solution",
-          "description": "Risinājumu paziņotājs. @clue un @solution ir mainīgie, un tie tiks aizstāti ar attiecīgajām vērtībām."
+          "default": "@clue risinājums ir: @solution"
         },
         {
           "description": "Papildu pavedienu paziņotājs. @clue ir mainīgais un tiks aizstāts ar attiecīgo vērtību.",
@@ -269,9 +269,9 @@
           "default": "Tukša šūna"
         },
         {
+          "description": "Pašreizējās pozīcijas paziņošana. @position un @length ir mainīgie, un tie tiks aizstāti ar to attiecīgajām vērtībām.",
           "label": "Burts",
-          "default": "Burts @position no @length",
-          "description": "Pašreizējās pozīcijas paziņošana. @position un @length ir mainīgie, un tie tiks aizstāti ar to attiecīgajām vērtībām."
+          "default": "Burts @position no @length"
         },
         {
           "description": "Vārda garuma paziņošana. @length ir mainīgs lielums un tiks aizstāts ar attiecīgo vērtību.",
@@ -283,8 +283,8 @@
           "default": "Pārbaudīt rakstzīmes. Atbildes tiks atzīmētas kā pareizas, nepareizas, vai neatbildētas."
         },
         {
-          "default": "Parādīt risinājumu. Krustvārdu mīkla tiks aizpildīta ar pareizo risinājumu.",
-          "label": "Pogas \"Rādīt risinājumu\" apraksts asistīvajām tehnoloģijām"
+          "label": "Pogas \"Rādīt risinājumu\" apraksts asistīvajām tehnoloģijām",
+          "default": "Parādīt risinājumu. Krustvārdu mīkla tiks aizpildīta ar pareizo risinājumu."
         },
         {
           "label": "Pogas \"Mēģināt vēlreiz\" apraksts priekš asistīvajām tehnoloģijām",
