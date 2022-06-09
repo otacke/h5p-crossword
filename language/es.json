@@ -1,8 +1,8 @@
 {
   "semantics": [
     {
-      "description": "Describa aquí su trabajo.",
-      "label": "Descripción del trabajo"
+      "description": "Describe aquí la tarea.",
+      "label": "Descripción de la tarea"
     },
     {
       "field": {
@@ -19,7 +19,7 @@
             "label": "Pista extra"
           },
           {
-            "description": "Comprobar si desea fijar la palabra a una posición particular en la rejilla.",
+            "description": "Marca esto si quieres fijar la palabra a una posición particular en la rejilla.",
             "label": "Fijar palabra en rejilla"
           },
           {
@@ -48,13 +48,13 @@
       "entity": "Palabra",
       "widgets": [
         {
-          "label": "Predeterminado"
+          "label": "Por defecto"
         }
       ],
       "label": "palabras"
     },
     {
-      "description": "Opcionalmente, incluya una palabra de solución global que puede estar derivada de caracteres particulares en la rejilla. Solamente será visible si todos sus caracteres pueden ser encontrados en el crucigrama. Por favor, tenga en cuenta que aun no hay soporte de accesibilidad para esta característica.",
+      "description": "Opcionalmente, puedes incluir una palabra de solución global que pueda derivarse de caracteres particulares en la rejilla. Solamente será visible si todos sus caracteres se pueden encontrar en el crucigrama. Por favor, ten en cuenta que aun no hay soporte de accesibilidad para esta característica.",
       "label": "Palabra de solución global"
     },
     {
@@ -63,21 +63,21 @@
           "field": {
             "fields": [
               {
-                "label": "Rango del Puntaje"
+                "label": "Rango de puntuación"
               },
               {},
               {
-                "placeholder": "Complete la retroalimentación",
-                "label": "Retroalimentación para rango de puntaje definido"
+                "placeholder": "Escribe tu retroalimentación",
+                "label": "Realimentación para rango de puntuación definido"
               }
             ]
           },
           "entity": "rango",
-          "description": "Haga clic en el botón \"Añadir rango\" para añadir cuantos rangos necesite. Ejemplo: 0-20% Mal puntaje, 21-91% Puntaje Promedio, 91-100% ¡Magnífico Puntaje!",
-          "label": "Definir retroalimentación personalizada para cualquier rango de puntaje",
+          "description": "Haz clic en el botón \"Añadir rango\" para añadir los rangos que necesites. Ejemplo: 0-20% Mala puntuación, 21-91% Puntuación Media, 91-100% ¡Puntuación Estupenda!",
+          "label": "Definir retroalimentación personalizada para cualquier rango de puntuación",
           "widgets": [
             {
-              "label": "Predeterminado"
+              "label": "Por defecto"
             }
           ]
         }
@@ -87,47 +87,47 @@
     {
       "fields": [
         {
-          "description": "Seleccione una imagen opcional de fondo. Será escalada para que quepa en el fondo sin estirarla.",
+          "description": "Selecciona una imagen opcional de fondo. Será escalada para que quepa en el fondo sin estirarla.",
           "label": "Imagen de fondo"
         },
         {
           "default": "#173354",
-          "description": "Elija un color de fondo. Será usado, ya sea en lugar de una imagen de fondo, o como un fondo para las áreas transparentes.",
+          "description": "Elije un color de fondo. Se usará, en lugar de una imagen de fondo o como fondo para las áreas transparentes.",
           "label": "Color del fondo"
         },
         {
           "default": "#000000",
-          "description": "Elija un color para la rejilla.",
+          "description": "Elije un color para la rejilla.",
           "label": "Color de rejilla"
         },
         {
-          "description": "Elija el color del fondo para una celda de la tabla.",
+          "description": "Elije el color del fondo para una celda de la tabla.",
           "label": "Color del fondo de celda",
           "default": "#ffffff"
         },
         {
           "default": "#000000",
-          "description": "Elegir el color del texto para una celda de la tabla.",
+          "description": "Elije el color del texto para una celda de la tabla.",
           "label": "Color del texto de la celda"
         },
         {
           "default": "#606060",
-          "description": "Elija el color de la ID de pista dentro de una celda de tabla.",
+          "description": "Elije el color de la ID de pista dentro de una celda de tabla.",
           "label": "Color de ID de pista"
         },
         {
           "default": "#3e8de8",
-          "description": "Elija el color del fondo para una celda de tabla que está resaltada.",
+          "description": "Elije el color del fondo para una celda de tabla que está resaltada.",
           "label": "Color del fondo de la celda (resaltada)"
         },
         {
           "default": "#ffffff",
-          "description": "Elija el color del texto para una celda de tabla que está resaltada.",
+          "description": "Elije el color del texto para una celda de tabla que está resaltada.",
           "label": "Color del texto de celda (resaltada)"
         },
         {
           "default": "#e0e0e0",
-          "description": "Elija el color de la ID de pista dentro de una celda de tabla que está resaltada.",
+          "description": "Elije el color de la ID de pista dentro de una celda de tabla que está resaltada.",
           "label": "Color de ID de celda (resaltada)"
         }
       ],
@@ -136,29 +136,29 @@
     {
       "fields": [
         {
-          "description": "Crear un lote aleatorizado de palabras a partir del conjunto. El lote siempre contendrá al menos todas las palabras que fueron arregladas en la rejilla sin importar esta configuración. Un valor vacío de 0 significa usar todas las palabras.",
-          "label": "Número de palabras a ser mostradas"
+          "description": "Crear un lote aleatorio de palabras a partir del conjunto de palabras. El lote siempre contendrá por lo menos todas las palabras fijadas en la rejilla independientemente del valor de esta configuración. Un valor vacío de 0 significa usar todas las palabras.",
+          "label": "Número de palabras a mostrar"
         },
         {
           "label": "Habilitar retroalimentación instantánea"
         },
         {
-          "description": "Si esta opción es habilitada, las palabras serán contadas para determinar el puntaje. En caso contrario, los caracteres correctos serán contados.",
-          "label": "Dar puntaje a palabras"
+          "description": "Si esta opción está activada, las palabras contarán para determinar la puntuación. En caso contrario, se contarán los caracteres correctos.",
+          "label": "Dar puntuación a palabras"
         },
         {
-          "description": "Si esta opción es habilitada, por cada respuesta incorrecta será dada una penalización del puntaje de -1.",
+          "description": "Si esta opción está habilitada, por cada respuesta incorrecta se aplicará una penalización a la puntuación de -1.",
           "label": "Aplicar penalizaciones"
         },
         {
-          "label": "Habilitar \"Reintentar\""
+          "label": "Habilitar \"Intentar de nuevo\""
         },
         {
           "label": "Habilitar \"Solución\""
         }
       ],
-      "description": "Estas opciones le permitirán controlar como se comporta el trabajo.",
-      "label": "Configuraciones del comportamiento"
+      "description": "Estas opciones te permitirán controlar como se comporta la tarea.",
+      "label": "Configuración del comportamiento"
     },
     {
       "fields": [
@@ -179,30 +179,30 @@
           "label": "Texto para botón \"Enviar\""
         },
         {
-          "default": "Reintentar",
-          "label": "Texto para botón \"Reintentar\""
+          "default": "Intentar de nuevo",
+          "label": "Texto para el botón \"Intentar de nuevo\""
         },
         {
           "default": "Mostrar solución",
           "label": "Texto para botón \"Mostrar solución\""
         },
         {
-          "default": "No se pudo generar un crucigrama con las palabras dadas. Por favor intente nuevamente con menos palabras, o con palabras que tengan más caracteres en común. Si usted está usando palabras fijadas, por favor asegúrese de que sus posiciones no impidan que se coloquen otras palabras.",
-          "label": "No se puede crear crucigrama"
+          "default": "No se pudo generar un crucigrama con las palabras dadas. Por favor inténtalo nuevamente con menos palabras, o con palabras que tengan más caracteres en común. Si estás usando palabras fijadas, por favor asegúrate de que sus posiciones no impidan que se coloquen otras palabras.",
+          "label": "No se puede crear el crucigrama"
         },
         {
-          "default": "No se pudo generar un crucigrama. Usted necesita por lo menos dos palabras.",
+          "default": "No se pudo generar un crucigrama. Necesitas por lo menos dos palabras.",
           "description": "Enlistar palabras que causaron problemas al generar el crucigrama. @words es un reemplazable que será remplazado por las palabras problemáticas auténticas.",
-          "label": "No se puede crear crucigrama (muy pocas palabras)"
+          "label": "No se puede crear el crucigrama (muy pocas palabras)"
         },
         {
           "default": "Palabra(s) problemática(s): @words",
           "label": "Palabras problemáticas",
-          "description": "Enlistar palabras que causaron problema al generar el rompecabezas. @words es un reemplazable que será remplazado por las palabras problemáticas actuales."
+          "description": "Lista palabras que causaron problemas al generar el rompecabezas. @words es una variable que será sustituída por las palabras problemáticas actuales."
         },
         {
-          "default": "Clave extra",
-          "label": "Clave extra"
+          "default": "Pista extra",
+          "label": "Pista extra"
         },
         {
           "label": "Cerrar ventana",
@@ -214,8 +214,8 @@
     {
       "fields": [
         {
-          "default": "Rejilla del crucigrama. Use las teclas de flechas para navegar y el teclado para escribir caracteres. Use el tabulador para emplear campos de entrada en su lugar.",
-          "label": "Descripción de rejilla del crucigrama"
+          "default": "Rejilla del crucigrama. Usa las teclas de dirección para navegar y el teclado para escribir caracteres. Usa el tabulador para usar campos de entrada en su lugar.",
+          "label": "Descripción de la rejilla del crucigrama"
         },
         {
           "default": "Columna",
@@ -279,24 +279,24 @@
           "description": "Anunciando la longitud de la palabra. @length es una variable y será remplazada por su valor respectivo."
         },
         {
-          "default": "Comprobar los caracteres. Las respuestas serán marcadas como correcta, incorrecta, o sin contestar.",
-          "label": "Descripción de tecnología asistiva para botón \"Comprobar\""
+          "default": "Comprueba los caracteres. Las respuestas serán marcadas como correctas, incorrectas, o sin contestar.",
+          "label": "Descripción para las tecnologías de asistencia del botón \"Comprobar\""
         },
         {
-          "default": "Mostrar la solución. El crucigrama será llenado con su solución correcta.",
-          "label": "Descripción de tecnología asistiva para botón \"Mostrar solución\""
+          "default": "Mostrar la solución. El crucigrama se completará con su solución correcta.",
+          "label": "Descripción para las tecnologías de asistencia del botón \"Mostrar solución\""
         },
         {
-          "default": "Reintentar el trabajo. Reiniciar todas las respuestas e iniciar el trabajo de nuevo.",
-          "label": "Descripción de tecnología asistiva para botón \"Reintentar\""
+          "default": "Vuelve a intentar la tarea. Borra todas tus respuestas y empieza de nuevo.",
+          "label": "Descripción para las tecnologías de asistencia del botón \"Intentar de nuevo\""
         },
         {
-          "default": "Usted obtuvo @score de un total de @total puntos.",
+          "default": "Has conseguido @score de un total de @total puntos.",
           "description": "@score y @total son variables y serán remplazadas por sus valores respectivos.",
-          "label": "Su resultado"
+          "label": "Tu resultado"
         }
       ],
-      "label": "Lector de texto en voz alta"
+      "label": "Lector de pantalla"
     }
   ]
 }
