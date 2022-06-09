@@ -34,5 +34,8 @@
     "sass-loader": "^13.0.2",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "char-regex": "^2.0.1"
   }
 }
