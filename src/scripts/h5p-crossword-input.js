@@ -198,8 +198,8 @@ export default class CrosswordInput {
         }
 
         const start = inputField.selectionStart;
-        inputField.value = `${inputField.value.substr(0, start)}${inputField.value.substr(start + 1)}`;
-        inputField.selectionEnd = start;
+        inputField.value = `${inputField.value.substr(0, start + 1)}${inputField.value.substr(start + 1)}`;
+        inputField.selectionEnd = start + 1;
 
         /*
          * Samsung's virtual keyboard of Android devices may add redundant
@@ -216,12 +216,12 @@ export default class CrosswordInput {
             Util.toUpperCase(inputField.value, Util.UPPERCASE_EXCEPTIONS)
           );
           this.setInputFieldValue(inputField, after);
-          inputField.setSelectionRange(after.length, after.length);
+          inputField.setSelectionRange(start + 1, start + 1);
 
           this.callbacks.onFieldInput({
             clueId: word.clueId,
             orientation: word.orientation,
-            cursorPosition: Math.min(after.length, word.answer.length - 1),
+            cursorPosition: Math.min(start + 1, word.answer.length - 1),
             text: after,
             readOffset: -1 // don't read
           });
