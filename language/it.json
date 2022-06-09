@@ -74,13 +74,10 @@
               {
                 "label": "Intervallo di punteggio"
               },
+              {},
               {
                 "label": "Feedback per un intervallo di punteggio definito",
                 "placeholder": "Compila il feedback"
-              },
-              {
-                "placeholder": "Fill in the feedback",
-                "label": "Feedback for defined score range"
               }
             ]
           }

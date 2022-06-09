@@ -216,7 +216,7 @@
         {
           "label": "Description de la grille du mot-croisé",
           "default": "Utiliser les touches fléchées pour naviguer et les lettres du clavier pour saisir les caractères. Utiliser Tab pour faire usage des champs d'entrée au lieu de la grille."
-      },
+        },
         {
           "label": "Colonne",
           "default": "Colonne"

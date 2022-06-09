@@ -74,13 +74,10 @@
               {
                 "label": "スコア範囲"
               },
+              {},
               {
                 "label": "定義されたスコア範囲のフィードバック",
                 "placeholder": "フィードバックを記入してください"
-              },
-              {
-                "placeholder": "Fill in the feedback",
-                "label": "Feedback for defined score range"
               }
             ]
           }

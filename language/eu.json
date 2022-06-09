@@ -1,20 +1,27 @@
 {
   "semantics": [
     {
-      "description": "Deskribatu ezazu hemen zure lana.",
-      "label": "Lanaren deskribapena"
+      "label": "Lanaren deskribapena",
+      "description": "Deskribatu ezazu hemen zure lana."
     },
     {
       "label": "hitz",
+      "widgets": [
+        {
+          "label": "Lehentsitakoa"
+        }
+      ],
+      "entity": "Hitza",
       "field": {
+        "label": "Hitza",
         "fields": [
           {
-            "description": "Erantzunera bideratuko duen pista.",
-            "label": "Pista"
+            "label": "Pista",
+            "description": "Erantzunera bideratuko duen pista."
           },
           {
-            "description": "Pistarentzako erantzuna.",
-            "label": "Erantzuna"
+            "label": "Erantzuna",
+            "description": "Pistarentzako erantzuna."
           },
           {
             "label": "Pista gehigarria"
@@ -43,15 +50,8 @@
               }
             ]
           }
-        ],
-        "label": "Hitza"
-      },
-      "widgets": [
-        {
-          "label": "Lehentsitakoa"
-        }
-      ],
-      "entity": "Hitza"
+        ]
+      }
     },
     {
       "label": "Erantzun orokorreko hitza",
@@ -66,6 +66,8 @@
               "label": "Lehenetsitakoa"
             }
           ],
+          "label": "Zehaztu ezazu edozein puntuazio-tarterako feedback pertsonalizatua",
+          "description": "Egin klik \"Gehitu tartea\" botoian behar dituzun tarte guztiak gehitzeko. Adibidez: 0-20% Puntuazio eskasa, 21-91% Batez besteko puntuazioa, 91-100% Puntuazio bikaina!",
           "entity": "tartea",
           "field": {
             "fields": [
@@ -78,9 +80,7 @@
                 "placeholder": "Idatzi ezazu feedbacka"
               }
             ]
-          },
-          "label": "Zehaztu ezazu edozein puntuazio-tarterako feedback pertsonalizatua",
-          "description": "Egin klik \"Gehitu tartea\" botoian behar dituzun tarte guztiak gehitzeko. Adibidez: 0-20% Puntuazio eskasa, 21-91% Batez besteko puntuazioa, 91-100% Puntuazio bikaina!"
+          }
         }
       ]
     },
@@ -93,8 +93,8 @@
         },
         {
           "label": "Atzeko planoko kolorea",
-          "default": "#173354",
-          "description": "Aukeratu ezazu atzeko planorako kolore bat. Atzeko planoko irudiaren ordez edo eremu gardenetako atzeko planorako erabiliko da."
+          "description": "Aukeratu ezazu atzeko planorako kolore bat. Atzeko planoko irudiaren ordez edo eremu gardenetako atzeko planorako erabiliko da.",
+          "default": "#173354"
         },
         {
           "label": "Lauki-sarearen kolorea",
@@ -118,8 +118,8 @@
         },
         {
           "label": "Gelaxkaren atzeko planoko kolorea (nabarmenduta)",
-          "default": "#3e8de8",
-          "description": "Aukeratu ezazu taulako gelaxkaren atzeko planoko kolorea gelaxka nabarmenduta dagoenean."
+          "description": "Aukeratu ezazu taulako gelaxkaren atzeko planoko kolorea gelaxka nabarmenduta dagoenean.",
+          "default": "#3e8de8"
         },
         {
           "label": "Gelaxkaren testuaren kolorea (nabarmenduta)",
@@ -128,12 +128,14 @@
         },
         {
           "label": "Gelaxkaren IDaren kolorea (nabarmenduta)",
-          "default": "#e0e0e0",
-          "description": "Aukeratu ezazu nabarmenduta dagoen taula-gelaxkaren barruko pistaren IDaren kolorea."
+          "description": "Aukeratu ezazu nabarmenduta dagoen taula-gelaxkaren barruko pistaren IDaren kolorea.",
+          "default": "#e0e0e0"
         }
       ]
     },
     {
+      "label": "Portaeraren ezarpenak",
+      "description": "Aukera hauek lanaren portaera kontrolatzea ahalbidetzen dizute.",
       "fields": [
         {
           "label": "Erakutsi beharreko hitz kopurua",
@@ -156,11 +158,10 @@
         {
           "label": "Gaitu \"Erantzuna\""
         }
-      ],
-      "label": "Portaeraren ezarpenak",
-      "description": "Aukera hauek lanaren portaera kontrolatzea ahalbidetzen dizute."
+      ]
     },
     {
+      "label": "Erabiltzaile-interfazea",
       "fields": [
         {
           "label": "Horizontalentzako etiketa",
@@ -183,8 +184,8 @@
           "default": "Saiatu berriro"
         },
         {
-          "default": "Erakutsi emaitza",
-          "label": "\"Erakutsi emaitza\" botoiaren testua"
+          "label": "\"Erakutsi emaitza\" botoiaren testua",
+          "default": "Erakutsi emaitza"
         },
         {
           "label": "Ezin da gurutzegrama sortu",
@@ -196,8 +197,8 @@
         },
         {
           "label": "Hitz gatazkatsuak",
-          "default": "Hitz gatazkatsua(k): @words",
-          "description": "Gurutzegrama sortzean arazoak eman dituzten hitzen zerrenda. @words dagokion hitz gatazkatsuarekin ordezkatua izango da."
+          "description": "Gurutzegrama sortzean arazoak eman dituzten hitzen zerrenda. @words dagokion hitz gatazkatsuarekin ordezkatua izango da.",
+          "default": "Hitz gatazkatsua(k): @words"
         },
         {
           "label": "Pista gehigarria",
@@ -207,10 +208,10 @@
           "label": "Itxi leihoa",
           "default": "Itxi leihoa"
         }
-      ],
-      "label": "Erabiltzaile-interfazea"
+      ]
     },
     {
+      "label": "Irakurtzen duen bozgorailua",
       "fields": [
         {
           "label": "Gurutzegramako lauki-sarearen deskribapena",
@@ -238,8 +239,8 @@
         },
         {
           "description": "Emaitzaren iragarlea. @clue dagokion pistarekin ordezkatuko den aldagaia da.",
-          "default": "Emaitza honentzako: @clue",
-          "label": "Emaitza honentzat:"
+          "label": "Emaitza honentzat:",
+          "default": "Emaitza honentzako: @clue"
         },
         {
           "label": "Zuzena",
@@ -254,14 +255,14 @@
           "default": "puntu"
         },
         {
+          "description": "Erantzunaren iragarlea. @clue eta @solution euren balioekin ordezkatuko diren aldagaiak dira.",
           "label": "Honentzako erantzuna:",
-          "default": "@clue pistaren erantzuna hau da: @solution",
-          "description": "Erantzunaren iragarlea. @clue eta @solution euren balioekin ordezkatuko diren aldagaiak dira."
+          "default": "@clue pistaren erantzuna hau da: @solution"
         },
         {
+          "description": "Pista gehigarriaren iragarlea. @clue dagokion balioarekin ordezkatuko den aldagaia da.",
           "label": "Pista gehigarria honentzako:",
-          "default": "Ireki pista gehigarria @clue pistarentzat",
-          "description": "Pista gehigarriaren iragarlea. @clue dagokion balioarekin ordezkatuko den aldagaia da."
+          "default": "Ireki pista gehigarria @clue pistarentzat"
         },
         {
           "label": "Gelaxka hutsa",
@@ -282,8 +283,8 @@
           "default": "Egiaztatu karaktereak. Erantzuna zuzen, oker edo erantzun gabeko gisa markatuko da."
         },
         {
-          "default": "Erakutsi emaitza. Gurutzegrama emaitza zuzenekin beteko da.",
-          "label": "\"Erakutsi emaitza\" botoiaren laguntza-teknologientzako etiketa"
+          "label": "\"Erakutsi emaitza\" botoiaren laguntza-teknologientzako etiketa",
+          "default": "Erakutsi emaitza. Gurutzegrama emaitza zuzenekin beteko da."
         },
         {
           "label": "\"Saiatu berriro\" botoiaren laguntza-teknologientzako etiketa",
@@ -294,8 +295,7 @@
           "description": "@score eta @total euren balioekin ordezkatuko diren aldagaiak dira.",
           "default": "@total puntutatik @score puntu lortu duzu."
         }
-      ],
-      "label": "Irakurtzen duen bozgorailua"
+      ]
     }
   ]
 }
