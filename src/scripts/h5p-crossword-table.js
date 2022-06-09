@@ -333,6 +333,7 @@ export default class CrosswordTable {
     const table = document.createElement('table');
     table.classList.add('h5p-crossword-grid');
     table.style.backgroundColor = params.theme.backgroundColor;
+    table.style.maxWidth = `calc(2 * ${params.dimensions.columns} * 32px)`;
 
     if (params.theme.backgroundImage) {
       table.classList.add('h5p-crossword-grid-background-image');
