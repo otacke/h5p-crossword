@@ -481,14 +481,14 @@
   .h5p-crossword-clue-announcer-clue-id {
     font-weight: bold;
     padding-right: 0.5em;
-    -space: nowrap;
+    white-space: nowrap;
   }
 
   .h5p-crossword-clue-announcer-clue {
     overflow: hidden;
     padding-right: 0.5em;
     text-overflow: ellipsis;
-    -space: nowrap;
+    white-space: nowrap;
   }
 
   .h5p-crossword-clue-announcer-answer-length {
