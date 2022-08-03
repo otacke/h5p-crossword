@@ -166,17 +166,19 @@ export default class CrosswordCell {
         return; // pasting will yield null
       }
 
-      // TODO: Allow to enter Multiple symbols!
-
       this.setAnswer(Util.toUpperCase(event.data, Util.UPPERCASE_EXCEPTIONS), true);
       this.cellInput.value = '';
-      const cellInformation = this.getInformation();
 
-      this.callbacks.onKeyup(cellInformation);
+      const information = this.getInformation();
+      if (this.inputMode === 'noAutoMove') {
+        information.nextPositionOffset = null;
+      }
+      this.callbacks.onKeyup(information);
 
       event.preventDefault();
     });
 
+    // Handle change
     cellInput.addEventListener('change', (event) => {
       event.preventDefault();
     });
@@ -250,6 +252,18 @@ export default class CrosswordCell {
     });
 
     return cellInput;
+  }
+
+  /**
+   * Set input mode.
+   * @param {string} mode Input mode to set.
+   */
+  setInputMode(mode) {
+    if (typeof mode !== 'string') {
+      return;
+    }
+
+    this.inputMode = mode;
   }
 
   /**
@@ -423,7 +437,7 @@ export default class CrosswordCell {
         newText.replace(new RegExp(Util.CHARACTER_PLACEHOLDER, 'g'), ' '),
         Util.UPPERCASE_EXCEPTIONS
       );
-      this.answer = Util.toUpperCase(answer, Util.UPPERCASE_EXCEPTIONS);
+      this.answer = Util.toUpperCase(newText, Util.UPPERCASE_EXCEPTIONS);
     }
 
     if (this.params.instantFeedback) {

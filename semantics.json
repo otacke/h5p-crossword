@@ -476,6 +476,41 @@
         "label": "Close window",
         "importance": "low",
         "default": "Close window"
+      },
+      {
+        "name": "confirmGraphemeHeader",
+        "type": "text",
+        "label": "Note about input mode",
+        "importance": "low",
+        "default": "Note about input mode"
+      },
+      {
+        "name": "confirmGraphemeDialog",
+        "type": "text",
+        "label": "Input mode dialog",
+        "importance": "low",
+        "default": "The language used in this crossword may require multiple key strokes per symbol. If you encounter problems on the grid, switch to the \"No automatic movement\" mode."
+      },
+      {
+        "name": "confirmGraphemeConfirm",
+        "type": "text",
+        "label": "Require enter",
+        "importance": "low",
+        "default": "OK"
+      },
+      {
+        "name": "inputModeRegular",
+        "type": "text",
+        "label": "Input mode: Regular",
+        "importance": "low",
+        "default": "Regular"
+      },
+      {
+        "name": "inputModeNoAutoMove",
+        "type": "text",
+        "label": "Input mode: No automatic movement",
+        "importance": "low",
+        "default": "No automatic movement"
       }
     ]
   },

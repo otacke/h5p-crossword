@@ -198,10 +198,8 @@ export default class CrosswordInput {
           return;
         }
 
-        const codePointStart = inputField.selectionStart;
-        const start = this.getInputFieldSelectionStart(inputField);
-        inputField.value = `${Util.unicodeSubstring(inputField.value, 0, start)}${Util.unicodeSubstring(inputField.value, start + 1)}`;
-        inputField.selectionEnd = codePointStart;
+        const start = inputField.selectionStart;
+        inputField.selectionEnd = start + 1;
 
         /*
          * Samsung's virtual keyboard of Android devices may add redundant
@@ -217,6 +215,7 @@ export default class CrosswordInput {
             before,
             Util.toUpperCase(inputField.value, Util.UPPERCASE_EXCEPTIONS)
           );
+
           this.setInputFieldValue(inputField, after);
           inputField.setSelectionRange(start + 1, start + 1);
 
@@ -288,8 +287,7 @@ export default class CrosswordInput {
         const cursorPosition = Math.min(Util.unicodeLength(text), maxLength);
 
         // attach text up to maxLength
-        text = `${text}${Util.unicodeSubstring(inputField.value, start + Util.unicodeLength(text) - 1, maxLength)}`;
-
+        text = `${text}${Util.unicodeSubstring(inputField.value, Util.unicodeLength(text), maxLength)}`;
         this.setInputFieldValue(inputField, text);
 
         inputField.setSelectionRange(
@@ -333,32 +331,40 @@ export default class CrosswordInput {
    */
   applySamsungWorkaround(before = '', after = '') {
     // Make strings have same length
-    while (before.length < after.length) {
+    while (Util.unicodeLength(before) < Util.unicodeLength(after)) {
       before = `${before}${Util.CHARACTER_PLACEHOLDER}`;
     }
-    while (after.length < before.length) {
+    while (Util.unicodeLength(after) < Util.unicodeLength(before)) {
       after = `${after}${Util.CHARACTER_PLACEHOLDER}`;
+    }
+
+    let beforeUnicode = [];
+    let afterUnicode = [];
+
+    for (let i = 0; i < Util.unicodeLength(before); i++) {
+      beforeUnicode.push(Util.unicodeSubstring(before, i, i + 1));
+      afterUnicode.push(Util.unicodeSubstring(after, i, i + 1));
     }
 
     // Compute expected diff between before and after
     const trueDiff = [];
-    for (let i = before.length - 1; i >= 0; i--) {
-      if (before[i] === after[i]) {
+    for (let i = beforeUnicode.length - 1; i >= 0; i--) {
+      if (beforeUnicode[i] === afterUnicode[i]) {
         trueDiff[i] = Util.CHARACTER_PLACEHOLDER;
       }
-      else if (i + 1 < before.length && trueDiff[i + 1] !== '＿') {
+      else if (i + 1 < beforeUnicode.length && trueDiff[i + 1] !== '＿') {
         trueDiff[i] = trueDiff[i + 1];
         trueDiff[i + 1] = Util.CHARACTER_PLACEHOLDER;
       }
       else {
-        trueDiff[i] = after[i];
+        trueDiff[i] = afterUnicode[i];
       }
     }
 
     // Build expected value to be rendered
     let result = [];
     let placeholder = ' ';
-    for (let i = before.length - 1; i >= 0; i--) {
+    for (let i = beforeUnicode.length - 1; i >= 0; i--) {
       if (trueDiff[i] !== Util.CHARACTER_PLACEHOLDER) {
         placeholder = Util.CHARACTER_PLACEHOLDER;
       }
@@ -368,7 +374,7 @@ export default class CrosswordInput {
         nextChar = trueDiff[i];
       }
       else if (before[i] !== Util.CHARACTER_PLACEHOLDER) {
-        nextChar = before[i];
+        nextChar = beforeUnicode[i];
       }
       else {
         nextChar = placeholder;

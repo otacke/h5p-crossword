@@ -377,6 +377,20 @@ export default class CrosswordTable {
   }
 
   /**
+   * Set input mode.
+   * @param {string} mode Input mode to set.
+   */
+  setInputMode(mode) {
+    if (typeof mode !== 'string') {
+      return;
+    }
+
+    [].concat(...this.cells).forEach(cell => {
+      cell.setInputMode(mode);
+    });
+  }
+
+  /**
    * Move cursor to
    * @param {object} position Position.
    * @param {number} position.row Row to move to.
@@ -699,6 +713,7 @@ export default class CrosswordTable {
 
     if (
       (!this.currentOrientation || this.currentOrientation === 'across') &&
+      params.nextPositionOffset !== null &&
       params.position.column + params.nextPositionOffset >= 0 &&
       params.position.column + params.nextPositionOffset < this.params.dimensions.columns &&
       this.cells[params.position.row][params.position.column + params.nextPositionOffset].getSolution()
@@ -708,6 +723,7 @@ export default class CrosswordTable {
     }
     else if (
       (!this.currentOrientation || this.currentOrientation === 'down') &&
+      params.nextPositionOffset !== null &&
       params.position.row + params.nextPositionOffset >= 0 &&
       params.position.row + params.nextPositionOffset < this.params.dimensions.rows &&
       this.cells[params.position.row + params.nextPositionOffset][params.position.column].getSolution()

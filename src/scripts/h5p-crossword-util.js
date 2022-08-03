@@ -1,4 +1,4 @@
-import charRegex from 'char-regex';
+// import charRegex from 'char-regex';
 
 /** Class for utility functions */
 class Util {
@@ -106,6 +106,58 @@ class Util {
   }
 
   /**
+   * Retrive from localStorage.
+   * @param {string} keyname Content id to retrieve content for.
+   * @return {object|null} Stored object, null if not possible.
+   */
+  static getLocalStorage(keyname) {
+    let stored;
+
+    if (!window.localStorage || typeof keyname !== 'string') {
+      return null;
+    }
+
+    try {
+      stored = window.localStorage.getItem(keyname);
+      if ( stored ) {
+        stored = JSON.parse(stored);
+      }
+      return stored;
+    }
+    catch (error) {
+      return null;
+    }
+  }
+
+
+  /**
+   * Save to LocalStorage.
+   * @param {string} keyname Key name.
+   * @param {object} state Data to be to stored.
+   */
+  static setLocalStorage(keyname, state) {
+    if ( !window.localStorage || typeof keyname !== 'string' || !state) {
+      return;
+    }
+
+    try {
+      window.localStorage.setItem(keyname, JSON.stringify(state));
+    }
+    catch (error) {
+      return;
+    }
+  }
+
+  /**
+   * Determine whether any word contains graphemes.
+   * @param {string[]} words Words to check.
+   * @return {boolean} True, if any word contains graphemes. Else false.
+   */
+  static needsGraphemeSupport(words = []) {
+    return words.some(word => word.length > Util.unicodeLength(word));
+  }
+
+  /**
    * Get substring considering unicode graphemes.
    * @param {string} text Text to get substring from.
    * @param {number} start Start index.
@@ -121,7 +173,7 @@ class Util {
 
     return text
       .replace(Util.ANSI_REGEXP, '')
-      .match(charRegex())
+      .match(Util.TMP_REGEXP) // charRegex()
       .slice(start, end)
       .join('');
   }
@@ -138,7 +190,7 @@ class Util {
 
     return text
       .replace(Util.ANSI_REGEXP, '')
-      .match(charRegex()).length;
+      .match(Util.TMP_REGEXP).length; // charRegex()
   }
 
   /**
@@ -154,7 +206,7 @@ class Util {
 
     text = text
       .replace(Util.ANSI_REGEXP, '')
-      .match(charRegex());
+      .match(Util.TMP_REGEXP); // charRegex()
 
     if (text.length < index + 1) {
       return '';
@@ -272,5 +324,15 @@ Util.ANSI_REGEXP = new RegExp(
 
 /** @constant {string} Placeholder in text input fields */
 Util.CHARACTER_PLACEHOLDER = '\uff3f';
+
+/** @constant {string} Temporary fix for bug in charRegex */
+Util.TMP_REGEXP = new RegExp(
+  [
+    '\\ud83c[\\udffb-\\udfff](?=\\ud83c[\\udffb-\\udfff])',
+    '(?:[\\u0c15-\\u0c28\\u0c2a-\\u0c39]\\u0c4d[\\u0c15-\\u0c28\\u0c2a-\\u0c39]|[\\u0c15-\\u0c28\\u0c2a-\\u0c39\\u0c58-\\u0c5a][\\u0c3e-\\u0c44\\u0c46-\\u0c48\\u0c4a-\\u0c4c\\u0c62-\\u0c63]|[\\u0c15-\\u0c28\\u0c2a-\\u0c39\\u0c58-\\u0c5a][\\u0c01-\\u0c03\\u0c4d\\u0c55\\u0c56]|[\\u0c05-\\u0c0c\\u0c0e-\\u0c10\\u0c12-\\u0c14\\u0c60-\\u0c61(?:\\u0c15-\\u0c28\\u0c2a-\\u0c39(?!\\u0c4d))\\u0c66-\\u0c6f\\u0c78-\\u0c7e\\u0c58-\\u0c5a])',
+    '(?:(?:\\ud83c\\udff4\\udb40\\udc67\\udb40\\udc62\\udb40(?:\\udc65|\\udc73|\\udc77)\\udb40(?:\\udc6e|\\udc63|\\udc6c)\\udb40(?:\\udc67|\\udc74|\\udc73)\\udb40\\udc7f)|[^\\ud800-\\udfff][\\u0300-\\u036f\\ufe20-\\ufe2f\\u20d0-\\u20ff\\u1ab0-\\u1aff\\u1dc0-\\u1dff]?|[\\u0300-\\u036f\\ufe20-\\ufe2f\\u20d0-\\u20ff\\u1ab0-\\u1aff\\u1dc0-\\u1dff]|(?:\\ud83c[\\udde6-\\uddff]){2}|[\\ud800-\\udbff][\\udc00-\\udfff]|[\\ud800-\\udfff])[\\ufe0e\\ufe0f]?(?:[\\u0300-\\u036f\\ufe20-\\ufe2f\\u20d0-\\u20ff\\u1ab0-\\u1aff\\u1dc0-\\u1dff]|\\ud83c[\\udffb-\\udfff])?(?:\\u200d(?:[^\\ud800-\\udfff]|(?:\\ud83c[\\udde6-\\uddff]){2}|[\\ud800-\\udbff][\\udc00-\\udfff])[\\ufe0e\\ufe0f]?(?:[\\u0300-\\u036f\\ufe20-\\ufe2f\\u20d0-\\u20ff\\u1ab0-\\u1aff\\u1dc0-\\u1dff]|\\ud83c[\\udffb-\\udfff])?)*'
+  ].join('|'),
+  'g'
+);
 
 export default Util;

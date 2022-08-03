@@ -201,6 +201,18 @@ export default class CrosswordContent {
   }
 
   /**
+   * Set input mode.
+   * @param {string} mode Input mode to set.
+   */
+  setInputMode(mode) {
+    if (typeof mode !== 'string') {
+      return;
+    }
+
+    this.table.setInputMode(mode);
+  }
+
+  /**
    * Get correct responses pattern for xAPI.
    * @return {string[]} Correct response for each cell.
    */
