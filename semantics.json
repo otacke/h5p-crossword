@@ -501,16 +501,16 @@
       {
         "name": "inputModeRegular",
         "type": "text",
-        "label": "Input mode: Regular",
+        "label": "Input mode: automatic movement",
         "importance": "low",
-        "default": "Regular"
+        "default": "Input mode: automatic movement"
       },
       {
         "name": "inputModeNoAutoMove",
         "type": "text",
         "label": "Input mode: No automatic movement",
         "importance": "low",
-        "default": "No automatic movement"
+        "default": "Input mode: no automatic movement"
       }
     ]
   },
@@ -659,6 +659,34 @@
         "description": "@score and @total are variables and will be replaced by their respective values.",
         "importance": "low",
         "default": "You got @score out of @total points"
+      },
+      {
+        "name": "buttonInputModeRegular",
+        "type": "text",
+        "label": "Button for input mode: automatic movement",
+        "importance": "low",
+        "default": "Toggle input mode. Currently moving to next cell automatically."
+      },
+      {
+        "name": "buttonInputModeNoAutoMove",
+        "type": "text",
+        "label": "Button for input mode: no automatic movement",
+        "importance": "low",
+        "default": "Toggle input mode. Currently not moving to next cell automatically."
+      },
+      {
+        "name": "switchedToInputModeRegular",
+        "type": "text",
+        "label": "Turned on moving to next cell automatically.",
+        "importance": "low",
+        "default": "Turned on moving to next cell automatically."
+      },
+      {
+        "name": "switchedToInputModeNoAutoMove",
+        "type": "text",
+        "label": "Turned off moving to next cell automatically.",
+        "importance": "low",
+        "default": "Turned off moving to next cell automatically."
       }
     ]
   }

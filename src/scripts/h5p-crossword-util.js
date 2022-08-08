@@ -129,19 +129,29 @@ class Util {
     }
   }
 
-
   /**
    * Save to LocalStorage.
    * @param {string} keyname Key name.
-   * @param {object} state Data to be to stored.
+   * @param {object|undefined} [data] Data to store or undefined to delete.
    */
-  static setLocalStorage(keyname, state) {
-    if ( !window.localStorage || typeof keyname !== 'string' || !state) {
+  static setLocalStorage(keyname, data) {
+    if ( !window.localStorage || typeof keyname !== 'string') {
+      return;
+    }
+
+    if (typeof data === 'undefined') {
+      try {
+        window.localStorage.removeItem(keyname);
+      }
+      catch (error) {
+        return;
+      }
+
       return;
     }
 
     try {
-      window.localStorage.setItem(keyname, JSON.stringify(state));
+      window.localStorage.setItem(keyname, JSON.stringify(data));
     }
     catch (error) {
       return;

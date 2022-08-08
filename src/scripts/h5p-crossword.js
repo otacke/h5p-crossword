@@ -1,6 +1,10 @@
 // Import required classes
 import CrosswordContent from './h5p-crossword-content';
+import Titlebar from './h5p-crossword-titlebar';
 import Util from './h5p-crossword-util';
+
+import './../styles/h5p-crossword-titlebar.scss';
+import './../styles/h5p-crossword-titlebar-button.scss';
 
 /**
  * Class for H5P Crossword.
@@ -53,8 +57,8 @@ export default class Crossword extends H5P.Question {
         submitAnswer: 'Submit',
         confirmGraphemeHeader: 'Note about input mode',
         confirmGraphemeDialog: 'The language used in this crossword may require multiple key strokes per symbol. If you encounter problems on the grid, switch to the "No automatic movement" mode.',
-        inputModeRegular: 'Regular',
-        inputModeNoAutoMove: 'No automatic movement'
+        inputModeRegular: 'Input mode: automatic movement',
+        inputModeNoAutoMove: 'Input mode: no automatic movement',
       },
       a11y: {
         crosswordGrid: 'Crossword grid. Use arrow keys to navigate and keyboard to enter characters. Use tab to use input fields instead.',
@@ -74,7 +78,11 @@ export default class Crossword extends H5P.Question {
         check: 'Check the characters. The responses will be marked as correct, incorrect, or unanswered.',
         showSolution: 'Show the solution. The crossword will be filled with its correct solution.',
         retry: 'Retry the task. Reset all responses and start the task over again.',
-        yourResult: 'You got @score out of @total points'
+        yourResult: 'You got @score out of @total points',
+        buttonInputModeRegular: 'Toggle input mode. Currently moving to next cell automatically.',
+        buttonInputModeNoAutoMove: 'Toggle input mode. Currently not moving to next cell automatically.',
+        switchedToInputModeRegular: 'Turned on moving to next cell automatically.',
+        switchedToInputModeNoAutoMove: 'Turned off moving to next cell automatically.',
       }
     }, this.params);
 
@@ -138,22 +146,69 @@ export default class Crossword extends H5P.Question {
     );
 
     this.handleGraphemeInputDialog();
+
+    H5P.externalDispatcher.on('initialized', () => {
+      if (!this.needsGraphemeSupport) {
+        return;
+      }
+
+      const h5pContainer = this.content.getDOM().closest('.h5p-container.h5p-crossword');
+      if (!h5pContainer) {
+        return; // 'initialized' probably was not meant for us
+      }
+
+      const inputMode = Util.getLocalStorage(this.localStorageKeyname)
+        ?.inputMode || 'regular';
+      this.content.setInputMode(inputMode);
+
+      const titlebar = new Titlebar(
+        {
+          l10n: {
+            buttonInputModeRegular: this.params.l10n.inputModeRegular,
+            buttonInputModeNoAutoMove: this.params.l10n.inputModeNoAutoMove
+          },
+          a11y: {
+            buttonInputModeRegular: this.params.a11y.buttonInputModeRegular,
+            buttonInputModeNoAutoMove: this.params.a11y.buttonInputModeNoAutoMove
+          },
+          inputMode: inputMode
+        },
+        {
+          onClickButtonInputMode: () => {
+            const active = titlebar.isButtonActive('inputMode');
+
+            const storage = Util.getLocalStorage(this.localStorageKeyname) || {};
+            storage.inputMode = active ? 'regular' : 'noAutoMove';
+            Util.setLocalStorage(this.localStorageKeyname, storage);
+            this.content.setInputMode(storage.inputMode);
+
+            const message = (active) ?
+              this.params.a11y.switchedToInputModeRegular :
+              this.params.a11y.switchedToInputModeNoAutoMove;
+            this.read(message);
+          }
+        }
+      );
+      h5pContainer.prepend(titlebar.getDOM());
+    });
   }
 
   /**
    * Handle grapheme input dialog to confirm
    */
   handleGraphemeInputDialog() {
-    if (!this.needsGraphemeSupport) {
-      return;
-    }
-
     // Build keyname for local storage
     const base = H5PIntegration?.baseUrl ?
       `${H5PIntegration?.baseUrl}-` :
       '';
     const id = this.isRoot() ? this.contentId : this.subContentId;
     this.localStorageKeyname = `${base}H5P-${Crossword.DEFAULT_DESCRIPTION}-${id}-settings`;
+
+    if (!this.needsGraphemeSupport) {
+      // Remove potential previous value in local storage
+      Util.setLocalStorage(this.localStorageKeyname);
+      return;
+    }
 
     // If dialog was already confirmed, don't bother user again
     const hasConfirmedDialog = Util.getLocalStorage(this.localStorageKeyname);
@@ -194,55 +249,6 @@ export default class Crossword extends H5P.Question {
     const contentWrapper = document.createElement('div');
     contentWrapper.classList.add('h5p-crossword-content-wrapper');
 
-    let inputMode = 'regular';
-
-    if (this.needsGraphemeSupport) {
-      const options = document.createElement('div');
-      options.classList.add('h5p-crossword-options');
-
-      const toggleInputModeId = `h5p-crossword-${this.contentId}-input-mode-toggle`;
-
-      const toggleInputModeLabel = document.createElement('label');
-      toggleInputModeLabel.classList.add('h5p-crossword-toggle-input-mode-label');
-      toggleInputModeLabel.setAttribute('for', toggleInputModeId);
-      toggleInputModeLabel.innerText = 'Select input mode';
-      options.appendChild(toggleInputModeLabel);
-
-      const toggleInputMode = document.createElement('select');
-      toggleInputMode.id = toggleInputModeId;
-      toggleInputMode.classList.add('h5p-crossword-toggle-input-mode');
-      toggleInputMode.addEventListener('input', () => {
-        let storage = Util.getLocalStorage(this.localStorageKeyname) || {};
-        storage.inputMode = toggleInputMode.value;
-        Util.setLocalStorage(this.localStorageKeyname, storage);
-
-        this.content.setInputMode(toggleInputMode.value);
-      });
-
-      inputMode = (Util.getLocalStorage(this.localStorageKeyname) || {})
-        .inputMode || 'regular';
-
-      const option1 = document.createElement('option');
-      option1.value = 'regular';
-      option1.innerText = 'Regular';
-      if (inputMode === option1.value) {
-        option1.setAttribute('selected', 'selected');
-      }
-      toggleInputMode.appendChild(option1);
-
-      const option2 = document.createElement('option');
-      option2.value = 'noAutoMove';
-      option2.innerText = 'No automatic movement';
-      if (inputMode === option2.value) {
-        option2.setAttribute('selected', 'selected');
-      }
-      toggleInputMode.appendChild(option2);
-
-      options.appendChild(toggleInputMode);
-
-      contentWrapper.appendChild(options);
-    }
-
     this.content = new CrosswordContent(
       {
         scoreWords: this.params.behaviour.scoreWords,
@@ -277,8 +283,6 @@ export default class Crossword extends H5P.Question {
         }
       }
     );
-
-    this.content.setInputMode(inputMode);
 
     contentWrapper.appendChild(this.content.getDOM());
 
