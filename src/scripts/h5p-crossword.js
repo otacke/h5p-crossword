@@ -145,12 +145,12 @@ export default class Crossword extends H5P.Question {
       this.params.words.map(word => word.answer)
     );
 
-    this.handleGraphemeInputDialog();
-
     H5P.externalDispatcher.on('initialized', () => {
-      if (!this.needsGraphemeSupport) {
+      if (!this.needsGraphemeSupport || !this.wasCrosswordGenerated) {
         return;
       }
+
+      this.handleGraphemeInputDialog();
 
       const h5pContainer = this.content.getDOM().closest('.h5p-container.h5p-crossword');
       if (!h5pContainer) {
@@ -307,13 +307,17 @@ export default class Crossword extends H5P.Question {
    * @param {boolean} result initialization success.
    */
   handleContentInitialized(result) {
+    this.wasCrosswordGenerated = result;
+
     if (result) {
       // Register Buttons
       this.addButtons();
     }
 
     this.on('resize', () => {
-      this.content.resize();
+      if (this.content) {
+        this.content.resize();
+      }
     });
   }
 

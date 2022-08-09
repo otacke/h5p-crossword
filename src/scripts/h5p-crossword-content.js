@@ -209,6 +209,10 @@ export default class CrosswordContent {
       return;
     }
 
+    if (!this.table) {
+      return;
+    }
+
     this.table.setInputMode(mode);
   }
 
