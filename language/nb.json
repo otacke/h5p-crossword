@@ -55,7 +55,7 @@
     },
     {
       "label": "Løsningsord",
-      "description": "Velg om du vil legge til et løsningsord som er satt sammen av bokstaver i rutenettet. Løsningsordet vil kun vises dersom alle de korrekte bokstavene er på plass i kryssordet. Merk: Det er ingen tilgjengelighetsstøtte for denne funksjonen enda."
+      "description": "Velg om du vil legge til et løsningsord som er satt sammen av bokstaver i rutenettet. Løsningsordet vil kun vises dersom alle de korrekte bokstavene er på plass i kryssordet. Merk: Det er ingen tilgjengelighetsstøtte for denne funksjonen ennå."
     },
     {
       "label": "Tilbakemelding på hele oppgava",
@@ -89,7 +89,7 @@
       "fields": [
         {
           "label": "Bakgrunnsbilde",
-          "description": "Sett inn et valgfritt bakgrunnsbilde. Bildet vil bli skalert til å passe til bakgrunnen. Detvil ikke bli strukket."
+          "description": "Sett inn et valgfritt bakgrunnsbilde. Bildet vil bli skalert til å passe til bakgrunnen. Det vil ikke bli strukket."
         },
         {
           "label": "Bakgrunnsfarge",
@@ -102,7 +102,7 @@
           "default": "#000000"
         },
         {
-          "label": "Bakgrunnsfarge for bokstruter",
+          "label": "Bakgrunnsfarge for bokstavruter",
           "description": "Velg en bakgrunnsfarge for rutene som kan huse bokstaver.",
           "default": "#ffffff"
         },
@@ -274,7 +274,7 @@
           "default": "Bokstav @position av @length"
         },
         {
-          "description": "Oppgir lengden på ordet. @length er en variablel og vil bli bytta ut med sin respektive verdi.",
+          "description": "Oppgir lengden på ordet. @length er en variabel og vil bli bytta ut med sin respektive verdi.",
           "label": "Ordlengde",
           "default": "Ordet har @length bokstaver"
         },
