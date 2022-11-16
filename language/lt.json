@@ -1,0 +1,301 @@
+{
+  "semantics": [
+    {
+      "label": "Užduoties aprašymas",
+      "description": "Čia aprašykite savo užduotį."
+    },
+    {
+      "label": "žodžiai",
+      "widgets": [
+        {
+          "label": "Numatytasis"
+        }
+      ],
+      "entity": "Žodis",
+      "field": {
+        "label": "Žodis",
+        "fields": [
+          {
+            "label": "Užuomina",
+            "description": "Užuomina, kuri turėtų nurodyti atsakymą."
+          },
+          {
+            "label": "Atsakymas",
+            "description": "Atsakymas į užuominą."
+          },
+          {
+            "label": "Papildoma užuomina"
+          },
+          {
+            "label": "Pataisyti žodį tinklelyje",
+            "description": "Pažymėkite, ar norite pataisyti žodį tam tikroje tinklelio vietoje."
+          },
+          {
+            "label": "Eilutė",
+            "description": "Eilutės indeksas, kur turėtų prasidėti atsakymas."
+          },
+          {
+            "label": "Stulpelis",
+            "description": "Stulpelio indeksas, kur turėtų prasidėti atsakymas."
+          },
+          {
+            "label": "Padėtis",
+            "description": "Padėtis atsakymui.",
+            "options": [
+              {
+                "label": "Skersai"
+              },
+              {
+                "label": "Žemyn"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Bendras sprendimo žodis",
+      "description": "Pasirinktinai pridėkite sprendimo žodį, kurį galima išvesti iš tam tikrų tinklelyje esančių simbolių. Jis bus matomas tik tuo atveju, jei kryžiažodyje bus rasti visi jo simboliai. Atminkite: šiai funkcijai pritaikymo palaikymo dar nėra."
+    },
+    {
+      "label": "Bendras atsiliepimas",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Numatytasis"
+            }
+          ],
+          "label": "Define custom feedback for any score range",
+          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity": "range",
+          "field": {
+            "fields": [
+              {
+                "label": "Score Range"
+              },
+              {},
+              {
+                "label": "Feedback for defined score range",
+                "placeholder": "Fill in the feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Tema",
+      "fields": [
+        {
+          "label": "Fono paveikslėlis",
+          "description": "Select an optional background image. It will be scaled to fit the background without stretching it."
+        },
+        {
+          "label": "Fono spalva",
+          "description": "Choose a background color. It will either be used instead of a background image or as background for transparent areas.",
+          "default": "#173354"
+        },
+        {
+          "label": "Tinklelio spalva",
+          "description": "Pasirinkite tinklelio spalvą.",
+          "default": "#000000"
+        },
+        {
+          "label": "Langelio fono spalva",
+          "description": "Pasirinkite lentelės langelio fono spalvą.",
+          "default": "#ffffff"
+        },
+        {
+          "label": "Langelio teksto spalva",
+          "description": "Pasirinkite lentelės langelio teksto spalvą.",
+          "default": "#000000"
+        },
+        {
+          "label": "Užuominos id spalva",
+          "description": "Pasirinkite užuominos ID spalvą lentelės langelyje.",
+          "default": "#606060"
+        },
+        {
+          "label": "Langelio fono spalva (paryškinta)",
+          "description": "Pasirinkite paryškinto lentelės langelio fono spalvą.",
+          "default": "#3e8de8"
+        },
+        {
+          "label": "Langelio teksto spalva (paryškinta)",
+          "description": "Pasirinkite paryškinto lentelės langelio teksto spalvą.",
+          "default": "#ffffff"
+        },
+        {
+          "label": "Langelio ID spalva (paryškinta)",
+          "description": "Choose the color of the clue id inside a table cell that is highlighted.",
+          "default": "#e0e0e0"
+        }
+      ]
+    },
+    {
+      "label": "Veikimo nuostatos",
+      "description": "Šios parinktys leis jums valdyti, kaip veikia užduotis.",
+      "fields": [
+        {
+          "label": "Rodomų žodžių skaičius",
+          "description": "Create a randomized batch of words from the pool. The batch will always contain at least all the words that were fixed on the grid regardless of this setting. An empty value or 0 means to use all words."
+        },
+        {
+          "label": "Įjungti momentinį atsiliepimą"
+        },
+        {
+          "label": "Score words",
+          "description": "If this option is enabled, words will be counted in order to determine the score. Otherwise, correct characters will be counted."
+        },
+        {
+          "label": "Taikyti nuobaudas",
+          "description": "Jei ši parinktis įjungta, už kiekvieną neteisingą atsakymą bus skiriama bauda -1."
+        },
+        {
+          "label": "Įjungti „Bandyti dar kartą“"
+        },
+        {
+          "label": "Įjungti „Sprendimas“"
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "default": "Across",
+          "label": "Label for across"
+        },
+        {
+          "label": "Label for down",
+          "default": "Down"
+        },
+        {
+          "label": "Text for \"Check\" button",
+          "default": "Check"
+        },
+        {
+          "label": "Text for \"Submit\" button",
+          "default": "Submit"
+        },
+        {
+          "label": "Text for \"Retry\" button",
+          "default": "Retry"
+        },
+        {
+          "default": "Show solution",
+          "label": "Text for \"Show solution\" button"
+        },
+        {
+          "label": "Cannot create crossword",
+          "default": "Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common. If you are using fixed words, please make sure that their position doesn't prevent other words from being placed."
+        },
+        {
+          "label": "Cannot create crossword (too few words)",
+          "default": "Could not generate a crossword. You need at least two words."
+        },
+        {
+          "label": "Probematic words",
+          "description": "List words that caused trouble while generating the crossword. @words is a placeholder that will be replaced by the actual problematic words.",
+          "default": "Problematic word(s): @words"
+        },
+        {
+          "label": "Extra clue",
+          "default": "Extra clue"
+        },
+        {
+          "label": "Close window",
+          "default": "Close window"
+        }
+      ],
+      "label": "Vartotojo sąsaja"
+    },
+    {
+      "label": "Readspeaker",
+      "fields": [
+        {
+          "label": "Crossword grid description",
+          "default": "Crossword grid. Use arrow keys to navigate and keyboard to enter characters. Use tab to use input fields instead."
+        },
+        {
+          "label": "Column",
+          "default": "Column"
+        },
+        {
+          "label": "Row",
+          "default": "Row"
+        },
+        {
+          "label": "Across",
+          "default": "Across"
+        },
+        {
+          "label": "Down",
+          "default": "Down"
+        },
+        {
+          "label": "Empty",
+          "default": "Empty"
+        },
+        {
+          "description": "Result announcer. @clue is a variable and will be replaced by the respective clue.",
+          "label": "Result for",
+          "default": "Result for: @clue"
+        },
+        {
+          "label": "Correct",
+          "default": "Correct"
+        },
+        {
+          "label": "Wrong",
+          "default": "Wrong"
+        },
+        {
+          "label": "Point",
+          "default": "point"
+        },
+        {
+          "description": "Solution announcer. @clue and @solution are variables and will be replaced by the respective values.",
+          "label": "Solution for",
+          "default": "For @clue the solution is: @solution"
+        },
+        {
+          "description": "Extra clue announcer. @clue is a variable and will be replaced by the respective value.",
+          "label": "Extra clue for",
+          "default": "Open extra clue for @clue"
+        },
+        {
+          "label": "Empty cell",
+          "default": "Empty cell"
+        },
+        {
+          "description": "Announcing the current position. @position and @length are variables and will be replaced by their respective values.",
+          "label": "Letter",
+          "default": "Letter @position of @length"
+        },
+        {
+          "description": "Announcing the word length. @length is a variable and will be replaced by the respective value.",
+          "label": "Length of word",
+          "default": "@length letter word"
+        },
+        {
+          "label": "Assistive technology description for \"Check\" button",
+          "default": "Check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
+          "label": "Assistive technology description for \"Show Solution\" button",
+          "default": "Show the solution. The crossword will be filled with its correct solution."
+        },
+        {
+          "label": "Assistive technology description for \"Retry\" button",
+          "default": "Retry the task. Reset all responses and start the task over again."
+        },
+        {
+          "label": "Your result",
+          "description": "@score and @total are variables and will be replaced by their respective values.",
+          "default": "You got @score out of @total points."
+        }
+      ]
+    }
+  ]
+}
