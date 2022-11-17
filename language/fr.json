@@ -128,7 +128,7 @@
         },
         {
           "label": "Couleur des indices numériques des cellules sélectionnées",
-          "description": "Choisir la couleur des indices numériques dans les cellules des cellules sélectionnées",
+          "description": "Choisir la couleur des indices numériques dans les cellules des cellules sélectionnées.",
           "default": "#e0e0e0"
         }
       ]
