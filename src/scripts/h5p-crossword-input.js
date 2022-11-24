@@ -198,6 +198,15 @@ export default class CrosswordInput {
           return;
         }
 
+        // Take care of key input tools that may send event without key
+        if (
+          event.code === undefined &&
+          event.key === undefined &&
+          event.keyCode === undefined
+        ) {
+          return;
+        }
+
         const start = inputField.selectionStart;
         inputField.selectionEnd = start + 1;
 
@@ -215,6 +224,11 @@ export default class CrosswordInput {
             before,
             Util.toUpperCase(inputField.value, Util.UPPERCASE_EXCEPTIONS)
           );
+
+          // Take care of text input tools that buffer key strokes
+          if (before.replace(/＿/g, '') === after) {
+            return; // No need to do anything
+          }
 
           this.setInputFieldValue(inputField, after);
           inputField.setSelectionRange(start + 1, start + 1);
@@ -240,6 +254,15 @@ export default class CrosswordInput {
             // None of backspace, home, end, left, right, up, down, delete
             return;
           }
+        }
+
+        // Take care of key input tools that may send event without key
+        if (
+          event.code === undefined &&
+          event.key === undefined &&
+          event.keyCode === undefined
+        ) {
+          return;
         }
 
         // Sync cursor position in table

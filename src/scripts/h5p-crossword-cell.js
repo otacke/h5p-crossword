@@ -162,8 +162,8 @@ export default class CrosswordCell {
         return;
       }
 
-      if (event.data === null) {
-        return; // pasting will yield null
+      if (event.data === null || event.data === undefined) {
+        return; // pasting will yield null, input tools may yield undefined
       }
 
       this.setAnswer(Util.toUpperCase(event.data, Util.UPPERCASE_EXCEPTIONS), true);
