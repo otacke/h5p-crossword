@@ -45,7 +45,7 @@ export default class Crossword extends H5P.Question {
         checkAnswer: 'Check answer',
         couldNotGenerateCrossword: 'Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common.',
         couldNotGenerateCrosswordTooFewWords: 'Could not generate a crossword. You need at least two words.',
-        problematicWords: 'Problematic word(s): @words',
+        problematicWords: 'Some words could not be placed. If you are using fixed words, please make sure that their position doesn\'t prevent other words from being placed. Words with the same alignment may not be placed touching each other. Problematic word(s): @words',
         showSolution: 'Show solution',
         tryAgain: 'Retry',
         extraClue: 'Extra clue',

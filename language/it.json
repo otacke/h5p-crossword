@@ -28,7 +28,7 @@
           },
           {
             "label": "Correggi la parola sulla griglia",
-            "description": "Controlla se vuoi fissare la parola in una posizione particolare sulla griglia."
+            "description": "Controlla se vuoi fissare la parola in una posizione particolare sulla griglia. Words with the same alignment may not be placed touching each other."
           },
           {
             "label": "Riga",
@@ -189,7 +189,7 @@
         },
         {
           "label": "Impossibile creare cruciverba",
-          "default": "Impossibile generare un cruciverba con le parole indicate. Riprova con meno parole o parole che hanno più caratteri in comune. Se stai usando parole fisse, assicurati che la loro posizione non impedisca di inserire altre parole."
+          "default": "Impossibile generare un cruciverba con le parole indicate. Riprova con meno parole o parole che hanno più caratteri in comune."
         },
         {
           "label": "Impossibile creare cruciverba (troppo poche parole)",
@@ -198,7 +198,7 @@
         {
           "label": "Parole problematiche",
           "description": "Elenca le parole che hanno causato problemi durante la generazione del cruciverba. @words è un segnaposto che verrà sostituito dalle parole problematiche effettive.",
-          "default": "Parole problematiche: @words"
+          "default": "Some words could not be placed. Se stai usando parole fisse, assicurati che la loro posizione non impedisca di inserire altre parole. Words with the same alignment may not be placed touching each other. Parole problematiche: @words"
         },
         {
           "label": "Indizio extra",

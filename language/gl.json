@@ -28,7 +28,7 @@
           },
           {
             "label": "Palabra fixa na grella",
-            "description": "Marca isto se queres fixar a palabra nunha posición específica da grella."
+            "description": "Marca isto se queres fixar a palabra nunha posición específica da grella. Words with the same alignment may not be placed touching each other."
           },
           {
             "label": "Fila",
@@ -189,7 +189,7 @@
         },
         {
           "label": "Non se pode crear o encrucillado",
-          "default": "Non se puido xerar un encrucillado coas palabras proporcionadas. Por favor, proba outra vez con menos palabras ou con palabras que teñan máis caracteres en común. Se estás a usar palabras fixadas, asegúrate de que a súa posición non impida a colocación doutras palabras."
+          "default": "Non se puido xerar un encrucillado coas palabras proporcionadas. Por favor, proba outra vez con menos palabras ou con palabras que teñan máis caracteres en común."
         },
         {
           "label": "Non se pode crear o encrucillado (moi poucas palabras)",
@@ -198,7 +198,7 @@
         {
           "label": "Palabras problemáticas",
           "description": "Lista as palabras que causaron problemas durante a xeración do encrucillado. Substituirase @words polas palabras problemáticas.",
-          "default": "Palabras(s) problemática(s): @words"
+          "default": "Some words could not be placed. Se estás a usar palabras fixadas, asegúrate de que a súa posición non impida a colocación doutras palabras. Words with the same alignment may not be placed touching each other. Palabras(s) problemática(s): @words"
         },
         {
           "label": "Definicion extra",

@@ -28,7 +28,7 @@
           },
           {
             "label": "Fix word on grid",
-            "description": "Check if you want to fix the word to a particular position on the grid."
+            "description": "Check if you want to fix the word to a particular position on the grid. Words with the same alignment may not be placed touching each other."
           },
           {
             "label": "Row",
@@ -189,7 +189,7 @@
         },
         {
           "label": "Cannot create crossword",
-          "default": "Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common. If you are using fixed words, please make sure that their position doesn't prevent other words from being placed."
+          "default": "Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common."
         },
         {
           "label": "Cannot create crossword (too few words)",
@@ -198,7 +198,7 @@
         {
           "label": "Probematic words",
           "description": "List words that caused trouble while generating the crossword. @words is a placeholder that will be replaced by the actual problematic words.",
-          "default": "Problematic word(s): @words"
+          "default": "Some words could not be placed. If you are using fixed words, please make sure that their position doesn't prevent other words from being placed. Words with the same alignment may not be placed touching each other. Problematic word(s): @words"
         },
         {
           "label": "Extra clue",

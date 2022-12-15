@@ -28,7 +28,7 @@
           },
           {
             "label": "Fixiere Wort im Gitter",
-            "description": "Wähle diese Option, wenn du das Wort an einer bestimmten Stelle im Gitter fixieren möchtest."
+            "description": "Wähle diese Option, wenn du das Wort an einer bestimmten Stelle im Gitter fixieren möchtest. Wörter mit derselben Ausrichtung dürfen sich nicht berühren."
           },
           {
             "label": "Zeile",
@@ -198,7 +198,7 @@
         {
           "label": "Problematische Wörter",
           "description": "Liste Wörter auf, die beim Generieren des Kreuzworträtsels nicht gesetzt werden konnten. @words ist ein Platzhalter, der durch die tatsächlichen Problematischen Wörter ersetzt wird.",
-          "default": "Problematische Wörter: @words"
+          "default": "Einige Wörter konnten nicht platziert werden. Wenn du Wörter im Gitter fixierst, stelle bitte sicher, dass ihre Position das Setzen von anderen Wörtern nicht verhindert. Wörter mit derselben Ausrichtung dürfen sich nicht berühren. Problematische Wörter: @words"
         },
         {
           "label": "Extra-Hinweis",

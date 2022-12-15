@@ -28,7 +28,7 @@
           },
           {
             "label": "Fest ord til rutenett",
-            "description": "Huk av dersom du vil feste ordet til ein spesifikk posisjon i rutenettet."
+            "description": "Huk av dersom du vil feste ordet til ein spesifikk posisjon i rutenettet. Words with the same alignment may not be placed touching each other."
           },
           {
             "label": "Rad",
@@ -189,7 +189,7 @@
         },
         {
           "label": "Kan ikkje opprette kryssord",
-          "default": "Det er ikkje mogleg å opprette kryssord basert på dei definerte orda. Ver derfor snill og prøv på nytt. Ta med færre ord, og vel ord som har fleire bokstavar til felles. Dersom du bruker ord som er festa til ein bestemd posisjon, sørg for at posisjonen til desse orda ikkje hindrar at andre ord kan finne ei plassering."
+          "default": "Det er ikkje mogleg å opprette kryssord basert på dei definerte orda. Ver derfor snill og prøv på nytt. Ta med færre ord, og vel ord som har fleire bokstavar til felles."
         },
         {
           "label": "Kan ikkje opprette kryssord (for få ord)",
@@ -198,7 +198,7 @@
         {
           "label": "Problematiske ord",
           "description": "Gi opp ord som har skapt problem ved generering av kryssordet. @words er ein plasshaldar som vil bli erstatta med orda du gir opp.",
-          "default": "Problematiske ord: @words"
+          "default": "Some words could not be placed. Dersom du bruker ord som er festa til ein bestemd posisjon, sørg for at posisjonen til desse orda ikkje hindrar at andre ord kan finne ei plassering. Words with the same alignment may not be placed touching each other. Problematiske ord: @words"
         },
         {
           "label": "Ekstra hint",

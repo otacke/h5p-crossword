@@ -28,7 +28,7 @@
           },
           {
             "label": "Pataisyti žodį tinklelyje",
-            "description": "Pažymėkite, ar norite pataisyti žodį tam tikroje tinklelio vietoje."
+            "description": "Pažymėkite, ar norite pataisyti žodį tam tikroje tinklelio vietoje. Words with the same alignment may not be placed touching each other."
           },
           {
             "label": "Eilutė",
@@ -161,6 +161,7 @@
       ]
     },
     {
+      "label": "Vartotojo sąsaja",
       "fields": [
         {
           "default": "Across",
@@ -183,12 +184,12 @@
           "default": "Retry"
         },
         {
-          "default": "Show solution",
-          "label": "Text for \"Show solution\" button"
+          "label": "Text for \"Show solution\" button",
+          "default": "Show solution"
         },
         {
           "label": "Cannot create crossword",
-          "default": "Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common. If you are using fixed words, please make sure that their position doesn't prevent other words from being placed."
+          "default": "Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common."
         },
         {
           "label": "Cannot create crossword (too few words)",
@@ -197,7 +198,7 @@
         {
           "label": "Probematic words",
           "description": "List words that caused trouble while generating the crossword. @words is a placeholder that will be replaced by the actual problematic words.",
-          "default": "Problematic word(s): @words"
+          "default": "Some words could not be placed. If you are using fixed words, please make sure that their position doesn't prevent other words from being placed. Words with the same alignment may not be placed touching each other. Problematic word(s): @words"
         },
         {
           "label": "Extra clue",
@@ -207,8 +208,7 @@
           "label": "Close window",
           "default": "Close window"
         }
-      ],
-      "label": "Vartotojo sąsaja"
+      ]
     },
     {
       "label": "Readspeaker",

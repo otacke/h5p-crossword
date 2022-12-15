@@ -28,7 +28,7 @@
           },
           {
             "label": "Fixer le mot sur la grille",
-            "description": "Cocher si vous désirez fixer le mot à une position particulière sur la grille."
+            "description": "Cocher si vous désirez fixer le mot à une position particulière sur la grille. Words with the same alignment may not be placed touching each other."
           },
           {
             "label": "Ligne",
@@ -189,7 +189,7 @@
         },
         {
           "label": "Impossible de générer le mot-croisé",
-          "default": "Impossible de générer le mot-croisé avec les mots saisis. Veuillez réessayer avec moins de mots ou utiliser des mots qui ont plus de caractères en commun. Si vous utilisez des mots à position fixe, veuillez vous assurer que leur position n'empêche pas les autres mots d'être placés sur la grille."
+          "default": "Impossible de générer le mot-croisé avec les mots saisis. Veuillez réessayer avec moins de mots ou utiliser des mots qui ont plus de caractères en commun."
         },
         {
           "label": "Impossible de générer le mot-croisé (trop peu de mots)",
@@ -198,7 +198,7 @@
         {
           "label": "Mots problématiques",
           "description": "Liste des mots qui ont causé des problèmes lors de la génération du mot-croisé. L'identifiant @words sera remplacé par la liste de mots problématiques.",
-          "default": "Mot(s) problématique(s): @words"
+          "default": "Some words could not be placed. Si vous utilisez des mots à position fixe, veuillez vous assurer que leur position n'empêche pas les autres mots d'être placés sur la grille. Words with the same alignment may not be placed touching each other. Mot(s) problématique(s): @words"
         },
         {
           "label": "Indice supplémentaire",

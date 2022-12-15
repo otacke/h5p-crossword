@@ -28,7 +28,7 @@
           },
           {
             "label": "크로스워드 보드의 단어 고치기",
-            "description": "크로스워드 보드의 특정 위치의 단어를 고치려면 체크"
+            "description": "크로스워드 보드의 특정 위치의 단어를 고치려면 체크. Words with the same alignment may not be placed touching each other."
           },
           {
             "label": "행",
@@ -189,7 +189,7 @@
         },
         {
           "label": "가로 세로 낱말을 만들 수 없습니다.",
-          "default": "주어진 단어로 가로 세로 낱말을 생성할 수 없습니다. 다시 시도하십시오. 고정된 단어를 사용한다면, 그 단어들의 위치가 다른 단어들이 위치되는 것을 막지 않도록 하세요."
+          "default": "주어진 단어로 가로 세로 낱말을 생성할 수 없습니다. 다시 시도하십시오."
         },
         {
           "label": "가로 세로 낱말을 만들 수 없습니다.(너무 적은 단어)",
@@ -198,7 +198,7 @@
         {
           "label": "문제가 있는 단어",
           "description": "가로 세로 낱말을 생성하는 동안 문제가 생기는 단어들을 목록으로 만드세요. @words 자리표시자로 실제 문제가 발생하는 단어로 대체합니다.",
-          "default": "문제가 발생하는 단어: @words"
+          "default": "Some words could not be placed. 고정된 단어를 사용한다면, 그 단어들의 위치가 다른 단어들이 위치되는 것을 막지 않도록 하세요. Words with the same alignment may not be placed touching each other. 문제가 발생하는 단어: @words"
         },
         {
           "label": "추가 단서",

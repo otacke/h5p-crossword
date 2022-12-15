@@ -28,7 +28,7 @@
           },
           {
             "label": "Fixar a palavra na grade",
-            "description": "Verifique se você deseja fixar a palavra em uma determinada posição na grade."
+            "description": "Verifique se você deseja fixar a palavra em uma determinada posição na grade. Words with the same alignment may not be placed touching each other."
           },
           {
             "label": "Linha",
@@ -189,7 +189,7 @@
         },
         {
           "label": "Não foi possível criar as palavras cruzadas",
-          "default": "Não foi possível gerar uma palavra cruzada com as palavras dadas. Por favor, tente novamente com menos palavras ou palavras que tenham mais caracteres em comum. Se você estiver usando palavras fixas, certifique-se de que sua posição não impeça que outras palavras sejam colocadas."
+          "default": "Não foi possível gerar uma palavra cruzada com as palavras dadas. Por favor, tente novamente com menos palavras ou palavras que tenham mais caracteres em comum."
         },
         {
           "label": "Não é possível criar palavras cruzadas (muito poucas palavras)",
@@ -198,7 +198,7 @@
         {
           "label": "Palavras problemáticas",
           "description": "Liste as palavras que causaram problemas ao gerar as palavras cruzadas. @words é uma palavra reservada que será substituída pelas palavras problemáticas reais.",
-          "default": "Palavra(s) problemática(s): @words"
+          "default": "Some words could not be placed. Se você estiver usando palavras fixas, certifique-se de que sua posição não impeça que outras palavras sejam colocadas. Words with the same alignment may not be placed touching each other. Palavra(s) problemática(s): @words"
         },
         {
           "label": "Pista extra",

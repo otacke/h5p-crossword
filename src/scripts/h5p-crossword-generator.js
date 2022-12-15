@@ -51,7 +51,7 @@ export default class CrosswordGenerator {
     this.indexChar = {};
 
     // these words are the words that can't be placed on the crossword
-    this.badWords;
+    this.badWords = [];
 
     // build grid;
     this.cells = Util.createArray(CrosswordGenerator.GRID_ROWS, CrosswordGenerator.GRID_COLUMNS);
@@ -112,7 +112,16 @@ export default class CrosswordGenerator {
             );
           }
           else {
-            this.badWords = [preset];
+            const isAlreadyListed = this.badWords.some((bad) => {
+              return (
+                Object.keys(bad).every((key) => bad[key] === preset[key])
+              );
+            });
+
+            if (!isAlreadyListed) {
+              this.badWords.push(preset);
+            }
+
             return null;
           }
         });
@@ -142,7 +151,16 @@ export default class CrosswordGenerator {
           );
         }
         else {
-          this.badWords = [wordElement];
+          const isAlreadyListed = this.badWords.some((bad) => {
+            return (
+              Object.keys(bad).every((key) => bad[key] === wordElement[key])
+            );
+          });
+
+          if (!isAlreadyListed) {
+            this.badWords.push(wordElement);
+          }
+
           return null;
         }
       }

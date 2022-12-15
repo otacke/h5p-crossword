@@ -28,7 +28,7 @@
           },
           {
             "label": "Finkatu hitza lauki-sarean",
-            "description": "Markatu ezazu hitza lauki-sareko kokapen zehatz batean finkatu nahi baduzu."
+            "description": "Markatu ezazu hitza lauki-sareko kokapen zehatz batean finkatu nahi baduzu. Words with the same alignment may not be placed touching each other."
           },
           {
             "label": "Errenkada",
@@ -189,7 +189,7 @@
         },
         {
           "label": "Ezin da gurutzegrama sortu",
-          "default": "Ezin izan da emandako hitzekin gurutzegrama sortu. Saiatu zaitez berriro mesedez hitz gutxiagorekin edo karaktere berdinak dituzten hitzekin. Finkatutako hitzak erabiltzen badituzu, ziurtatu ezazu euren kokapenak ez duela beste hitzak kokatzea eragozten."
+          "default": "Ezin izan da emandako hitzekin gurutzegrama sortu. Saiatu zaitez berriro mesedez hitz gutxiagorekin edo karaktere berdinak dituzten hitzekin."
         },
         {
           "label": "Ezin da gurutzegrama sortu (hitz gutxiegi)",
@@ -198,7 +198,7 @@
         {
           "label": "Hitz gatazkatsuak",
           "description": "Gurutzegrama sortzean arazoak eman dituzten hitzen zerrenda. @words dagokion hitz gatazkatsuarekin ordezkatua izango da.",
-          "default": "Hitz gatazkatsua(k): @words"
+          "default": "Some words could not be placed. Finkatutako hitzak erabiltzen badituzu, ziurtatu ezazu euren kokapenak ez duela beste hitzak kokatzea eragozten. Words with the same alignment may not be placed touching each other. Hitz gatazkatsua(k): @words"
         },
         {
           "label": "Pista gehigarria",

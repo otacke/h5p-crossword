@@ -28,7 +28,7 @@
           },
           {
             "label": "Fijar palabra en rejilla",
-            "description": "Marca esto si quieres fijar la palabra a una posición particular en la rejilla."
+            "description": "Marca esto si quieres fijar la palabra a una posición particular en la rejilla. Words with the same alignment may not be placed touching each other."
           },
           {
             "label": "Fila",
@@ -189,7 +189,7 @@
         },
         {
           "label": "No se puede crear el crucigrama",
-          "default": "No se pudo generar un crucigrama con las palabras dadas. Por favor inténtalo nuevamente con menos palabras, o con palabras que tengan más caracteres en común. Si estás usando palabras fijadas, por favor asegúrate de que sus posiciones no impidan que se coloquen otras palabras."
+          "default": "No se pudo generar un crucigrama con las palabras dadas. Por favor inténtalo nuevamente con menos palabras, o con palabras que tengan más caracteres en común."
         },
         {
           "label": "No se puede crear el crucigrama (muy pocas palabras)",
@@ -198,7 +198,7 @@
         {
           "label": "Palabras problemáticas",
           "description": "Lista palabras que causaron problemas al generar el rompecabezas. @words es una variable que será sustituída por las palabras problemáticas actuales.",
-          "default": "Palabras problemáticas: @words"
+          "default": "Some words could not be placed. Si estás usando palabras fijadas, por favor asegúrate de que sus posiciones no impidan que se coloquen otras palabras. Words with the same alignment may not be placed touching each other. Palabras problemáticas: @words"
         },
         {
           "label": "Pista extra",

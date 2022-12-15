@@ -31,12 +31,12 @@ export default class CrosswordContent {
       this.crosswordLayout = this.params.previousState.crosswordLayout;
     }
     else {
-      let errorMessage;
+      const errorMessages = [];
       let crosswordGenerator;
       let grid;
 
       if (params.words.length < 2) {
-        errorMessage = params.l10n.couldNotGenerateCrosswordTooFewWords;
+        errorMessages.push(params.l10n.couldNotGenerateCrosswordTooFewWords);
       }
       else {
         crosswordGenerator = new CrosswordGenerator({
@@ -48,27 +48,26 @@ export default class CrosswordContent {
         grid = crosswordGenerator.getSquareGrid(CrosswordContent.MAXIMUM_TRIES);
 
         if (!grid) {
-          errorMessage = params.l10n.couldNotGenerateCrossword;
+          errorMessages.push(params.l10n.couldNotGenerateCrossword);
         }
       }
 
-      if (errorMessage) {
-        // Add list of problematic words to error message
-        if (crosswordGenerator) {
-          const badWords = crosswordGenerator
-            .getBadWords()
-            .map(badWord => `${badWord.answer}`)
-            .join(', ');
+      let badWords = crosswordGenerator?.getBadWords();
+      if (badWords?.length) {
+        badWords = badWords.map(badWord => `${badWord.answer}`).join(', ');
 
-          errorMessage = `${errorMessage} ${params.l10n.problematicWords.replace(/@words/g, badWords)}`;
-        }
+        errorMessages.push(params.l10n.problematicWords.replace(/@words/g, badWords));
+      }
 
+      if (errorMessages.length) {
+        console.warn(`H5P.Crossword: ${errorMessages.join(' ')}`);
+      }
+
+      if (!grid) {
         const message = document.createElement('div');
         message.classList.add('h5p-crossword-message');
-        message.innerText = errorMessage;
+        message.innerText = errorMessages.join(' ');
         this.content.appendChild(message);
-
-        console.warn(`H5P.Crossword: ${errorMessage}`);
 
         this.couldNotGenerateCrossword = true;
         this.callbacks.onInitialized(false);
