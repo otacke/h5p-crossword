@@ -68,7 +68,7 @@
           ],
           "label": "Définissez des feedbacks pour différents intervalles de scores",
           "description": "Cliquez sur le bouton \"Ajouter Intervalle\" pour ajouter autant d'intervalles de score que vous souhaitez. Exemple: 0-20% Mauvais score, 21-91% Score moyen, 91-100% Score excellent !",
-          "entity": "range",
+          "entity": "gamme",
           "field": {
             "fields": [
               {
@@ -181,7 +181,7 @@
         },
         {
           "label": "Étiquette pour le bouton \"Recommencer\"",
-          "default": "Recommencer"
+          "default": "Réessayer"
         },
         {
           "label": "Étiquette pour le bouton \"Afficher la solution\"",
@@ -243,8 +243,8 @@
           "default": "Résultat pour: @clue"
         },
         {
-          "label": "Correct",
-          "default": "Correct"
+          "label": "Correcte",
+          "default": "Correcte"
         },
         {
           "label": "Incorrect",
