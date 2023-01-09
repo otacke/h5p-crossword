@@ -215,7 +215,7 @@
       "fields": [
         {
           "label": "Crossword grid description",
-          "default": "Crossword grid. Use arrow keys to navigate and keyboard to enter characters. Use tab to use input fields instead."
+          "default": "Crossword grid. Use arrow keys to navigate and the keyboard to enter characters. Alternatively, use Tab to navigate to type the answers in Fill in the Blanks style fields instead of the grid."
         },
         {
           "label": "Column",

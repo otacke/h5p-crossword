@@ -53,7 +53,7 @@ export default class Crossword extends H5P.Question {
         submitAnswer: 'Submit',
       },
       a11y: {
-        crosswordGrid: 'Crossword grid. Use arrow keys to navigate and keyboard to enter characters. Use tab to use input fields instead.',
+        crosswordGrid: 'Crossword grid. Use arrow keys to navigate and the keyboard to enter characters. Alternatively, use Tab to navigate to type the answers in Fill in the Blanks style fields instead of the grid.',
         column: 'column',
         row: 'row',
         across: 'across',
