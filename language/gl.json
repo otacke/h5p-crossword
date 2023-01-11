@@ -215,7 +215,7 @@
       "fields": [
         {
           "label": "Descrición da grella do encrucillado",
-          "default": "Grella do encrucillado. Usa as teclas de dirección para navegar e o teclado para escribir os caracteres. Usa o tabulador para introducir campos."
+          "default": "Grella do encrucillado. Usa as teclas de dirección para navegar e o teclado para escribir os caracteres. Tamén podes usar o tabulador para navegar e escribir as respostas nos campos  tipo \"Enche os ocos\" en lugar da grella."
         },
         {
           "label": "Columna",

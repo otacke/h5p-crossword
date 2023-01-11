@@ -215,7 +215,7 @@
       "fields": [
         {
           "label": "Descripción de la rejilla del crucigrama",
-          "default": "Rejilla del crucigrama. Usa las teclas de dirección para navegar y el teclado para escribir caracteres. Usa el tabulador para usar campos de entrada en su lugar."
+          "default": "Cuadrícula de crucigramas. Use las teclas de flecha para navegar y el teclado para ingresar caracteres. También puedes usar la tecla Tab para navegar y escribir las respuestas en los campos de estilo \"Rellenar los espacios en blanco\" en lugar de la cuadrícula."
         },
         {
           "label": "Columna",
