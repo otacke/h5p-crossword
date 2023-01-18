@@ -279,7 +279,7 @@
           "default": "Mot de @length lettres"
         },
         {
-          "label": "Description du bouton \"Vérifier\" pour technogies d'accessibilité ",
+          "label": "Description du bouton \"Vérifier\" pour technogies d'accessibilité",
           "default": "Vérifier les caractères. Les réponses seront marquées correctes, incorrectes ou sans réponse."
         },
         {
