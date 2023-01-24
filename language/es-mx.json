@@ -28,7 +28,7 @@
           },
           {
             "label": "Fijar palabra en rejilla",
-            "description": "Comprobar si desea fijar la palabra a una posición particular en la rejilla. Words with the same alignment may not be placed touching each other."
+            "description": "Comprobar si desea fijar la palabra a una posición particular en la rejilla. Las palabras con la misma alineación podrían no estar colocadas tocándose ambas."
           },
           {
             "label": "Fila",
@@ -198,7 +198,7 @@
         {
           "label": "Palabras problemáticas",
           "description": "Enlistar palabras que causaron problema al generar el rompecabezas. @words es un reemplazable que será remplazado por las palabras problemáticas actuales.",
-          "default": "Some words could not be placed. Si usted está usando palabras fijadas, por favor asegúrese de que sus posiciones no impidan que se coloquen otras palabras. Words with the same alignment may not be placed touching each other. Palabra(s) problemática(s): @words"
+          "default": "Algunas palabras no pudieron ser colocadas. Si está usando palabras fijadas, por favor asegúrese de que su posición no impida que otras palabras sean colocadas. Las palabras con la misma alineación podrían no estar colocadas tocándose ambas. Palabras problemáticas: @words"
         },
         {
           "label": "Clave extra",
@@ -215,7 +215,7 @@
       "fields": [
         {
           "label": "Descripción de rejilla del crucigrama",
-          "default": "Rejilla del crucigrama. Use las teclas de flechas para navegar y el teclado para escribir caracteres. Use el tabulador para emplear campos de entrada en su lugar."
+          "default": "Cuadrícula de crucigramas. Use las teclas de flecha para navegar y el teclado para ingresar caracteres. También puede usar la tecla Tab para navegar y escribir las respuestas en los campos de estilo \"Rellenar los espacios en blanco\" en lugar de la cuadrícula."
         },
         {
           "label": "Columna",
