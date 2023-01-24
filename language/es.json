@@ -28,7 +28,7 @@
           },
           {
             "label": "Fijar palabra en rejilla",
-            "description": "Marca esto si quieres fijar la palabra a una posición particular en la rejilla. Words with the same alignment may not be placed touching each other."
+            "description": "Comprobar si desea fijar la palabra a una posición particular en la rejilla. Las palabras con la misma alineación podrían no estar colocadas tocándose ambas."
           },
           {
             "label": "Fila",
@@ -198,7 +198,7 @@
         {
           "label": "Palabras problemáticas",
           "description": "Lista palabras que causaron problemas al generar el rompecabezas. @words es una variable que será sustituída por las palabras problemáticas actuales.",
-          "default": "Some words could not be placed. Si estás usando palabras fijadas, por favor asegúrate de que sus posiciones no impidan que se coloquen otras palabras. Words with the same alignment may not be placed touching each other. Palabras problemáticas: @words"
+          "default": "Algunas palabras no pudieron ser colocadas. Si está usando palabras fijadas, por favor asegúrese de que su posición no impida que otras palabras sean colocadas. Las palabras con la misma alineación podrían no estar colocadas tocándose ambas. Palabras problemáticas: @words"
         },
         {
           "label": "Pista extra",
