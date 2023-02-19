@@ -215,7 +215,7 @@
       "fields": [
         {
           "label": "Gurutzegramako lauki-sarearen deskribapena",
-          "default": "Gurutzegramako lauki-sarea. Nabigatzeko geziak eta karaktereak sartzeko teklatua erabili itzazu. Tabuladorea erabili ezazu horren ordez sarrera-eremuak erabiltzeko."
+          "default": "Gurutzegramako lauki-sarea. Erabili geziak nabigatzeko eta teklatua karaktereak sartzeko. Era berea Tab tekla erabili dezakezu Bete hutsuneak jardueraren eremuetara jauzi egin eta erantzunak idazteko."
         },
         {
           "label": "Zutabea",
@@ -239,7 +239,7 @@
         },
         {
           "description": "Emaitzaren iragarlea. @clue dagokion pistarekin ordezkatuko den aldagaia da.",
-          "label": "Emaitza honentzat:",
+          "label": "Emaitza honentzat",
           "default": "Emaitza honentzako: @clue"
         },
         {
@@ -256,12 +256,12 @@
         },
         {
           "description": "Erantzunaren iragarlea. @clue eta @solution euren balioekin ordezkatuko diren aldagaiak dira.",
-          "label": "Honentzako erantzuna:",
+          "label": "Soluzioa honentzat",
           "default": "@clue pistaren erantzuna hau da: @solution"
         },
         {
           "description": "Pista gehigarriaren iragarlea. @clue dagokion balioarekin ordezkatuko den aldagaia da.",
-          "label": "Pista gehigarria honentzako:",
+          "label": "Pista gehigarria honentzat",
           "default": "Ireki pista gehigarria @clue pistarentzat"
         },
         {
