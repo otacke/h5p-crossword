@@ -389,6 +389,9 @@ export default class CrosswordTable {
       return false;
     }
     if (position.column < 0 || position.column > this.params.dimensions.columns - 1) {
+      return false;    		
+    }
+    if (this.checkEmpty(position.row, position.column)) {
       return false;
     }
 
@@ -411,6 +414,15 @@ export default class CrosswordTable {
     return true;
   }
 
+  
+  /**
+   * Check if cell is empty (not interactable).
+   * @param {number} position.row Cell row.
+   * @param {number} position.column Cell column.
+   */
+  checkEmpty(row, col) {
+    return document.querySelector("[data-col='"+(parseInt(col, 10))+"'][data-row='"+parseInt(row, 10)+"']").classList.contains('h5p-crossword-cell-empty');
+  }
 
   /**
    * Get information for other components.
