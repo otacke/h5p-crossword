@@ -3,9 +3,9 @@ import Util from './h5p-crossword-util';
 /** Class representing a cell */
 export default class CrosswordCell {
   /**
-   * @constructor
-   *
-   * @param {object} params Parameters.
+   * @class
+   * @param {object} [params={}] Parameters.
+   * @param {object} [callbacks={}] Callbacks.
    */
   constructor(params = {}, callbacks = {}) {
 
@@ -30,7 +30,7 @@ export default class CrosswordCell {
     this.previousTabIndex = null;
 
     // Position
-    this.position = {row: params.row, column: params.column};
+    this.position = { row: params.row, column: params.column };
 
     // ID of solution word character
     this.solutionWordId = null;
@@ -79,7 +79,8 @@ export default class CrosswordCell {
 
   /**
    * Return the DOM for this class.
-   * @return {HTMLElement} DOM for this class.
+   *
+   * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
     return this.cell;
@@ -87,8 +88,9 @@ export default class CrosswordCell {
 
   /**
    * Build cell.
+   *
    * @param {object} params Parameters.
-   * @return {HTMLElement} Cell element.
+   * @returns {HTMLElement} Cell element.
    */
   buildCell(params) {
     const cell = document.createElement('td');
@@ -105,7 +107,8 @@ export default class CrosswordCell {
 
   /**
    * Build cell content wrapper.
-   * @return {HTMLElement} Cell content wrapper element.
+   *
+   * @returns {HTMLElement} Cell content wrapper element.
    */
   buildCellContentWrapper() {
     const cellContentWrapper = document.createElement('div');
@@ -115,7 +118,8 @@ export default class CrosswordCell {
 
   /**
    * Build cell canvas. Displays input. Used to hide select markers on Android.
-   * @return {HTMLElement} Cell canvas element.
+   *
+   * @returns {HTMLElement} Cell canvas element.
    */
   buildCellCanvas() {
     const cellCanvas = document.createElement('div');
@@ -125,7 +129,8 @@ export default class CrosswordCell {
 
   /**
    * Build cell input. Only takes input, but canvas displays it.
-   * @return {HTMLElement} Cell input element.
+   *
+   * @returns {HTMLElement} Cell input element.
    */
   buildCellInput() {
     const cellInput = document.createElement('input');
@@ -228,7 +233,8 @@ export default class CrosswordCell {
 
   /**
    * Return correct solution.
-   * @return {string|null} Solution char or null.
+   *
+   * @returns {string|null} Solution char or null.
    */
   getSolution() {
     return this.params.solution;
@@ -236,7 +242,8 @@ export default class CrosswordCell {
 
   /**
    * Get current answer.
-   * @return {string} Current answer.
+   *
+   * @returns {string} Current answer.
    */
   getCurrentAnswer() {
     return this.cell.innerText.substr(0, 1);
@@ -244,7 +251,8 @@ export default class CrosswordCell {
 
   /**
    * Get cell information.
-   * @return {object} Cell information.
+   *
+   * @returns {object} Cell information.
    */
   getInformation() {
     return {
@@ -260,7 +268,8 @@ export default class CrosswordCell {
 
   /**
    * Get cell position.
-   * @return {object} Cell position as {row: x, column: y}.
+   *
+   * @returns {object} Cell position as {row: x, column: y}.
    */
   getPosition() {
     return this.position;
@@ -268,8 +277,9 @@ export default class CrosswordCell {
 
   /**
    * Get clue id.
+   *
    * @param {string} [orientation=across] Orientation.
-   * @return {number} Clue id.
+   * @returns {number|null} Clue id.
    */
   getClueId(orientation = 'across') {
     if (orientation === 'down') {
@@ -278,11 +288,14 @@ export default class CrosswordCell {
     else if (orientation === 'across') {
       return this.params.clueIdAcross;
     }
+
+    return null;
   }
 
   /**
    * Get current answer.
-   * @return {string} Current answer.
+   *
+   * @returns {string} Current answer.
    */
   getAnswer() {
     return this.answer;
@@ -290,7 +303,8 @@ export default class CrosswordCell {
 
   /**
    * Get score.
-   * @return {number} Wrong: -1; Missing: 0; Correct 1
+   *
+   * @returns {number|undefined} Wrong: -1; Missing: 0; Correct 1
    */
   getScore() {
     if (!this.params.solution) {
@@ -314,7 +328,8 @@ export default class CrosswordCell {
 
   /**
    * Check whether cell is filled.
-   * @return {boolean|null} True if filled, null if not filled but not expected, else false.
+   *
+   * @returns {boolean|null} True if filled, null if not filled but not expected, else false.
    */
   isFilled() {
     if (!this.params.solution) {
@@ -334,6 +349,7 @@ export default class CrosswordCell {
 
   /**
    * Set tab index.
+   *
    * @param {string} index Tab index.
    */
   setTabIndex(index) {
@@ -352,6 +368,7 @@ export default class CrosswordCell {
 
   /**
    * Set aria label.
+   *
    * @param {string} label Label.
    */
   setAriaLabel(label) {
@@ -360,6 +377,7 @@ export default class CrosswordCell {
 
   /**
    * Set solution state, either correct or wrong.
+   *
    * @param {string} state State, correct or wrong.
    */
   setSolutionState(state) {
@@ -375,6 +393,7 @@ export default class CrosswordCell {
 
   /**
    * Set answer.
+   *
    * @param {string} answer Answer character.
    * @param {boolean} [readFeedback=false] If true, read feedback in instant feedback mode.
    */
@@ -402,6 +421,7 @@ export default class CrosswordCell {
 
   /**
    * Set cell width.
+   *
    * @param {number} width Width in pixels.
    */
   setWidth(width) {
@@ -428,6 +448,7 @@ export default class CrosswordCell {
 
   /**
    * Highlight cell.
+   *
    * @param {string} type Highlight type.
    */
   highlight(type) {
@@ -441,6 +462,7 @@ export default class CrosswordCell {
 
   /**
    * Remove highlights.
+   *
    * @param {string} type Type to unhighlight.
    */
   unhighlight(type) {
@@ -468,6 +490,7 @@ export default class CrosswordCell {
 
   /**
    * Check answer.
+   *
    * @param {boolean} [read=false] If true, will read correct/wrong via readspeaker.
    */
   checkAnswer(read = false) {
@@ -536,6 +559,7 @@ export default class CrosswordCell {
 
   /**
    * Add solution word marker.
+   *
    * @param {number} id Id.
    */
   addSolutionWordIdMarker(id) {

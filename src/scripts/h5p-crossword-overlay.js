@@ -3,10 +3,10 @@ import Util from './h5p-crossword-util';
 /** Class representing the content */
 export default class Overlay {
   /**
-   * @constructor
+   * @class
    * @param {object} params Parameters.
    * @param {HTMLElement} params.content Content to set.
-   * @param {object} callbacks, Callbacks.
+   * @param {object} callbacks Callbacks.
    */
   constructor(params, callbacks = {}) {
     this.params = Util.extend({
@@ -53,7 +53,7 @@ export default class Overlay {
     this.overlay.appendChild(this.content);
 
     // Trap focus if overlay is visible
-    document.addEventListener('focus', event => {
+    document.addEventListener('focus', (event) => {
       if (!this.isVisible || this.focusableElements.length === 0) {
         return;
       }
@@ -69,7 +69,8 @@ export default class Overlay {
 
   /**
    * Return the DOM for this class.
-   * @return {HTMLElement} DOM for this class.
+   *
+   * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
     return this.overlay;
@@ -77,6 +78,7 @@ export default class Overlay {
 
   /**
    * Set overlay content.
+   *
    * @param {HTMLElement} content Content to set.
    */
   setContent(content) {
@@ -89,6 +91,7 @@ export default class Overlay {
 
   /**
    * Trap focus in overlay.
+   *
    * @param {Event} event Focus event.
    */
   trapFocus(event) {
@@ -109,8 +112,9 @@ export default class Overlay {
 
   /**
    * Check whether an HTML element is a child of the overlay.
-   * @param {HTMLElement} element.
-   * @return {boolean} True, if element is a child.
+   *
+   * @param {HTMLElement} element Element to check.
+   * @returns {boolean} True, if element is a child.
    */
   isChild(element) {
     const parent = element.parentNode;
@@ -132,7 +136,7 @@ export default class Overlay {
   updateFocusableElements() {
     this.focusableElements = []
       .slice.call(this.overlay.querySelectorAll('video, audio, button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
-      .filter(element => element.getAttribute('disabled') !== 'true' && element.getAttribute('disabled') !== true);
+      .filter((element) => element.getAttribute('disabled') !== 'true' && element.getAttribute('disabled') !== true);
   }
 
   /**

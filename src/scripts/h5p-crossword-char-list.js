@@ -3,7 +3,7 @@ import Util from './h5p-crossword-util';
 /** Class representing the content */
 export default class CrosswordCharList {
   /**
-   * @constructor
+   * @class
    * @param {object} params Parameters.
    */
   constructor(params = {}) {
@@ -22,7 +22,8 @@ export default class CrosswordCharList {
 
   /**
    * Get list DOM.
-   * @return {HTMLElement} List DOM.
+   *
+   * @returns {HTMLElement} List DOM.
    */
   getDOM() {
     return this.content;
@@ -30,8 +31,9 @@ export default class CrosswordCharList {
 
   /**
    * Build list container.
+   *
    * @param {object} params Parameters.
-   * @return {HTMLElement} List container.
+   * @returns {HTMLElement} List container.
    */
   buildListContainer(params) {
     const content = document.createElement('div');
@@ -87,13 +89,13 @@ export default class CrosswordCharList {
 
   /**
    * Build single list item.
+   *
    * @param {object} params Parameters.
    * @param {string} params.result Result (neutral|correct|wrong).
    * @param {string} params.ariaLabel Aria label.
    * @param {HTMLElement} [params.scoreExplanation] Score explanation.
    * @param {string} [params.char] Character to display.
-   * @param {boolean} [scoreWords] If true, will change display.
-   * @return {HTMLElement} List item.
+   * @returns {HTMLElement} List item.
    */
   buildListItem(params) {
     const charWrapper = document.createElement('span');
@@ -123,13 +125,13 @@ export default class CrosswordCharList {
     }
 
     // on focus
-    charWrapper.addEventListener('focus', event => {
+    charWrapper.addEventListener('focus', (event) => {
       // Remember this char had focus
       this.charMarked = event.target;
     });
 
     // on keydown
-    charWrapper.addEventListener('keydown', event => {
+    charWrapper.addEventListener('keydown', (event) => {
       const firstChild = event.target.parentNode.firstChild;
       const lastChild = event.target.parentNode.lastChild;
 
@@ -192,13 +194,14 @@ export default class CrosswordCharList {
 
   /**
    * Set characters in list.
+   *
    * @param {object[]} params Parameters for chars.
    */
   setChars(params) {
     // Erase previous solution
     this.reset();
 
-    params.forEach(param => {
+    params.forEach((param) => {
       this.list.appendChild(this.buildListItem(param));
     });
   }
