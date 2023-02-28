@@ -399,7 +399,10 @@ export default class CrosswordTable {
       return false;
     }
     if (position.column < 0 || position.column > this.params.dimensions.columns - 1) {
-      return false;
+      return false;    		
+    }
+    if (this.cells[position.row][position.column].getSolution() === null) {
+      return false; // Target cell is empty	
     }
 
     const targetCell = this.cells[position.row][position.column];
@@ -420,7 +423,6 @@ export default class CrosswordTable {
 
     return true;
   }
-
 
   /**
    * Get information for other components.
