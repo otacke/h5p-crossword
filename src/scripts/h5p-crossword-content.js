@@ -7,9 +7,9 @@ import CrosswordGenerator from './h5p-crossword-generator';
 /** Class representing the content */
 export default class CrosswordContent {
   /**
-   * @constructor
-   *
-   * @param {object} params Parameters.
+   * @class
+   * @param {object} [params={}] Parameters.
+   * @param {object} [callbacks={}] Callbacks.
    */
   constructor(params = {}, callbacks) {
     this.params = params;
@@ -54,7 +54,7 @@ export default class CrosswordContent {
 
       let badWords = crosswordGenerator?.getBadWords();
       if (badWords?.length) {
-        badWords = badWords.map(badWord => `${badWord.answer}`).join(', ');
+        badWords = badWords.map((badWord) => `${badWord.answer}`).join(', ');
 
         errorMessages.push(params.l10n.problematicWords.replace(/@words/g, badWords));
       }
@@ -105,13 +105,13 @@ export default class CrosswordContent {
         }
       },
       {
-        onInput: (params => {
+        onInput: ((params) => {
           this.handleTableInput(params);
         }),
-        onFocus: (params => {
+        onFocus: ((params) => {
           this.handleTableFocus(params);
         }),
-        onRead: (text => {
+        onRead: ((text) => {
           this.callbacks.onRead(text);
         })
       }
@@ -136,7 +136,7 @@ export default class CrosswordContent {
     // Input Area
     this.inputarea = new CrosswordInput(
       {
-        words: this.crosswordLayout.result.filter(word => word.orientation !== 'none'),
+        words: this.crosswordLayout.result.filter((word) => word.orientation !== 'none'),
         contentId: this.contentId,
         overlayContainer: this.content,
         applyPenalties: this.params.applyPenalties,
@@ -149,10 +149,10 @@ export default class CrosswordContent {
         a11y: this.params.a11y
       },
       {
-        onFieldInput: (params => {
+        onFieldInput: ((params) => {
           this.handleFieldInput(params);
         }),
-        onRead: (text => {
+        onRead: ((text) => {
           this.callbacks.onRead(text);
         })
       }
@@ -180,7 +180,8 @@ export default class CrosswordContent {
 
   /**
    * Return the DOM for this class.
-   * @return {HTMLElement} DOM for this class.
+   *
+   * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
     return this.content;
@@ -200,7 +201,8 @@ export default class CrosswordContent {
 
   /**
    * Get correct responses pattern for xAPI.
-   * @return {string[]} Correct response for each cell.
+   *
+   * @returns {string[]} Correct response for each cell.
    */
   getXAPICorrectResponsesPattern() {
     return this.table.getXAPICorrectResponsesPattern();
@@ -208,7 +210,8 @@ export default class CrosswordContent {
 
   /**
    * Get current response for xAPI.
-   * @return {string} Responses for each cell joined by [,].
+   *
+   * @returns {string} Responses for each cell joined by [,].
    */
   getXAPIResponse() {
     return this.table.getXAPIResponse();
@@ -216,7 +219,8 @@ export default class CrosswordContent {
 
   /**
    * Get xAPI description suitable for H5P's reporting module.
-   * @return {string} HTML with placeholders for fields to be filled in.
+   *
+   * @returns {string} HTML with placeholders for fields to be filled in.
    */
   getXAPIDescription() {
     return this.table.getXAPIDescription();
@@ -240,7 +244,8 @@ export default class CrosswordContent {
 
   /**
    * Check if result has been submitted or input has been given.
-   * @return {boolean} True, if answer was given.
+   *
+   * @returns {boolean} True, if answer was given.
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
    */
   getAnswerGiven() {
@@ -249,7 +254,8 @@ export default class CrosswordContent {
 
   /**
    * Get score.
-   * @return {number} Score.
+   *
+   * @returns {number} Score.
    */
   getScore() {
     if (this.params.words.length < 2) {
@@ -261,7 +267,8 @@ export default class CrosswordContent {
 
   /**
    * Get maximum score
-   * @return {number} Maximum score.
+   *
+   * @returns {number} Maximum score.
    */
   getMaxScore() {
     if (this.params.words.length < 2) {
@@ -273,7 +280,8 @@ export default class CrosswordContent {
 
   /**
    * Answer call to return the current state.
-   * @return {object} Current state.
+   *
+   * @returns {object|undefined} Current state.
    */
   getCurrentState() {
     if (this.params.words.length < 2 || !this.table) {
@@ -305,7 +313,8 @@ export default class CrosswordContent {
 
   /**
    * Check whether all relevant cells have been filled.
-   * @return {boolean} True, if all relevant cells have been filled, else false.
+   *
+   * @returns {boolean} True, if all relevant cells have been filled, else false.
    */
   isTableFilled() {
     return this.table && this.table.isFilled();
@@ -332,7 +341,8 @@ export default class CrosswordContent {
 
   /**
    * Handle input from input fields.
-   * @param {object} Parameters parameters.
+   *
+   * @param {object} params parameters.
    */
   handleFieldInput(params) {
     this.table.fillGrid(params);
@@ -341,7 +351,8 @@ export default class CrosswordContent {
 
   /**
    * Handle input from table.
-   * @param {object} Parameters parameters.
+   *
+   * @param {object} params parameters.
    */
   handleTableInput(params) {
     if (this.solutionWord && params.solutionWordId) {
@@ -361,12 +372,13 @@ export default class CrosswordContent {
 
   /**
    * Handle table getting focus.
-   * @param {object} Parameters parameters.
+   *
+   * @param {object} params parameters.
    */
   handleTableFocus(params) {
     const wordData = this.crosswordLayout.result
-      .filter(word => word.orientation !== 'none')
-      .filter(word => word.orientation === params.orientation && word.clueId === params.clueId);
+      .filter((word) => word.orientation !== 'none')
+      .filter((word) => word.orientation === params.orientation && word.clueId === params.clueId);
 
     if (wordData.length > 0) {
       this.clueAnnouncer.setClue({
@@ -401,6 +413,7 @@ export default class CrosswordContent {
 
   /**
    * Override CSS with custom colors.
+   *
    * @param {object} theme Theme settings.
    */
   overrideCSS(theme = {}) {
@@ -442,6 +455,7 @@ export default class CrosswordContent {
 
   /**
    * Add CSS style.
+   *
    * @param {string} css CSS style.
    */
   addStyle(css) {

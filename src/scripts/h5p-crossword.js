@@ -7,7 +7,7 @@ import Util from './h5p-crossword-util';
  */
 export default class Crossword extends H5P.Question {
   /**
-   * @constructor
+   * @class
    * @param {object} params Parameters passed by the editor.
    * @param {number} contentId Content's id.
    * @param {object} [extras] Saved state, metadata, etc.
@@ -117,13 +117,13 @@ export default class Crossword extends H5P.Question {
 
     // Only support uppercase
     this.params.words = (this.params.words || [])
-      .filter(word => {
+      .filter((word) => {
         return (
           typeof word.answer !== 'undefined' &&
           typeof word.clue !== 'undefined'
         );
       })
-      .map(word => {
+      .map((word) => {
         word.answer = Util.stripHTML(Util.htmlDecode(Util.toUpperCase(word.answer, Util.UPPERCASE_EXCEPTIONS)));
         word.clue = Util.stripHTML(Util.htmlDecode(word.clue));
         return word;
@@ -170,7 +170,7 @@ export default class Crossword extends H5P.Question {
         onInitialized: (result) => {
           this.handleContentInitialized(result);
         },
-        onRead: text => {
+        onRead: (text) => {
           this.handleRead(text);
         }
       }
@@ -194,6 +194,7 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Handle content initialized.
+   *
    * @param {boolean} result initialization success.
    */
   handleContentInitialized(result) {
@@ -278,6 +279,7 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Let H5P.Question read some text.
+   *
    * @param {string} text Text to read.
    */
   handleRead(text) {
@@ -299,7 +301,8 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Check if result has been submitted or input has been given.
-   * @return {boolean} True, if answer was given.
+   *
+   * @returns {boolean} True, if answer was given.
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
    */
   getAnswerGiven() {
@@ -312,7 +315,8 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Get latest score.
-   * @return {number} latest score.
+   *
+   * @returns {number} latest score.
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-2}
    */
   getScore() {
@@ -325,7 +329,8 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Get maximum possible score.
-   * @return {number} Score necessary for mastering.
+   *
+   * @returns {number} Score necessary for mastering.
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-3}
    */
   getMaxScore() {
@@ -338,6 +343,7 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Show solutions.
+   *
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-4}
    */
   showSolutions() {
@@ -355,6 +361,7 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Reset task.
+   *
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
    */
   resetTask() {
@@ -393,7 +400,8 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Get xAPI data.
-   * @return {object} XAPI statement.
+   *
+   * @returns {object} XAPI statement.
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
    */
   getXAPIData() {
@@ -404,7 +412,8 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Build xAPI answer event.
-   * @return {H5P.XAPIEvent} XAPI answer event.
+   *
+   * @returns {H5P.XAPIEvent} XAPI answer event.
    */
   getXAPIAnswerEvent() {
     const xAPIEvent = this.createXAPIEvent('answered');
@@ -419,7 +428,7 @@ export default class Crossword extends H5P.Question {
    * Create an xAPI event for Dictation.
    *
    * @param {string} verb Short id of the verb we want to trigger.
-   * @return {H5P.XAPIEvent} Event template.
+   * @returns {H5P.XAPIEvent} Event template.
    */
   createXAPIEvent(verb) {
     const xAPIEvent = this.createXAPIEventTemplate(verb);
@@ -432,7 +441,7 @@ export default class Crossword extends H5P.Question {
   /**
    * Get the xAPI definition for the xAPI object.
    *
-   * @return {object} XAPI definition.
+   * @returns {object} XAPI definition.
    */
   getxAPIDefinition() {
     const definition = {};
@@ -452,7 +461,7 @@ export default class Crossword extends H5P.Question {
   /**
    * Determine whether the task has been passed by the user.
    *
-   * @return {boolean} True if user passed or task is not scored.
+   * @returns {boolean} True if user passed or task is not scored.
    */
   isPassed() {
     return this.getScore() >= this.getMaxScore() || !this.getMaxScore() || this.getMaxScore() === 0;
@@ -461,7 +470,7 @@ export default class Crossword extends H5P.Question {
   /**
    * Get tasks title.
    *
-   * @return {string} Title.
+   * @returns {string} Title.
    */
   getTitle() {
     let raw;
@@ -476,7 +485,8 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Get tasks description.
-   * @return {string} Description.
+   *
+   * @returns {string} Description.
    */
   getDescription() {
     const introduction = this.params.taskDescription || Crossword.DEFAULT_DESCRIPTION;
@@ -486,7 +496,8 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Answer call to return the current state.
-   * @return {object} Current state.
+   *
+   * @returns {object} Current state.
    */
   getCurrentState() {
     return this.content.getCurrentState();
@@ -494,8 +505,10 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Compute shallow difference of two objects.
+   *
    * @param {object} minuend Object to subtract from.
    * @param {object} subtrahend Object to subtract from minuend.
+   * @returns {object} Object diff.
    */
   getDifference(minuend, subtrahend) {
     for (let property in subtrahend) {

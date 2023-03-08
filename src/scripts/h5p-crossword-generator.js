@@ -27,8 +27,8 @@ export default class CrosswordGenerator {
 
     // Sanitization
     this.params.words = this.params.words
-      .filter(word => word.answer && word.clue) // word and clue are mandatory
-      .map(word => {
+      .filter((word) => word.answer && word.clue) // word and clue are mandatory
+      .map((word) => {
         const newWord = {
           answer: Util.toUpperCase(word.answer, Util.UPPERCASE_EXCEPTIONS),
           clue: word.clue,
@@ -62,8 +62,9 @@ export default class CrosswordGenerator {
 
   /**
    * Get crossword grid that has ratio closest to 1 or null if can't be built.
+   *
    * @param {number} [triesMax=10] Maximum number of tries.
-   * @return {object} Grid.
+   * @returns {object} Grid.
    */
   getSquareGrid(triesMax = 10) {
     let gridBest = null;
@@ -92,8 +93,9 @@ export default class CrosswordGenerator {
 
   /**
    * Get crossword grid or null if can't be built.
+   *
    * @param {number} [triesMax=10] Maximum number of tries.
-   * @return {object} Grid.
+   * @returns {object} Grid.
    */
   getGrid(triesMax = 10) {
     let wordWasAdded;
@@ -101,14 +103,14 @@ export default class CrosswordGenerator {
     for (let tries = 0; tries < triesMax; tries++) {
       this.resetGrid();
 
-      const presets = this.wordElements.filter(element => element.row !== undefined);
+      const presets = this.wordElements.filter((element) => element.row !== undefined);
       if (presets.length > 0) {
         // Place all presets
-        presets.forEach(preset => {
-          if (this.canPlaceAnswerAt(preset.answer, {row: preset.row, column: preset.column, orientation: preset.orientation}) !== false) {
+        presets.forEach((preset) => {
+          if (this.canPlaceAnswerAt(preset.answer, { row: preset.row, column: preset.column, orientation: preset.orientation }) !== false) {
             this.placeAnswerAt(
               preset,
-              {row: preset.row, column: preset.column, orientation: preset.orientation}
+              { row: preset.row, column: preset.column, orientation: preset.orientation }
             );
           }
           else {
@@ -144,10 +146,10 @@ export default class CrosswordGenerator {
           row -= Math.floor(wordElement.answer.length / 2);
         }
 
-        if (this.canPlaceAnswerAt(wordElement.answer, {row: row, column: column, orientation: startOrientation}) !== false) {
+        if (this.canPlaceAnswerAt(wordElement.answer, { row: row, column: column, orientation: startOrientation }) !== false) {
           this.placeAnswerAt(
             wordElement,
-            {row: row, column: column, orientation: startOrientation}
+            { row: row, column: column, orientation: startOrientation }
           );
         }
         else {
@@ -213,7 +215,8 @@ export default class CrosswordGenerator {
 
   /**
    * Get words that could not be placed.
-   * @return {object[]} Bad words.
+   *
+   * @returns {object[]} Bad words.
    */
   getBadWords() {
     return this.badWords;
@@ -221,7 +224,8 @@ export default class CrosswordGenerator {
 
   /**
    * Get random orientation, either across or down.
-   * @return {string} Random orientation
+   *
+   * @returns {string} Random orientation
    */
   getRandomOrientation() {
     return Math.floor(Math.random() * 2) ? 'across' : 'down';
@@ -229,7 +233,8 @@ export default class CrosswordGenerator {
 
   /**
    * Minimize grid.
-   * @return Minimized grid.
+   *
+   * @returns {object[]} Minimized grid.
    */
   minimizeGrid() {
     // Find bounds
@@ -275,6 +280,7 @@ export default class CrosswordGenerator {
 
   /**
    * Add cell to grid.
+   *
    * @param {object} wordElement Word element.
    * @param {string} wordElement.answer Word.
    * @param {number} wordElement.index Index of word in input list.
@@ -287,13 +293,13 @@ export default class CrosswordGenerator {
   addCellToGrid(wordElement, position, charIndex) {
     const char = wordElement.answer.charAt(charIndex);
     if (this.cells[position.row][position.column] === null) {
-      this.cells[position.row][position.column] = {char: char};
+      this.cells[position.row][position.column] = { char: char };
 
       // init the indexChar for that character if needed
       this.indexChar[char] = this.indexChar[char] || [];
 
       // add to index
-      this.indexChar[char].push({'row' : position.row, 'column' : position.column});
+      this.indexChar[char].push({ 'row' : position.row, 'column' : position.column });
     }
 
     this.cells[position.row][position.column][position.orientation] = {
@@ -304,6 +310,7 @@ export default class CrosswordGenerator {
 
   /**
    * Place answer.
+   *
    * @param {object} wordElement Word element.
    * @param {string} wordElement.answer Word.
    * @param {number} wordElement.index Index of word in input list.
@@ -315,12 +322,12 @@ export default class CrosswordGenerator {
   placeAnswerAt(wordElement, position) {
     if (position.orientation === 'across') {
       for (let column = position.column, i = 0; column < position.column + wordElement.answer.length; column++, i++) {
-        this.addCellToGrid(wordElement, {row: position.row, column: column, orientation: position.orientation}, i);
+        this.addCellToGrid(wordElement, { row: position.row, column: column, orientation: position.orientation }, i);
       }
     }
     else if (position.orientation === 'down') {
       for (let row = position.row, i = 0; row < position.row + wordElement.answer.length; row++, i++) {
-        this.addCellToGrid(wordElement, {row: row, column: position.column, orientation: position.orientation}, i);
+        this.addCellToGrid(wordElement, { row: row, column: position.column, orientation: position.orientation }, i);
       }
     }
     else {
@@ -330,11 +337,12 @@ export default class CrosswordGenerator {
 
   /**
    * Check if character can be placed.
+   *
    * @param {string} char Character.
    * @param {object} position Position.
    * @param {number} position.row Row.
    * @param {number} position.column Column.
-   * @return {number|false} False = not placable; 0 = in regular cell; 1 = in intersection.
+   * @returns {number|false} False = not placable; 0 = in regular cell; 1 = in intersection.
    */
   canPlaceCharAt(char, position) {
     if (this.cells[position.row][position.column] === null) {
@@ -349,12 +357,13 @@ export default class CrosswordGenerator {
 
   /**
    * Determine if word can be placed at position.
+   *
    * @param {string} answer Answer.
    * @param {object} position Position.
    * @param {number} position.row Row to place first character at.
    * @param {number} position.column Column to place firct character at.
    * @param {string} position.orientation Orientation.
-   * @return {boolean} True, if word can be placed.
+   * @returns {boolean} True, if word can be placed.
    */
   canPlaceAnswerAt(answer, position) {
     if (position.row < 0 || position.row >= this.cells.length || position.column < 0 || position.column >= this.cells[position.row].length) {
@@ -411,7 +420,7 @@ export default class CrosswordGenerator {
       // check to make sure we aren't overlapping a char (that doesn't match)
       // and get the count of intersections
       for (let c = position.column, i = 0; c < position.column + answer.length; c++, i++) {
-        const result = this.canPlaceCharAt(answer.charAt(i), {row: position.row, column: c});
+        const result = this.canPlaceCharAt(answer.charAt(i), { row: position.row, column: c });
         if (result === false) {
           return false;
         }
@@ -470,7 +479,7 @@ export default class CrosswordGenerator {
       // check to make sure we aren't overlapping a char (that doesn't match)
       // and get the count of intersections
       for (let row = position.row, i = 0; row < position.row + answer.length; row++, i++) {
-        const result = this.canPlaceCharAt(answer.charAt(i, 1), {row: row, column: position.column});
+        const result = this.canPlaceCharAt(answer.charAt(i, 1), { row: row, column: position.column });
         if (result === false) {
           return false;
         }
@@ -485,8 +494,9 @@ export default class CrosswordGenerator {
 
   /**
    * Find position for word.
+   *
    * @param {string} answer Answer to be placed.
-   * @return {object} Position.
+   * @returns {object} Position.
    */
   findPositionForWord(answer) {
     // check the char_index for every letter, and see if we can put it there
@@ -503,8 +513,8 @@ export default class CrosswordGenerator {
         const row = point['row'];
         const column = point['column'];
         // the c - i, and r - i here compensate for the offset of character in the answer
-        const intersectionsAcross = this.canPlaceAnswerAt(answer, {row: row, column: column - i, orientation: 'across'});
-        const intersectionsDown = this.canPlaceAnswerAt(answer, {row: row - i, column: column, orientation: 'down'});
+        const intersectionsAcross = this.canPlaceAnswerAt(answer, { row: row, column: column - i, orientation: 'across' });
+        const intersectionsDown = this.canPlaceAnswerAt(answer, { row: row - i, column: column, orientation: 'down' });
 
         if (intersectionsAcross !== false) {
           bestPositions.push({
@@ -550,8 +560,10 @@ export default class CrosswordGenerator {
 
   /**
    * Create word elements.
-   * @param {object[]} Words.
+   *
+   * @param {object[]} words Words.
    * @param {number} poolSize Number of words to choose randomly.
+   * @returns {object} Word item.
    */
   createWordElements(words, poolSize) {
     if (typeof poolSize !== 'number' || poolSize === 0) {
@@ -569,8 +581,8 @@ export default class CrosswordGenerator {
 
     if (poolSize) {
       // Keep all fixed words + free words as long as they fit into pool size
-      const wordsFixed = wordElements.filter(element => element.row !== undefined);
-      const wordsFree = Util.shuffleArray(wordElements.filter(element => element.row === undefined));
+      const wordsFixed = wordElements.filter((element) => element.row !== undefined);
+      const wordsFree = Util.shuffleArray(wordElements.filter((element) => element.row === undefined));
       wordsFree.splice(Math.max(0, poolSize - wordsFixed.length), wordsFree.length);
       wordElements = wordsFixed.concat(wordsFree);
     }
@@ -597,16 +609,17 @@ export default class CrosswordGenerator {
 
   /**
    * Get word element (attribute).
+   *
    * @param {number} index Index of word Element to fetch.
    * @param {string} [attribute] Attribut to get from word element.
-   * @return {object|string|number} Word object or specific attribute.
+   * @returns {object|string|number} Word object or specific attribute.
    */
   getWordElement(index, attribute) {
     if (typeof index !== 'number') {
       return null;
     }
 
-    const elements = this.wordElements.filter(element => element.index === index);
+    const elements = this.wordElements.filter((element) => element.index === index);
     if (elements.length < 1) {
       return null;
     }
@@ -621,8 +634,9 @@ export default class CrosswordGenerator {
   /**
    * Export cells to format of https://github.com/MichaelWehar/Crossword-Layout-Generator
    * That ons should replace this generator once the other one can create more compact layouts
+   *
    * @param {object[]} cells Cells.
-   * @return {object[]} Cells in format of https://github.com/MichaelWehar/Crossword-Layout-Generator
+   * @returns {object[]} Cells in format of https://github.com/MichaelWehar/Crossword-Layout-Generator
    */
   export(cells) {
     const rows = cells.length;

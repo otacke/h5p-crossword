@@ -5,8 +5,9 @@ import CrosswordCharList from './h5p-crossword-char-list';
 /** Class representing the content */
 export default class CrosswordInput {
   /**
-   * @constructor
-   * @param {object} params Parameters.
+   * @class
+   * @param {object} [params={}] Parameters.
+   * @param {object} [callbacks={}] Callbacks.
    */
   constructor(params = {}, callbacks) {
     this.params = Util.extend({
@@ -28,13 +29,13 @@ export default class CrosswordInput {
     this.content.classList.add('h5p-crossword-input-container');
 
     const fieldsAcross = this.buildInputFieldsGroup({
-      words: this.params.words.filter(word => word.orientation === 'across'),
+      words: this.params.words.filter((word) => word.orientation === 'across'),
       title: params.l10n.across
     });
     this.content.appendChild(fieldsAcross);
 
     const fieldsDown = this.buildInputFieldsGroup({
-      words: this.params.words.filter(word => word.orientation === 'down'),
+      words: this.params.words.filter((word) => word.orientation === 'down'),
       title: params.l10n.down
     });
     this.content.appendChild(fieldsDown);
@@ -49,7 +50,7 @@ export default class CrosswordInput {
         onClose: () => {
           this.handleOverlayClosed();
         },
-        onRead: (text => {
+        onRead: ((text) => {
           this.callbacks.onRead(text);
         })
       }
@@ -59,7 +60,8 @@ export default class CrosswordInput {
 
   /**
    * Return the DOM for this class.
-   * @return {HTMLElement} DOM for this class.
+   *
+   * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
     return this.content;
@@ -67,7 +69,9 @@ export default class CrosswordInput {
 
   /**
    * Build group of input fields.
+   *
    * @param {object} params Parameters.
+   * @returns {HTMLElement} Input fields.
    */
   buildInputFieldsGroup(params) {
     params.words = params.words.sort((word1, word2) => word1.clueId - word2.clueId);
@@ -80,7 +84,7 @@ export default class CrosswordInput {
     title.innerText = params.title;
     inputFieldsGroup.appendChild(title);
 
-    params.words.forEach(word => {
+    params.words.forEach((word) => {
       const wrapper = document.createElement('div');
       wrapper.classList.add('h5p-crossword-input-fields-group-wrapper');
 
@@ -105,7 +109,7 @@ export default class CrosswordInput {
       const answerLength = document.createElement('span');
       answerLength.classList.add('h5p-crossword-input-fields-group-answer-length');
 
-      answerLength.innerText = `(${word.answer.split(' ').map(part => part.length).join(',')})`;
+      answerLength.innerText = `(${word.answer.split(' ').map((part) => part.length).join(',')})`;
       clueContent.appendChild(answerLength);
 
       // Optional extra clue info symbol for opening popup
@@ -303,9 +307,10 @@ export default class CrosswordInput {
 
   /**
    * Fix Samsung virtual keyboard glitch
+   *
    * @param {string} before Value of text before Samsung glitch.
    * @param {string} after Value of text after Samsung glitch.
-   * @return {string} Value of text that should be rendered.
+   * @returns {string} Value of text that should be rendered.
    */
   applySamsungWorkaround(before = '', after = '') {
     // Make strings have same length
@@ -364,7 +369,7 @@ export default class CrosswordInput {
    * @param {object} [params={}] Parameters.
    * @param {boolean} [params.forceValue=true] If true, that exact (uppercase) value will be used.
    */
-  setInputFieldValue(field, value, params = {forceValue: true}) {
+  setInputFieldValue(field, value, params = { forceValue: true }) {
     value = Util.toUpperCase(value, Util.UPPERCASE_EXCEPTIONS);
 
     /*
@@ -403,8 +408,9 @@ export default class CrosswordInput {
 
   /**
    * Build aria label for cell.
+   *
    * @param {object} params Parameters.
-   * @return {string} Aria label for cell.
+   * @returns {string} Aria label for cell.
    */
   buildAriaLabel(params) {
     const ariaLabels = [`${params.clueId} ${this.params.a11y[params.orientation]}. ${params.clue}`];
@@ -417,14 +423,15 @@ export default class CrosswordInput {
 
   /**
    * Fill fields.
+   *
    * @param {object[]} params Parameters.
    * @param {number} params.clueId Clue id.
    * @param {string} params.orientation Orientation.
    * @param {string} params.text Text to update field with.
    */
   fillFields(params) {
-    params.forEach(param => {
-      const fields = this.inputFields.filter(field => field.orientation === param.orientation && field.clueId === param.clueId);
+    params.forEach((param) => {
+      const fields = this.inputFields.filter((field) => field.orientation === param.orientation && field.clueId === param.clueId);
       if (fields.length > 0) {
         this.setInputFieldValue(fields[0].inputField, param.text);
       }
@@ -433,16 +440,17 @@ export default class CrosswordInput {
 
   /**
    * Focus clue.
+   *
    * @param {object} params Parameters.
    * @param {number} params.clueId Clue id.
    * @param {string} params.orientation Orientation.
    */
   focusClue(params) {
-    this.inputFields.forEach(field => {
+    this.inputFields.forEach((field) => {
       field.clue.classList.remove('h5p-crossword-input-fields-group-clue-highlight-focus');
     });
 
-    const fields = this.inputFields.filter(field => field.orientation === params.orientation && field.clueId === params.clueId);
+    const fields = this.inputFields.filter((field) => field.orientation === params.orientation && field.clueId === params.clueId);
     if (fields.length > 0) {
       fields[0].clue.classList.add('h5p-crossword-input-fields-group-clue-highlight-focus');
     }
@@ -450,17 +458,18 @@ export default class CrosswordInput {
 
   /**
    * Check answer for words.
+   *
    * @param {object} params Parameters.
    */
   checkAnswerWords(params) {
     // ScorePoints
     this.scorePoints = this.scorePoints || new H5P.Question.ScorePoints();
 
-    this.inputFields.forEach(field => {
+    this.inputFields.forEach((field) => {
       field.solution.show();
 
       const matchingResult = params
-        .filter(param => param.clueId === field.clueId && param.orientation === field.orientation)
+        .filter((param) => param.clueId === field.clueId && param.orientation === field.orientation)
         .shift();
 
       let scoreExplanation, result;
@@ -494,6 +503,7 @@ export default class CrosswordInput {
 
   /**
    * Check answers.
+   *
    * @param {object[]} params Parameters.
    */
   checkAnswer(params) {
@@ -503,11 +513,11 @@ export default class CrosswordInput {
     // Keep track of score for crossection characters, don't show score twice
     const scorePointsAwarded = [];
 
-    this.inputFields.forEach(field => {
+    this.inputFields.forEach((field) => {
       field.solution.show();
 
       // Chars are sorted by position already
-      const cellInfos = params.filter(cell => {
+      const cellInfos = params.filter((cell) => {
         if (field.orientation === 'across') {
           return cell.clueIdAcross === field.clueId;
         }
@@ -523,7 +533,7 @@ export default class CrosswordInput {
       let listItemParams = [];
       cellInfos.forEach((cellInfo, index) => {
         // Prevent crossection cells from being counted twice
-        const cellAlreadyScored = scorePointsAwarded.some(positions => {
+        const cellAlreadyScored = scorePointsAwarded.some((positions) => {
           return positions.row === cellInfo.position.row && positions.column === cellInfo.position.column;
         });
         scorePointsAwarded.push(cellInfo.position);
@@ -578,11 +588,12 @@ export default class CrosswordInput {
 
   /**
    * Show solutions.
+   *
    * @param {object[]} params Parameters.
    */
   showSolutions(params = []) {
-    this.inputFields.forEach(field => {
-      let param = params.filter(param => {
+    this.inputFields.forEach((field) => {
+      let param = params.filter((param) => {
         return param.clueId === field.clueId && param.orientation === field.orientation;
       });
 
@@ -609,7 +620,7 @@ export default class CrosswordInput {
    * Reset.
    */
   reset() {
-    this.inputFields.forEach(field => {
+    this.inputFields.forEach((field) => {
       this.setInputFieldValue(field.inputField, '');
       field.inputField.readOnly = false;
 
@@ -633,11 +644,11 @@ export default class CrosswordInput {
    * Enable input fields.
    */
   enable() {
-    this.inputFields.forEach(field => {
+    this.inputFields.forEach((field) => {
       field.inputField.removeAttribute('disabled');
     });
 
-    this.extraClues.forEach(extraClue => {
+    this.extraClues.forEach((extraClue) => {
       extraClue.removeAttribute('disabled');
     });
     this.content.classList.remove('h5p-crossword-disabled');
@@ -651,12 +662,12 @@ export default class CrosswordInput {
   disable() {
     this.disabled = true;
 
-    this.extraClues.forEach(extraClue => {
+    this.extraClues.forEach((extraClue) => {
       extraClue.setAttribute('disabled', true);
     });
     this.content.classList.add('h5p-crossword-disabled');
 
-    this.inputFields.forEach(field => {
+    this.inputFields.forEach((field) => {
       field.inputField.setAttribute('disabled', true);
     });
   }
@@ -665,7 +676,7 @@ export default class CrosswordInput {
    * Unhighlight all fields.
    */
   unhighlight() {
-    this.inputFields.forEach(field => {
+    this.inputFields.forEach((field) => {
       field.clue.classList.remove('h5p-crossword-input-fields-group-clue-highlight-focus');
     });
   }

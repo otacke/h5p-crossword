@@ -2,8 +2,8 @@
 class Util {
   /**
    * Extend an array just like JQuery's extend.
-   * @param {object} arguments Objects to be merged.
-   * @return {object} Merged objects.
+   *
+   * @returns {object} Merged objects.
    */
   static extend() {
     for (let i = 1; i < arguments.length; i++) {
@@ -23,8 +23,9 @@ class Util {
 
   /**
    * Retrieve true string from HTML encoded string.
+   *
    * @param {string} input Input string.
-   * @return {string} Output string.
+   * @returns {string} Output string.
    */
   static htmlDecode(input) {
     var dparser = new DOMParser().parseFromString(input, 'text/html');
@@ -33,8 +34,9 @@ class Util {
 
   /**
    * Retrieve string without HTML tags.
-   * @param {string} input Input string.
-   * @return {string} Output string.
+   *
+   * @param {string} html Input string.
+   * @returns {string} Output string.
    */
   static stripHTML(html) {
     const div = document.createElement('div');
@@ -44,8 +46,9 @@ class Util {
 
   /**
    * Create empty array of arbitrary dimension.
-   * @param {length} Array length.
-   * @return {}
+   *
+   * @param {number} length Length of array.
+   * @returns {object[]} Objects in array.
    */
   static createArray(length) {
     const arr = new Array(length || 0);
@@ -63,8 +66,9 @@ class Util {
 
   /**
    * Shuffle array.
+   *
    * @param {object[]} array Array.
-   * @return {object[]} Shuffled array.
+   * @returns {object[]} Shuffled array.
    */
   static shuffleArray(array) {
     let j, x, i;
@@ -81,8 +85,9 @@ class Util {
   /**
    * Format language tag (RFC 5646). Assuming "language-coutry". No validation.
    * Cmp. https://tools.ietf.org/html/rfc5646
-   * @param {string} languageTag Language tag.
-   * @return {string} Formatted language tag.
+   *
+   * @param {string} languageCode Language tag.
+   * @returns {string} Formatted language tag.
    */
   static formatLanguageCode(languageCode) {
     if (typeof languageCode !== 'string') {
@@ -105,9 +110,10 @@ class Util {
 
   /**
    * Convert string to uppercase with optional exceptions.
+   *
    * @param {string} text Text to be converted to uppercase.
    * @param {string[]} [exceptions=[]] List of characters to keep in lowercase or replace by others.
-   * @return {string|null} String in uppercase or null if text was no string.
+   * @returns {string|null} String in uppercase or null if text was no string.
    */
   static toUpperCase(text, exceptions = []) {
     // Sanitize arguments
@@ -118,7 +124,7 @@ class Util {
     if (typeof exceptions === 'string') {
       exceptions = exceptions
         .split('')
-        .map(exception => ({lowerCase: exception, upperCase: exception}));
+        .map((exception) => ({ lowerCase: exception, upperCase: exception }));
     }
 
     if (!Array.isArray(exceptions)) {
@@ -126,7 +132,7 @@ class Util {
     }
 
     // Remove exceptions not containing valid values
-    exceptions = exceptions.filter(exception => {
+    exceptions = exceptions.filter((exception) => {
       return (
         typeof exception.lowerCase === 'string' && exception.lowerCase.length === 1 &&
         typeof exception.upperCase === 'string' && exception.upperCase.length === 1
@@ -154,6 +160,7 @@ class Util {
 
   /**
    * Wait for DOM element to be attached to DOM.
+   *
    * @param {string} selector CSS selector for DOM element.
    * @param {function} success Function to call once element is attached.
    * @param {function} [error] Function to call if element wasn't found (in time).
