@@ -265,10 +265,6 @@
           "default": "Ireki pista gehigarria @clue pistarentzat"
         },
         {
-          "label": "Gelaxka hutsa",
-          "default": "Gelaxka hutsa"
-        },
-        {
           "description": "Oraingo kokapena iragartzen. @position eta @length euren balioekin ordezkatuko diren aldagaiak dira.",
           "label": "Letra",
           "default": "Letraren @position eta @length"

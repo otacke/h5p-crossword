@@ -265,10 +265,6 @@
           "default": "Open extra clue for @clue"
         },
         {
-          "label": "Empty cell",
-          "default": "Empty cell"
-        },
-        {
           "description": "Announcing the current position. @position and @length are variables and will be replaced by their respective values.",
           "label": "Letter",
           "default": "Letter @position of @length"

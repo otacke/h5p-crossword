@@ -265,10 +265,6 @@
           "default": "Odpri dodaten namig za @clue"
         },
         {
-          "label": "Prazna celica",
-          "default": "Prazna celica"
-        },
-        {
           "description": "Pregled trenutnega položaja v geslu. @position in @length sta spremenljivki.",
           "label": "Znak",
           "default": "Znak @position od @length"

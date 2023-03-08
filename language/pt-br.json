@@ -265,10 +265,6 @@
           "default": "Abrir uma pista extra para @clue"
         },
         {
-          "label": "Célula vazia",
-          "default": "Célula vazia"
-        },
-        {
           "description": "Anunciando a posição atual. @position e @length são variáveis e serão substituídas por seus respectivos valores.",
           "label": "Letra",
           "default": "Letra @position de @length"

@@ -265,10 +265,6 @@
           "default": "@clue 에 대한 추가 단서 열기"
         },
         {
-          "label": "빈 칸",
-          "default": "빈 칸"
-        },
-        {
           "description": "현재 위치 알리기. @position 와 @length 는 변수이고 각 값에 의해 대체됩니다.",
           "label": "글자",
           "default": "@length 중 Letter @position 위치"

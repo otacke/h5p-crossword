@@ -265,10 +265,6 @@
           "default": "Atveriet papildu pavedienu @clue"
         },
         {
-          "label": "Tukša šūna",
-          "default": "Tukša šūna"
-        },
-        {
           "description": "Pašreizējās pozīcijas paziņošana. @position un @length ir mainīgie, un tie tiks aizstāti ar to attiecīgajām vērtībām.",
           "label": "Burts",
           "default": "Burts @position no @length"

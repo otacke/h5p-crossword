@@ -265,10 +265,6 @@
           "default": "Afficher l'indice supplémentaire pour @clue"
         },
         {
-          "label": "Cellule vide",
-          "default": "Cellule vide"
-        },
-        {
           "description": "Annonce la position actuelle. Les variables @position et @length seront remplacées par la position et la longueur du mot, respectivement.",
           "label": "Lettre",
           "default": "Lettre @position de @length"

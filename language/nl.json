@@ -265,10 +265,6 @@
           "default": "Open extra aanwijzing voor @clue"
         },
         {
-          "label": "Lege cel",
-          "default": "Lege cel"
-        },
-        {
           "description": "De huidige positie aankondigen. @position en @length zijn variabelen en zullen worden vervangen door hun respectievelijke waarden.",
           "label": "Letter",
           "default": "Letter @position van @length"
