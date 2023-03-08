@@ -265,10 +265,6 @@
           "default": "@clueの追加の手がかりを開く"
         },
         {
-          "label": "空のセル",
-          "default": "空のセル"
-        },
-        {
           "description": "現在位置をお知らせします。 @positionと@lengthは変数であり、それぞれの値に置き換えられます。",
           "label": "手紙",
           "default": "@lengthの文字@position"

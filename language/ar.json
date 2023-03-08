@@ -265,10 +265,6 @@
           "default": "فتح دليل إضافي لـ @clue"
         },
         {
-          "label": "خلية فارغة",
-          "default": "خلية فارغة"
-        },
-        {
           "description": "إعلان المركز الحالي. @position و @length هي متغيرات وستستبدل بقيمها الخاصة.",
           "label": "حرف",
           "default": "حرف @position من @length"

@@ -265,10 +265,6 @@
           "default": "Apri un indizio extra per @clue"
         },
         {
-          "label": "Cella vuota",
-          "default": "Cella vuota"
-        },
-        {
           "description": "Annuncio della posizione attuale. @position e @length sono variabili e verranno sostituite dai rispettivi valori.",
           "label": "Lettera",
           "default": "Lettera @posizione di @lunghezza"

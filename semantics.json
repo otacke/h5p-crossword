@@ -574,13 +574,6 @@
         "default": "Open extra clue for @clue"
       },
       {
-        "name": "emptyCell",
-        "type": "text",
-        "label": "Empty cell",
-        "importance": "low",
-        "default": "Empty cell"
-      },
-      {
         "name": "letterSevenOfNine",
         "description": "Announcing the current position. @position and @length are variables and will be replaced by their respective values.",
         "type": "text",

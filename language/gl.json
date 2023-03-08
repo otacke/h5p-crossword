@@ -265,10 +265,6 @@
           "default": "Abrir definición extra para @clue"
         },
         {
-          "label": "Cela baleira",
-          "default": "Cela baleira"
-        },
-        {
           "description": "Anunciando a posición actual. @position e @length son variables que se substituirán polos seus valores respectivos.",
           "label": "Letra",
           "default": "Letra @position de @length"

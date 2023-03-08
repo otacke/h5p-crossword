@@ -265,10 +265,6 @@
           "default": "Opn ekstra hint for @clue"
         },
         {
-          "label": "Tom rute",
-          "default": "Tom rute"
-        },
-        {
           "description": "Gir opp noverande posisjon. @position og @length er variablar og vil bli bytte ut med dei respektive verdiane sine.",
           "label": "Bokstav",
           "default": "Bokstav @position av @length"

@@ -265,10 +265,6 @@
           "default": "Fungua kidokezo cha ziada kwa@clue"
         },
         {
-          "label": "Seli tupu",
-          "default": "Seli tupu"
-        },
-        {
           "description": "Kutangaza nafasi ya sasa. @positionna @lengthni vigezo na vitabadilishwa na thamani zao husika.",
           "label": "Herufi",
           "default": "Herufi @position kati ya @length"

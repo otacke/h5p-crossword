@@ -265,10 +265,6 @@
           "default": "Åpne ekstra hint for @clue"
         },
         {
-          "label": "Tom rute",
-          "default": "Tom rute"
-        },
-        {
           "description": "Oppgir den nåværende posisjonen. @position og @length er variabler og vil bli bytta ut med sine respektive verdier.",
           "label": "Bokstav",
           "default": "Bokstav @position av @length"

@@ -265,10 +265,6 @@
           "default": "Öffne den Extra-Hinweis für @clue"
         },
         {
-          "label": "Leeres Feld",
-          "default": "Leeres Feld"
-        },
-        {
           "description": "Positionsansage. @position und @length sind Variablen und werden durch die entsprechenden Werte ersetzt.",
           "label": "Zeichen",
           "default": "Zeichen @position von @length"
