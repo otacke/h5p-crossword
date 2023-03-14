@@ -2,7 +2,7 @@
   "semantics": [
     {
       "label": "Consigne",
-      "description": "La consigne indique à l'utilisateur comment faire l'exercice."
+      "description": "Décrivez votre tâche ici."
     },
     {
       "label": "mots",
@@ -17,7 +17,7 @@
         "fields": [
           {
             "label": "Indice",
-            "description": "Indice qui devrait indiquer la réponse."
+            "description": "Indice permettant de trouver la réponse."
           },
           {
             "label": "Réponse",
@@ -28,7 +28,7 @@
           },
           {
             "label": "Fixer le mot sur la grille",
-            "description": "Cocher si vous désirez fixer le mot à une position particulière sur la grille. Words with the same alignment may not be placed touching each other."
+            "description": "Cochez si vous souhaitez fixer le mot à une position particulière sur la grille. Les mots avec le même alignement ne peuvent pas être placés en contact les uns avec les autres."
           },
           {
             "label": "Ligne",
@@ -66,17 +66,17 @@
               "label": "Par défaut"
             }
           ],
-          "label": "Définissez des feedbacks pour différents intervalles de scores",
+          "label": "Définissez le feedback pour chaque intervalle de score",
           "description": "Cliquez sur le bouton \"Ajouter Intervalle\" pour ajouter autant d'intervalles de score que vous souhaitez. Exemple: 0-20% Mauvais score, 21-91% Score moyen, 91-100% Score excellent !",
-          "entity": "gamme",
+          "entity": "intervalle",
           "field": {
             "fields": [
               {
-                "label": "Fourchette de score"
+                "label": "Intervalle de score"
               },
               {},
               {
-                "label": "Feedback pour cette fourchette de scores",
+                "label": "Feedback pour l'intervalle de score défini",
                 "placeholder": "Saisir le message de feedback"
               }
             ]
@@ -102,13 +102,13 @@
           "default": "#000000"
         },
         {
-          "label": "Couleur de fond des cellules",
-          "description": "Choisir une couleur de fond pour les cellules.",
+          "label": "Couleur d'arrière-plan de la cellule",
+          "description": "Choisir la couleur d'arrière-plan d'une cellule du tableau.",
           "default": "#ffffff"
         },
         {
-          "label": "Couleur de texte des cellules",
-          "description": "Choisir une couleur de texte pour les cellules.",
+          "label": "Couleur du texte de la cellule",
+          "description": "Choisir la couleur du texte d'une cellule du tableau.",
           "default": "#000000"
         },
         {
@@ -117,13 +117,13 @@
           "default": "#606060"
         },
         {
-          "label": "Couleurs de fond des cellules sélectionnées",
-          "description": "Choisir une couleurs de fond pour les cellules sélectionnées.",
+          "label": "Couleur de fond des cellules sélectionnées",
+          "description": "Choisir la couleur de fond pour une cellule qui est sélectionnée.",
           "default": "#3e8de8"
         },
         {
-          "label": "Couleurs de texte des cellules sélectionnées",
-          "description": "Choisir une couleurs de texte pour les cellules sélectionnées.",
+          "label": "Couleur du texte d'une cellule (sélectionnée)",
+          "description": "Choisir la couleur du texte d'une cellule quand elle est sélectionnée.",
           "default": "#ffffff"
         },
         {
@@ -134,18 +134,18 @@
       ]
     },
     {
-      "label": "Options de comportement",
+      "label": "Paramètres de comportement",
       "description": "Ces options permettent de contrôler le comportement de l'activité.",
       "fields": [
         {
           "label": "Nombre de mots à afficher",
-          "description": "Crée une sélection aléatoire de mots. Cette sélection va toujours contenir tous les mots qui sont fixés sur la grille, peu importe la valeur de ce paramètre. Une valeur vide ou de 0 signifie qu'il faut d'utiliser tous les mots."
+          "description": "Créer un lot aléatoire de mots à partir de l'ensemble. Le lot contiendra toujours au moins tous les mots qui ont été fixés sur la grille quel que soit ce paramètre. Une valeur vide ou 0 signifie qu'il faut utiliser tous les mots."
         },
         {
           "label": "Activer le feedback instantané"
         },
         {
-          "label": "Score par mot",
+          "label": "Compter par mot",
           "description": "Si cette option est activée, les mots seront comptés pour déterminer le score. Autrement le score sera calculé par caractère."
         },
         {
@@ -181,24 +181,24 @@
         },
         {
           "label": "Étiquette pour le bouton \"Recommencer\"",
-          "default": "Réessayer"
+          "default": "Recommencer"
         },
         {
           "label": "Étiquette pour le bouton \"Afficher la solution\"",
           "default": "Afficher la solution"
         },
         {
-          "label": "Impossible de générer le mot-croisé",
-          "default": "Impossible de générer le mot-croisé avec les mots saisis. Veuillez réessayer avec moins de mots ou utiliser des mots qui ont plus de caractères en commun."
+          "label": "Impossible de générer les mots-croisés",
+          "default": "Impossible de générer les mots-croisés avec les mots saisis. Veuillez réessayer avec moins de mots ou utiliser des mots qui ont plus de caractères en commun."
         },
         {
-          "label": "Impossible de générer le mot-croisé (trop peu de mots)",
-          "default": "Impossible de générer le mot-croisé. Vous devez saisir au moins deux mots."
+          "label": "Impossible de générer les mots-croisés (trop peu de mots)",
+          "default": "Impossible de générer les mots-croisés. Vous devez saisir au moins deux mots."
         },
         {
           "label": "Mots problématiques",
-          "description": "Liste des mots qui ont causé des problèmes lors de la génération du mot-croisé. L'identifiant @words sera remplacé par la liste de mots problématiques.",
-          "default": "Some words could not be placed. Si vous utilisez des mots à position fixe, veuillez vous assurer que leur position n'empêche pas les autres mots d'être placés sur la grille. Words with the same alignment may not be placed touching each other. Mot(s) problématique(s): @words"
+          "description": "Liste des mots qui ont causé des problèmes lors de la génération des mots-croisés. L'identifiant @words sera remplacé par la liste de mots problématiques.",
+          "default": "Certains mots n'ont pas pu être placés. Si vous utilisez des mots à position fixe, veuillez vous assurer que leur position n'empêche pas les autres mots d'être placés sur la grille. Les mots avec le même alignement ne doivent pas se toucher. Mot(s) problématique(s): @words"
         },
         {
           "label": "Indice supplémentaire",
@@ -214,7 +214,7 @@
       "label": "Lecteur d'écran",
       "fields": [
         {
-          "label": "Description de la grille du mot-croisé",
+          "label": "Description de la grille de mots croisés",
           "default": "Utiliser les touches fléchées pour naviguer et les lettres du clavier pour saisir les caractères. Utiliser Tab pour faire usage des champs d'entrée au lieu de la grille."
         },
         {
@@ -240,15 +240,15 @@
         {
           "description": "Annonce du résultat. La variable @clue sera remplacée par l'indice concerné.",
           "label": "Résultat",
-          "default": "Résultat pour: @clue"
+          "default": "Résultat pour : @clue"
         },
         {
-          "label": "Correcte",
-          "default": "Correcte"
+          "label": "Réponse correcte",
+          "default": "Réponse correcte"
         },
         {
-          "label": "Incorrect",
-          "default": "Incorrect"
+          "label": "Faux",
+          "default": "Faux"
         },
         {
           "label": "Point",
@@ -257,7 +257,7 @@
         {
           "description": "Annonce de la solution. Les variables @clue et @solution seront remplacées par l'indice et la solution, respectivement.",
           "label": "Solution pour",
-          "default": "Pour @clue, la solution est: @solution"
+          "default": "Pour @clue, la solution est : @solution"
         },
         {
           "description": "Annonce d'indice supplémentaire. La variable @clue sera remplacée par l'indice.",
@@ -275,16 +275,16 @@
           "default": "Mot de @length lettres"
         },
         {
-          "label": "Description du bouton \"Vérifier\" pour technogies d'accessibilité",
+          "label": "Description des technologies d'assistance pour le bouton \"Vérifier\"",
           "default": "Vérifier les caractères. Les réponses seront marquées correctes, incorrectes ou sans réponse."
         },
         {
-          "label": "Description du bouton \"Afficher la solution\" pour technogies d'accessibilité",
+          "label": "Description des technologies d'assistance pour le bouton \"Afficher la solution\"",
           "default": "Afficher la solution. Le mot-croisé sera ensuite rempli avec la solution correcte."
         },
         {
-          "label": "Description du bouton \"Recommencer\" pour technogies d'accessibilité",
-          "default": "Recommencer la tâche. Réinitialise toutes les réponses et redémarre l'activité."
+          "label": "Description des technologies d'assistance pour le bouton \"Réessayer\"",
+          "default": "Réessayer la tâche. Réinitialiser toutes les réponses et recommencer l'activité."
         },
         {
           "label": "Votre résultat",
