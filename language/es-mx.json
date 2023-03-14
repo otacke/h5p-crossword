@@ -275,16 +275,16 @@
           "default": "palabra de @length letras"
         },
         {
-          "label": "Descripción de tecnología asistiva para botón \"Comprobar\"",
+          "label": "Descripción para las tecnologías de asistencia del botón \"Comprobar\"",
           "default": "Comprobar los caracteres. Las respuestas serán marcadas como correcta, incorrecta, o sin contestar."
         },
         {
-          "label": "Descripción de tecnología asistiva para botón \"Mostrar solución\"",
-          "default": "Mostrar la solución. El crucigrama será llenado con su solución correcta."
+          "label": "Descripción para las tecnologías de asistencia del botón \"Mostrar solución\"",
+          "default": "Mostrar la solución. El crucigrama se completará con su solución correcta."
         },
         {
-          "label": "Descripción de tecnología asistiva para botón \"Reintentar\"",
-          "default": "Reintentar el trabajo. Reiniciar todas las respuestas e iniciar el trabajo de nuevo."
+          "label": "Descripción para las tecnologías de asistencia del botón \"Intentar de nuevo\"",
+          "default": "Volver a intentar la tarea. Borra todas las respuestas y empezar de nuevo."
         },
         {
           "label": "Su resultado",
