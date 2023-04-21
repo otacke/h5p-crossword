@@ -271,7 +271,7 @@
         },
         {
           "description": "Announcing the word length. @length is a variable and will be replaced by the respective value.",
-          "label": "Length of word",
+          "label": "Žodžio ilgis",
           "default": "@length letter word"
         },
         {
@@ -287,7 +287,7 @@
           "default": "Retry the task. Reset all responses and start the task over again."
         },
         {
-          "label": "Your result",
+          "label": "Jūsų rezultatas",
           "description": "@score and @total are variables and will be replaced by their respective values.",
           "default": "You got @score out of @total points."
         }
