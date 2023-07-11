@@ -1,13 +1,13 @@
-import Overlay from './h5p-crossword-overlay';
-import Util from './h5p-crossword-util';
-import CrosswordCharList from './h5p-crossword-char-list';
+import Overlay from '@scripts/h5p-crossword-overlay';
+import Util from '@services/util';
+import CrosswordCharList from '@scripts/h5p-crossword-char-list';
 
 /** Class representing the content */
 export default class CrosswordInput {
   /**
    * @class
-   * @param {object} [params={}] Parameters.
-   * @param {object} [callbacks={}] Callbacks.
+   * @param {object} [params] Parameters.
+   * @param {object} [callbacks] Callbacks.
    */
   constructor(params = {}, callbacks) {
     this.params = Util.extend({
@@ -60,7 +60,6 @@ export default class CrosswordInput {
 
   /**
    * Return the DOM for this class.
-   *
    * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
@@ -69,7 +68,6 @@ export default class CrosswordInput {
 
   /**
    * Build group of input fields.
-   *
    * @param {object} params Parameters.
    * @returns {HTMLElement} Input fields.
    */
@@ -307,7 +305,6 @@ export default class CrosswordInput {
 
   /**
    * Fix Samsung virtual keyboard glitch
-   *
    * @param {string} before Value of text before Samsung glitch.
    * @param {string} after Value of text after Samsung glitch.
    * @returns {string} Value of text that should be rendered.
@@ -363,11 +360,10 @@ export default class CrosswordInput {
 
   /**
    * Set input field value.
-   *
    * @param {HTMLElement} field Input field.
    * @param {string} value Value.
-   * @param {object} [params={}] Parameters.
-   * @param {boolean} [params.forceValue=true] If true, that exact (uppercase) value will be used.
+   * @param {object} [params] Parameters.
+   * @param {boolean} [params.forceValue] If true, that exact (uppercase) value will be used.
    */
   setInputFieldValue(field, value, params = { forceValue: true }) {
     value = Util.toUpperCase(value, Util.UPPERCASE_EXCEPTIONS);
@@ -408,7 +404,6 @@ export default class CrosswordInput {
 
   /**
    * Build aria label for cell.
-   *
    * @param {object} params Parameters.
    * @returns {string} Aria label for cell.
    */
@@ -423,7 +418,6 @@ export default class CrosswordInput {
 
   /**
    * Fill fields.
-   *
    * @param {object[]} params Parameters.
    * @param {number} params.clueId Clue id.
    * @param {string} params.orientation Orientation.
@@ -440,7 +434,6 @@ export default class CrosswordInput {
 
   /**
    * Focus clue.
-   *
    * @param {object} params Parameters.
    * @param {number} params.clueId Clue id.
    * @param {string} params.orientation Orientation.
@@ -458,7 +451,6 @@ export default class CrosswordInput {
 
   /**
    * Check answer for words.
-   *
    * @param {object} params Parameters.
    */
   checkAnswerWords(params) {
@@ -503,7 +495,6 @@ export default class CrosswordInput {
 
   /**
    * Check answers.
-   *
    * @param {object[]} params Parameters.
    */
   checkAnswer(params) {
@@ -588,7 +579,6 @@ export default class CrosswordInput {
 
   /**
    * Show solutions.
-   *
    * @param {object[]} params Parameters.
    */
   showSolutions(params = []) {

@@ -1,6 +1,6 @@
 // Import required classes
-import CrosswordContent from './h5p-crossword-content';
-import Util from './h5p-crossword-util';
+import CrosswordContent from '@scripts/h5p-crossword-content';
+import Util from '@services/util';
 
 /**
  * Class for H5P Crossword.
@@ -194,7 +194,6 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Handle content initialized.
-   *
    * @param {boolean} result initialization success.
    */
   handleContentInitialized(result) {
@@ -279,7 +278,6 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Let H5P.Question read some text.
-   *
    * @param {string} text Text to read.
    */
   handleRead(text) {
@@ -301,7 +299,6 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Check if result has been submitted or input has been given.
-   *
    * @returns {boolean} True, if answer was given.
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
    */
@@ -315,7 +312,6 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Get latest score.
-   *
    * @returns {number} latest score.
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-2}
    */
@@ -329,7 +325,6 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Get maximum possible score.
-   *
    * @returns {number} Score necessary for mastering.
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-3}
    */
@@ -343,7 +338,6 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Show solutions.
-   *
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-4}
    */
   showSolutions() {
@@ -361,7 +355,6 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Reset task.
-   *
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
    */
   resetTask() {
@@ -400,7 +393,6 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Get xAPI data.
-   *
    * @returns {object} XAPI statement.
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
    */
@@ -412,7 +404,6 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Build xAPI answer event.
-   *
    * @returns {H5P.XAPIEvent} XAPI answer event.
    */
   getXAPIAnswerEvent() {
@@ -426,7 +417,6 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Create an xAPI event for Dictation.
-   *
    * @param {string} verb Short id of the verb we want to trigger.
    * @returns {H5P.XAPIEvent} Event template.
    */
@@ -440,7 +430,6 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Get the xAPI definition for the xAPI object.
-   *
    * @returns {object} XAPI definition.
    */
   getxAPIDefinition() {
@@ -460,7 +449,6 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Determine whether the task has been passed by the user.
-   *
    * @returns {boolean} True if user passed or task is not scored.
    */
   isPassed() {
@@ -469,7 +457,6 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Get tasks title.
-   *
    * @returns {string} Title.
    */
   getTitle() {
@@ -485,7 +472,6 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Get tasks description.
-   *
    * @returns {string} Description.
    */
   getDescription() {
@@ -496,7 +482,6 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Answer call to return the current state.
-   *
    * @returns {object} Current state.
    */
   getCurrentState() {
@@ -505,7 +490,6 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Compute shallow difference of two objects.
-   *
    * @param {object} minuend Object to subtract from.
    * @param {object} subtrahend Object to subtract from minuend.
    * @returns {object} Object diff.

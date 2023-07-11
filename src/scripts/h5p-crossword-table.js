@@ -1,12 +1,12 @@
-import CrosswordCell from './h5p-crossword-cell';
-import Util from './h5p-crossword-util';
+import CrosswordCell from '@scripts/h5p-crossword-cell';
+import Util from '@services/util';
 
 /** Class representing the content */
 export default class CrosswordTable {
   /**
    * @class
-   * @param {object} [params={}] Parameters.
-   * @param {object} [callbacks={}] Callbacks.
+   * @param {object} [params] Parameters.
+   * @param {object} [callbacks] Callbacks.
    */
   constructor(params = {}, callbacks) {
     this.params = Util.extend({
@@ -165,7 +165,6 @@ export default class CrosswordTable {
 
   /**
    * Return the DOM for this class.
-   *
    * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
@@ -174,7 +173,6 @@ export default class CrosswordTable {
 
   /**
    * Build actual cells from parameters.
-   *
    * @param {object} dimensions Dimensions of grid.
    * @param {number} dimensions.rows Numvber of rows in grid.
    * @param {number} dimensions.columns Numvber of columns in grid.
@@ -272,7 +270,6 @@ export default class CrosswordTable {
 
   /**
    * Find cells that the solution word id marker and circle can be put into.
-   *
    * @param {string} solutionWord Solution word.
    * @returns {CrosswordCell[]} Cells that can be used or null if no space.
    */
@@ -307,7 +304,6 @@ export default class CrosswordTable {
 
   /**
    * Mark cells with solution word ids and circles if possible.
-   *
    * @param {string} solutionWord Solution word.
    * @returns {boolean} True, if possibe, else false.
    */
@@ -326,7 +322,6 @@ export default class CrosswordTable {
 
   /**
    * Create grid table.
-   *
    * @param {object} params Parameters.
    * @param {object} params.dimensions Dimensions.
    * @param {number} params.dimensions.columns Number of columns.
@@ -366,7 +361,6 @@ export default class CrosswordTable {
 
   /**
    * Create grid row element.
-   *
    * @param {object} dim Dimensions.
    * @param {number} dim.columns Number of columns.
    * @param {number} dim.rows Number of rows.
@@ -386,11 +380,10 @@ export default class CrosswordTable {
 
   /**
    * Move cursor to
-   *
    * @param {object} position Position.
    * @param {number} position.row Row to move to.
    * @param {number} position.column Columns to move to.
-   * @param {boolean} [keepFocus=false] If true, don't focus cell (but keep current focus).
+   * @param {boolean} [keepFocus] If true, don't focus cell (but keep current focus).
    * @returns {boolean} False if moving not possible, else true.
    */
   moveTo(position = {}, keepFocus = false) {
@@ -399,10 +392,10 @@ export default class CrosswordTable {
       return false;
     }
     if (position.column < 0 || position.column > this.params.dimensions.columns - 1) {
-      return false;    		
+      return false;
     }
     if (this.cells[position.row][position.column].getSolution() === null) {
-      return false; // Target cell is empty	
+      return false; // Target cell is empty
     }
 
     const targetCell = this.cells[position.row][position.column];
@@ -426,7 +419,6 @@ export default class CrosswordTable {
 
   /**
    * Get information for other components.
-   *
    * @param {object} position Position.
    * @param {number} position.row Cell row.
    * @param {number} position.column Cell column.
@@ -474,7 +466,6 @@ export default class CrosswordTable {
 
   /**
    * Get answers in cells.
-   *
    * @returns {string[]} Answers in cells.
    */
   getAnswers() {
@@ -483,7 +474,6 @@ export default class CrosswordTable {
 
   /**
    * Set answers (from previous state).
-   *
    * @param {string[]} answers Answers in cells.
    */
   setAnswers(answers) {
@@ -507,7 +497,6 @@ export default class CrosswordTable {
 
   /**
    * Get score.
-   *
    * @returns {number} Score.
    */
   getScore() {
@@ -528,7 +517,6 @@ export default class CrosswordTable {
 
   /**
    * GetMaxScore.
-   *
    * @returns {number} Maximum score.
    */
   getMaxScore() {
@@ -545,7 +533,6 @@ export default class CrosswordTable {
 
   /**
    * Get score for single word.
-   *
    * @param {number} clueId ClueId of word.
    * @param {string} orientation Requested orientation.
    * @returns {number} 1 if complete word is correct, -1 if something is wrong, 0 else;
@@ -572,9 +559,8 @@ export default class CrosswordTable {
 
   /**
    * Set current orientation. Will correct orientation if not possible for position.
-   *
    * @param {string} orientation Requested orientation.
-   * @param {object} [position=this.currentPosition] Position.
+   * @param {object} [position] Position.
    * @param {number} [position.row] Position row.
    * @param {number} [position.column] Position column.
    * @returns {string|undefined} New orientation.
@@ -647,11 +633,10 @@ export default class CrosswordTable {
 
   /**
    * Handle click on cell.
-   *
    * @param {object} position Position.
    * @param {number} position.row Position row.
    * @param {number} position.column Position column.
-   * @param {boolean} [keepOrientation=false] If true, don't toggle orientation on repeated focus.
+   * @param {boolean} [keepOrientation] If true, don't toggle orientation on repeated focus.
    */
   handleCellClick(position, keepOrientation = false) {
     if (this.ignoreNextClick) {
@@ -684,7 +669,6 @@ export default class CrosswordTable {
 
   /**
    * Handle receiving focus.
-   *
    * @param {object} position Position.
    * @param {number} position.row Position row.
    * @param {number} position.column Position column.
@@ -708,12 +692,11 @@ export default class CrosswordTable {
 
   /**
    * Handle input from cell.
-   *
    * @param {object} params Position.
    * @param {object} params.position Position.
    * @param {number} params.position.row Position row.
    * @param {number} params.position.column Position column.
-   * @param {boolean} [params.nextPositionOffset=1] Next position offset.
+   * @param {boolean} [params.nextPositionOffset] Next position offset.
    */
   handleCellKeyup(params) {
     if (params.nextPositionOffset === undefined) {
@@ -759,7 +742,6 @@ export default class CrosswordTable {
 
   /**
    * Check answer.
-   *
    * @returns {object[]} Results of all words.
    */
   checkAnswerWords() {
@@ -782,7 +764,6 @@ export default class CrosswordTable {
 
   /**
    * Check answer.
-   *
    * @returns {object[]} Results of all cells with content.
    */
   checkAnswer() {
@@ -801,11 +782,10 @@ export default class CrosswordTable {
 
   /**
    * Highlight word cells belonging to a cell.
-   *
    * @param {object} position Position of cell.
    * @param {number} position.row Position row.
    * @param {number} position.column Position column.
-   * @param {string} [orientation='across'] Preferred orientation for crossings.
+   * @param {string} [orientation] Preferred orientation for crossings.
    */
   highlightWord(position, orientation = 'across') {
     const clueId = this.cells[position.row][position.column].getClueId(orientation);
@@ -837,7 +817,6 @@ export default class CrosswordTable {
 
   /**
    * Build aria label for cell.
-   *
    * @param {object} params Parameters.
    * @returns {string} Aria label for cell.
    */
@@ -851,7 +830,6 @@ export default class CrosswordTable {
 
   /**
    * Get focus.
-   *
    * @returns {object} Focus and orientation.
    */
   getFocus() {
@@ -863,9 +841,8 @@ export default class CrosswordTable {
 
   /**
    * Get cell information for a complete word.
-   *
    * @param {number} clueId Clue id.
-   * @param {string} [orientation=across] Orientation.
+   * @param {string} [orientation] Orientation.
    * @returns {object[]} Cell information.
    */
   getWordInformation(clueId, orientation = 'across') {
@@ -880,7 +857,6 @@ export default class CrosswordTable {
 
   /**
    * Focus a cell including neighbors around it.
-   *
    * @param {object} position Position of cell.
    * @param {number} position.row Position row.
    * @param {number} position.column Position column.
@@ -918,7 +894,6 @@ export default class CrosswordTable {
 
   /**
    * Fill the grid.
-   *
    * @param {object} params Parameters.
    */
   fillGrid(params) {
@@ -992,7 +967,6 @@ export default class CrosswordTable {
 
   /**
    * Check whether all relevant cells have been filled.
-   *
    * @returns {boolean} True, if all relevant cells have been filled, else false.
    */
   isFilled() {
@@ -1015,7 +989,6 @@ export default class CrosswordTable {
 
   /**
    * Get correct responses pattern for xAPI.
-   *
    * @returns {string[]} Correct response for each cell.
    */
   getXAPICorrectResponsesPattern() {
@@ -1039,7 +1012,6 @@ export default class CrosswordTable {
 
   /**
    * Get current response for xAPI.
-   *
    * @returns {string} Responses for each cell joined by [,].
    */
   getXAPIResponse() {
@@ -1058,7 +1030,6 @@ export default class CrosswordTable {
 
   /**
    * Get xAPI description suitable for H5P's reporting module.
-   *
    * @returns {string} HTML with placeholders for fields to be filled in.
    */
   getXAPIDescription() {

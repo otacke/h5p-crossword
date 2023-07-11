@@ -1,15 +1,15 @@
-import CrosswordClueAnnouncer from './h5p-crossword-clue-announcer';
-import CrosswordInput from './h5p-crossword-input';
-import CrosswordTable from './h5p-crossword-table';
-import CrosswordSolutionWord from './h5p-crossword-solution-word';
-import CrosswordGenerator from './h5p-crossword-generator';
+import CrosswordClueAnnouncer from '@scripts/h5p-crossword-clue-announcer';
+import CrosswordInput from '@scripts/h5p-crossword-input';
+import CrosswordTable from '@scripts/h5p-crossword-table';
+import CrosswordSolutionWord from '@scripts/h5p-crossword-solution-word';
+import CrosswordGenerator from '@scripts/h5p-crossword-generator';
 
 /** Class representing the content */
 export default class CrosswordContent {
   /**
    * @class
-   * @param {object} [params={}] Parameters.
-   * @param {object} [callbacks={}] Callbacks.
+   * @param {object} [params] Parameters.
+   * @param {object} [callbacks] Callbacks.
    */
   constructor(params = {}, callbacks) {
     this.params = params;
@@ -180,7 +180,6 @@ export default class CrosswordContent {
 
   /**
    * Return the DOM for this class.
-   *
    * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
@@ -201,7 +200,6 @@ export default class CrosswordContent {
 
   /**
    * Get correct responses pattern for xAPI.
-   *
    * @returns {string[]} Correct response for each cell.
    */
   getXAPICorrectResponsesPattern() {
@@ -210,7 +208,6 @@ export default class CrosswordContent {
 
   /**
    * Get current response for xAPI.
-   *
    * @returns {string} Responses for each cell joined by [,].
    */
   getXAPIResponse() {
@@ -219,7 +216,6 @@ export default class CrosswordContent {
 
   /**
    * Get xAPI description suitable for H5P's reporting module.
-   *
    * @returns {string} HTML with placeholders for fields to be filled in.
    */
   getXAPIDescription() {
@@ -244,7 +240,6 @@ export default class CrosswordContent {
 
   /**
    * Check if result has been submitted or input has been given.
-   *
    * @returns {boolean} True, if answer was given.
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
    */
@@ -254,7 +249,6 @@ export default class CrosswordContent {
 
   /**
    * Get score.
-   *
    * @returns {number} Score.
    */
   getScore() {
@@ -267,7 +261,6 @@ export default class CrosswordContent {
 
   /**
    * Get maximum score
-   *
    * @returns {number} Maximum score.
    */
   getMaxScore() {
@@ -280,7 +273,6 @@ export default class CrosswordContent {
 
   /**
    * Answer call to return the current state.
-   *
    * @returns {object|undefined} Current state.
    */
   getCurrentState() {
@@ -313,7 +305,6 @@ export default class CrosswordContent {
 
   /**
    * Check whether all relevant cells have been filled.
-   *
    * @returns {boolean} True, if all relevant cells have been filled, else false.
    */
   isTableFilled() {
@@ -341,7 +332,6 @@ export default class CrosswordContent {
 
   /**
    * Handle input from input fields.
-   *
    * @param {object} params parameters.
    */
   handleFieldInput(params) {
@@ -351,7 +341,6 @@ export default class CrosswordContent {
 
   /**
    * Handle input from table.
-   *
    * @param {object} params parameters.
    */
   handleTableInput(params) {
@@ -372,7 +361,6 @@ export default class CrosswordContent {
 
   /**
    * Handle table getting focus.
-   *
    * @param {object} params parameters.
    */
   handleTableFocus(params) {
@@ -413,7 +401,6 @@ export default class CrosswordContent {
 
   /**
    * Override CSS with custom colors.
-   *
    * @param {object} theme Theme settings.
    */
   overrideCSS(theme = {}) {
@@ -455,7 +442,6 @@ export default class CrosswordContent {
 
   /**
    * Add CSS style.
-   *
    * @param {string} css CSS style.
    */
   addStyle(css) {

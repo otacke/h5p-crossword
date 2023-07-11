@@ -1,11 +1,11 @@
-import Util from './h5p-crossword-util';
+import Util from '@services/util';
 
 /** Class representing a cell */
 export default class CrosswordCell {
   /**
    * @class
-   * @param {object} [params={}] Parameters.
-   * @param {object} [callbacks={}] Callbacks.
+   * @param {object} [params] Parameters.
+   * @param {object} [callbacks] Callbacks.
    */
   constructor(params = {}, callbacks = {}) {
 
@@ -79,7 +79,6 @@ export default class CrosswordCell {
 
   /**
    * Return the DOM for this class.
-   *
    * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
@@ -88,7 +87,6 @@ export default class CrosswordCell {
 
   /**
    * Build cell.
-   *
    * @param {object} params Parameters.
    * @returns {HTMLElement} Cell element.
    */
@@ -107,7 +105,6 @@ export default class CrosswordCell {
 
   /**
    * Build cell content wrapper.
-   *
    * @returns {HTMLElement} Cell content wrapper element.
    */
   buildCellContentWrapper() {
@@ -118,7 +115,6 @@ export default class CrosswordCell {
 
   /**
    * Build cell canvas. Displays input. Used to hide select markers on Android.
-   *
    * @returns {HTMLElement} Cell canvas element.
    */
   buildCellCanvas() {
@@ -129,7 +125,6 @@ export default class CrosswordCell {
 
   /**
    * Build cell input. Only takes input, but canvas displays it.
-   *
    * @returns {HTMLElement} Cell input element.
    */
   buildCellInput() {
@@ -233,7 +228,6 @@ export default class CrosswordCell {
 
   /**
    * Return correct solution.
-   *
    * @returns {string|null} Solution char or null.
    */
   getSolution() {
@@ -242,7 +236,6 @@ export default class CrosswordCell {
 
   /**
    * Get current answer.
-   *
    * @returns {string} Current answer.
    */
   getCurrentAnswer() {
@@ -251,7 +244,6 @@ export default class CrosswordCell {
 
   /**
    * Get cell information.
-   *
    * @returns {object} Cell information.
    */
   getInformation() {
@@ -268,7 +260,6 @@ export default class CrosswordCell {
 
   /**
    * Get cell position.
-   *
    * @returns {object} Cell position as {row: x, column: y}.
    */
   getPosition() {
@@ -277,8 +268,7 @@ export default class CrosswordCell {
 
   /**
    * Get clue id.
-   *
-   * @param {string} [orientation=across] Orientation.
+   * @param {string} [orientation] Orientation.
    * @returns {number|null} Clue id.
    */
   getClueId(orientation = 'across') {
@@ -294,7 +284,6 @@ export default class CrosswordCell {
 
   /**
    * Get current answer.
-   *
    * @returns {string} Current answer.
    */
   getAnswer() {
@@ -303,7 +292,6 @@ export default class CrosswordCell {
 
   /**
    * Get score.
-   *
    * @returns {number|undefined} Wrong: -1; Missing: 0; Correct 1
    */
   getScore() {
@@ -328,7 +316,6 @@ export default class CrosswordCell {
 
   /**
    * Check whether cell is filled.
-   *
    * @returns {boolean|null} True if filled, null if not filled but not expected, else false.
    */
   isFilled() {
@@ -349,7 +336,6 @@ export default class CrosswordCell {
 
   /**
    * Set tab index.
-   *
    * @param {string} index Tab index.
    */
   setTabIndex(index) {
@@ -368,7 +354,6 @@ export default class CrosswordCell {
 
   /**
    * Set aria label.
-   *
    * @param {string} label Label.
    */
   setAriaLabel(label) {
@@ -377,7 +362,6 @@ export default class CrosswordCell {
 
   /**
    * Set solution state, either correct or wrong.
-   *
    * @param {string} state State, correct or wrong.
    */
   setSolutionState(state) {
@@ -393,9 +377,8 @@ export default class CrosswordCell {
 
   /**
    * Set answer.
-   *
    * @param {string} answer Answer character.
-   * @param {boolean} [readFeedback=false] If true, read feedback in instant feedback mode.
+   * @param {boolean} [readFeedback] If true, read feedback in instant feedback mode.
    */
   setAnswer(answer, readFeedback = false) {
     if (!this.cellInput) {
@@ -421,7 +404,6 @@ export default class CrosswordCell {
 
   /**
    * Set cell width.
-   *
    * @param {number} width Width in pixels.
    */
   setWidth(width) {
@@ -448,7 +430,6 @@ export default class CrosswordCell {
 
   /**
    * Highlight cell.
-   *
    * @param {string} type Highlight type.
    */
   highlight(type) {
@@ -462,7 +443,6 @@ export default class CrosswordCell {
 
   /**
    * Remove highlights.
-   *
    * @param {string} type Type to unhighlight.
    */
   unhighlight(type) {
@@ -490,8 +470,7 @@ export default class CrosswordCell {
 
   /**
    * Check answer.
-   *
-   * @param {boolean} [read=false] If true, will read correct/wrong via readspeaker.
+   * @param {boolean} [read] If true, will read correct/wrong via readspeaker.
    */
   checkAnswer(read = false) {
     const answer = (this.answer || '').trim();
@@ -559,7 +538,6 @@ export default class CrosswordCell {
 
   /**
    * Add solution word marker.
-   *
    * @param {number} id Id.
    */
   addSolutionWordIdMarker(id) {

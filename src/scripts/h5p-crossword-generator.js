@@ -1,5 +1,5 @@
 // Import utility functions
-import Util from './h5p-crossword-util';
+import Util from '@services/util';
 
 /*
  * Class for a Crossword Generator.
@@ -62,8 +62,7 @@ export default class CrosswordGenerator {
 
   /**
    * Get crossword grid that has ratio closest to 1 or null if can't be built.
-   *
-   * @param {number} [triesMax=10] Maximum number of tries.
+   * @param {number} [triesMax] Maximum number of tries.
    * @returns {object} Grid.
    */
   getSquareGrid(triesMax = 10) {
@@ -93,8 +92,7 @@ export default class CrosswordGenerator {
 
   /**
    * Get crossword grid or null if can't be built.
-   *
-   * @param {number} [triesMax=10] Maximum number of tries.
+   * @param {number} [triesMax] Maximum number of tries.
    * @returns {object} Grid.
    */
   getGrid(triesMax = 10) {
@@ -215,7 +213,6 @@ export default class CrosswordGenerator {
 
   /**
    * Get words that could not be placed.
-   *
    * @returns {object[]} Bad words.
    */
   getBadWords() {
@@ -224,7 +221,6 @@ export default class CrosswordGenerator {
 
   /**
    * Get random orientation, either across or down.
-   *
    * @returns {string} Random orientation
    */
   getRandomOrientation() {
@@ -233,7 +229,6 @@ export default class CrosswordGenerator {
 
   /**
    * Minimize grid.
-   *
    * @returns {object[]} Minimized grid.
    */
   minimizeGrid() {
@@ -280,7 +275,6 @@ export default class CrosswordGenerator {
 
   /**
    * Add cell to grid.
-   *
    * @param {object} wordElement Word element.
    * @param {string} wordElement.answer Word.
    * @param {number} wordElement.index Index of word in input list.
@@ -310,7 +304,6 @@ export default class CrosswordGenerator {
 
   /**
    * Place answer.
-   *
    * @param {object} wordElement Word element.
    * @param {string} wordElement.answer Word.
    * @param {number} wordElement.index Index of word in input list.
@@ -337,7 +330,6 @@ export default class CrosswordGenerator {
 
   /**
    * Check if character can be placed.
-   *
    * @param {string} char Character.
    * @param {object} position Position.
    * @param {number} position.row Row.
@@ -357,7 +349,6 @@ export default class CrosswordGenerator {
 
   /**
    * Determine if word can be placed at position.
-   *
    * @param {string} answer Answer.
    * @param {object} position Position.
    * @param {number} position.row Row to place first character at.
@@ -494,7 +485,6 @@ export default class CrosswordGenerator {
 
   /**
    * Find position for word.
-   *
    * @param {string} answer Answer to be placed.
    * @returns {object} Position.
    */
@@ -560,7 +550,6 @@ export default class CrosswordGenerator {
 
   /**
    * Create word elements.
-   *
    * @param {object[]} words Words.
    * @param {number} poolSize Number of words to choose randomly.
    * @returns {object} Word item.
@@ -609,7 +598,6 @@ export default class CrosswordGenerator {
 
   /**
    * Get word element (attribute).
-   *
    * @param {number} index Index of word Element to fetch.
    * @param {string} [attribute] Attribut to get from word element.
    * @returns {object|string|number} Word object or specific attribute.
@@ -634,7 +622,6 @@ export default class CrosswordGenerator {
   /**
    * Export cells to format of https://github.com/MichaelWehar/Crossword-Layout-Generator
    * That ons should replace this generator once the other one can create more compact layouts
-   *
    * @param {object[]} cells Cells.
    * @returns {object[]} Cells in format of https://github.com/MichaelWehar/Crossword-Layout-Generator
    */

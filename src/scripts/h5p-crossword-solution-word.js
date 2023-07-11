@@ -1,5 +1,5 @@
-import CrosswordCell from './h5p-crossword-cell';
-import Util from './h5p-crossword-util';
+import CrosswordCell from '@scripts/h5p-crossword-cell';
+import Util from '@services/util';
 
 /** Class representing the content */
 export default class CrosswordSolutionWord {
@@ -17,7 +17,6 @@ export default class CrosswordSolutionWord {
 
   /**
    * Return the DOM for this class.
-   *
    * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
@@ -26,7 +25,6 @@ export default class CrosswordSolutionWord {
 
   /**
    * Create solution.
-   *
    * @param {CrosswordCell[]} cells Cells.
    * @returns {HTMLElement} Wrapper.
    */
@@ -50,7 +48,6 @@ export default class CrosswordSolutionWord {
 
   /**
    * Create cells.
-   *
    * @param {string} solutionWord Solution word.
    * @returns {CrosswordCell[]} Cells.
    */
@@ -72,7 +69,6 @@ export default class CrosswordSolutionWord {
 
   /**
    * Set cell content.
-   *
    * @param {number} id Index.
    * @param {string} character Character.
    */

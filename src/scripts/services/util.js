@@ -2,7 +2,6 @@
 class Util {
   /**
    * Extend an array just like JQuery's extend.
-   *
    * @returns {object} Merged objects.
    */
   static extend() {
@@ -23,7 +22,6 @@ class Util {
 
   /**
    * Retrieve true string from HTML encoded string.
-   *
    * @param {string} input Input string.
    * @returns {string} Output string.
    */
@@ -34,7 +32,6 @@ class Util {
 
   /**
    * Retrieve string without HTML tags.
-   *
    * @param {string} html Input string.
    * @returns {string} Output string.
    */
@@ -46,7 +43,6 @@ class Util {
 
   /**
    * Create empty array of arbitrary dimension.
-   *
    * @param {number} length Length of array.
    * @returns {object[]} Objects in array.
    */
@@ -66,7 +62,6 @@ class Util {
 
   /**
    * Shuffle array.
-   *
    * @param {object[]} array Array.
    * @returns {object[]} Shuffled array.
    */
@@ -85,7 +80,6 @@ class Util {
   /**
    * Format language tag (RFC 5646). Assuming "language-coutry". No validation.
    * Cmp. https://tools.ietf.org/html/rfc5646
-   *
    * @param {string} languageCode Language tag.
    * @returns {string} Formatted language tag.
    */
@@ -110,9 +104,8 @@ class Util {
 
   /**
    * Convert string to uppercase with optional exceptions.
-   *
    * @param {string} text Text to be converted to uppercase.
-   * @param {string[]} [exceptions=[]] List of characters to keep in lowercase or replace by others.
+   * @param {string[]} [exceptions] List of characters to keep in lowercase or replace by others.
    * @returns {string|null} String in uppercase or null if text was no string.
    */
   static toUpperCase(text, exceptions = []) {
@@ -160,12 +153,11 @@ class Util {
 
   /**
    * Wait for DOM element to be attached to DOM.
-   *
    * @param {string} selector CSS selector for DOM element.
    * @param {function} success Function to call once element is attached.
    * @param {function} [error] Function to call if element wasn't found (in time).
-   * @param {number} [tries=50] Number of maximum tries, negative for infinite.
-   * @param {number} [interval=100] Time interval in ms to check for element.
+   * @param {number} [tries] Number of maximum tries, negative for infinite.
+   * @param {number} [interval] Time interval in ms to check for element.
    */
   static waitForDOM(selector, success, error = (() => {}), tries = 50, interval = 100) {
     if (tries === 0 || !selector || typeof success !== 'function' || typeof error !== 'function') {

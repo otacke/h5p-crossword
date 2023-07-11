@@ -1,4 +1,4 @@
-import Util from './h5p-crossword-util';
+import Util from '@services/util';
 
 /** Class representing the content */
 export default class CrosswordCharList {
@@ -22,7 +22,6 @@ export default class CrosswordCharList {
 
   /**
    * Get list DOM.
-   *
    * @returns {HTMLElement} List DOM.
    */
   getDOM() {
@@ -31,7 +30,6 @@ export default class CrosswordCharList {
 
   /**
    * Build list container.
-   *
    * @param {object} params Parameters.
    * @returns {HTMLElement} List container.
    */
@@ -89,7 +87,6 @@ export default class CrosswordCharList {
 
   /**
    * Build single list item.
-   *
    * @param {object} params Parameters.
    * @param {string} params.result Result (neutral|correct|wrong).
    * @param {string} params.ariaLabel Aria label.
@@ -194,7 +191,6 @@ export default class CrosswordCharList {
 
   /**
    * Set characters in list.
-   *
    * @param {object[]} params Parameters for chars.
    */
   setChars(params) {

@@ -1,4 +1,4 @@
-import Util from './h5p-crossword-util';
+import Util from '@services/util';
 
 /** Class representing the content */
 export default class Overlay {
@@ -69,7 +69,6 @@ export default class Overlay {
 
   /**
    * Return the DOM for this class.
-   *
    * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
@@ -78,7 +77,6 @@ export default class Overlay {
 
   /**
    * Set overlay content.
-   *
    * @param {HTMLElement} content Content to set.
    */
   setContent(content) {
@@ -91,7 +89,6 @@ export default class Overlay {
 
   /**
    * Trap focus in overlay.
-   *
    * @param {Event} event Focus event.
    */
   trapFocus(event) {
@@ -112,7 +109,6 @@ export default class Overlay {
 
   /**
    * Check whether an HTML element is a child of the overlay.
-   *
    * @param {HTMLElement} element Element to check.
    * @returns {boolean} True, if element is a child.
    */

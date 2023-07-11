@@ -2,8 +2,8 @@
 export default class CrosswordClueAnnouncer {
   /**
    * @class
-   * @param {object} [params={}] Parameters.
-   * @param {object} [callbacks={}] Callbacks.
+   * @param {object} [params] Parameters.
+   * @param {object} [callbacks] Callbacks.
    */
   constructor(params = {}, callbacks) {
 
@@ -28,7 +28,6 @@ export default class CrosswordClueAnnouncer {
 
   /**
    * Return the DOM for this class.
-   *
    * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
@@ -37,7 +36,6 @@ export default class CrosswordClueAnnouncer {
 
   /**
    * Set the clue.
-   *
    * @param {object} params Parameters.
    * @param {string} params.orientation Across or down.
    * @param {number} params.clueId Number.
