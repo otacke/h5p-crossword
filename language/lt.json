@@ -66,18 +66,18 @@
               "label": "Numatytasis"
             }
           ],
-          "label": "Define custom feedback for any score range",
-          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
-          "entity": "range",
+          "label": "Nustatykite tinkintus atsiliepimus bet kokiam balų diapazonui",
+          "description": "Spustelėkite mygtuką „Pridėti diapazoną“, kad pridėtumėte tiek diapazonų, kiek jums reikia. Pavyzdys: 0–20 % blogas balas, 21–91 % vidutinis balas, 91–100 % puikus rezultatas!",
+          "entity": "diapozonas",
           "field": {
             "fields": [
               {
-                "label": "Score Range"
+                "label": "Balų diapozonas"
               },
               {},
               {
-                "label": "Feedback for defined score range",
-                "placeholder": "Fill in the feedback"
+                "label": "Atsiliepimai apibrėžtam balų diapazonui",
+                "placeholder": "Užpildykite atsiliepimą"
               }
             ]
           }
@@ -164,16 +164,16 @@
       "label": "Vartotojo sąsaja",
       "fields": [
         {
-          "default": "Across",
+          "default": "Skersai",
           "label": "Label for across"
         },
         {
           "label": "Label for down",
-          "default": "Down"
+          "default": "Žemyn"
         },
         {
-          "label": "Text for \"Check\" button",
-          "default": "Check"
+          "label": "Tekstas mygtukui „Tikrinti“",
+          "default": "Tikrinti"
         },
         {
           "label": "Text for \"Submit\" button",
@@ -184,7 +184,7 @@
           "default": "Retry"
         },
         {
-          "label": "Text for \"Show solution\" button",
+          "label": "Mygtuko „Rodyti sprendimą“ tekstas",
           "default": "Show solution"
         },
         {
@@ -205,8 +205,8 @@
           "default": "Extra clue"
         },
         {
-          "label": "Close window",
-          "default": "Close window"
+          "label": "Uždaryti langą",
+          "default": "Uždaryti langą"
         }
       ]
     },
@@ -226,12 +226,12 @@
           "default": "Row"
         },
         {
-          "label": "Across",
-          "default": "Across"
+          "label": "Skersai",
+          "default": "Skersai"
         },
         {
-          "label": "Down",
-          "default": "Down"
+          "label": "Žymyn",
+          "default": "Žemyn"
         },
         {
           "label": "Empty",
@@ -279,7 +279,7 @@
           "default": "Check the characters. The responses will be marked as correct, incorrect, or unanswered."
         },
         {
-          "label": "Assistive technology description for \"Show Solution\" button",
+          "label": "Mygtuko „Rodyti sprendimą“ pagalbinės technologijos aprašymas",
           "default": "Show the solution. The crossword will be filled with its correct solution."
         },
         {
