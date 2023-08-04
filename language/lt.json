@@ -28,7 +28,7 @@
           },
           {
             "label": "Pataisyti žodį tinklelyje",
-            "description": "Pažymėkite, ar norite pataisyti žodį tam tikroje tinklelio vietoje. Words with the same alignment may not be placed touching each other."
+            "description": "Pažymėkite, ar norite pataisyti žodį tam tikroje tinklelio vietoje. Žodžiai, kurių lygiavimas yra toks pat, negali būti dedami liečiant vienas kitą."
           },
           {
             "label": "Eilutė",
@@ -76,7 +76,7 @@
               },
               {},
               {
-                "label": "Atsiliepimai apibrėžtam balų diapazonui",
+                "label": "Atsiliepimas apibrėžtam balų diapazonui",
                 "placeholder": "Užpildykite atsiliepimą"
               }
             ]
