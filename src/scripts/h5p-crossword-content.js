@@ -280,10 +280,15 @@ export default class CrosswordContent {
       return;
     }
 
+    const cells = this.table.getAnswers();
+    const focus = this.table.getFocus();
+    if (!cells.find((item) => item !== undefined) && typeof focus.position.row === 'undefined') {
+      return;
+    }
     return {
       crosswordLayout: this.crosswordLayout,
-      cells: this.table.getAnswers(),
-      focus: this.table.getFocus()
+      cells,
+      focus
     };
   }
 
