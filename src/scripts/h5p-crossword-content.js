@@ -282,9 +282,19 @@ export default class CrosswordContent {
 
     const cells = this.table.getAnswers();
     const focus = this.table.getFocus();
-    if (!cells.find((item) => item !== undefined) && typeof focus.position.row === 'undefined') {
+    /*
+     * H5P integrations may (for instance) show a restart button if there is
+     * a previous state set, so here not storing the state if no answer has been
+     * given by the user and there's no order stored previously - preventing
+     * to show up that restart button without the need to.
+     */
+    if (
+      !cells.some((item) => item !== undefined) &&
+      typeof focus.position.row === 'undefined'
+    ) {
       return;
     }
+
     return {
       crosswordLayout: this.crosswordLayout,
       cells,
