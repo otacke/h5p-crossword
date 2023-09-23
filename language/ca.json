@@ -1,0 +1,297 @@
+{
+  "semantics": [
+    {
+      "label": "Task description",
+      "description": "Describe your task here."
+    },
+    {
+      "widgets": [
+        {
+          "label": "Default"
+        }
+      ],
+      "entity": "Word",
+      "field": {
+        "label": "Word",
+        "fields": [
+          {
+            "label": "Clue",
+            "description": "Clue that should point to the answer."
+          },
+          {
+            "label": "Answer",
+            "description": "Answer to the clue."
+          },
+          {
+            "label": "Extra clue"
+          },
+          {
+            "description": "Check if you want to fix the word to a particular position on the grid. Words with the same alignment may not be placed touching each other.",
+            "label": "Fix word on grid"
+          },
+          {
+            "label": "Row",
+            "description": "Row index where the answer should start."
+          },
+          {
+            "label": "Column",
+            "description": "Column index where the answer should start."
+          },
+          {
+            "label": "Orientation",
+            "options": [
+              {
+                "label": "Across"
+              },
+              {
+                "label": "Down"
+              }
+            ],
+            "description": "Orientation for the answer."
+          }
+        ]
+      },
+      "label": "words"
+    },
+    {
+      "label": "Overall solution word",
+      "description": "Optionally add a solution word that can be derived from particular characters on the grid. It will only be visible if all its characters can be found in the crossword. Please note: There's no accessibility support for this feature yet."
+    },
+    {
+      "fields": [
+        {
+          "entity": "range",
+          "widgets": [
+            {
+              "label": "Default"
+            }
+          ],
+          "label": "Define custom feedback for any score range",
+          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "field": {
+            "fields": [
+              {
+                "label": "Score Range"
+              },
+              {},
+              {
+                "label": "Feedback for defined score range",
+                "placeholder": "Fill in the feedback"
+              }
+            ]
+          }
+        }
+      ],
+      "label": "Overall Feedback"
+    },
+    {
+      "label": "Theme",
+      "fields": [
+        {
+          "label": "Background image",
+          "description": "Select an optional background image. It will be scaled to fit the background without stretching it."
+        },
+        {
+          "label": "Background color",
+          "description": "Choose a background color. It will either be used instead of a background image or as background for transparent areas.",
+          "default": "#173354"
+        },
+        {
+          "label": "Grid color",
+          "description": "Choose a color for the grid.",
+          "default": "#000000"
+        },
+        {
+          "label": "Cell background color",
+          "description": "Choose the background color for a table cell.",
+          "default": "#ffffff"
+        },
+        {
+          "label": "Cell text color",
+          "description": "Choose the text color for a table cell.",
+          "default": "#000000"
+        },
+        {
+          "label": "Clue id color",
+          "description": "Choose the color of the clue id inside a table cell.",
+          "default": "#606060"
+        },
+        {
+          "label": "Cell background color (highlighted)",
+          "description": "Choose the background color for a table cell that is highlighted.",
+          "default": "#3e8de8"
+        },
+        {
+          "label": "Cell text color (highlighted)",
+          "description": "Choose the text color for a table cell that is highlighted.",
+          "default": "#ffffff"
+        },
+        {
+          "label": "Cell id color (highlighted)",
+          "description": "Choose the color of the clue id inside a table cell that is highlighted.",
+          "default": "#e0e0e0"
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "description": "Create a randomized batch of words from the pool. The batch will always contain at least all the words that were fixed on the grid regardless of this setting. An empty value or 0 means to use all words.",
+          "label": "Number of words to be shown"
+        },
+        {
+          "label": "Enable instant feedback"
+        },
+        {
+          "description": "If this option is enabled, words will be counted in order to determine the score. Otherwise, correct characters will be counted.",
+          "label": "Score words"
+        },
+        {
+          "label": "Apply penalties",
+          "description": "If this option is enabled, each wrong answer will be given a penalty score of -1."
+        },
+        {
+          "label": "Enable \"Retry\""
+        },
+        {
+          "label": "Enable \"Solution\""
+        }
+      ],
+      "label": "Behavioural settings",
+      "description": "These options will let you control how the task behaves."
+    },
+    {
+      "label": "User interface",
+      "fields": [
+        {
+          "label": "Label for across",
+          "default": "Across"
+        },
+        {
+          "label": "Label for down",
+          "default": "Down"
+        },
+        {
+          "label": "Text for \"Check\" button",
+          "default": "Check"
+        },
+        {
+          "label": "Text for \"Submit\" button",
+          "default": "Submit"
+        },
+        {
+          "label": "Text for \"Retry\" button",
+          "default": "Retry"
+        },
+        {
+          "label": "Text for \"Show solution\" button",
+          "default": "Show solution"
+        },
+        {
+          "label": "Cannot create crossword",
+          "default": "Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common."
+        },
+        {
+          "label": "Cannot create crossword (too few words)",
+          "default": "Could not generate a crossword. You need at least two words."
+        },
+        {
+          "label": "Probematic words",
+          "description": "List words that caused trouble while generating the crossword. @words is a placeholder that will be replaced by the actual problematic words.",
+          "default": "Some words could not be placed. If you are using fixed words, please make sure that their position doesn't prevent other words from being placed. Words with the same alignment may not be placed touching each other. Problematic word(s): @words"
+        },
+        {
+          "label": "Extra clue",
+          "default": "Extra clue"
+        },
+        {
+          "label": "Close window",
+          "default": "Close window"
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "label": "Crossword grid description",
+          "default": "Crossword grid. Use arrow keys to navigate and the keyboard to enter characters. Alternatively, use Tab to navigate to type the answers in Fill in the Blanks style fields instead of the grid."
+        },
+        {
+          "label": "Column",
+          "default": "Column"
+        },
+        {
+          "default": "Row",
+          "label": "Row"
+        },
+        {
+          "label": "Across",
+          "default": "Across"
+        },
+        {
+          "label": "Down",
+          "default": "Down"
+        },
+        {
+          "label": "Empty",
+          "default": "Empty"
+        },
+        {
+          "description": "Result announcer. @clue is a variable and will be replaced by the respective clue.",
+          "label": "Result for",
+          "default": "Result for: @clue"
+        },
+        {
+          "label": "Correct",
+          "default": "Correct"
+        },
+        {
+          "label": "Wrong",
+          "default": "Wrong"
+        },
+        {
+          "label": "Point",
+          "default": "point"
+        },
+        {
+          "description": "Solution announcer. @clue and @solution are variables and will be replaced by the respective values.",
+          "label": "Solution for",
+          "default": "For @clue the solution is: @solution"
+        },
+        {
+          "description": "Extra clue announcer. @clue is a variable and will be replaced by the respective value.",
+          "label": "Extra clue for",
+          "default": "Open extra clue for @clue"
+        },
+        {
+          "description": "Announcing the current position. @position and @length are variables and will be replaced by their respective values.",
+          "label": "Letter",
+          "default": "Letter @position of @length"
+        },
+        {
+          "label": "Length of word",
+          "description": "Announcing the word length. @length is a variable and will be replaced by the respective value.",
+          "default": "@length letter word"
+        },
+        {
+          "label": "Assistive technology description for \"Check\" button",
+          "default": "Check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
+          "label": "Assistive technology description for \"Show Solution\" button",
+          "default": "Show the solution. The crossword will be filled with its correct solution."
+        },
+        {
+          "label": "Assistive technology description for \"Retry\" button",
+          "default": "Retry the task. Reset all responses and start the task over again."
+        },
+        {
+          "label": "Your result",
+          "description": "@score and @total are variables and will be replaced by their respective values.",
+          "default": "You got @score out of @total points."
+        }
+      ],
+      "label": "Readspeaker"
+    }
+  ]
+}
