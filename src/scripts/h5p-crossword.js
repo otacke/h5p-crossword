@@ -362,6 +362,8 @@ export default class Crossword extends H5P.Question {
       return;
     }
 
+    this.contentWasReset = true;
+
     if (this.initialButtons.check) {
       this.showButton('check-answer');
     }
@@ -485,6 +487,11 @@ export default class Crossword extends H5P.Question {
    * @returns {object} Current state.
    */
   getCurrentState() {
+    if (!this.getAnswerGiven()) {
+      // Nothing relevant to store, but previous state in DB must be cleared after reset
+      return this.contentWasReset ? {} : undefined;
+    }
+
     return this.content.getCurrentState();
   }
 
