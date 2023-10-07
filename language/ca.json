@@ -1,134 +1,134 @@
 {
   "semantics": [
     {
-      "label": "Task description",
-      "description": "Describe your task here."
+      "label": "Descripció de la tasca",
+      "description": "Descriu la tasca."
     },
     {
       "widgets": [
         {
-          "label": "Default"
+          "label": "Per defecte"
         }
       ],
-      "entity": "Word",
+      "entity": "Paraula",
       "field": {
-        "label": "Word",
+        "label": "Paraula",
         "fields": [
           {
-            "label": "Clue",
-            "description": "Clue that should point to the answer."
+            "label": "Pista",
+            "description": "Pista que hauria d'apuntar a la resposta."
           },
           {
-            "label": "Answer",
-            "description": "Answer to the clue."
+            "label": "Resposta",
+            "description": "Resposta a la pista."
           },
           {
-            "label": "Extra clue"
+            "label": "Pista addicional"
           },
           {
-            "description": "Check if you want to fix the word to a particular position on the grid. Words with the same alignment may not be placed touching each other.",
-            "label": "Fix word on grid"
+            "description": "Comprova si vols fixar la paraula a una posició concreta de la graella. Les paraules amb la mateixa alineació no es poden tocar.",
+            "label": "Corregeix la paraula a la graella"
           },
           {
-            "label": "Row",
-            "description": "Row index where the answer should start."
+            "label": "Fila",
+            "description": "Índex de la fila on ha de començar la resposta."
           },
           {
-            "label": "Column",
-            "description": "Column index where the answer should start."
+            "label": "Columna",
+            "description": "Índex de la columna on ha de començar la resposta."
           },
           {
-            "label": "Orientation",
+            "label": "Orientació",
             "options": [
               {
-                "label": "Across"
+                "label": "Horitzontal"
               },
               {
-                "label": "Down"
+                "label": "Vertical"
               }
             ],
-            "description": "Orientation for the answer."
+            "description": "Orientació de la resposta."
           }
         ]
       },
-      "label": "words"
+      "label": "paraules"
     },
     {
-      "label": "Overall solution word",
-      "description": "Optionally add a solution word that can be derived from particular characters on the grid. It will only be visible if all its characters can be found in the crossword. Please note: There's no accessibility support for this feature yet."
+      "label": "Paraula de solució",
+      "description": "De manera opcional, pots afegir una paraula de solució relacionada amb caràcters concrets de la graella. Només és visible si tots els caràcters ja són a l’encreuat. Tingues en compte que aquesta funció encara té opcions d’accessibilitat."
     },
     {
       "fields": [
         {
-          "entity": "range",
+          "entity": "interval",
           "widgets": [
             {
-              "label": "Default"
+              "label": "Per defecte"
             }
           ],
-          "label": "Define custom feedback for any score range",
-          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "label": "Defineix comentaris personalitzats per a qualsevol interval de puntuació",
+          "description": "Clica al botó \"Afegeix intervals\" per afegir-ne tants com necessitis. Exemple: 0-20 % puntuació baixa, 21-91 % puntuació mitjana, 91-100 % puntuació excel·lent!",
           "field": {
             "fields": [
               {
-                "label": "Score Range"
+                "label": "Interval de puntuació"
               },
               {},
               {
-                "label": "Feedback for defined score range",
-                "placeholder": "Fill in the feedback"
+                "label": "Comentari de l’interval de puntuació definit",
+                "placeholder": "Emplena els comentaris"
               }
             ]
           }
         }
       ],
-      "label": "Overall Feedback"
+      "label": "Comentaris generals"
     },
     {
-      "label": "Theme",
+      "label": "Tema",
       "fields": [
         {
-          "label": "Background image",
-          "description": "Select an optional background image. It will be scaled to fit the background without stretching it."
+          "label": "Imatge de fons",
+          "description": "Pots triar una imatge de fons. S'adaptarà al fons sense deformar-se."
         },
         {
-          "label": "Background color",
-          "description": "Choose a background color. It will either be used instead of a background image or as background for transparent areas.",
+          "label": "Color de fons",
+          "description": "Tria un color de fons. Es farà servir en lloc de la imatge de fons o com a fons per a zones transparents.",
           "default": "#173354"
         },
         {
-          "label": "Grid color",
-          "description": "Choose a color for the grid.",
+          "label": "Color de la graella",
+          "description": "Tria un color de fons per a la graella.",
           "default": "#000000"
         },
         {
-          "label": "Cell background color",
-          "description": "Choose the background color for a table cell.",
+          "label": "Color de fons de cel·la",
+          "description": "Tria el color de fons per a una cel·la de la taula.",
           "default": "#ffffff"
         },
         {
-          "label": "Cell text color",
-          "description": "Choose the text color for a table cell.",
+          "label": "Color del text de la cel·la",
+          "description": "Tria el color del text per a una cel·la de taula.",
           "default": "#000000"
         },
         {
-          "label": "Clue id color",
-          "description": "Choose the color of the clue id inside a table cell.",
+          "label": "Color d'identificador de pista",
+          "description": "Tria el color de l’identificador de pista en una cel·la.",
           "default": "#606060"
         },
         {
-          "label": "Cell background color (highlighted)",
-          "description": "Choose the background color for a table cell that is highlighted.",
+          "label": "Color de fons de cel·la destacada",
+          "description": "Tria el color de fons d’una cel·la destacada.",
           "default": "#3e8de8"
         },
         {
-          "label": "Cell text color (highlighted)",
-          "description": "Choose the text color for a table cell that is highlighted.",
+          "label": "Color de text de cel·la destacada",
+          "description": "Tria el color de text d’una cel·la de taula destacada.",
           "default": "#ffffff"
         },
         {
-          "label": "Cell id color (highlighted)",
-          "description": "Choose the color of the clue id inside a table cell that is highlighted.",
+          "label": "Color d’identificador de cel·la destacada",
+          "description": "Tria el color d’identificador de pista en una cel·la de taula destacada.",
           "default": "#e0e0e0"
         }
       ]
@@ -136,142 +136,142 @@
     {
       "fields": [
         {
-          "description": "Create a randomized batch of words from the pool. The batch will always contain at least all the words that were fixed on the grid regardless of this setting. An empty value or 0 means to use all words.",
-          "label": "Number of words to be shown"
+          "description": "Crea un lot aleatori de paraules del grup. El lot sempre ha de contenir almenys totes les paraules fixades a la graella, independentment d'aquesta configuració. Un valor buit o 0 significa fer servir totes les paraules.",
+          "label": "Nombre de paraules que s’han de mostrar"
         },
         {
-          "label": "Enable instant feedback"
+          "label": "Activa els comentaris instantanis"
         },
         {
-          "description": "If this option is enabled, words will be counted in order to determine the score. Otherwise, correct characters will be counted.",
-          "label": "Score words"
+          "description": "Si l’opció està activada, es compten les paraules per determinar la puntuació. En cas contrari, es compten els caràcters correctes.",
+          "label": "Puntua paraules"
         },
         {
-          "label": "Apply penalties",
-          "description": "If this option is enabled, each wrong answer will be given a penalty score of -1."
+          "label": "Aplica penalitzacions",
+          "description": "Si l’opció està activada, cada resposta incorrecta resta 1 punt."
         },
         {
-          "label": "Enable \"Retry\""
+          "label": "Activa \"Reintenta\""
         },
         {
-          "label": "Enable \"Solution\""
+          "label": "Activa \"Solució\""
         }
       ],
-      "label": "Behavioural settings",
-      "description": "These options will let you control how the task behaves."
+      "label": "Configuració del comportament",
+      "description": "Aquestes opcions permeten controlar el comportament de la tasca."
     },
     {
-      "label": "User interface",
+      "label": "Interfície d’usuari",
       "fields": [
         {
-          "label": "Label for across",
-          "default": "Across"
+          "label": "Etiqueta per a horitzontal",
+          "default": "Horitzontal"
         },
         {
-          "label": "Label for down",
-          "default": "Down"
+          "label": "Etiqueta per a vertical",
+          "default": "vertical"
         },
         {
-          "label": "Text for \"Check\" button",
-          "default": "Check"
+          "label": "Text per al botó \"Comprova\"",
+          "default": "Comprova"
         },
         {
-          "label": "Text for \"Submit\" button",
-          "default": "Submit"
+          "label": "Text per al botó \"Envia\"",
+          "default": "Envia"
         },
         {
-          "label": "Text for \"Retry\" button",
-          "default": "Retry"
+          "label": "Text per al botó \"Reintenta\"",
+          "default": "Reintenta"
         },
         {
-          "label": "Text for \"Show solution\" button",
-          "default": "Show solution"
+          "label": "Text per al botó \"Mostra la solució\"",
+          "default": "Mostra la solució"
         },
         {
-          "label": "Cannot create crossword",
-          "default": "Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common."
+          "label": "No es pot crear l’encreuat",
+          "default": "No s’ha pogut generar un encreuat amb les paraules donades. Torna-ho a provar amb menys paraules o amb paraules que tinguin més caràcters en comú."
         },
         {
-          "label": "Cannot create crossword (too few words)",
-          "default": "Could not generate a crossword. You need at least two words."
+          "label": "No es pot crear l’encreuat (poques paraules)",
+          "default": "No s’ha pogut generar l’encreuat. Necessites almenys dues paraules."
         },
         {
-          "label": "Probematic words",
-          "description": "List words that caused trouble while generating the crossword. @words is a placeholder that will be replaced by the actual problematic words.",
-          "default": "Some words could not be placed. If you are using fixed words, please make sure that their position doesn't prevent other words from being placed. Words with the same alignment may not be placed touching each other. Problematic word(s): @words"
+          "label": "Paraules problemàtiques",
+          "description": "Llista de paraules que han causat problemes en generar l'encreuat. @words és un marcador de posició que se substitueix per les paraules problemàtiques reals.",
+          "default": "Algunes paraules no s'han pogut col·locar. Si feu servir paraules fixes, assegureu-vos que no impedeixen col·locar altres paraules. Les paraules amb la mateixa alineació no es poden tocar. Paraules problemàtiques: @words"
         },
         {
-          "label": "Extra clue",
-          "default": "Extra clue"
+          "label": "Pista addicional",
+          "default": "Pista addicional"
         },
         {
-          "label": "Close window",
-          "default": "Close window"
+          "label": "Tanca la finestra",
+          "default": "Tanca la finestra"
         }
       ]
     },
     {
       "fields": [
         {
-          "label": "Crossword grid description",
-          "default": "Crossword grid. Use arrow keys to navigate and the keyboard to enter characters. Alternatively, use Tab to navigate to type the answers in Fill in the Blanks style fields instead of the grid."
+          "label": "Descripció de la graella de l’encreuat",
+          "default": "Graella de l’encreuat. Moveu el cursor amb les fletxes de desplaçament i introduïu caràcters amb el teclat. També podeu fer servir el tabulador per escriure la resposta al camp d'entrada en comptes de la graella."
         },
         {
-          "label": "Column",
-          "default": "Column"
+          "label": "Columna",
+          "default": "Columna"
         },
         {
-          "default": "Row",
-          "label": "Row"
+          "default": "Fila",
+          "label": "Fila"
         },
         {
-          "label": "Across",
-          "default": "Across"
+          "label": "Horitzontal",
+          "default": "Horitzontal"
         },
         {
-          "label": "Down",
-          "default": "Down"
+          "label": "Vertical",
+          "default": "Vertical"
         },
         {
-          "label": "Empty",
-          "default": "Empty"
+          "label": "Buit",
+          "default": "Buit"
         },
         {
-          "description": "Result announcer. @clue is a variable and will be replaced by the respective clue.",
-          "label": "Result for",
-          "default": "Result for: @clue"
+          "description": "Presentador de resultats. @clue és una variable que se substitueix per la pista corresponent.",
+          "label": "Resultat per a",
+          "default": "Resultat per a: @clue"
         },
         {
-          "label": "Correct",
-          "default": "Correct"
+          "label": "Correcte",
+          "default": "Correcte"
         },
         {
-          "label": "Wrong",
-          "default": "Wrong"
+          "label": "Incorrecte",
+          "default": "Incorrecte"
         },
         {
-          "label": "Point",
-          "default": "point"
+          "label": "Punt",
+          "default": "punt"
         },
         {
-          "description": "Solution announcer. @clue and @solution are variables and will be replaced by the respective values.",
-          "label": "Solution for",
-          "default": "For @clue the solution is: @solution"
+          "description": "Presentador de solucions. @clue i @solution són variables i se substitueixen pels valors corresponents.",
+          "label": "Solució per a",
+          "default": "Per a @clue la solució és @solució"
         },
         {
-          "description": "Extra clue announcer. @clue is a variable and will be replaced by the respective value.",
-          "label": "Extra clue for",
-          "default": "Open extra clue for @clue"
+          "description": "Presentador de pistes addicionals. @clue és una variable i se substitueix pel valor corresponent.",
+          "label": "Pista addicional per a",
+          "default": "Obre una pista addicional per a @clue"
         },
         {
-          "description": "Announcing the current position. @position and @length are variables and will be replaced by their respective values.",
-          "label": "Letter",
-          "default": "Letter @position of @length"
+          "description": "Anunci de la posició actual. @position i @length són variables i se substitueixen pels valors corresponents.",
+          "label": "Lletra",
+          "default": "Lletra @posició de @longitud"
         },
         {
-          "label": "Length of word",
-          "description": "Announcing the word length. @length is a variable and will be replaced by the respective value.",
-          "default": "@length letter word"
+          "label": "Longitud de la paraula",
+          "description": "Anunci de la longitud de la paraula. @length és una variable i se substitueix pel valor corresponent.",
+          "default": "Paraula de @length lletres"
         },
         {
           "label": "Assistive technology description for \"Check\" button",
@@ -291,7 +291,7 @@
           "default": "You got @score out of @total points."
         }
       ],
-      "label": "Readspeaker"
+      "label": "Lector en veu alta"
     }
   ]
 }
