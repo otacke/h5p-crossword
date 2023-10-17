@@ -16,7 +16,7 @@
         "fields": [
           {
             "label": "Pista",
-            "description": "Pista que hauria d'apuntar a la resposta."
+            "description": "Pista que hauria d’apuntar a la resposta."
           },
           {
             "label": "Resposta",
@@ -89,7 +89,7 @@
       "fields": [
         {
           "label": "Imatge de fons",
-          "description": "Pots triar una imatge de fons. S'adaptarà al fons sense deformar-se."
+          "description": "Pots triar una imatge de fons. S’adaptarà al fons sense deformar-se."
         },
         {
           "label": "Color de fons",
@@ -112,7 +112,7 @@
           "default": "#000000"
         },
         {
-          "label": "Color d'identificador de pista",
+          "label": "Color d’identificador de pista",
           "description": "Tria el color de l’identificador de pista en una cel·la.",
           "default": "#606060"
         },
@@ -136,7 +136,7 @@
     {
       "fields": [
         {
-          "description": "Crea un lot aleatori de paraules del grup. El lot sempre ha de contenir almenys totes les paraules fixades a la graella, independentment d'aquesta configuració. Un valor buit o 0 significa fer servir totes les paraules.",
+          "description": "Crea un lot aleatori de paraules del grup. El lot sempre ha de contenir almenys totes les paraules fixades a la graella, independentment d’aquesta configuració. Un valor buit o 0 significa fer servir totes les paraules.",
           "label": "Nombre de paraules que s’han de mostrar"
         },
         {
@@ -197,8 +197,8 @@
         },
         {
           "label": "Paraules problemàtiques",
-          "description": "Llista de paraules que han causat problemes en generar l'encreuat. @words és un marcador de posició que se substitueix per les paraules problemàtiques reals.",
-          "default": "Algunes paraules no s'han pogut col·locar. Si feu servir paraules fixes, assegureu-vos que no impedeixen col·locar altres paraules. Les paraules amb la mateixa alineació no es poden tocar. Paraules problemàtiques: @words"
+          "description": "Llista de paraules que han causat problemes en generar l’encreuat. @words és un marcador de posició que se substitueix per les paraules problemàtiques reals.",
+          "default": "Algunes paraules no s’han pogut col·locar. Si feu servir paraules fixes, assegureu-vos que no impedeixen col·locar altres paraules. Les paraules amb la mateixa alineació no es poden tocar. Paraules problemàtiques: @words"
         },
         {
           "label": "Pista addicional",
@@ -214,7 +214,7 @@
       "fields": [
         {
           "label": "Descripció de la graella de l’encreuat",
-          "default": "Graella de l’encreuat. Moveu el cursor amb les fletxes de desplaçament i introduïu caràcters amb el teclat. També podeu fer servir el tabulador per escriure la resposta al camp d'entrada en comptes de la graella."
+          "default": "Graella de l’encreuat. Moveu el cursor amb les fletxes de desplaçament i introduïu caràcters amb el teclat. També podeu fer servir el tabulador per escriure la resposta al camp d’entrada en comptes de la graella."
         },
         {
           "label": "Columna",
@@ -256,7 +256,7 @@
         {
           "description": "Presentador de solucions. @clue i @solution són variables i se substitueixen pels valors corresponents.",
           "label": "Solució per a",
-          "default": "Per a @clue la solució és @solució"
+          "default": "Per a @clue la solució és @solution"
         },
         {
           "description": "Presentador de pistes addicionals. @clue és una variable i se substitueix pel valor corresponent.",
@@ -266,7 +266,7 @@
         {
           "description": "Anunci de la posició actual. @position i @length són variables i se substitueixen pels valors corresponents.",
           "label": "Lletra",
-          "default": "Lletra @posició de @longitud"
+          "default": "Lletra @position de @length"
         },
         {
           "label": "Longitud de la paraula",
@@ -274,21 +274,21 @@
           "default": "Paraula de @length lletres"
         },
         {
-          "label": "Assistive technology description for \"Check\" button",
-          "default": "Check the characters. The responses will be marked as correct, incorrect, or unanswered."
+          "label": "Descripció d’ajuda per al botó \"Comprova\"",
+          "default": "Comprova els caràcters. Les respostes es marquen com a correctes, incorrectes o sense resposta."
         },
         {
-          "label": "Assistive technology description for \"Show Solution\" button",
-          "default": "Show the solution. The crossword will be filled with its correct solution."
+          "label": "Descripció d’ajuda per al botó \"Mostra la solució\"",
+          "default": "Mostra la solució. A l’encreuat apareix la solució correcta."
         },
         {
-          "label": "Assistive technology description for \"Retry\" button",
-          "default": "Retry the task. Reset all responses and start the task over again."
+          "label": "Descripció d’ajuda per al botó \"Reintenta\"",
+          "default": "Reintenta la tasca. Suprimeix les respostes per tornar a començar."
         },
         {
-          "label": "Your result",
-          "description": "@score and @total are variables and will be replaced by their respective values.",
-          "default": "You got @score out of @total points."
+          "label": "Resultat",
+          "description": "@score i @total són variables i se substitueixen pels valors corresponents.",
+          "default": "Has fet @score punts de @total."
         }
       ],
       "label": "Lector en veu alta"
