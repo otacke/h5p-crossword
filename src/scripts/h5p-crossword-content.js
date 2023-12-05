@@ -1,15 +1,15 @@
-import CrosswordClueAnnouncer from './h5p-crossword-clue-announcer';
-import CrosswordInput from './h5p-crossword-input';
-import CrosswordTable from './h5p-crossword-table';
-import CrosswordSolutionWord from './h5p-crossword-solution-word';
-import CrosswordGenerator from './h5p-crossword-generator';
+import CrosswordClueAnnouncer from '@scripts/h5p-crossword-clue-announcer';
+import CrosswordInput from '@scripts/h5p-crossword-input';
+import CrosswordTable from '@scripts/h5p-crossword-table';
+import CrosswordSolutionWord from '@scripts/h5p-crossword-solution-word';
+import CrosswordGenerator from '@scripts/h5p-crossword-generator';
 
 /** Class representing the content */
 export default class CrosswordContent {
   /**
-   * @constructor
-   *
-   * @param {object} params Parameters.
+   * @class
+   * @param {object} [params] Parameters.
+   * @param {object} [callbacks] Callbacks.
    */
   constructor(params = {}, callbacks) {
     this.params = params;
@@ -31,12 +31,12 @@ export default class CrosswordContent {
       this.crosswordLayout = this.params.previousState.crosswordLayout;
     }
     else {
-      let errorMessage;
+      const errorMessages = [];
       let crosswordGenerator;
       let grid;
 
       if (params.words.length < 2) {
-        errorMessage = params.l10n.couldNotGenerateCrosswordTooFewWords;
+        errorMessages.push(params.l10n.couldNotGenerateCrosswordTooFewWords);
       }
       else {
         crosswordGenerator = new CrosswordGenerator({
@@ -48,27 +48,26 @@ export default class CrosswordContent {
         grid = crosswordGenerator.getSquareGrid(CrosswordContent.MAXIMUM_TRIES);
 
         if (!grid) {
-          errorMessage = params.l10n.couldNotGenerateCrossword;
+          errorMessages.push(params.l10n.couldNotGenerateCrossword);
         }
       }
 
-      if (errorMessage) {
-        // Add list of problematic words to error message
-        if (crosswordGenerator) {
-          const badWords = crosswordGenerator
-            .getBadWords()
-            .map(badWord => `${badWord.answer}`)
-            .join(', ');
+      let badWords = crosswordGenerator?.getBadWords();
+      if (badWords?.length) {
+        badWords = badWords.map((badWord) => `${badWord.answer}`).join(', ');
 
-          errorMessage = `${errorMessage} ${params.l10n.problematicWords.replace(/@words/g, badWords)}`;
-        }
+        errorMessages.push(params.l10n.problematicWords.replace(/@words/g, badWords));
+      }
 
+      if (errorMessages.length) {
+        console.warn(`H5P.Crossword: ${errorMessages.join(' ')}`);
+      }
+
+      if (!grid) {
         const message = document.createElement('div');
         message.classList.add('h5p-crossword-message');
-        message.innerText = errorMessage;
+        message.innerText = errorMessages.join(' ');
         this.content.appendChild(message);
-
-        console.warn(`H5P.Crossword: ${errorMessage}`);
 
         this.couldNotGenerateCrossword = true;
         this.callbacks.onInitialized(false);
@@ -106,13 +105,13 @@ export default class CrosswordContent {
         }
       },
       {
-        onInput: (params => {
+        onInput: ((params) => {
           this.handleTableInput(params);
         }),
-        onFocus: (params => {
+        onFocus: ((params) => {
           this.handleTableFocus(params);
         }),
-        onRead: (text => {
+        onRead: ((text) => {
           this.callbacks.onRead(text);
         })
       }
@@ -137,7 +136,7 @@ export default class CrosswordContent {
     // Input Area
     this.inputarea = new CrosswordInput(
       {
-        words: this.crosswordLayout.result.filter(word => word.orientation !== 'none'),
+        words: this.crosswordLayout.result.filter((word) => word.orientation !== 'none'),
         contentId: this.contentId,
         overlayContainer: this.content,
         applyPenalties: this.params.applyPenalties,
@@ -150,10 +149,10 @@ export default class CrosswordContent {
         a11y: this.params.a11y
       },
       {
-        onFieldInput: (params => {
+        onFieldInput: ((params) => {
           this.handleFieldInput(params);
         }),
-        onRead: (text => {
+        onRead: ((text) => {
           this.callbacks.onRead(text);
         })
       }
@@ -181,7 +180,7 @@ export default class CrosswordContent {
 
   /**
    * Return the DOM for this class.
-   * @return {HTMLElement} DOM for this class.
+   * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
     return this.content;
@@ -201,7 +200,7 @@ export default class CrosswordContent {
 
   /**
    * Get correct responses pattern for xAPI.
-   * @return {string[]} Correct response for each cell.
+   * @returns {string[]} Correct response for each cell.
    */
   getXAPICorrectResponsesPattern() {
     return this.table.getXAPICorrectResponsesPattern();
@@ -209,7 +208,7 @@ export default class CrosswordContent {
 
   /**
    * Get current response for xAPI.
-   * @return {string} Responses for each cell joined by [,].
+   * @returns {string} Responses for each cell joined by [,].
    */
   getXAPIResponse() {
     return this.table.getXAPIResponse();
@@ -217,7 +216,7 @@ export default class CrosswordContent {
 
   /**
    * Get xAPI description suitable for H5P's reporting module.
-   * @return {string} HTML with placeholders for fields to be filled in.
+   * @returns {string} HTML with placeholders for fields to be filled in.
    */
   getXAPIDescription() {
     return this.table.getXAPIDescription();
@@ -241,7 +240,7 @@ export default class CrosswordContent {
 
   /**
    * Check if result has been submitted or input has been given.
-   * @return {boolean} True, if answer was given.
+   * @returns {boolean} True, if answer was given.
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
    */
   getAnswerGiven() {
@@ -250,7 +249,7 @@ export default class CrosswordContent {
 
   /**
    * Get score.
-   * @return {number} Score.
+   * @returns {number} Score.
    */
   getScore() {
     if (this.params.words.length < 2) {
@@ -262,7 +261,7 @@ export default class CrosswordContent {
 
   /**
    * Get maximum score
-   * @return {number} Maximum score.
+   * @returns {number} Maximum score.
    */
   getMaxScore() {
     if (this.params.words.length < 2) {
@@ -274,17 +273,32 @@ export default class CrosswordContent {
 
   /**
    * Answer call to return the current state.
-   * @return {object} Current state.
+   * @returns {object|undefined} Current state.
    */
   getCurrentState() {
     if (this.params.words.length < 2 || !this.table) {
       return;
     }
 
+    const cells = this.table.getAnswers();
+    const focus = this.table.getFocus();
+    /*
+     * H5P integrations may (for instance) show a restart button if there is
+     * a previous state set, so here not storing the state if no answer has been
+     * given by the user and there's no order stored previously - preventing
+     * to show up that restart button without the need to.
+     */
+    if (
+      !cells.some((item) => item !== undefined) &&
+      typeof focus.position.row === 'undefined'
+    ) {
+      return;
+    }
+
     return {
       crosswordLayout: this.crosswordLayout,
-      cells: this.table.getAnswers(),
-      focus: this.table.getFocus()
+      cells,
+      focus
     };
   }
 
@@ -306,7 +320,7 @@ export default class CrosswordContent {
 
   /**
    * Check whether all relevant cells have been filled.
-   * @return {boolean} True, if all relevant cells have been filled, else false.
+   * @returns {boolean} True, if all relevant cells have been filled, else false.
    */
   isTableFilled() {
     return this.table && this.table.isFilled();
@@ -333,7 +347,7 @@ export default class CrosswordContent {
 
   /**
    * Handle input from input fields.
-   * @param {object} Parameters parameters.
+   * @param {object} params parameters.
    */
   handleFieldInput(params) {
     this.table.fillGrid(params);
@@ -342,7 +356,7 @@ export default class CrosswordContent {
 
   /**
    * Handle input from table.
-   * @param {object} Parameters parameters.
+   * @param {object} params parameters.
    */
   handleTableInput(params) {
     if (this.solutionWord && params.solutionWordId) {
@@ -362,12 +376,12 @@ export default class CrosswordContent {
 
   /**
    * Handle table getting focus.
-   * @param {object} Parameters parameters.
+   * @param {object} params parameters.
    */
   handleTableFocus(params) {
     const wordData = this.crosswordLayout.result
-      .filter(word => word.orientation !== 'none')
-      .filter(word => word.orientation === params.orientation && word.clueId === params.clueId);
+      .filter((word) => word.orientation !== 'none')
+      .filter((word) => word.orientation === params.orientation && word.clueId === params.clueId);
 
     if (wordData.length > 0) {
       this.clueAnnouncer.setClue({

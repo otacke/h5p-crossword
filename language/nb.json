@@ -28,7 +28,7 @@
           },
           {
             "label": "Fest ord til rutenett",
-            "description": "Huk av dersom du ønsker å feste ordet til en spesifikk posisjon i rutenettet."
+            "description": "Huk av dersom du ønsker å feste ordet til en spesifikk posisjon i rutenettet. Ord med samme justering kan ikke plasseres i kontakt med hverandre."
           },
           {
             "label": "Rad",
@@ -55,7 +55,7 @@
     },
     {
       "label": "Løsningsord",
-      "description": "Velg om du vil legge til et løsningsord som er satt sammen av bokstaver i rutenettet. Løsningsordet vil kun vises dersom alle de korrekte bokstavene er på plass i kryssordet. Merk: Det er ingen tilgjengelighetsstøtte for denne funksjonen enda."
+      "description": "Velg om du vil legge til et løsningsord som er satt sammen av bokstaver i rutenettet. Løsningsordet vil kun vises dersom alle de korrekte bokstavene er på plass i kryssordet. Merk: Det er ingen tilgjengelighetsstøtte for denne funksjonen ennå."
     },
     {
       "label": "Tilbakemelding på hele oppgava",
@@ -89,7 +89,7 @@
       "fields": [
         {
           "label": "Bakgrunnsbilde",
-          "description": "Sett inn et valgfritt bakgrunnsbilde. Bildet vil bli skalert til å passe til bakgrunnen. Detvil ikke bli strukket."
+          "description": "Sett inn et valgfritt bakgrunnsbilde. Bildet vil bli skalert til å passe til bakgrunnen. Det vil ikke bli strukket."
         },
         {
           "label": "Bakgrunnsfarge",
@@ -102,7 +102,7 @@
           "default": "#000000"
         },
         {
-          "label": "Bakgrunnsfarge for bokstruter",
+          "label": "Bakgrunnsfarge for bokstavruter",
           "description": "Velg en bakgrunnsfarge for rutene som kan huse bokstaver.",
           "default": "#ffffff"
         },
@@ -189,7 +189,7 @@
         },
         {
           "label": "Kan ikke opprette kryssord",
-          "default": "Det er ikke mulig å opprette kryssord basert på de definerte orda. Vær snill og prøv på nytt med færre ord, og velg ord som har flere bokstaver til felles. Dersom du bruker ord som er festa til en bestemt posisjon, sørg for at posisjonen deres ikke hindrer at andre ord kan finne ei plassering."
+          "default": "Det er ikke mulig å opprette kryssord basert på de definerte orda. Vær snill og prøv på nytt med færre ord, og velg ord som har flere bokstaver til felles."
         },
         {
           "label": "Kan ikke opprette kryssord (for få ord)",
@@ -198,7 +198,7 @@
         {
           "label": "Problematiske ord",
           "description": "Oppgi ord som forårsaket problemer ved generering av kryssordet. @words er en plassholder som vil bli erstatta med orda du oppgir.",
-          "default": "Problematiske ord: @words"
+          "default": "Noen ord kunne ikke plasseres. Dersom du bruker ord som er festa til en bestemt posisjon, sørg for at posisjonen deres ikke hindrer at andre ord kan finne ei plassering. Ord med samme justering kan ikke plasseres i kontakt med hverandre. Problematiske ord: @words"
         },
         {
           "label": "Ekstra hint",
@@ -265,16 +265,12 @@
           "default": "Åpne ekstra hint for @clue"
         },
         {
-          "label": "Tom rute",
-          "default": "Tom rute"
-        },
-        {
           "description": "Oppgir den nåværende posisjonen. @position og @length er variabler og vil bli bytta ut med sine respektive verdier.",
           "label": "Bokstav",
           "default": "Bokstav @position av @length"
         },
         {
-          "description": "Oppgir lengden på ordet. @length er en variablel og vil bli bytta ut med sin respektive verdi.",
+          "description": "Oppgir lengden på ordet. @length er en variabel og vil bli bytta ut med sin respektive verdi.",
           "label": "Ordlengde",
           "default": "Ordet har @length bokstaver"
         },

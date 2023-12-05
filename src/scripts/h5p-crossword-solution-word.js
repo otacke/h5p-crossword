@@ -1,10 +1,10 @@
-import CrosswordCell from './h5p-crossword-cell';
-import Util from './h5p-crossword-util';
+import CrosswordCell from '@scripts/h5p-crossword-cell';
+import Util from '@services/util';
 
 /** Class representing the content */
 export default class CrosswordSolutionWord {
   /**
-   * @constructor
+   * @class
    * @param {object} params Parameters.
    */
   constructor(params = {}) {
@@ -17,7 +17,7 @@ export default class CrosswordSolutionWord {
 
   /**
    * Return the DOM for this class.
-   * @return {HTMLElement} DOM for this class.
+   * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
     return this.content;
@@ -26,7 +26,7 @@ export default class CrosswordSolutionWord {
   /**
    * Create solution.
    * @param {CrosswordCell[]} cells Cells.
-   * @return {HTMLElement} Wrapper.
+   * @returns {HTMLElement} Wrapper.
    */
   createSolution(cells) {
     const wrapper = document.createElement('div');
@@ -38,7 +38,7 @@ export default class CrosswordSolutionWord {
     wrapper.appendChild(table);
 
     const row = document.createElement('tr');
-    cells.forEach(cell => {
+    cells.forEach((cell) => {
       row.appendChild(cell.getDOM());
     });
     table.appendChild(row);
@@ -49,7 +49,7 @@ export default class CrosswordSolutionWord {
   /**
    * Create cells.
    * @param {string} solutionWord Solution word.
-   * @return {CrosswordCell[]} Cells.
+   * @returns {CrosswordCell[]} Cells.
    */
   createCells(solutionWord) {
     const cells = Util.createArray(solutionWord.length);
@@ -80,7 +80,7 @@ export default class CrosswordSolutionWord {
    * Show solutions.
    */
   showSolutions() {
-    this.cells.forEach(cell => {
+    this.cells.forEach((cell) => {
       cell.showSolutions();
     });
   }
@@ -89,7 +89,7 @@ export default class CrosswordSolutionWord {
    * Reset.
    */
   reset() {
-    this.cells.forEach(cell => {
+    this.cells.forEach((cell) => {
       cell.reset();
     });
   }
@@ -104,7 +104,7 @@ export default class CrosswordSolutionWord {
 
     // Magic number found by testing
     this.content.style.fontSize = `${cellWidth / 2}px`;
-    this.cells.forEach(cell => {
+    this.cells.forEach((cell) => {
       cell.setWidth(cellWidth);
     });
   }

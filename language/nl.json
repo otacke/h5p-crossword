@@ -28,7 +28,7 @@
           },
           {
             "label": "Leg het woord vast op het raster",
-            "description": "Controleer of je het woord op een bepaalde plaats op het raster wilt bevestigen."
+            "description": "Controleer of je het woord op een bepaalde plaats op het raster wilt bevestigen. Words with the same alignment may not be placed touching each other."
           },
           {
             "label": "Rij",
@@ -189,7 +189,7 @@
         },
         {
           "label": "Kan kruiswoord niet maken",
-          "default": "Er kan geen kruiswoordpuzzel met de gegeven woorden worden gemaakt. Probeer het nog eens. Indien je geplaatste woorden gebruikt, controleer dan of hun positie het plaatsen van andere woorden niet onmogelijk maakt."
+          "default": "Er kan geen kruiswoordpuzzel met de gegeven woorden worden gemaakt. Probeer het nog eens."
         },
         {
           "label": "Kan kruiswoord niet maken (te weinig woorden)",
@@ -198,7 +198,7 @@
         {
           "label": "Problematische woorden",
           "description": "Maak een lijst van woorden die problemen veroorzaakten bij het genereren van de kruiswoordpuzzel. @words is een variabele die zal worden vervangen door de werkelijke problematische woorden.",
-          "default": "Problematisch(e) woord(en): @words"
+          "default": "Some words could not be placed. Indien je geplaatste woorden gebruikt, controleer dan of hun positie het plaatsen van andere woorden niet onmogelijk maakt. Words with the same alignment may not be placed touching each other. Problematisch(e) woord(en): @words"
         },
         {
           "label": "Extra aanwijzing",
@@ -263,10 +263,6 @@
           "description": "Extra aanwijzingsmelder. @clue is een variabele en wordt vervangen door de betreffende waarde.",
           "label": "Extra aanwijzing voor",
           "default": "Open extra aanwijzing voor @clue"
-        },
-        {
-          "label": "Lege cel",
-          "default": "Lege cel"
         },
         {
           "description": "De huidige positie aankondigen. @position en @length zijn variabelen en zullen worden vervangen door hun respectievelijke waarden.",

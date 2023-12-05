@@ -1,9 +1,9 @@
 /** Class representing the content */
 export default class CrosswordClueAnnouncer {
   /**
-   * @constructor
-   *
-   * @param {object} params Parameters.
+   * @class
+   * @param {object} [params] Parameters.
+   * @param {object} [callbacks] Callbacks.
    */
   constructor(params = {}, callbacks) {
 
@@ -28,7 +28,7 @@ export default class CrosswordClueAnnouncer {
 
   /**
    * Return the DOM for this class.
-   * @return {HTMLElement} DOM for this class.
+   * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
     return this.content;

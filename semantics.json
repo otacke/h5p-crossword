@@ -70,7 +70,7 @@
           "name": "fixWord",
           "type": "boolean",
           "label": "Fix word on grid",
-          "description": "Check if you want to fix the word to a particular position on the grid.",
+          "description": "Check if you want to fix the word to a particular position on the grid. Words with the same alignment may not be placed touching each other.",
           "importance": "low",
           "default": false,
           "optional": true
@@ -446,7 +446,7 @@
         "type": "text",
         "label": "Cannot create crossword",
         "importance": "low",
-        "default": "Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common. If you are using fixed words, please make sure that their position doesn't prevent other words from being placed."
+        "default": "Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common."
       },
       {
         "name": "couldNotGenerateCrosswordTooFewWords",
@@ -461,7 +461,7 @@
         "label": "Probematic words",
         "description": "List words that caused trouble while generating the crossword. @words is a placeholder that will be replaced by the actual problematic words.",
         "importance": "low",
-        "default": "Problematic word(s): @words"
+        "default": "Some words could not be placed. If you are using fixed words, please make sure that their position doesn't prevent other words from being placed. Words with the same alignment may not be placed touching each other. Problematic word(s): @words"
       },
       {
         "name": "extraClue",
@@ -491,7 +491,7 @@
         "type": "text",
         "label": "Crossword grid description",
         "importance": "low",
-        "default": "Crossword grid. Use arrow keys to navigate and keyboard to enter characters. Use tab to use input fields instead."
+        "default": "Crossword grid. Use arrow keys to navigate and the keyboard to enter characters. Alternatively, use Tab to navigate to type the answers in Fill in the Blanks style fields instead of the grid."
       },
       {
         "name": "column",
@@ -572,13 +572,6 @@
         "label": "Extra clue for",
         "importance": "low",
         "default": "Open extra clue for @clue"
-      },
-      {
-        "name": "emptyCell",
-        "type": "text",
-        "label": "Empty cell",
-        "importance": "low",
-        "default": "Empty cell"
       },
       {
         "name": "letterSevenOfNine",

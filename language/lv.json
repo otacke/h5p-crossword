@@ -28,7 +28,7 @@
           },
           {
             "label": "Nostiprināt vārdu režģī",
-            "description": "Atzīmējiet, vai vēlaties fiksēt vārdu noteiktā vietā uz režģa."
+            "description": "Atzīmējiet, vai vēlaties fiksēt vārdu noteiktā vietā uz režģa. Words with the same alignment may not be placed touching each other."
           },
           {
             "label": "Rinda",
@@ -189,7 +189,7 @@
         },
         {
           "label": "Neizdevās izveidot krustvārdu mīklu",
-          "default": "Neizdevās ģenerēt krustvārdu mīklu ar norādītajiem vārdiem. Lūdzu, mēģiniet vēlreiz ar mazāku vārdu skaitu vai vārdiem, kuriem ir vairāk kopīgu rakstzīmju. Ja izmantojat vārdus, kas piestiprināti dēlim, lūdzu, pārliecinieties, ka to atrašanās vieta netraucē citu vārdu ievietošanu."
+          "default": "Neizdevās ģenerēt krustvārdu mīklu ar norādītajiem vārdiem. Lūdzu, mēģiniet vēlreiz ar mazāku vārdu skaitu vai vārdiem, kuriem ir vairāk kopīgu rakstzīmju."
         },
         {
           "label": "Neizdodas izveidot krustvārdu mīklu (pārāk maz vārdu)",
@@ -198,7 +198,7 @@
         {
           "label": "Problemātiskie vārdi",
           "description": "Uzskaitīt vārdus, kas radīja problēmas krustvārdu mīklas ģenerēšanas laikā. @words ir vietturis, kas tiks aizstāts ar faktiskajiem problemātiskajiem vārdiem.",
-          "default": "Problemātiskais(-i) vārds(-i): @words"
+          "default": "Some words could not be placed. Ja izmantojat vārdus, kas piestiprināti dēlim, lūdzu, pārliecinieties, ka to atrašanās vieta netraucē citu vārdu ievietošanu. Words with the same alignment may not be placed touching each other. Problemātiskais(-i) vārds(-i): @words"
         },
         {
           "label": "Papildu pavediens",
@@ -263,10 +263,6 @@
           "description": "Papildu pavedienu paziņotājs. @clue ir mainīgais un tiks aizstāts ar attiecīgo vērtību.",
           "label": "Papildu pavediens par",
           "default": "Atveriet papildu pavedienu @clue"
-        },
-        {
-          "label": "Tukša šūna",
-          "default": "Tukša šūna"
         },
         {
           "description": "Pašreizējās pozīcijas paziņošana. @position un @length ir mainīgie, un tie tiks aizstāti ar to attiecīgajām vērtībām.",

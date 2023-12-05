@@ -28,7 +28,7 @@
           },
           {
             "label": "Zakleni geslo na mrežo",
-            "description": "Geslo bo zaklenjeno na točno določeno mesto na mreži."
+            "description": "Geslo bo zaklenjeno na točno določeno mesto na mreži. Words with the same alignment may not be placed touching each other."
           },
           {
             "label": "Vrstica",
@@ -189,7 +189,7 @@
         },
         {
           "label": "Križanke ni mogoče ustvariti",
-          "default": "Križanke z navedenimi gesli ni bilo mogoče ustvariti. Poskusite znova z manj gesli ali gesli, ki imajo več skupnih znakov. Če uporabljate zaklenjena gesla, pazite, da njihov položaj ne preprečuje postavljanja drugih gesel."
+          "default": "Križanke z navedenimi gesli ni bilo mogoče ustvariti. Poskusite znova z manj gesli ali gesli, ki imajo več skupnih znakov."
         },
         {
           "label": "Križanke ni mogoče ustvariti (premalo gesel)",
@@ -198,7 +198,7 @@
         {
           "label": "Problematična gesla",
           "description": "Navedba gesel, ki so povzročile težave pri ustvarjanju križanke. @words je spremenljivka.",
-          "default": "Problematična gesla: @words"
+          "default": "Some words could not be placed. Če uporabljate zaklenjena gesla, pazite, da njihov položaj ne preprečuje postavljanja drugih gesel. Words with the same alignment may not be placed touching each other. Problematična gesla: @words"
         },
         {
           "label": "Besedilo za dodaten namig",
@@ -263,10 +263,6 @@
           "description": "Pregled dodatnih namigov. @clue je spremenljivka.",
           "label": "Dodaten namig za",
           "default": "Odpri dodaten namig za @clue"
-        },
-        {
-          "label": "Prazna celica",
-          "default": "Prazna celica"
         },
         {
           "description": "Pregled trenutnega položaja v geslu. @position in @length sta spremenljivki.",

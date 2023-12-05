@@ -1,11 +1,12 @@
-import CrosswordCell from './h5p-crossword-cell';
-import Util from './h5p-crossword-util';
+import CrosswordCell from '@scripts/h5p-crossword-cell';
+import Util from '@services/util';
 
 /** Class representing the content */
 export default class CrosswordTable {
   /**
-   * @constructor
-   * @param {object} params Parameters.
+   * @class
+   * @param {object} [params] Parameters.
+   * @param {object} [callbacks] Callbacks.
    */
   constructor(params = {}, callbacks) {
     this.params = Util.extend({
@@ -34,7 +35,7 @@ export default class CrosswordTable {
 
     // Set tab index to first input element
     [].concat(...this.cells)
-      .filter(cell => cell.getSolution() !== null)[0]
+      .filter((cell) => cell.getSolution() !== null)[0]
       .setTabIndex('0');
 
     // Event listener
@@ -112,10 +113,10 @@ export default class CrosswordTable {
         case 'Home':
           event.preventDefault();
           if (event.ctrlKey) {
-            this.moveTo({row: 0, column: 0});
+            this.moveTo({ row: 0, column: 0 });
           }
           else {
-            this.moveTo({row: parseInt(target.dataset.row), column: 0});
+            this.moveTo({ row: parseInt(target.dataset.row), column: 0 });
           }
           break;
 
@@ -139,7 +140,7 @@ export default class CrosswordTable {
           event.preventDefault();
           i = 0;
           do {
-            result = this.moveTo({row: i, column: target.dataset.col});
+            result = this.moveTo({ row: i, column: target.dataset.col });
             i++;
           } while (result === false);
           break;
@@ -148,7 +149,7 @@ export default class CrosswordTable {
           event.preventDefault();
           i = this.params.dimensions.rows - 1;
           do {
-            result = this.moveTo({row: i, column: target.dataset.col});
+            result = this.moveTo({ row: i, column: target.dataset.col });
             i--;
           } while (result === false);
           break;
@@ -164,8 +165,7 @@ export default class CrosswordTable {
 
   /**
    * Return the DOM for this class.
-   *
-   * @return {HTMLElement} DOM for this class.
+   * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
     return this.content;
@@ -175,8 +175,9 @@ export default class CrosswordTable {
    * Build actual cells from parameters.
    * @param {object} dimensions Dimensions of grid.
    * @param {number} dimensions.rows Numvber of rows in grid.
-   * @param {columns} dimensions.columns Numvber of columns in grid.
+   * @param {number} dimensions.columns Numvber of columns in grid.
    * @param {object[]} cellParams Cell parameters.
+   * @returns {object[]} Cells.
    */
   buildCells(dimensions, cellParams = []) {
     // Initial data for all cells.
@@ -193,7 +194,7 @@ export default class CrosswordTable {
     }
 
     // Inject more information into relevant stem cells
-    cellParams.forEach(cell => {
+    cellParams.forEach((cell) => {
       let row = cell.starty - 1;
       let column = cell.startx - 1;
 
@@ -226,7 +227,7 @@ export default class CrosswordTable {
     // Create grid cells from stem cells
     const cells = Util.createArray(dimensions.rows, dimensions.columns);
 
-    [].concat(...stemCells).forEach(param => {
+    [].concat(...stemCells).forEach((param) => {
       cells[param.row][param.column] = new CrosswordCell({
         row: param.row,
         column: param.column,
@@ -249,16 +250,16 @@ export default class CrosswordTable {
         }
       },
       {
-        onClick: (position => {
+        onClick: ((position) => {
           this.handleCellClick(position);
         }),
         onFocus: ((cell, event) => {
           this.handleCellFocus(cell, event);
         }),
-        onKeyup: (params => {
+        onKeyup: ((params) => {
           this.handleCellKeyup(params);
         }),
-        onRead: (text => {
+        onRead: ((text) => {
           this.callbacks.onRead(text);
         })
       });
@@ -270,7 +271,7 @@ export default class CrosswordTable {
   /**
    * Find cells that the solution word id marker and circle can be put into.
    * @param {string} solutionWord Solution word.
-   * @return {CrosswordCell[]} Cells that can be used or null if no space.
+   * @returns {CrosswordCell[]} Cells that can be used or null if no space.
    */
   findSolutionWordCells(solutionWord) {
     if (!solutionWord || solutionWord === '') {
@@ -280,16 +281,16 @@ export default class CrosswordTable {
     const result = [];
 
     let canHaveSolutionWord = true;
-    let cells = [].concat(...this.cells).filter(cell => cell.getSolution() !== null);
+    let cells = [].concat(...this.cells).filter((cell) => cell.getSolution() !== null);
     solutionWord
       .split('')
-      .forEach(character => {
+      .forEach((character) => {
         if (canHaveSolutionWord === false) {
           return;
         }
 
         // Try to find random cell that contains char looked for and has not been used
-        const candidateCells = Util.shuffleArray(cells.filter(cell => cell.getSolution() === character && result.indexOf(cell) === -1));
+        const candidateCells = Util.shuffleArray(cells.filter((cell) => cell.getSolution() === character && result.indexOf(cell) === -1));
         if (candidateCells.length === 0) {
           canHaveSolutionWord = false;
           return;
@@ -304,7 +305,7 @@ export default class CrosswordTable {
   /**
    * Mark cells with solution word ids and circles if possible.
    * @param {string} solutionWord Solution word.
-   * @return {boolean} True, if possibe, else false.
+   * @returns {boolean} True, if possibe, else false.
    */
   addSolutionWord(solutionWord) {
     if (!solutionWord || solutionWord === '') {
@@ -327,12 +328,13 @@ export default class CrosswordTable {
    * @param {number} params.dimensions.dim.rows Number of rows.
    * @param {object} params.theme Theme.
    * @param {number} params.contentId Content id.
-   * @return {HTMLElement} Grid table.
+   * @returns {HTMLElement} Grid table.
    */
   buildGrid(params) {
     const table = document.createElement('table');
     table.classList.add('h5p-crossword-grid');
     table.style.backgroundColor = params.theme.backgroundColor;
+    table.style.maxWidth = `calc(2 * ${params.dimensions.columns} * 32px)`;
 
     if (params.theme.backgroundImage) {
       table.classList.add('h5p-crossword-grid-background-image');
@@ -362,7 +364,8 @@ export default class CrosswordTable {
    * @param {object} dim Dimensions.
    * @param {number} dim.columns Number of columns.
    * @param {number} dim.rows Number of rows.
-   * @return {HTMLElement} Grid row element.
+   * @param {number} rowId Rows index.
+   * @returns {HTMLElement} Grid row element.
    */
   buildGridRow(dim, rowId) {
     const row = document.createElement('tr');
@@ -380,7 +383,8 @@ export default class CrosswordTable {
    * @param {object} position Position.
    * @param {number} position.row Row to move to.
    * @param {number} position.column Columns to move to.
-   * @param {boolean} [keepFocus=false] If true, don't focus cell (but keep current focus).
+   * @param {boolean} [keepFocus] If true, don't focus cell (but keep current focus).
+   * @returns {boolean} False if moving not possible, else true.
    */
   moveTo(position = {}, keepFocus = false) {
     // Check grid boundaries
@@ -390,6 +394,9 @@ export default class CrosswordTable {
     if (position.column < 0 || position.column > this.params.dimensions.columns - 1) {
       return false;
     }
+    if (this.cells[position.row][position.column].getSolution() === null) {
+      return false; // Target cell is empty
+    }
 
     const targetCell = this.cells[position.row][position.column];
     if (!targetCell) {
@@ -398,7 +405,7 @@ export default class CrosswordTable {
 
     // Reset grid cells' tab index
     [].concat(...this.cells)
-      .forEach(cell => {
+      .forEach((cell) => {
         cell.setTabIndex('-1');
       });
 
@@ -410,13 +417,12 @@ export default class CrosswordTable {
     return true;
   }
 
-
   /**
    * Get information for other components.
    * @param {object} position Position.
    * @param {number} position.row Cell row.
    * @param {number} position.column Cell column.
-   * @return {object} Updates.
+   * @returns {object} Updates.
    */
   getUpdates(position) {
     const updates = [];
@@ -426,7 +432,7 @@ export default class CrosswordTable {
     // If cell at position is a crossection, retrieve complete answer for corresponding word
     const invertedClueId = this.cells[position.row][position.column].getClueId(invertedOrientation);
     if (invertedClueId) {
-      const invertedCells = [].concat(...this.cells).filter(cell => cell.getClueId(invertedOrientation) === invertedClueId);
+      const invertedCells = [].concat(...this.cells).filter((cell) => cell.getClueId(invertedOrientation) === invertedClueId);
       const invertedText = invertedCells
         .reduce((result, current) => {
           return result + (current.answer || ' ');
@@ -442,7 +448,7 @@ export default class CrosswordTable {
 
     // Retrieve complete answer for word belonging to cell at position
     const clueId = this.cells[position.row][position.column].getClueId(this.currentOrientation);
-    const cells = [].concat(...this.cells).filter(cell => cell.getClueId(this.currentOrientation) === clueId);
+    const cells = [].concat(...this.cells).filter((cell) => cell.getClueId(this.currentOrientation) === clueId);
     const text = cells
       .reduce((result, current) => {
         return result + (current.answer || ' ');
@@ -460,10 +466,10 @@ export default class CrosswordTable {
 
   /**
    * Get answers in cells.
-   * @return {string[]} Answers in cells.
+   * @returns {string[]} Answers in cells.
    */
   getAnswers() {
-    return [].concat(...this.cells).map(cell => cell.getAnswer());
+    return [].concat(...this.cells).map((cell) => cell.getAnswer());
   }
 
   /**
@@ -491,7 +497,7 @@ export default class CrosswordTable {
 
   /**
    * Get score.
-   * @return {number} Score.
+   * @returns {number} Score.
    */
   getScore() {
     let score;
@@ -511,7 +517,7 @@ export default class CrosswordTable {
 
   /**
    * GetMaxScore.
-   * @return {number} Maximum score.
+   * @returns {number} Maximum score.
    */
   getMaxScore() {
     if (this.params.scoreWords) {
@@ -529,7 +535,7 @@ export default class CrosswordTable {
    * Get score for single word.
    * @param {number} clueId ClueId of word.
    * @param {string} orientation Requested orientation.
-   * @return {number} 1 if complete word is correct, -1 if something is wrong, 0 else;
+   * @returns {number} 1 if complete word is correct, -1 if something is wrong, 0 else;
    */
   getWordScore(clueId, orientation = 'across') {
     const wordInformation = this.getWordInformation(clueId, orientation);
@@ -554,10 +560,10 @@ export default class CrosswordTable {
   /**
    * Set current orientation. Will correct orientation if not possible for position.
    * @param {string} orientation Requested orientation.
-   * @param {object} [position=this.currentPosition] Position.
+   * @param {object} [position] Position.
    * @param {number} [position.row] Position row.
    * @param {number} [position.column] Position column.
-   * @return {string} New orientation.
+   * @returns {string|undefined} New orientation.
    */
   setcurrentOrientation(orientation, position) {
     if (orientation !== 'across' && orientation !== 'down') {
@@ -605,7 +611,7 @@ export default class CrosswordTable {
    * Reset.
    */
   reset() {
-    [].concat(...this.cells).forEach(cell => {
+    [].concat(...this.cells).forEach((cell) => {
       cell.reset();
     });
 
@@ -630,7 +636,7 @@ export default class CrosswordTable {
    * @param {object} position Position.
    * @param {number} position.row Position row.
    * @param {number} position.column Position column.
-   * @param {boolean} [keepOrientation=false] If true, don't toggle orientation on repeated focus.
+   * @param {boolean} [keepOrientation] If true, don't toggle orientation on repeated focus.
    */
   handleCellClick(position, keepOrientation = false) {
     if (this.ignoreNextClick) {
@@ -686,10 +692,11 @@ export default class CrosswordTable {
 
   /**
    * Handle input from cell.
-   * @param {object} position Position.
-   * @param {number} position.row Position row.
-   * @param {number} position.column Position column.
-   * @param {boolean} [nextPositionOffset = 1] Next position offset.
+   * @param {object} params Position.
+   * @param {object} params.position Position.
+   * @param {number} params.position.row Position row.
+   * @param {number} params.position.column Position column.
+   * @param {boolean} [params.nextPositionOffset] Next position offset.
    */
   handleCellKeyup(params) {
     if (params.nextPositionOffset === undefined) {
@@ -703,7 +710,7 @@ export default class CrosswordTable {
       this.cells[params.position.row][params.position.column + params.nextPositionOffset].getSolution()
     ) {
       this.currentOrientation = 'across';
-      this.focusCell({row: params.position.row, column: params.position.column + params.nextPositionOffset});
+      this.focusCell({ row: params.position.row, column: params.position.column + params.nextPositionOffset });
     }
     else if (
       (!this.currentOrientation || this.currentOrientation === 'down') &&
@@ -712,7 +719,7 @@ export default class CrosswordTable {
       this.cells[params.position.row + params.nextPositionOffset][params.position.column].getSolution()
     ) {
       this.currentOrientation = 'down';
-      this.focusCell({row: params.position.row + params.nextPositionOffset, column: params.position.column});
+      this.focusCell({ row: params.position.row + params.nextPositionOffset, column: params.position.column });
     }
 
     this.callbacks.onInput({
@@ -728,17 +735,17 @@ export default class CrosswordTable {
    * Show solution.
    */
   showSolutions() {
-    [].concat(...this.cells).forEach(cell => {
+    [].concat(...this.cells).forEach((cell) => {
       cell.showSolutions();
     });
   }
 
   /**
    * Check answer.
-   * @return {object[]} Results of all words.
+   * @returns {object[]} Results of all words.
    */
   checkAnswerWords() {
-    const results = this.params.words.map(word => {
+    const results = this.params.words.map((word) => {
       return {
         clueId: word.clueId,
         orientation: word.orientation,
@@ -748,7 +755,7 @@ export default class CrosswordTable {
     });
 
     // Mark cells on table
-    [].concat(...this.cells).forEach(cell => {
+    [].concat(...this.cells).forEach((cell) => {
       cell.checkAnswer();
     });
 
@@ -757,12 +764,12 @@ export default class CrosswordTable {
 
   /**
    * Check answer.
-   * @return {object[]} Results of all cells with content.
+   * @returns {object[]} Results of all cells with content.
    */
   checkAnswer() {
     const results = [];
 
-    [].concat(...this.cells).forEach(cell => {
+    [].concat(...this.cells).forEach((cell) => {
       cell.checkAnswer();
       const information = cell.getInformation();
       if (information.solution) {
@@ -778,7 +785,7 @@ export default class CrosswordTable {
    * @param {object} position Position of cell.
    * @param {number} position.row Position row.
    * @param {number} position.column Position column.
-   * @param {string} [orientation='across'] Preferred orientation for crossings.
+   * @param {string} [orientation] Preferred orientation for crossings.
    */
   highlightWord(position, orientation = 'across') {
     const clueId = this.cells[position.row][position.column].getClueId(orientation);
@@ -786,10 +793,10 @@ export default class CrosswordTable {
       return;
     }
 
-    const wordElement = this.params.words.filter(word => word.clueId === clueId && word.orientation === orientation)[0];
+    const wordElement = this.params.words.filter((word) => word.clueId === clueId && word.orientation === orientation)[0];
 
     [].concat(...this.cells)
-      .filter(cell => cell.getClueId(orientation) === clueId)
+      .filter((cell) => cell.getClueId(orientation) === clueId)
       .forEach((cell, index) => {
         const cellPosition = cell.getPosition();
 
@@ -811,7 +818,7 @@ export default class CrosswordTable {
   /**
    * Build aria label for cell.
    * @param {object} params Parameters.
-   * @return {string} Aria label for cell.
+   * @returns {string} Aria label for cell.
    */
   buildAriaLabel(params) {
     const gridPosition = `${this.params.a11y.row} ${params.row + 1}, ${this.params.a11y.column} ${params.column + 1}`;
@@ -823,7 +830,7 @@ export default class CrosswordTable {
 
   /**
    * Get focus.
-   * @return {object} Focus and orientation.
+   * @returns {object} Focus and orientation.
    */
   getFocus() {
     return {
@@ -835,7 +842,8 @@ export default class CrosswordTable {
   /**
    * Get cell information for a complete word.
    * @param {number} clueId Clue id.
-   * @param {string} [orientation=across] Orientation.
+   * @param {string} [orientation] Orientation.
+   * @returns {object[]} Cell information.
    */
   getWordInformation(clueId, orientation = 'across') {
     if (!clueId) {
@@ -843,8 +851,8 @@ export default class CrosswordTable {
     }
 
     return [].concat(...this.cells)
-      .filter(cell => cell.getClueId(orientation) === clueId)
-      .map(cell => cell.getInformation());
+      .filter((cell) => cell.getClueId(orientation) === clueId)
+      .map((cell) => cell.getInformation());
   }
 
   /**
@@ -879,18 +887,18 @@ export default class CrosswordTable {
    * Clear all cells' highlights.
    */
   clearCellHighlights() {
-    [].concat(...this.cells).forEach(cell => {
+    [].concat(...this.cells).forEach((cell) => {
       cell.unhighlight();
     });
   }
 
   /**
    * Fill the grid.
-   * @param {object} Parameters.
+   * @param {object} params Parameters.
    */
   fillGrid(params) {
     const cells = [].concat(...this.cells)
-      .filter(cell => cell.getClueId(params.orientation) === params.clueId);
+      .filter((cell) => cell.getClueId(params.orientation) === params.clueId);
 
     cells.forEach((cell, index) => {
       cell.setAnswer(
@@ -940,7 +948,7 @@ export default class CrosswordTable {
    * Enable grid.
    */
   enable() {
-    [].concat(...this.cells).forEach(cell => {
+    [].concat(...this.cells).forEach((cell) => {
       cell.enable();
     });
 
@@ -952,24 +960,24 @@ export default class CrosswordTable {
    */
   disable() {
     this.disabled = true;
-    [].concat(...this.cells).forEach(cell => {
+    [].concat(...this.cells).forEach((cell) => {
       cell.disable();
     });
   }
 
   /**
    * Check whether all relevant cells have been filled.
-   * @return {boolean} True, if all relevant cells have been filled, else false.
+   * @returns {boolean} True, if all relevant cells have been filled, else false.
    */
   isFilled() {
-    return ![].concat(...this.cells).some(cell => cell.isFilled() === false);
+    return ![].concat(...this.cells).some((cell) => cell.isFilled() === false);
   }
 
   /**
    * Unhighlight all cells.
    */
   unhighlight() {
-    [].concat(...this.cells).forEach(cell => {
+    [].concat(...this.cells).forEach((cell) => {
       cell.unhighlight('focus');
       cell.unhighlight('normal');
 
@@ -981,14 +989,14 @@ export default class CrosswordTable {
 
   /**
    * Get correct responses pattern for xAPI.
-   * @return {string[]} Correct response for each cell.
+   * @returns {string[]} Correct response for each cell.
    */
   getXAPICorrectResponsesPattern() {
     const caseMatters = '{case_matters=false}';
     const pattern = this.params.words
-      .map(word => {
+      .map((word) => {
         const characters = this.getWordInformation(word.clueId, word.orientation)
-          .map(info => info.solution);
+          .map((info) => info.solution);
 
         if (this.params.scoreWords) {
           return characters.join('');
@@ -1004,17 +1012,17 @@ export default class CrosswordTable {
 
   /**
    * Get current response for xAPI.
-   * @return {string} Responses for each cell joined by [,].
+   * @returns {string} Responses for each cell joined by [,].
    */
   getXAPIResponse() {
     return this.params.words
-      .map(word => {
+      .map((word) => {
         const characters = this.getWordInformation(word.clueId, word.orientation);
         if (this.params.scoreWords) {
-          return characters.map(info => info.answer || ' ').join('');
+          return characters.map((info) => info.answer || ' ').join('');
         }
         else {
-          return characters.map(info => info.answer || '').join('[,]');
+          return characters.map((info) => info.answer || '').join('[,]');
         }
       })
       .join('[,]');
@@ -1022,11 +1030,11 @@ export default class CrosswordTable {
 
   /**
    * Get xAPI description suitable for H5P's reporting module.
-   * @return {string} HTML with placeholders for fields to be filled in.
+   * @returns {string} HTML with placeholders for fields to be filled in.
    */
   getXAPIDescription() {
     return this.params.words
-      .map(word => {
+      .map((word) => {
         const clue = `${word.clueId} ${this.params.l10n[word.orientation]}: ${word.clue}`;
 
         const placeholders = [];

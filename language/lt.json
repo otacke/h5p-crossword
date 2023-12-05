@@ -1,52 +1,52 @@
 {
   "semantics": [
     {
-      "label": "Task description",
-      "description": "Describe your task here."
+      "label": "Užduoties aprašymas",
+      "description": "Čia aprašykite savo užduotį."
     },
     {
-      "label": "words",
+      "label": "žodžiai",
       "widgets": [
         {
-          "label": "Default"
+          "label": "Numatytasis"
         }
       ],
-      "entity": "Word",
+      "entity": "Žodis",
       "field": {
-        "label": "Word",
+        "label": "Žodis",
         "fields": [
           {
-            "label": "Clue",
-            "description": "Clue that should point to the answer."
+            "label": "Užuomina",
+            "description": "Užuomina, kuri turėtų nurodyti atsakymą."
           },
           {
-            "label": "Answer",
-            "description": "Answer to the clue."
+            "label": "Atsakymas",
+            "description": "Atsakymas į užuominą."
           },
           {
-            "label": "Extra clue"
+            "label": "Papildoma užuomina"
           },
           {
-            "label": "Fix word on grid",
-            "description": "Check if you want to fix the word to a particular position on the grid. Words with the same alignment may not be placed touching each other."
+            "label": "Pataisyti žodį tinklelyje",
+            "description": "Pažymėkite, ar norite pataisyti žodį tam tikroje tinklelio vietoje. Žodžiai, kurių lygiavimas yra toks pat, negali būti dedami liečiant vienas kitą."
           },
           {
-            "label": "Row",
-            "description": "Row index where the answer should start."
+            "label": "Eilutė",
+            "description": "Eilutės indeksas, kur turėtų prasidėti atsakymas."
           },
           {
-            "label": "Column",
-            "description": "Column index where the answer should start."
+            "label": "Stulpelis",
+            "description": "Stulpelio indeksas, kur turėtų prasidėti atsakymas."
           },
           {
-            "label": "Orientation",
-            "description": "Orientation for the answer.",
+            "label": "Padėtis",
+            "description": "Padėtis atsakymui.",
             "options": [
               {
-                "label": "Across"
+                "label": "Skersai"
               },
               {
-                "label": "Down"
+                "label": "Žemyn"
               }
             ]
           }
@@ -54,30 +54,30 @@
       }
     },
     {
-      "label": "Overall solution word",
-      "description": "Optionally add a solution word that can be derived from particular characters on the grid. It will only be visible if all its characters can be found in the crossword. Please note: There's no accessibility support for this feature yet."
+      "label": "Bendras sprendimo žodis",
+      "description": "Pasirinktinai pridėkite sprendimo žodį, kurį galima išvesti iš tam tikrų tinklelyje esančių simbolių. Jis bus matomas tik tuo atveju, jei kryžiažodyje bus rasti visi jo simboliai. Atminkite: šiai funkcijai pritaikymo palaikymo dar nėra."
     },
     {
-      "label": "Overall Feedback",
+      "label": "Bendras atsiliepimas",
       "fields": [
         {
           "widgets": [
             {
-              "label": "Default"
+              "label": "Numatytasis"
             }
           ],
-          "label": "Define custom feedback for any score range",
-          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
-          "entity": "range",
+          "label": "Nustatykite tinkintus atsiliepimus bet kokiam balų diapazonui",
+          "description": "Spustelėkite mygtuką „Pridėti diapazoną“, kad pridėtumėte tiek diapazonų, kiek jums reikia. Pavyzdys: 0–20 % blogas balas, 21–91 % vidutinis balas, 91–100 % puikus rezultatas!",
+          "entity": "diapozonas",
           "field": {
             "fields": [
               {
-                "label": "Score Range"
+                "label": "Balų diapozonas"
               },
               {},
               {
-                "label": "Feedback for defined score range",
-                "placeholder": "Fill in the feedback"
+                "label": "Atsiliepimas apibrėžtam balų diapazonui",
+                "placeholder": "Užpildykite atsiliepimą"
               }
             ]
           }
@@ -85,95 +85,95 @@
       ]
     },
     {
-      "label": "Theme",
+      "label": "Tema",
       "fields": [
         {
-          "label": "Background image",
+          "label": "Fono paveikslėlis",
           "description": "Select an optional background image. It will be scaled to fit the background without stretching it."
         },
         {
-          "label": "Background color",
+          "label": "Fono spalva",
           "description": "Choose a background color. It will either be used instead of a background image or as background for transparent areas.",
           "default": "#173354"
         },
         {
-          "label": "Grid color",
-          "description": "Choose a color for the grid.",
+          "label": "Tinklelio spalva",
+          "description": "Pasirinkite tinklelio spalvą.",
           "default": "#000000"
         },
         {
-          "label": "Cell background color",
-          "description": "Choose the background color for a table cell.",
+          "label": "Langelio fono spalva",
+          "description": "Pasirinkite lentelės langelio fono spalvą.",
           "default": "#ffffff"
         },
         {
-          "label": "Cell text color",
-          "description": "Choose the text color for a table cell.",
+          "label": "Langelio teksto spalva",
+          "description": "Pasirinkite lentelės langelio teksto spalvą.",
           "default": "#000000"
         },
         {
-          "label": "Clue id color",
-          "description": "Choose the color of the clue id inside a table cell.",
+          "label": "Užuominos id spalva",
+          "description": "Pasirinkite užuominos ID spalvą lentelės langelyje.",
           "default": "#606060"
         },
         {
-          "label": "Cell background color (highlighted)",
-          "description": "Choose the background color for a table cell that is highlighted.",
+          "label": "Langelio fono spalva (paryškinta)",
+          "description": "Pasirinkite paryškinto lentelės langelio fono spalvą.",
           "default": "#3e8de8"
         },
         {
-          "label": "Cell text color (highlighted)",
-          "description": "Choose the text color for a table cell that is highlighted.",
+          "label": "Langelio teksto spalva (paryškinta)",
+          "description": "Pasirinkite paryškinto lentelės langelio teksto spalvą.",
           "default": "#ffffff"
         },
         {
-          "label": "Cell id color (highlighted)",
+          "label": "Langelio ID spalva (paryškinta)",
           "description": "Choose the color of the clue id inside a table cell that is highlighted.",
           "default": "#e0e0e0"
         }
       ]
     },
     {
-      "label": "Behavioural settings",
-      "description": "These options will let you control how the task behaves.",
+      "label": "Veikimo nuostatos",
+      "description": "Šios parinktys leis jums valdyti, kaip veikia užduotis.",
       "fields": [
         {
-          "label": "Number of words to be shown",
+          "label": "Rodomų žodžių skaičius",
           "description": "Create a randomized batch of words from the pool. The batch will always contain at least all the words that were fixed on the grid regardless of this setting. An empty value or 0 means to use all words."
         },
         {
-          "label": "Enable instant feedback"
+          "label": "Įjungti momentinį atsiliepimą"
         },
         {
           "label": "Score words",
           "description": "If this option is enabled, words will be counted in order to determine the score. Otherwise, correct characters will be counted."
         },
         {
-          "label": "Apply penalties",
-          "description": "If this option is enabled, each wrong answer will be given a penalty score of -1."
+          "label": "Taikyti nuobaudas",
+          "description": "Jei ši parinktis įjungta, už kiekvieną neteisingą atsakymą bus skiriama bauda -1."
         },
         {
-          "label": "Enable \"Retry\""
+          "label": "Įjungti „Bandyti dar kartą“"
         },
         {
-          "label": "Enable \"Solution\""
+          "label": "Įjungti „Sprendimas“"
         }
       ]
     },
     {
-      "label": "User interface",
+      "label": "Vartotojo sąsaja",
       "fields": [
         {
-          "label": "Label for across",
-          "default": "Across"
+          "default": "Skersai",
+          "label": "Label for across"
         },
         {
           "label": "Label for down",
-          "default": "Down"
+          "default": "Žemyn"
         },
         {
-          "label": "Text for \"Check\" button",
-          "default": "Check"
+          "label": "Tekstas mygtukui „Tikrinti“",
+          "default": "Tikrinti"
         },
         {
           "label": "Text for \"Submit\" button",
@@ -184,7 +184,7 @@
           "default": "Retry"
         },
         {
-          "label": "Text for \"Show solution\" button",
+          "label": "Mygtuko „Rodyti sprendimą“ tekstas",
           "default": "Show solution"
         },
         {
@@ -205,8 +205,8 @@
           "default": "Extra clue"
         },
         {
-          "label": "Close window",
-          "default": "Close window"
+          "label": "Uždaryti langą",
+          "default": "Uždaryti langą"
         }
       ]
     },
@@ -215,7 +215,7 @@
       "fields": [
         {
           "label": "Crossword grid description",
-          "default": "Crossword grid. Use arrow keys to navigate and the keyboard to enter characters. Alternatively, use Tab to navigate to type the answers in Fill in the Blanks style fields instead of the grid."
+          "default": "Crossword grid. Use arrow keys to navigate and keyboard to enter characters. Use tab to use input fields instead."
         },
         {
           "label": "Column",
@@ -226,12 +226,12 @@
           "default": "Row"
         },
         {
-          "label": "Across",
-          "default": "Across"
+          "label": "Skersai",
+          "default": "Skersai"
         },
         {
-          "label": "Down",
-          "default": "Down"
+          "label": "Žymyn",
+          "default": "Žemyn"
         },
         {
           "label": "Empty",
@@ -271,7 +271,7 @@
         },
         {
           "description": "Announcing the word length. @length is a variable and will be replaced by the respective value.",
-          "label": "Length of word",
+          "label": "Žodžio ilgis",
           "default": "@length letter word"
         },
         {
@@ -279,7 +279,7 @@
           "default": "Check the characters. The responses will be marked as correct, incorrect, or unanswered."
         },
         {
-          "label": "Assistive technology description for \"Show Solution\" button",
+          "label": "Mygtuko „Rodyti sprendimą“ pagalbinės technologijos aprašymas",
           "default": "Show the solution. The crossword will be filled with its correct solution."
         },
         {
@@ -287,7 +287,7 @@
           "default": "Retry the task. Reset all responses and start the task over again."
         },
         {
-          "label": "Your result",
+          "label": "Jūsų rezultatas",
           "description": "@score and @total are variables and will be replaced by their respective values.",
           "default": "You got @score out of @total points."
         }

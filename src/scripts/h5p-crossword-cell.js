@@ -1,11 +1,11 @@
-import Util from './h5p-crossword-util';
+import Util from '@services/util';
 
 /** Class representing a cell */
 export default class CrosswordCell {
   /**
-   * @constructor
-   *
-   * @param {object} params Parameters.
+   * @class
+   * @param {object} [params] Parameters.
+   * @param {object} [callbacks] Callbacks.
    */
   constructor(params = {}, callbacks = {}) {
 
@@ -30,7 +30,7 @@ export default class CrosswordCell {
     this.previousTabIndex = null;
 
     // Position
-    this.position = {row: params.row, column: params.column};
+    this.position = { row: params.row, column: params.column };
 
     // ID of solution word character
     this.solutionWordId = null;
@@ -79,7 +79,7 @@ export default class CrosswordCell {
 
   /**
    * Return the DOM for this class.
-   * @return {HTMLElement} DOM for this class.
+   * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
     return this.cell;
@@ -88,7 +88,7 @@ export default class CrosswordCell {
   /**
    * Build cell.
    * @param {object} params Parameters.
-   * @return {HTMLElement} Cell element.
+   * @returns {HTMLElement} Cell element.
    */
   buildCell(params) {
     const cell = document.createElement('td');
@@ -105,7 +105,7 @@ export default class CrosswordCell {
 
   /**
    * Build cell content wrapper.
-   * @return {HTMLElement} Cell content wrapper element.
+   * @returns {HTMLElement} Cell content wrapper element.
    */
   buildCellContentWrapper() {
     const cellContentWrapper = document.createElement('div');
@@ -115,7 +115,7 @@ export default class CrosswordCell {
 
   /**
    * Build cell canvas. Displays input. Used to hide select markers on Android.
-   * @return {HTMLElement} Cell canvas element.
+   * @returns {HTMLElement} Cell canvas element.
    */
   buildCellCanvas() {
     const cellCanvas = document.createElement('div');
@@ -125,7 +125,7 @@ export default class CrosswordCell {
 
   /**
    * Build cell input. Only takes input, but canvas displays it.
-   * @return {HTMLElement} Cell input element.
+   * @returns {HTMLElement} Cell input element.
    */
   buildCellInput() {
     const cellInput = document.createElement('input');
@@ -138,6 +138,16 @@ export default class CrosswordCell {
     cellInput.setAttribute('tabindex', '-1');
 
     cellInput.addEventListener('input', (event) => {
+      if (!this.enabled) {
+        return;
+      }
+
+      this.setAnswer(Util.toUpperCase(event.data, Util.UPPERCASE_EXCEPTIONS), true);
+      this.cellInput.value = '';
+      const cellInformation = this.getInformation();
+
+      this.callbacks.onKeyup(cellInformation);
+
       event.preventDefault();
     });
 
@@ -151,6 +161,11 @@ export default class CrosswordCell {
      */
     cellInput.addEventListener('keydown', (event) => {
       if (!this.enabled) {
+        return;
+      }
+
+      if (event.repeat) {
+        event.preventDefault(); // Skip InputEvent that would repeat
         return;
       }
 
@@ -171,30 +186,6 @@ export default class CrosswordCell {
     });
 
     /*
-     * Keypress listener. Required to get all quick keypresses for chars
-     */
-    cellInput.addEventListener('keypress', (event) => {
-      event.preventDefault();
-
-      if (!this.enabled || event.repeat) {
-        return;
-      }
-
-      if (!event.key || event.key === 'Unidentified') {
-        return; // Use keyup as fallback for old browsers
-      }
-
-      if (event.key.length > 1) {
-        return; // Not a character
-      }
-
-      this.setAnswer(Util.toUpperCase(event.key, Util.UPPERCASE_EXCEPTIONS), true);
-
-      this.cellInput.value = '';
-      this.callbacks.onKeyup(this.getInformation());
-    });
-
-    /*
      * keyup listener, used particularly for Android that doesn't
      * provide event.key and doesn't check maxlength on input -
      * workaround by retrieving first character
@@ -208,9 +199,8 @@ export default class CrosswordCell {
         return; // Already handled by keydown/keypress
       }
 
-      event.preventDefault();
-
       if (event.repeat) {
+        event.preventDefault(); // Skip InputEvent that would repeat
         return;
       }
 
@@ -227,24 +217,6 @@ export default class CrosswordCell {
           this.callbacks.onKeyup(cellInformation);
         }
       }
-      else if ((event.keyCode === 187 || event.keyCode === 192) && event.key === 'Dead') {
-        return; // Skip accent keys
-      }
-      else {
-        // All printable symbols including numbers, Unicode, etc.
-        if (
-          this.cellInput.value.substr(0, 1) === '' &&
-          event.keyCode !== 229 // Some weird Android keyCode
-        ) {
-          return; // Could be non-valid accent combination
-        }
-
-        this.setAnswer(this.cellInput.value, true);
-        this.cellInput.value = '';
-        const cellInformation = this.getInformation();
-
-        this.callbacks.onKeyup(cellInformation);
-      }
     });
 
     cellInput.addEventListener('focus', (event) => {
@@ -256,7 +228,7 @@ export default class CrosswordCell {
 
   /**
    * Return correct solution.
-   * @return {string|null} Solution char or null.
+   * @returns {string|null} Solution char or null.
    */
   getSolution() {
     return this.params.solution;
@@ -264,7 +236,7 @@ export default class CrosswordCell {
 
   /**
    * Get current answer.
-   * @return {string} Current answer.
+   * @returns {string} Current answer.
    */
   getCurrentAnswer() {
     return this.cell.innerText.substr(0, 1);
@@ -272,7 +244,7 @@ export default class CrosswordCell {
 
   /**
    * Get cell information.
-   * @return {object} Cell information.
+   * @returns {object} Cell information.
    */
   getInformation() {
     return {
@@ -288,7 +260,7 @@ export default class CrosswordCell {
 
   /**
    * Get cell position.
-   * @return {object} Cell position as {row: x, column: y}.
+   * @returns {object} Cell position as {row: x, column: y}.
    */
   getPosition() {
     return this.position;
@@ -296,8 +268,8 @@ export default class CrosswordCell {
 
   /**
    * Get clue id.
-   * @param {string} [orientation=across] Orientation.
-   * @return {number} Clue id.
+   * @param {string} [orientation] Orientation.
+   * @returns {number|null} Clue id.
    */
   getClueId(orientation = 'across') {
     if (orientation === 'down') {
@@ -306,11 +278,13 @@ export default class CrosswordCell {
     else if (orientation === 'across') {
       return this.params.clueIdAcross;
     }
+
+    return null;
   }
 
   /**
    * Get current answer.
-   * @return {string} Current answer.
+   * @returns {string} Current answer.
    */
   getAnswer() {
     return this.answer;
@@ -318,7 +292,7 @@ export default class CrosswordCell {
 
   /**
    * Get score.
-   * @return {number} Wrong: -1; Missing: 0; Correct 1
+   * @returns {number|undefined} Wrong: -1; Missing: 0; Correct 1
    */
   getScore() {
     if (!this.params.solution) {
@@ -342,7 +316,7 @@ export default class CrosswordCell {
 
   /**
    * Check whether cell is filled.
-   * @return {boolean|null} True if filled, null if not filled but not expected, else false.
+   * @returns {boolean|null} True if filled, null if not filled but not expected, else false.
    */
   isFilled() {
     if (!this.params.solution) {
@@ -404,7 +378,7 @@ export default class CrosswordCell {
   /**
    * Set answer.
    * @param {string} answer Answer character.
-   * @param {boolean} [readFeedback=false] If true, read feedback in instant feedback mode.
+   * @param {boolean} [readFeedback] If true, read feedback in instant feedback mode.
    */
   setAnswer(answer, readFeedback = false) {
     if (!this.cellInput) {
@@ -496,7 +470,7 @@ export default class CrosswordCell {
 
   /**
    * Check answer.
-   * @param {boolean} [read=false] If true, will read correct/wrong via readspeaker.
+   * @param {boolean} [read] If true, will read correct/wrong via readspeaker.
    */
   checkAnswer(read = false) {
     const answer = (this.answer || '').trim();

@@ -28,7 +28,7 @@
           },
           {
             "label": "Fijar palabra en rejilla",
-            "description": "Comprobar si desea fijar la palabra a una posición particular en la rejilla."
+            "description": "Comprobar si desea fijar la palabra a una posición particular en la rejilla. Las palabras con la misma alineación podrían no estar colocadas tocándose ambas."
           },
           {
             "label": "Fila",
@@ -189,7 +189,7 @@
         },
         {
           "label": "No se puede crear crucigrama",
-          "default": "No se pudo generar un crucigrama con las palabras dadas. Por favor intente nuevamente con menos palabras, o con palabras que tengan más caracteres en común. Si usted está usando palabras fijadas, por favor asegúrese de que sus posiciones no impidan que se coloquen otras palabras."
+          "default": "No se pudo generar un crucigrama con las palabras dadas. Por favor intente nuevamente con menos palabras, o con palabras que tengan más caracteres en común."
         },
         {
           "label": "No se puede crear crucigrama (muy pocas palabras)",
@@ -198,7 +198,7 @@
         {
           "label": "Palabras problemáticas",
           "description": "Enlistar palabras que causaron problema al generar el rompecabezas. @words es un reemplazable que será remplazado por las palabras problemáticas actuales.",
-          "default": "Palabra(s) problemática(s): @words"
+          "default": "Algunas palabras no pudieron ser colocadas. Si está usando palabras fijadas, por favor asegúrese de que su posición no impida que otras palabras sean colocadas. Las palabras con la misma alineación podrían no estar colocadas tocándose ambas. Palabras problemáticas: @words"
         },
         {
           "label": "Clave extra",
@@ -215,7 +215,7 @@
       "fields": [
         {
           "label": "Descripción de rejilla del crucigrama",
-          "default": "Rejilla del crucigrama. Use las teclas de flechas para navegar y el teclado para escribir caracteres. Use el tabulador para emplear campos de entrada en su lugar."
+          "default": "Cuadrícula de crucigramas. Use las teclas de flecha para navegar y el teclado para ingresar caracteres. También puede usar la tecla Tab para navegar y escribir las respuestas en los campos de estilo \"Rellenar los espacios en blanco\" en lugar de la cuadrícula."
         },
         {
           "label": "Columna",
@@ -265,10 +265,6 @@
           "default": "Abrir pista extra para @clue"
         },
         {
-          "label": "Celda vacía",
-          "default": "Celda vacía"
-        },
-        {
           "description": "Anunciando la posición actual. @position y @length son variables y serán remplazadas por sus valores respectivos.",
           "label": "Letra",
           "default": "Letra @position de @length"
@@ -279,16 +275,16 @@
           "default": "palabra de @length letras"
         },
         {
-          "label": "Descripción de tecnología asistiva para botón \"Comprobar\"",
+          "label": "Descripción para las tecnologías de asistencia del botón \"Comprobar\"",
           "default": "Comprobar los caracteres. Las respuestas serán marcadas como correcta, incorrecta, o sin contestar."
         },
         {
-          "label": "Descripción de tecnología asistiva para botón \"Mostrar solución\"",
-          "default": "Mostrar la solución. El crucigrama será llenado con su solución correcta."
+          "label": "Descripción para las tecnologías de asistencia del botón \"Mostrar solución\"",
+          "default": "Mostrar la solución. El crucigrama se completará con su solución correcta."
         },
         {
-          "label": "Descripción de tecnología asistiva para botón \"Reintentar\"",
-          "default": "Reintentar el trabajo. Reiniciar todas las respuestas e iniciar el trabajo de nuevo."
+          "label": "Descripción para las tecnologías de asistencia del botón \"Intentar de nuevo\"",
+          "default": "Volver a intentar la tarea. Borra todas las respuestas y empezar de nuevo."
         },
         {
           "label": "Su resultado",

@@ -28,7 +28,7 @@
           },
           {
             "label": "Finkatu hitza lauki-sarean",
-            "description": "Markatu ezazu hitza lauki-sareko kokapen zehatz batean finkatu nahi baduzu."
+            "description": "Markatu ezazu hitza lauki-sareko kokapen zehatz batean finkatu nahi baduzu. Words with the same alignment may not be placed touching each other."
           },
           {
             "label": "Errenkada",
@@ -189,7 +189,7 @@
         },
         {
           "label": "Ezin da gurutzegrama sortu",
-          "default": "Ezin izan da emandako hitzekin gurutzegrama sortu. Saiatu zaitez berriro mesedez hitz gutxiagorekin edo karaktere berdinak dituzten hitzekin. Finkatutako hitzak erabiltzen badituzu, ziurtatu ezazu euren kokapenak ez duela beste hitzak kokatzea eragozten."
+          "default": "Ezin izan da emandako hitzekin gurutzegrama sortu. Saiatu zaitez berriro mesedez hitz gutxiagorekin edo karaktere berdinak dituzten hitzekin."
         },
         {
           "label": "Ezin da gurutzegrama sortu (hitz gutxiegi)",
@@ -198,7 +198,7 @@
         {
           "label": "Hitz gatazkatsuak",
           "description": "Gurutzegrama sortzean arazoak eman dituzten hitzen zerrenda. @words dagokion hitz gatazkatsuarekin ordezkatua izango da.",
-          "default": "Hitz gatazkatsua(k): @words"
+          "default": "Some words could not be placed. Finkatutako hitzak erabiltzen badituzu, ziurtatu ezazu euren kokapenak ez duela beste hitzak kokatzea eragozten. Words with the same alignment may not be placed touching each other. Hitz gatazkatsua(k): @words"
         },
         {
           "label": "Pista gehigarria",
@@ -215,7 +215,7 @@
       "fields": [
         {
           "label": "Gurutzegramako lauki-sarearen deskribapena",
-          "default": "Gurutzegramako lauki-sarea. Nabigatzeko geziak eta karaktereak sartzeko teklatua erabili itzazu. Tabuladorea erabili ezazu horren ordez sarrera-eremuak erabiltzeko."
+          "default": "Gurutzegramako lauki-sarea. Erabili geziak nabigatzeko eta teklatua karaktereak sartzeko. Era berea Tab tekla erabili dezakezu Bete hutsuneak jardueraren eremuetara jauzi egin eta erantzunak idazteko."
         },
         {
           "label": "Zutabea",
@@ -239,7 +239,7 @@
         },
         {
           "description": "Emaitzaren iragarlea. @clue dagokion pistarekin ordezkatuko den aldagaia da.",
-          "label": "Emaitza honentzat:",
+          "label": "Emaitza honentzat",
           "default": "Emaitza honentzako: @clue"
         },
         {
@@ -256,17 +256,13 @@
         },
         {
           "description": "Erantzunaren iragarlea. @clue eta @solution euren balioekin ordezkatuko diren aldagaiak dira.",
-          "label": "Honentzako erantzuna:",
+          "label": "Soluzioa honentzat",
           "default": "@clue pistaren erantzuna hau da: @solution"
         },
         {
           "description": "Pista gehigarriaren iragarlea. @clue dagokion balioarekin ordezkatuko den aldagaia da.",
-          "label": "Pista gehigarria honentzako:",
+          "label": "Pista gehigarria honentzat",
           "default": "Ireki pista gehigarria @clue pistarentzat"
-        },
-        {
-          "label": "Gelaxka hutsa",
-          "default": "Gelaxka hutsa"
         },
         {
           "description": "Oraingo kokapena iragartzen. @position eta @length euren balioekin ordezkatuko diren aldagaiak dira.",

@@ -2,7 +2,7 @@
   "semantics": [
     {
       "label": "Descrición da tarefa",
-      "description": "Describe a tarefa."
+      "description": "Describe a túa tarefa aquí."
     },
     {
       "label": "palabras",
@@ -28,7 +28,7 @@
           },
           {
             "label": "Palabra fixa na grella",
-            "description": "Marca isto se queres fixar a palabra nunha posición específica da grella."
+            "description": "Marca isto se queres fixar a palabra nunha posición específica da grella. Words with the same alignment may not be placed touching each other."
           },
           {
             "label": "Fila",
@@ -58,7 +58,7 @@
       "description": "Engade opcionalmente unha palabra de solución que se pode derivar dun grupo particular de caracteres na grella. Só será visible se todos os seus caracteres pódense atopar na grella. Por favor, lembra que aínda non hai soporte de accesibilidade para esta característica."
     },
     {
-      "label": "Retroalimentación Xeral",
+      "label": "Retroalimentación xeral",
       "fields": [
         {
           "widgets": [
@@ -66,18 +66,18 @@
               "label": "Por defecto"
             }
           ],
-          "label": "Definir retroalimentación personalizada para calquera rango de puntuación",
+          "label": "Define a retroalimentación por defecto para calquera rango de puntuación",
           "description": "Preme o botón \"Engadir rango\" para engadir tantos rangos como precises. Exemplo: 0-20% Mala Puntuación, 21-91% Puntuación Media, 91-100% Puntuación Xenial!",
           "entity": "rango",
           "field": {
             "fields": [
               {
-                "label": "Rango de puntuación"
+                "label": "Rango de Puntuación"
               },
               {},
               {
-                "label": "Retroalimentación para o rango de puntuación definido",
-                "placeholder": "Escribe a túa retroalimentación"
+                "label": "Retroalimentación para rango de puntuación definido",
+                "placeholder": "Escribe a retroalimentación"
               }
             ]
           }
@@ -189,7 +189,7 @@
         },
         {
           "label": "Non se pode crear o encrucillado",
-          "default": "Non se puido xerar un encrucillado coas palabras proporcionadas. Por favor, proba outra vez con menos palabras ou con palabras que teñan máis caracteres en común. Se estás a usar palabras fixadas, asegúrate de que a súa posición non impida a colocación doutras palabras."
+          "default": "Non se puido xerar un encrucillado coas palabras proporcionadas. Por favor, proba outra vez con menos palabras ou con palabras que teñan máis caracteres en común."
         },
         {
           "label": "Non se pode crear o encrucillado (moi poucas palabras)",
@@ -198,7 +198,7 @@
         {
           "label": "Palabras problemáticas",
           "description": "Lista as palabras que causaron problemas durante a xeración do encrucillado. Substituirase @words polas palabras problemáticas.",
-          "default": "Palabras(s) problemática(s): @words"
+          "default": "Some words could not be placed. Se estás a usar palabras fixadas, asegúrate de que a súa posición non impida a colocación doutras palabras. Words with the same alignment may not be placed touching each other. Palabras(s) problemática(s): @words"
         },
         {
           "label": "Definicion extra",
@@ -215,7 +215,7 @@
       "fields": [
         {
           "label": "Descrición da grella do encrucillado",
-          "default": "Grella do encrucillado. Usa as teclas de dirección para navegar e o teclado para escribir os caracteres. Usa o tabulador para introducir campos."
+          "default": "Grella do encrucillado. Usa as teclas de dirección para navegar e o teclado para escribir os caracteres. Tamén podes usar o tabulador para navegar e escribir as respostas nos campos tipo \"Enche os ocos\" en lugar da grella."
         },
         {
           "label": "Columna",
@@ -263,10 +263,6 @@
           "description": "Anunciador de definicións extra. @clue é unha variable que se substituirá polo seu valor correspondente.",
           "label": "Definición extra para",
           "default": "Abrir definición extra para @clue"
-        },
-        {
-          "label": "Cela baleira",
-          "default": "Cela baleira"
         },
         {
           "description": "Anunciando a posición actual. @position e @length son variables que se substituirán polos seus valores respectivos.",
