@@ -1035,7 +1035,8 @@ export default class CrosswordTable {
   getXAPIDescription() {
     return this.params.words
       .map((word) => {
-        const clue = `${word.clueId} ${this.params.l10n[word.orientation]}: ${word.clue}`;
+        // The below replaceAll makes sure we don't get any unwanted XAPI_PLACEHOLDERs in the description:
+        const clue = `${word.clueId} ${this.params.l10n[word.orientation]}: ${word.clue.replaceAll(/_{10,}/gi, '_________')}`;
 
         const placeholders = [];
         if (this.params.scoreWords) {
