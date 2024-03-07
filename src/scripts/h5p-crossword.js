@@ -477,7 +477,8 @@ export default class Crossword extends H5P.Question {
    * @returns {string} Description.
    */
   getDescription() {
-    const introduction = this.params.taskDescription || Crossword.DEFAULT_DESCRIPTION;
+    // The below replaceAll makes sure we don't get any unwanted XAPI_PLACEHOLDERs in the description
+    const introduction = this.params.taskDescription.replaceAll(/_{10,}/gi, '_________') || Crossword.DEFAULT_DESCRIPTION;
     const fields = this.content.getXAPIDescription();
     return `${introduction}${fields}`;
   }
