@@ -28,7 +28,7 @@
           },
           {
             "label": "Leg het woord vast op het raster",
-            "description": "Controleer of je het woord op een bepaalde plaats op het raster wilt bevestigen. Words with the same alignment may not be placed touching each other."
+            "description": "Controleer of je het woord op een bepaalde plaats op het raster wilt bevestigen. Woorden met dezelfde uitlijning mogen elkaar niet raken."
           },
           {
             "label": "Rij",
@@ -189,7 +189,7 @@
         },
         {
           "label": "Kan kruiswoord niet maken",
-          "default": "Er kan geen kruiswoordpuzzel met de gegeven woorden worden gemaakt. Probeer het nog eens."
+          "default": "Er kan geen kruiswoordpuzzel met de gegeven woorden worden gemaakt. Probeer het opnieuw met minder woorden of woorden die meer tekens gemeen hebben."
         },
         {
           "label": "Kan kruiswoord niet maken (te weinig woorden)",
@@ -198,7 +198,7 @@
         {
           "label": "Problematische woorden",
           "description": "Maak een lijst van woorden die problemen veroorzaakten bij het genereren van de kruiswoordpuzzel. @words is een variabele die zal worden vervangen door de werkelijke problematische woorden.",
-          "default": "Some words could not be placed. Indien je geplaatste woorden gebruikt, controleer dan of hun positie het plaatsen van andere woorden niet onmogelijk maakt. Words with the same alignment may not be placed touching each other. Problematisch(e) woord(en): @words"
+          "default": "Sommige woorden konden niet worden geplaatst. Indien je geplaatste woorden gebruikt, controleer dan of hun positie het plaatsen van andere woorden niet onmogelijk maakt. Woorden met dezelfde uitlijning mogen elkaar niet raken. Problematisch(e) woord(en): @words"
         },
         {
           "label": "Extra aanwijzing",
@@ -215,7 +215,7 @@
       "fields": [
         {
           "label": "Rasterbeschrijving van de kruiswoordpuzzel",
-          "default": "Kruiswoordpuzzel. Gebruik de pijltjestoetsen om te navigeren en het toetsenbord om tekens in te voeren. Gebruik Tab-toets om invoervelden te gebruiken."
+          "default": "Kruiswoordpuzzel. Gebruik de pijltjestoetsen om te navigeren en het toetsenbord om tekens in te voeren. Je kunt ook Tab gebruiken om te navigeren en de antwoorden in te voeren in de velden van het type 'Vul de lege velden' in plaats van in het raster."
         },
         {
           "label": "Kolom",
@@ -266,28 +266,28 @@
         },
         {
           "description": "De huidige positie aankondigen. @position en @length zijn variabelen en zullen worden vervangen door hun respectievelijke waarden.",
-          "label": "Letter",
+          "label": "Letterteken",
           "default": "Letter @position van @length"
         },
         {
           "description": "De woordlengte aankondigen. @length is een variabele en wordt vervangen door de respectievelijke waarde.",
-          "label": "Lengte van woord",
+          "label": "De lengte van het woord",
           "default": "Woord met @length letters"
         },
         {
-          "label": "Ondersteunende technologie beschrijving voor \"Controleer\"-knop",
+          "label": "Ondersteunende technologie beschrijving voor de knop \"Controleer\"",
           "default": "Controleer de letters. De antwoorden worden gemarkeerd als juist, onjuist of niet-beantwoord."
         },
         {
-          "label": "Ondersteunende technologie beschrijving voor \"Toon oplossing\"-knop",
+          "label": "Ondersteunende technologie beschrijving voor de knop \"Toon oplossing\"",
           "default": "Toon de oplossing. De kruiswoordpuzzel wordt gevuld met de juiste oplossing."
         },
         {
-          "label": "Ondersteunende technologie beschrijving voor \"Opnieuw\"-knop",
+          "label": "Ondersteunende technologie beschrijving voor de knop \"Opnieuw\"",
           "default": "Probeer de taak opnieuw. Reset alle antwoorden en start de taak opnieuw."
         },
         {
-          "label": "Je resultaat",
+          "label": "Jouw resultaat",
           "description": "@score en @total zijn variabelen en zullen worden vervangen door hun respectievelijke waarden.",
           "default": "Je hebt @score van de @total punten."
         }
