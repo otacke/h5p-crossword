@@ -409,7 +409,7 @@ export default class Crossword extends H5P.Question {
 
     this.removeFeedback();
 
-    this.content.reset({ keepCorrectAnswers: params.keepCorrectAnswers});
+    this.content.reset({ keepCorrectAnswers: params.keepCorrectAnswers });
     this.content.enable();
   }
 
