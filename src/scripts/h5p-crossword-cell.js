@@ -469,44 +469,71 @@ export default class CrosswordCell {
   }
 
   /**
-   * Check answer.
-   * @param {boolean} [read] If true, will read correct/wrong via readspeaker.
+   * Get solution state.
+   * @returns {string} Solution state: 'correct'|'wrong'|'undefined'|'neutral'.
    */
-  checkAnswer(read = false) {
+  getSolutionState() {
     const answer = (this.answer || '').trim();
 
     if (answer === this.params.solution && answer !== '') {
-      this.setSolutionState('correct');
-      if (read) {
-        this.callbacks.onRead(this.params.a11y.correct);
-      }
+      return 'correct';
     }
     else if (answer === '' || answer === Util.CHARACTER_PLACEHOLDER) {
-      this.setSolutionState();
+      return 'undefined';
     }
     else {
       if (this.params.applyPenalties) {
-        this.setSolutionState('wrong');
-        if (read) {
-          this.callbacks.onRead(this.params.a11y.wrong);
-        }
+        return 'wrong';
       }
       else {
-        this.setSolutionState('neutral');
-        if (read) {
-          this.callbacks.onRead(this.params.a11y.wrong);
-        }
+        return 'neutral';
       }
     }
   }
 
   /**
-   * Reset.
+   * Check answer.
+   * @param {boolean} [read] If true, will read correct/wrong via readspeaker.
    */
-  reset() {
-    this.setAnswer('', false);
+  checkAnswer(read = false) {
+    let solutionState = this.getSolutionState();
+    solutionState = (solutionState === 'undefined') ? undefined : solutionState;
+
+    this.setSolutionState(solutionState);
+
+    if (!read) {
+      return;
+    }
+
+    if (solutionState === 'correct') {
+      this.callbacks.onRead(this.params.a11y.correct);
+    }
+    else if (solutionState === 'wrong') {
+      this.callbacks.onRead(this.params.a11y.wrong);
+    }
+  }
+
+  /**
+   * Reset.
+   * @param {object} [params] Parameters.
+   * @param {boolean} [params.keepCorrectAnswers] If true, correct answers are kept.
+   * @returns {boolean} True if answer was kept.
+   */
+  reset(params = {}) {
+    const keepAnswer =
+      params.keepCorrectAnswers && this.getSolutionState() === 'correct';
+
     this.unhighlight();
     this.setSolutionState();
+
+    if (!keepAnswer) {
+      this.setAnswer('', false);
+    }
+
+    const cellInformation = this.getInformation();
+    this.callbacks.onKeyup(cellInformation, true);
+
+    return keepAnswer;
   }
 
   /**

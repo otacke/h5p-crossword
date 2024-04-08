@@ -87,9 +87,15 @@ export default class CrosswordSolutionWord {
 
   /**
    * Reset.
+   * @param {object} params Parameters.
+   * @param {boolean} [params.keepCorrectAnswers] If true, correct answers are not reset.
    */
-  reset() {
+  reset(params = {}) {
     this.cells.forEach((cell) => {
+      if (params.keepCorrectAnswers && cell.getSolutionState() === 'correct') {
+        return;
+      }
+
       cell.reset();
     });
   }

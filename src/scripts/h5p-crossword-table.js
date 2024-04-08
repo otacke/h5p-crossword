@@ -256,8 +256,8 @@ export default class CrosswordTable {
         onFocus: ((cell, event) => {
           this.handleCellFocus(cell, event);
         }),
-        onKeyup: ((params) => {
-          this.handleCellKeyup(params);
+        onKeyup: ((params, quiet) => {
+          this.handleCellKeyup(params, quiet ?? false);
         }),
         onRead: ((text) => {
           this.callbacks.onRead(text);
@@ -609,15 +609,24 @@ export default class CrosswordTable {
 
   /**
    * Reset.
+   * @param {object} [params] Parameters.
+   * @param {boolean} [params.keepCorrectAnswers] If true, correct answers are kept.
+   * @returns {boolean} True, if answer was kept, else false.
    */
-  reset() {
+  reset(params = {}) {
+    let answerWasKept = false;
+
     [].concat(...this.cells).forEach((cell) => {
-      cell.reset();
+      answerWasKept = cell.reset(
+        { keepCorrectAnswers: params.keepCorrectAnswers }
+      ) || answerWasKept;
     });
 
     this.currentPosition = {};
     this.currentOrientation = 'across';
     this.maxScore = null;
+
+    return answerWasKept;
   }
 
   /**
@@ -697,29 +706,32 @@ export default class CrosswordTable {
    * @param {number} params.position.row Position row.
    * @param {number} params.position.column Position column.
    * @param {boolean} [params.nextPositionOffset] Next position offset.
+   * @param {boolean} quiet If true, only replicate input, don't focus, etc.
    */
-  handleCellKeyup(params) {
+  handleCellKeyup(params, quiet = false) {
     if (params.nextPositionOffset === undefined) {
       params.nextPositionOffset = 1;
     }
 
-    if (
-      (!this.currentOrientation || this.currentOrientation === 'across') &&
-      params.position.column + params.nextPositionOffset >= 0 &&
-      params.position.column + params.nextPositionOffset < this.params.dimensions.columns &&
-      this.cells[params.position.row][params.position.column + params.nextPositionOffset].getSolution()
-    ) {
-      this.currentOrientation = 'across';
-      this.focusCell({ row: params.position.row, column: params.position.column + params.nextPositionOffset });
-    }
-    else if (
-      (!this.currentOrientation || this.currentOrientation === 'down') &&
-      params.position.row + params.nextPositionOffset >= 0 &&
-      params.position.row + params.nextPositionOffset < this.params.dimensions.rows &&
-      this.cells[params.position.row + params.nextPositionOffset][params.position.column].getSolution()
-    ) {
-      this.currentOrientation = 'down';
-      this.focusCell({ row: params.position.row + params.nextPositionOffset, column: params.position.column });
+    if (!quiet) {
+      if (
+        (!this.currentOrientation || this.currentOrientation === 'across') &&
+        params.position.column + params.nextPositionOffset >= 0 &&
+        params.position.column + params.nextPositionOffset < this.params.dimensions.columns &&
+        this.cells[params.position.row][params.position.column + params.nextPositionOffset].getSolution()
+      ) {
+        this.currentOrientation = 'across';
+        this.focusCell({ row: params.position.row, column: params.position.column + params.nextPositionOffset });
+      }
+      else if (
+        (!this.currentOrientation || this.currentOrientation === 'down') &&
+        params.position.row + params.nextPositionOffset >= 0 &&
+        params.position.row + params.nextPositionOffset < this.params.dimensions.rows &&
+        this.cells[params.position.row + params.nextPositionOffset][params.position.column].getSolution()
+      ) {
+        this.currentOrientation = 'down';
+        this.focusCell({ row: params.position.row + params.nextPositionOffset, column: params.position.column });
+      }
     }
 
     this.callbacks.onInput({
@@ -728,7 +740,7 @@ export default class CrosswordTable {
       clueId: params.clueId,
       solutionWordId: params.solutionWordId || null,
       checkFilled: true
-    });
+    }, quiet);
   }
 
   /**

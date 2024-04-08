@@ -157,6 +157,10 @@
         },
         {
           "label": "Aktiviere \"Lösung anzeigen\"-Button"
+        },
+        {
+          "label": "Behalte korrekte Antworten beim Wiederholen",
+          "description": "Wenn diese Option aktiviert ist, werden korrekte Antworten beibehalten, wenn der Benutzer/die Benutzerin die Aufgabe wiederholt - es sei denn, die volle Punktzahl wurde erreicht."
         }
       ]
     },

@@ -5,6 +5,7 @@
       "description": "Descriu la tasca."
     },
     {
+      "label": "paraules",
       "widgets": [
         {
           "label": "Per defecte"
@@ -26,8 +27,8 @@
             "label": "Pista addicional"
           },
           {
-            "description": "Comprova si vols fixar la paraula a una posició concreta de la graella. Les paraules amb la mateixa alineació no es poden tocar.",
-            "label": "Corregeix la paraula a la graella"
+            "label": "Corregeix la paraula a la graella",
+            "description": "Comprova si vols fixar la paraula a una posició concreta de la graella. Les paraules amb la mateixa alineació no es poden tocar."
           },
           {
             "label": "Fila",
@@ -39,6 +40,7 @@
           },
           {
             "label": "Orientació",
+            "description": "Orientació de la resposta.",
             "options": [
               {
                 "label": "Horitzontal"
@@ -46,21 +48,19 @@
               {
                 "label": "Vertical"
               }
-            ],
-            "description": "Orientació de la resposta."
+            ]
           }
         ]
-      },
-      "label": "paraules"
+      }
     },
     {
       "label": "Paraula de solució",
       "description": "De manera opcional, pots afegir una paraula de solució relacionada amb caràcters concrets de la graella. Només és visible si tots els caràcters ja són a l’encreuat. Tingues en compte que aquesta funció encara té opcions d’accessibilitat."
     },
     {
+      "label": "Comentaris generals",
       "fields": [
         {
-          "entity": "interval",
           "widgets": [
             {
               "label": "Per defecte"
@@ -68,6 +68,7 @@
           ],
           "label": "Defineix comentaris personalitzats per a qualsevol interval de puntuació",
           "description": "Clica al botó \"Afegeix intervals\" per afegir-ne tants com necessitis. Exemple: 0-20 % puntuació baixa, 21-91 % puntuació mitjana, 91-100 % puntuació excel·lent!",
+          "entity": "interval",
           "field": {
             "fields": [
               {
@@ -81,8 +82,7 @@
             ]
           }
         }
-      ],
-      "label": "Comentaris generals"
+      ]
     },
     {
       "label": "Tema",
@@ -134,17 +134,19 @@
       ]
     },
     {
+      "label": "Configuració del comportament",
+      "description": "Aquestes opcions permeten controlar el comportament de la tasca.",
       "fields": [
         {
-          "description": "Crea un lot aleatori de paraules del grup. El lot sempre ha de contenir almenys totes les paraules fixades a la graella, independentment d’aquesta configuració. Un valor buit o 0 significa fer servir totes les paraules.",
-          "label": "Nombre de paraules que s’han de mostrar"
+          "label": "Nombre de paraules que s’han de mostrar",
+          "description": "Crea un lot aleatori de paraules del grup. El lot sempre ha de contenir almenys totes les paraules fixades a la graella, independentment d’aquesta configuració. Un valor buit o 0 significa fer servir totes les paraules."
         },
         {
           "label": "Activa els comentaris instantanis"
         },
         {
-          "description": "Si l’opció està activada, es compten les paraules per determinar la puntuació. En cas contrari, es compten els caràcters correctes.",
-          "label": "Puntua paraules"
+          "label": "Puntua paraules",
+          "description": "Si l’opció està activada, es compten les paraules per determinar la puntuació. En cas contrari, es compten els caràcters correctes."
         },
         {
           "label": "Aplica penalitzacions",
@@ -155,10 +157,12 @@
         },
         {
           "label": "Activa \"Solució\""
+        },
+        {
+          "label": "Keep correct answers on retry",
+          "description": "If this option is enabled, correct answers will be kept when the user retries the task unless full score was achieved."
         }
-      ],
-      "label": "Configuració del comportament",
-      "description": "Aquestes opcions permeten controlar el comportament de la tasca."
+      ]
     },
     {
       "label": "Interfície d’usuari",
@@ -211,6 +215,7 @@
       ]
     },
     {
+      "label": "Lector en veu alta",
       "fields": [
         {
           "label": "Descripció de la graella de l’encreuat",
@@ -221,8 +226,8 @@
           "default": "Columna"
         },
         {
-          "default": "Fila",
-          "label": "Fila"
+          "label": "Fila",
+          "default": "Fila"
         },
         {
           "label": "Horitzontal",
@@ -269,8 +274,8 @@
           "default": "Lletra @position de @length"
         },
         {
-          "label": "Longitud de la paraula",
           "description": "Anunci de la longitud de la paraula. @length és una variable i se substitueix pel valor corresponent.",
+          "label": "Longitud de la paraula",
           "default": "Paraula de @length lletres"
         },
         {
@@ -290,8 +295,7 @@
           "description": "@score i @total són variables i se substitueixen pels valors corresponents.",
           "default": "Has fet @score punts de @total."
         }
-      ],
-      "label": "Lector en veu alta"
+      ]
     }
   ]
 }

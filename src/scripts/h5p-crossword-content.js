@@ -105,8 +105,8 @@ export default class CrosswordContent {
         }
       },
       {
-        onInput: ((params) => {
-          this.handleTableInput(params);
+        onInput: ((params, quiet) => {
+          this.handleTableInput(params, quiet);
         }),
         onFocus: ((params) => {
           this.handleTableFocus(params);
@@ -224,18 +224,27 @@ export default class CrosswordContent {
 
   /**
    * Reset.
+   * @param {object} [params] Parameters.
+   * @param {boolean} [params.keepCorrectAnswers] If true, correct answers are kept.
    */
-  reset() {
+  reset(params = {}) {
     if (this.params.words.length < 2) {
       return;
     }
 
-    this.table.reset();
-    if (this.solutionWord) {
-      this.solutionWord.reset();
-    }
     this.inputarea.reset();
-    this.answerGiven = false;
+
+    const answerWasKept = this.table.reset(
+      { keepCorrectAnswers: params.keepCorrectAnswers }
+    );
+
+    if (this.solutionWord) {
+      this.solutionWord.reset(
+        { keepCorrectAnswers: params.keepCorrectAnswers }
+      );
+    }
+
+    this.answerGiven = answerWasKept;
   }
 
   /**
@@ -357,8 +366,9 @@ export default class CrosswordContent {
   /**
    * Handle input from table.
    * @param {object} params parameters.
+   * @param {boolean} [quiet] If true, only sync.
    */
-  handleTableInput(params) {
+  handleTableInput(params, quiet = false) {
     if (this.solutionWord && params.solutionWordId) {
       this.solutionWord.setCell(params.solutionWordId - 1, params.answer);
     }
@@ -369,7 +379,7 @@ export default class CrosswordContent {
 
     this.answerGiven = true;
 
-    if (params.checkFilled && this.isTableFilled()) {
+    if (params.checkFilled && this.isTableFilled() && !quiet) {
       this.callbacks.onTableFilled();
     }
   }

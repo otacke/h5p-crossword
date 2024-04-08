@@ -37,7 +37,8 @@ export default class Crossword extends H5P.Question {
         enableRetry: true,
         enableInstantFeedback: false,
         scoreWords: true,
-        applyPenalties: false
+        applyPenalties: false,
+        keepCorrectAnswers: false,
       },
       l10n: {
         across: 'across',
@@ -134,6 +135,8 @@ export default class Crossword extends H5P.Question {
    * Register the DOM elements with H5P.Question
    */
   registerDomElements() {
+    this.setViewState('task');
+
     // Register task introduction text
     if (this.params.taskDescription && this.params.taskDescription !== '') {
       this.introduction = document.createElement('div');
@@ -231,7 +234,9 @@ export default class Crossword extends H5P.Question {
 
     // Retry button
     this.addButton('try-again', this.params.l10n.tryAgain, () => {
-      this.resetTask();
+      this.resetTask(
+        { keepCorrectAnswers: this.params.behaviour.keepCorrectAnswers }
+      );
     }, this.initialButtons.retry, {
       'aria-label': this.params.a11y.retry
     }, {});
@@ -244,6 +249,8 @@ export default class Crossword extends H5P.Question {
     if (!this.content) {
       return; // Call by previous state, not ready yet
     }
+
+    this.setViewState('results');
 
     this.content.checkAnswer();
 
@@ -345,6 +352,8 @@ export default class Crossword extends H5P.Question {
       return;
     }
 
+    this.setViewState('solutions');
+
     this.hideButton('check-answer');
     this.hideButton('show-solution');
 
@@ -355,14 +364,23 @@ export default class Crossword extends H5P.Question {
 
   /**
    * Reset task.
+   * @param {object} [params] Parameters.
+   * @param {boolean} [params.keepCorrectAnswers] If true, correct answers should be kept.
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
    */
-  resetTask() {
+  resetTask(params = {}) {
     if (!this.content) {
       return;
     }
 
-    this.contentWasReset = true;
+    if (
+      this.getViewState().id !== Crossword.VIEW_STATES.results ||
+      this.getScore() === this.getMaxScore()
+    ) {
+      params.keepCorrectAnswers = false;
+    }
+
+    this.contentWasReset = !params.keepCorrectAnswers;
 
     if (this.initialButtons.check) {
       this.showButton('check-answer');
@@ -385,11 +403,13 @@ export default class Crossword extends H5P.Question {
       this.hideButton('try-again');
     }
 
+    this.setViewState('task');
+
     this.trigger('resize');
 
     this.removeFeedback();
 
-    this.content.reset();
+    this.content.reset({ keepCorrectAnswers: params.keepCorrectAnswers});
     this.content.enable();
   }
 
@@ -511,7 +531,49 @@ export default class Crossword extends H5P.Question {
 
     return minuend; // Yes, technically that was changed in-place already ...
   }
+
+  /**
+   * Get view state.
+   * @returns {object} Current view state, stateName and id.
+   */
+  getViewState() {
+    let state = 'undefined';
+
+    for (const key in Crossword.VIEW_STATES) {
+      if (Crossword.VIEW_STATES[key] === this.viewState) {
+        state = key;
+        break;
+      }
+    }
+
+    return {
+      stateName: state,
+      id: this.viewState
+    };
+  }
+
+  /**
+   * Set view state.
+   * @param {string|number} state State to be set.
+   */
+  setViewState(state) {
+    if (
+      typeof state === 'string' &&
+      Crossword.VIEW_STATES[state] !== undefined
+    ) {
+      this.viewState = Crossword.VIEW_STATES[state];
+    }
+    else if (
+      typeof state === 'number' &&
+      Object.values(Crossword.VIEW_STATES).includes(state)
+    ) {
+      this.viewState = state;
+    }
+  }
 }
 
 /** @constant {string} */
 Crossword.DEFAULT_DESCRIPTION = 'Crossword';
+
+/** @constant {object} view states */
+Crossword.VIEW_STATES = { task: 0, results: 1, solutions: 2 };

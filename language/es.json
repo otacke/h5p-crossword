@@ -76,8 +76,8 @@
               },
               {},
               {
-                "placeholder": "Escribe tu retroalimentación",
-                "label": "Realimentación para rango de puntuación definido"
+                "label": "Realimentación para rango de puntuación definido",
+                "placeholder": "Escribe tu retroalimentación"
               }
             ]
           }
@@ -157,6 +157,10 @@
         },
         {
           "label": "Habilitar \"Solución\""
+        },
+        {
+          "label": "Keep correct answers on retry",
+          "description": "If this option is enabled, correct answers will be kept when the user retries the task unless full score was achieved."
         }
       ]
     },
@@ -270,8 +274,8 @@
           "default": "Letra @position de @length"
         },
         {
-          "label": "Longitud de la palabra",
           "description": "Anunciando la longitud de la palabra. @length es una variable y será remplazada por su valor respectivo.",
+          "label": "Longitud de la palabra",
           "default": "palabra de @length letras"
         },
         {

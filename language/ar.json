@@ -134,6 +134,8 @@
       ]
     },
     {
+      "label": "الإعدادات السلوكية",
+      "description": "ستتيح لك هذه الخيارات التحكم في كيفية عمل المهمة.",
       "fields": [
         {
           "label": "عدد الكلمات التي ستعرض",
@@ -155,12 +157,15 @@
         },
         {
           "label": "تمكين \"الحل\""
+        },
+        {
+          "label": "Keep correct answers on retry",
+          "description": "If this option is enabled, correct answers will be kept when the user retries the task unless full score was achieved."
         }
-      ],
-      "label": "الإعدادات السلوكية",
-      "description": "ستتيح لك هذه الخيارات التحكم في كيفية عمل المهمة."
+      ]
     },
     {
+      "label": "واجهة المستخدم",
       "fields": [
         {
           "label": "التسمية للجانبي",
@@ -207,8 +212,7 @@
           "label": "إغلاق النافذة",
           "default": "إغلاق النافذة"
         }
-      ],
-      "label": "واجهة المستخدم"
+      ]
     },
     {
       "label": "برنامج ReadSpeaker",
