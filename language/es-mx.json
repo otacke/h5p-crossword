@@ -159,8 +159,8 @@
           "label": "Habilitar \"Solución\""
         },
         {
-          "label": "Keep correct answers on retry",
-          "description": "If this option is enabled, correct answers will be kept when the user retries the task unless full score was achieved."
+          "label": "Mantener las respuestas correctas al volver a intentarlo",
+          "description": "Si esta opción está habilitada, las respuestas correctas se conservarán cuando el usuario vuelva a intentar la tarea, a menos que haya alcanzado la puntuación completa."
         }
       ]
     },
