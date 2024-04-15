@@ -159,8 +159,8 @@
           "label": "Gaitu \"Erantzuna\""
         },
         {
-          "label": "Keep correct answers on retry",
-          "description": "If this option is enabled, correct answers will be kept when the user retries the task unless full score was achieved."
+          "label": "Mantendu erantzun zuzenak berriro saiatzen zarenean",
+          "description": "Aukera hau gaituta badago, erantzun zuzenak mantenduko dira erabiltzailea zeregina berriro saiatzen denean puntuazio osoa lortu ezean."
         }
       ]
     },
