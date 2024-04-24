@@ -246,6 +246,10 @@ export default class Crossword extends H5P.Question {
    * Check answer.
    */
   checkAnswer() {
+    if (this.getViewState().id !== Crossword.VIEW_STATES.task) {
+      return; // Prevent double checking
+    }
+
     if (!this.content) {
       return; // Call by previous state, not ready yet
     }

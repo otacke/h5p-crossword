@@ -199,6 +199,10 @@ export default class CrosswordInput {
           return;
         }
 
+        if (this.noListeners) {
+          return;
+        }
+
         const start = inputField.selectionStart;
         inputField.value = `${inputField.value.substr(0, start + 1)}${inputField.value.substr(start + 1)}`;
         inputField.selectionEnd = start + 1;
@@ -234,6 +238,10 @@ export default class CrosswordInput {
       inputField.addEventListener('keyup', (event) => {
         if (event.keyCode === 229) {
           return; // workaround for Android specific code
+        }
+
+        if (this.noListeners) {
+          return;
         }
 
         if (Util.CONTROL_KEY_CODES.indexOf(event.keyCode) !== -1) {
@@ -632,8 +640,10 @@ export default class CrosswordInput {
 
   /**
    * Enable input fields.
+   *
+   * @param {boolean} [noListeners] If true, no listeners will be active.
    */
-  enable() {
+  enable(noListeners = false) {
     this.inputFields.forEach((field) => {
       field.inputField.removeAttribute('disabled');
     });
@@ -644,6 +654,7 @@ export default class CrosswordInput {
     this.content.classList.remove('h5p-crossword-disabled');
 
     this.disabled = false;
+    this.noListeners = noListeners;
   }
 
   /**
@@ -651,6 +662,7 @@ export default class CrosswordInput {
    */
   disable() {
     this.disabled = true;
+    this.noListeners = true;
 
     this.extraClues.forEach((extraClue) => {
       extraClue.setAttribute('disabled', true);

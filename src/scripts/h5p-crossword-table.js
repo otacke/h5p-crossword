@@ -909,14 +909,18 @@ export default class CrosswordTable {
    * @param {object} params Parameters.
    */
   fillGrid(params) {
+    let hasSomeCellChanged = false;
     const cells = [].concat(...this.cells)
       .filter((cell) => cell.getClueId(params.orientation) === params.clueId);
 
     cells.forEach((cell, index) => {
+      const answerBefore = cell.getAnswer();
       cell.setAnswer(
         params.text[index] || '',
         (params.readOffset === -1) ? false : index === params.cursorPosition - params.readOffset
       );
+      hasSomeCellChanged = hasSomeCellChanged ||
+        answerBefore !== cell.getAnswer();
 
       // At crossection, other input fields needs to be updated
       if (cell.getClueId('down') && cell.getClueId('across')) {
@@ -952,7 +956,7 @@ export default class CrosswordTable {
 
     // Check if table is filled
     this.callbacks.onInput({
-      checkFilled: true
+      checkFilled: hasSomeCellChanged
     });
   }
 
