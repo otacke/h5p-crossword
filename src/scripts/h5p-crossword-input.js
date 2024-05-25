@@ -640,7 +640,6 @@ export default class CrosswordInput {
 
   /**
    * Enable input fields.
-   *
    * @param {boolean} [noListeners] If true, no listeners will be active.
    */
   enable(noListeners = false) {
