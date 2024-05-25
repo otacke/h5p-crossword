@@ -45,6 +45,7 @@ export default class Overlay {
     this.buttonClose = document.createElement('button');
     this.buttonClose.classList.add(`${this.params.styleBase}-button-close`);
     this.buttonClose.setAttribute('title', this.params.l10n.closeWindow);
+    this.buttonClose.setAttribute('disabled', 'disabled');
     this.buttonClose.addEventListener('click', () => {
       this.callbacks.onClose();
     });
@@ -147,6 +148,7 @@ export default class Overlay {
 
     this.overlay.classList.remove('h5p-crossword-invisible');
     this.blocker.classList.remove('h5p-crossword-display-none');
+    this.buttonClose.removeAttribute('disabled', 'disabled');
 
     setTimeout(() => {
       this.updateFocusableElements();
@@ -182,6 +184,7 @@ export default class Overlay {
     this.isVisible = false;
     this.overlay.classList.add('h5p-crossword-invisible');
     this.blocker.classList.add('h5p-crossword-display-none');
+    this.buttonClose.setAttribute('disabled', 'disabled');
   }
 
   /**
