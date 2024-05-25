@@ -129,20 +129,6 @@ export default class Crossword extends H5P.Question {
         word.clue = Util.stripHTML(Util.htmlDecode(word.clue));
         return word;
       });
-  }
-
-  /**
-   * Register the DOM elements with H5P.Question
-   */
-  registerDomElements() {
-    this.setViewState('task');
-
-    // Register task introduction text
-    if (this.params.taskDescription && this.params.taskDescription !== '') {
-      this.introduction = document.createElement('div');
-      this.introduction.innerHTML = this.params.taskDescription;
-      this.setIntroduction(this.introduction);
-    }
 
     this.content = new CrosswordContent(
       {
@@ -178,6 +164,20 @@ export default class Crossword extends H5P.Question {
         }
       }
     );
+  }
+
+  /**
+   * Register the DOM elements with H5P.Question
+   */
+  registerDomElements() {
+    this.setViewState('task');
+
+    // Register task introduction text
+    if (this.params.taskDescription && this.params.taskDescription !== '') {
+      this.introduction = document.createElement('div');
+      this.introduction.innerHTML = this.params.taskDescription;
+      this.setIntroduction(this.introduction);
+    }
 
     // Register content with H5P.Question
     this.setContent(this.content.getDOM());
