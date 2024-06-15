@@ -190,8 +190,8 @@ export default class CrosswordContent {
     if (!this.table) {
       return;
     }
-    this.table.resize();
-    this.inputarea.resize();
+    const tableRect = this.table.resize();
+    this.inputarea.resize({ height: tableRect.height });
 
     if (this.solutionWord) {
       this.solutionWord.resize();

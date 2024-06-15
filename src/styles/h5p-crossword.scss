@@ -167,8 +167,6 @@
         background: #ddc0a4;
       }
     }
-
-    &.h5p-crossword-cell-empty {}
   }
 
   .h5p-crossword-grid.h5p-crossword-grid-background-image
@@ -251,6 +249,8 @@
   .h5p-crossword-input-container {
     display: flex;
     flex-direction: column;
+    height: var(--h5p-crossword-input-container-height);
+    overflow-y: auto;
     width: 50%;
   }
 
@@ -637,6 +637,7 @@
     .h5p-crossword-input-container,
     .h5p-crossword-table-wrapper {
       width: 100%;
+      height: auto;
     }
 
     .h5p-crossword-overlay-outer-wrapper {

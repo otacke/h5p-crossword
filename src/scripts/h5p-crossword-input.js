@@ -630,8 +630,13 @@ export default class CrosswordInput {
 
   /**
    * Resize.
+   * @param {object} [params] Parameters.
    */
-  resize() {
+  resize(params = {}) {
+    if (params.height) {
+      this.content.style.setProperty('--h5p-crossword-input-container-height', `${params.height}px`);
+    }
+
     if (this.extraClueInstance) {
       this.extraClueInstance.trigger('resize');
     }

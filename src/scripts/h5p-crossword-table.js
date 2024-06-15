@@ -631,6 +631,7 @@ export default class CrosswordTable {
 
   /**
    * Resize.
+   * @returns {object} BoundingClientRect. Geometry of table.
    */
   resize() {
     // Didn't work well by just using CSS
@@ -638,6 +639,8 @@ export default class CrosswordTable {
 
     // Magic number found by testing
     this.content.style.fontSize = `${cellWidth / 2}px`;
+
+    return this.content.getBoundingClientRect();
   }
 
   /**
