@@ -132,12 +132,12 @@ export default class CrosswordCharList {
       const firstChild = event.target.parentNode.firstChild;
       const lastChild = event.target.parentNode.lastChild;
 
-      switch (event.keyCode) {
+      switch (event.key) {
 
         // Focus previous solution word
-        case 37: // Left
+        case 'ArrowLeft':
         // intentional fallthrough
-        case 38: // Top
+        case 'ArrowUp':
           event.preventDefault();
           if (event.target.previousSibling) {
             event.target.setAttribute('tabindex', '-1');
@@ -147,9 +147,9 @@ export default class CrosswordCharList {
           break;
 
         // Focus next solution word
-        case 39: // Right
+        case 'ArrowRight':
         // intentional fallthrough
-        case 40: // Down
+        case 'ArrowDown':
           event.preventDefault();
           if (event.target.nextSibling) {
             event.target.setAttribute('tabindex', '-1');
@@ -159,7 +159,7 @@ export default class CrosswordCharList {
           break;
 
         // Focus first solution word
-        case 36: // Home
+        case 'Home':
           event.preventDefault();
           if (event.target !== firstChild) {
             event.target.setAttribute('tabindex', '-1');
@@ -169,7 +169,7 @@ export default class CrosswordCharList {
           break;
 
         // Focus last solution word
-        case 35: // End
+        case 'End':
           event.preventDefault();
           if (event.target !== lastChild) {
             event.target.setAttribute('tabindex', '-1');

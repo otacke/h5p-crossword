@@ -178,12 +178,24 @@ class Util {
 
     success();
   }
+
+  /**
+   * Determine whether an event was
+   * @param {*} event Keyboard event.
+   * @returns {boolean} Whether the event was a control key.
+   */
+  static isControlKey(event = {}) {
+    return Util.CONTROL_KEY_VALUES.includes(event.key);
+  }
 }
 
-/** @constant {number[]} KeyEventListener key codes of control symbols */
-Util.CONTROL_KEY_CODES = [
-  8, 9, 13, 16, 17, 18, 19, 20, 27, 33, 34, 35, 36, 37, 38, 39, 40, 45, 46, 91,
-  92, 93, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 144, 145
+/** @constant {string[]} KeyEventListener key values of control symbols */
+Util.CONTROL_KEY_VALUES = [
+  'Backspace', 'Tab', 'Enter', 'Shift', 'Control', 'Alt', 'Pause', 'CapsLock',
+  'Escape', 'PageUp', 'PageDown', 'End', 'Home', 'ArrowLeft', 'ArrowUp',
+  'ArrowRight', 'ArrowDown', 'Insert', 'Delete', 'Meta', 'ContextMenu',
+  'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12',
+  'NumLock', 'ScrollLock'
 ];
 
 /**

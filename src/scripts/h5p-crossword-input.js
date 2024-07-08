@@ -195,7 +195,7 @@ export default class CrosswordInput {
 
       // Make the input field "overwrite" instead "add" characters
       inputField.addEventListener('keydown', (event) => {
-        if (Util.CONTROL_KEY_CODES.indexOf(event.keyCode) !== -1) {
+        if (Util.isControlKey(event)) {
           return;
         }
 
@@ -238,15 +238,18 @@ export default class CrosswordInput {
       // Only update table if input is valid or using arrow keys
       inputField.addEventListener('keyup', (event) => {
         if (event.keyCode === 229) {
-          return; // workaround for Android specific code
+          return; // workaround for Android specific code, no event.key equivalent
         }
 
         if (this.noListeners) {
           return;
         }
 
-        if (Util.CONTROL_KEY_CODES.indexOf(event.keyCode) !== -1) {
-          if ([8, 35, 36, 37, 38, 39, 40, 46].indexOf(event.keyCode) === -1) {
+        if (Util.isControlKey(event)) {
+          if (
+            !['Backspace', 'Home', 'End', 'ArrowLeft', 'ArrowUp', 'ArrowRight',
+              'ArrowDown', 'Delete'].includes(event.key)
+          ) {
             // None of backspace, home, end, left, right, up, down, delete
             return;
           }
@@ -272,7 +275,7 @@ export default class CrosswordInput {
           orientation: word.orientation,
           cursorPosition: cursorPosition,
           text: inputField.value,
-          readOffset: ([8, 37, 38, 39, 40, 46].indexOf(event.keyCode) === -1) ? 1 : 0
+          readOffset: (['Backspace', 'ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown', 'Delete'].includes(event.key) ? 0 : 1)
         });
       });
 
