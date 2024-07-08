@@ -204,6 +204,8 @@ export default class CrosswordInput {
         }
 
         const start = inputField.selectionStart;
+        console.log(event.key, inputField.value, start);
+
         inputField.value = `${inputField.value.substr(0, start + 1)}${inputField.value.substr(start + 1)}`;
         inputField.selectionEnd = start + 1;
 
@@ -231,7 +233,7 @@ export default class CrosswordInput {
             text: after,
             readOffset: -1 // don't read
           });
-        }, 0); // selectionStart will be 0 before DOM rendered
+        }, 25); // selectionStart will be 0 before DOM rendered
       }, false);
 
       // Only update table if input is valid or using arrow keys
