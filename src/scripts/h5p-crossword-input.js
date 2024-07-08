@@ -206,7 +206,7 @@ export default class CrosswordInput {
         const start = inputField.selectionStart;
         console.log(event.key, inputField.value, start);
 
-        inputField.value = `${inputField.value.substr(0, start + 1)}${inputField.value.substr(start + 1)}`;
+        inputField.value = `${inputField.value.substring(0, start + 1)}${inputField.value.substring(start + 1)}`;
         inputField.selectionEnd = start + 1;
 
         /*
@@ -286,7 +286,9 @@ export default class CrosswordInput {
         event.preventDefault();
 
         const text = event.clipboardData.getData('text');
-        this.setInputFieldValue(inputField, text.substr(0, inputField.getAttribute('maxLength')));
+        this.setInputFieldValue(
+          inputField, text.substring(0, inputField.getAttribute('maxLength'))
+        );
       });
 
       const listLabel = this.params.a11y.resultFor

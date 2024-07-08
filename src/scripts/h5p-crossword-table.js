@@ -206,7 +206,7 @@ export default class CrosswordTable {
         stemCells[row][column] = {
           row: row,
           column: column,
-          solution: cell.answer.substr(i, 1),
+          solution: cell.answer.substring(i, i + 1),
           solutionLength: cell.answer.length,
           solutionIndex: i + 1,
           clue: cell.clue,
