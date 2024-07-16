@@ -49,7 +49,7 @@ jobs:
           fi
           
       - name: Assemble data for packaging
-        run: ./build.sh
+        run: bash ${GITHUB_WORKSPACE}/build.sh
 
       - name: Create tar.gz file
         run: tar -czvf h5p-crossword.tar.gz packaging/
