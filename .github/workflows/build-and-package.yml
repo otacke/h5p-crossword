@@ -7,6 +7,8 @@ on:
 
 jobs:
   build:
+    uses: otacke/github-action-h5p-build/.github/workflows/h5p-build.yml@v1
+  packaging:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,10 +20,33 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Build H5P content type
-        uses: bigbluebutton/github-action-h5p-build/.github/workflows/h5p-build.yml@v1
-        with:
-          node-version: '20'
+      - name: Install node modules from package.json
+        run: |
+          if [ -f "./package.json" ]
+          then
+            npm ci
+          fi
+
+      - name: Lint
+        run: |
+          if [ -f "./package.json" ]
+          then
+            npm run lint --if-present
+          fi
+
+      - name: Test
+        run: |
+          if [ -f "./package.json" ]
+          then
+            npm run test --if-present
+          fi
+
+      - name: Build
+        run: |
+          if [ -f "./package.json" ]
+          then
+            npm run build --if-present
+          fi
           
       - name: Assemble data for packaging
         run: ./build.sh
