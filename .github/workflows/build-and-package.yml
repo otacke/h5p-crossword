@@ -1,0 +1,35 @@
+name: Build and Release H5P content type
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build H5P content type
+        uses: bigbluebutton/github-action-h5p-build/.github/workflows/h5p-build.yml@v1
+        with:
+          node-version: '20'
+          
+      - name: Assemble data for packaging
+        run: ./build.sh
+
+      - name: Create tar.gz file
+        run: tar -czvf h5p-crossword.tar.gz packaging/
+
+      - name: Upload tar.gz as release asset
+        uses: softprops/action-gh-release@v1
+        with:
+          files: h5p-crossword.tar.gz
