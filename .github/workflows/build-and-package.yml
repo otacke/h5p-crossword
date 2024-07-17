@@ -56,9 +56,9 @@ jobs:
           fi
 
       - name: Create tar.gz file
-        run: tar -czvf ${GITHUB_REF#refs/tags/}.tar.gz packaging/*
+        run: tar -czvf h5p.tar.gz packaging/*
 
       - name: Upload tar.gz as release asset
         uses: softprops/action-gh-release@v1
         with:
-          files: ${GITHUB_REF#refs/tags/}.tar.gz
+          files: h5p.tar.gz
