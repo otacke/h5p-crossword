@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    uses: otacke/github-action-h5p-build/.github/workflows/h5p-build.yml@v1
+    uses: bigbluebutton/github-action-h5p-build/.github/workflows/h5p-build.yml@v1
   packaging:
     runs-on: ubuntu-latest
 
@@ -56,7 +56,12 @@ jobs:
           fi
 
       - name: Create tar.gz file
-        run: tar -czvf h5p.tar.gz packaging/*
+        run: |
+          if [ -d packaging ]
+          then 
+            cd packaging
+            tar -czvf ../h5p.tar.gz *
+          fi 
 
       - name: Upload tar.gz as release asset
         uses: softprops/action-gh-release@v1
