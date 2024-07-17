@@ -19,6 +19,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+      
+      - name: Set up tag version variable
+        run: echo "TAG_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
       - name: Install node modules from package.json
         run: |
@@ -52,9 +55,9 @@ jobs:
         run: bash ${GITHUB_WORKSPACE}/build.sh
 
       - name: Create tar.gz file
-        run: tar -czvf h5p-crossword.tar.gz packaging/
+        run: tar -czvf "$TAG_VERSION".tar.gz packaging/*
 
       - name: Upload tar.gz as release asset
         uses: softprops/action-gh-release@v1
         with:
-          files: h5p-crossword.tar.gz
+          files: "$TAG_VERSION".tar.gz
