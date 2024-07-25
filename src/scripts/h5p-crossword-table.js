@@ -651,11 +651,6 @@ export default class CrosswordTable {
    * @param {boolean} [keepOrientation] If true, don't toggle orientation on repeated focus.
    */
   handleCellClick(position, keepOrientation = false) {
-    if (this.ignoreNextClick) {
-      this.ignoreNextClick = false;
-      return;
-    }
-
     const cell = this.cells[position.row][position.column];
     if (!cell.getSolution()) {
       return;
@@ -674,8 +669,14 @@ export default class CrosswordTable {
       }
     }
 
-    this.currentPosition = position;
+    if (
+      this.currentPosition.row === position.row &&
+      this.currentPosition.column === position.column
+    ) {
+      return; // No need to set the whole moveTo in motion again
+    }
 
+    this.currentPosition = position;
     this.moveTo(position, true);
   }
 
@@ -698,8 +699,7 @@ export default class CrosswordTable {
 
     // Getting focus from outside the grid by tabbing into it
     this.setcurrentOrientation(this.currentOrientation, position);
-    this.handleCellClick(position, true);
-    this.ignoreNextClick = (typeof this.ignoreNextClick !== 'boolean') ? true : this.ignoreNextClick; // Can't determine first focus on click
+    this.handleCellClick(position, true, false);
   }
 
   /**
