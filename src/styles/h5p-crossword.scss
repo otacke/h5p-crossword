@@ -252,6 +252,10 @@
     height: var(--h5p-crossword-input-container-height);
     overflow-y: auto;
     width: 50%;
+
+    &.has-scrollbar {
+      padding-right: 1rem;
+    }
   }
 
   .h5p-crossword-input-fields-group {

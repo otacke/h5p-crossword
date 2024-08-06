@@ -647,6 +647,9 @@ export default class CrosswordInput {
   resize(params = {}) {
     if (params.height) {
       this.content.style.setProperty('--h5p-crossword-input-container-height', `${params.height}px`);
+      this.content.classList.toggle(
+        'has-scrollbar', this.content.scrollHeight > this.content.clientHeight
+      );
     }
 
     if (this.extraClueInstance) {
