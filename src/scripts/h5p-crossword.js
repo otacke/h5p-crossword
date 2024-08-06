@@ -78,6 +78,11 @@ export default class Crossword extends H5P.Question {
       }
     }, this.params);
 
+    // Ensure to consider enableRetry for keepCorrectAnswers
+    this.params.keepCorrectAnswers =
+      this.params.behaviour.enableRetry &&
+      this.params.behaviour.keepCorrectAnswers;
+
     /*
      * Remove values that match the default, so the regular stylesheet values
      * will be used to still allow CSS overrides via H5P's hook.

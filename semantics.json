@@ -397,7 +397,17 @@
         "description": "If this option is enabled, correct answers will be kept when the user retries the task unless full score was achieved.",
         "importance": "low",
         "default": false,
-        "optional": true
+        "optional": true,
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "enableRetry",
+              "equals": true
+            }
+          ],
+          "nullWhenHidden": true
+        }
       }
     ]
   },
