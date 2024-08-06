@@ -160,13 +160,15 @@ class Util {
    * @param {number} [interval] Time interval in ms to check for element.
    */
   static waitForDOM(selector, success, error = (() => {}), tries = 50, interval = 100) {
+    const INTERVAL_MIN_MS = 50;
+
     if (tries === 0 || !selector || typeof success !== 'function' || typeof error !== 'function') {
       error();
       return;
     }
 
     // Try to keep sensible
-    interval = Math.max(interval, 50);
+    interval = Math.max(INTERVAL_MIN_MS, interval);
 
     const content = document.querySelector(selector);
     if (!content) {

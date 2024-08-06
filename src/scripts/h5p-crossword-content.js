@@ -4,6 +4,12 @@ import CrosswordTable from '@scripts/h5p-crossword-table';
 import CrosswordSolutionWord from '@scripts/h5p-crossword-solution-word';
 import CrosswordGenerator from '@scripts/h5p-crossword-generator';
 
+/** @constant {number} MIN_WORDS_FOR_CROSSWORD Minimum number of words for crossword. */
+const MIN_WORDS_FOR_CROSSWORD = 2;
+
+/** @constant {number} MAXIMUM_TRIES Maximum number of tries to generate crossword grid */
+const MAXIMUM_TRIES = 20;
+
 /** Class representing the content */
 export default class CrosswordContent {
   /**
@@ -35,7 +41,7 @@ export default class CrosswordContent {
       let crosswordGenerator;
       let grid;
 
-      if (params.words.length < 2) {
+      if (params.words.length < MIN_WORDS_FOR_CROSSWORD) {
         errorMessages.push(params.l10n.couldNotGenerateCrosswordTooFewWords);
       }
       else {
@@ -45,7 +51,7 @@ export default class CrosswordContent {
             poolSize: params.poolSize
           }
         });
-        grid = crosswordGenerator.getSquareGrid(CrosswordContent.MAXIMUM_TRIES);
+        grid = crosswordGenerator.getSquareGrid(MAXIMUM_TRIES);
 
         if (!grid) {
           errorMessages.push(params.l10n.couldNotGenerateCrossword);
@@ -228,7 +234,7 @@ export default class CrosswordContent {
    * @param {boolean} [params.keepCorrectAnswers] If true, correct answers are kept.
    */
   reset(params = {}) {
-    if (this.params.words.length < 2) {
+    if (this.params.words.length < MIN_WORDS_FOR_CROSSWORD) {
       return;
     }
 
@@ -261,7 +267,7 @@ export default class CrosswordContent {
    * @returns {number} Score.
    */
   getScore() {
-    if (this.params.words.length < 2) {
+    if (this.params.words.length < MIN_WORDS_FOR_CROSSWORD) {
       return 0;
     }
 
@@ -273,7 +279,7 @@ export default class CrosswordContent {
    * @returns {number} Maximum score.
    */
   getMaxScore() {
-    if (this.params.words.length < 2) {
+    if (this.params.words.length < MIN_WORDS_FOR_CROSSWORD) {
       return 0;
     }
 
@@ -285,7 +291,7 @@ export default class CrosswordContent {
    * @returns {object|undefined} Current state.
    */
   getCurrentState() {
-    if (this.params.words.length < 2 || !this.table) {
+    if (this.params.words.length < MIN_WORDS_FOR_CROSSWORD || !this.table) {
       return;
     }
 
@@ -339,7 +345,7 @@ export default class CrosswordContent {
    * Show solution.
    */
   showSolutions() {
-    if (this.params.words.length < 2) {
+    if (this.params.words.length < MIN_WORDS_FOR_CROSSWORD) {
       return;
     }
 
@@ -475,6 +481,3 @@ export default class CrosswordContent {
     document.querySelector('head').appendChild(style);
   }
 }
-
-/** @constant {number} Maximum number of tries to generate crossword grid */
-CrosswordContent.MAXIMUM_TRIES = 20;

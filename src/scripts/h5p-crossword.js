@@ -2,6 +2,9 @@
 import CrosswordContent from '@scripts/h5p-crossword-content';
 import Util from '@services/util';
 
+/** @constant {number} DOM_REGISTER_DELAY_MS Delay before resizing after DOM registered. */
+const DOM_REGISTER_DELAY_MS = 100;
+
 /**
  * Class for H5P Crossword.
  */
@@ -191,7 +194,7 @@ export default class Crossword extends H5P.Question {
     Util.waitForDOM('.h5p-crossword-input-container', () => {
       setTimeout(() => {
         this.trigger('resize');
-      }, 100);
+      }, DOM_REGISTER_DELAY_MS);
     });
   }
 

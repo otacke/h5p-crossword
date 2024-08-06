@@ -1,5 +1,6 @@
 import CrosswordCell from '@scripts/h5p-crossword-cell';
 import Util from '@services/util';
+import { CELL_FONT_SIZE_DIVIDER } from '@scripts/h5p-crossword-table.js';
 
 /** Class representing the content */
 export default class CrosswordSolutionWord {
@@ -57,7 +58,7 @@ export default class CrosswordSolutionWord {
       .split('')
       .forEach((character, index) => {
         cells[index] = new CrosswordCell({
-          width: 100 / solutionWord.length,
+          width: 100 / solutionWord.length, // eslint-disable-line no-magic-numbers
           solution: solutionWord[index],
           clueIdMarker: index + 1 // Technically, it's a solution marker ...
         });
@@ -109,7 +110,7 @@ export default class CrosswordSolutionWord {
     // Using table border would yield 1 pixel gaps sometimes, hmm
 
     // Magic number found by testing
-    this.content.style.fontSize = `${cellWidth / 2}px`;
+    this.content.style.fontSize = `${cellWidth / CELL_FONT_SIZE_DIVIDER}px`;
     this.cells.forEach((cell) => {
       cell.setWidth(cellWidth);
     });

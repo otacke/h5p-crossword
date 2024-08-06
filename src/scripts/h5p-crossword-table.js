@@ -1,6 +1,9 @@
 import CrosswordCell from '@scripts/h5p-crossword-cell';
 import Util from '@services/util';
 
+/** @constant {number} CELL_FONT_SIZE_DIVIDER Divisor found by testing */
+export const CELL_FONT_SIZE_DIVIDER = 2;
+
 /** Class representing the content */
 export default class CrosswordTable {
   /**
@@ -131,7 +134,9 @@ export default class CrosswordTable {
           else {
             this.moveTo({
               row: parseInt(target.dataset.row),
-              column: document.querySelector('[data-row="' + target.dataset.row + '"]:last-of-type').dataset.col
+              column: document.querySelector(
+                `[data-row="${target.dataset.row}"]:last-of-type`
+              ).dataset.col
             });
           }
           break;
@@ -234,7 +239,7 @@ export default class CrosswordTable {
         solution: param.solution,
         solutionIndex: param.solutionIndex,
         solutionLength: param.solutionLength,
-        width: 100 / dimensions.columns,
+        width: 100 / dimensions.columns, // eslint-disable-line no-magic-numbers
         clueIdMarker: param.clueIdMarker,
         clue: param.clue,
         clueIdAcross: param.clueIdAcross,
@@ -637,8 +642,7 @@ export default class CrosswordTable {
     // Didn't work well by just using CSS
     const cellWidth = this.content.clientWidth / this.params.dimensions.columns;
 
-    // Magic number found by testing
-    this.content.style.fontSize = `${cellWidth / 2}px`;
+    this.content.style.fontSize = `${cellWidth / CELL_FONT_SIZE_DIVIDER}px`;
 
     return this.content.getBoundingClientRect();
   }

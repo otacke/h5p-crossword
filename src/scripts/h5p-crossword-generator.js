@@ -70,7 +70,7 @@ export default class CrosswordGenerator {
     let ratioBest = 0;
 
     for (let i = 0; i < triesMax; i++) {
-      const gridCurrent = this.getGrid(10);
+      const gridCurrent = this.getGrid();
       if (gridCurrent === null) {
         continue; // Could not create grid
       }
@@ -132,16 +132,16 @@ export default class CrosswordGenerator {
       }
       else {
         // Place first answer in the middle of the grid
-        let row = Math.floor(this.cells.length / 2);
-        let column = Math.floor(this.cells[0].length / 2);
+        let row = Math.floor(this.cells.length / 2); // eslint-disable-line no-magic-numbers
+        let column = Math.floor(this.cells[0].length / 2); // eslint-disable-line no-magic-numbers
         const wordElement = this.wordElements[0];
 
         const startOrientation = this.getRandomOrientation();
         if (startOrientation === 'across') {
-          column -= Math.floor(wordElement.answer.length / 2);
+          column -= Math.floor(wordElement.answer.length / 2); // eslint-disable-line no-magic-numbers
         }
         else {
-          row -= Math.floor(wordElement.answer.length / 2);
+          row -= Math.floor(wordElement.answer.length / 2); // eslint-disable-line no-magic-numbers
         }
 
         if (this.canPlaceAnswerAt(wordElement.answer, { row: row, column: column, orientation: startOrientation }) !== false) {
@@ -224,7 +224,9 @@ export default class CrosswordGenerator {
    * @returns {string} Random orientation
    */
   getRandomOrientation() {
-    return Math.floor(Math.random() * 2) ? 'across' : 'down';
+    const ORIENTATION_COUNT = 2;
+
+    return Math.floor(Math.random() * ORIENTATION_COUNT) ? 'across' : 'down';
   }
 
   /**
@@ -340,7 +342,7 @@ export default class CrosswordGenerator {
     if (this.cells[position.row][position.column] === null) {
       return 0; // no intersection
     }
-    if (this.cells[position.row][position.column]['char'] === char) {
+    if (this.cells[position.row][position.column].char === char) {
       return 1; // intersection!
     }
 
@@ -393,7 +395,7 @@ export default class CrosswordGenerator {
       // the character below it intersects with the current word
       for (let row = position.row - 1, column = position.column, i = 0; row >= 0 && column < position.column + answer.length; column++, i++) {
         const isEmpty = (this.cells[row][column] === null);
-        const isIntersection = this.cells[position.row][column] !== null && this.cells[position.row][column]['char'] === answer.charAt(i);
+        const isIntersection = this.cells[position.row][column] !== null && this.cells[position.row][column].char === answer.charAt(i);
         if (!isEmpty && !isIntersection) {
           return false;
         }
@@ -402,7 +404,7 @@ export default class CrosswordGenerator {
       // same deal as above, we just search in the row below the word
       for (let r = position.row + 1, c = position.column, i = 0; r < this.cells.length && c < position.column + answer.length; c++, i++) {
         const isEmpty = (this.cells[r][c] === null);
-        const isIntersection = this.cells[position.row][c] !== null && this.cells[position.row][c]['char'] === answer.charAt(i);
+        const isIntersection = this.cells[position.row][c] !== null && this.cells[position.row][c].char === answer.charAt(i);
         if (!isEmpty && !isIntersection) {
           return false;
         }
@@ -450,7 +452,7 @@ export default class CrosswordGenerator {
       // current word
       for (let column = position.column - 1, row = position.row, i = 0; column >= 0 && row < position.row + answer.length; row++, i++) {
         const isEmpty = this.cells[row][column] === null;
-        const isIntersection = this.cells[row][position.column] !== null && this.cells[row][position.column]['char'] === answer.charAt(i);
+        const isIntersection = this.cells[row][position.column] !== null && this.cells[row][position.column].char === answer.charAt(i);
         const can_place_here = isEmpty || isIntersection;
         if (!can_place_here) {
           return false;
@@ -460,7 +462,7 @@ export default class CrosswordGenerator {
       // same deal, but look at the column to the right
       for (let column = position.column + 1, row = position.row, i = 0; row < position.row + answer.length && column < this.cells[row].length; row++, i++) {
         const isEmpty = this.cells[row][column] === null;
-        const isIntersection = this.cells[row][position.column] !== null && this.cells[row][position.column]['char'] === answer.charAt(i);
+        const isIntersection = this.cells[row][position.column] !== null && this.cells[row][position.column].char === answer.charAt(i);
         const can_place_here = isEmpty || isIntersection;
         if (!can_place_here) {
           return false;
@@ -500,8 +502,8 @@ export default class CrosswordGenerator {
 
       for (let j = 0; j < possibleLocations.length; j++) {
         const point = possibleLocations[j];
-        const row = point['row'];
-        const column = point['column'];
+        const row = point.row;
+        const column = point.column;
         // the c - i, and r - i here compensate for the offset of character in the answer
         const intersectionsAcross = this.canPlaceAnswerAt(answer, { row: row, column: column - i, orientation: 'across' });
         const intersectionsDown = this.canPlaceAnswerAt(answer, { row: row - i, column: column, orientation: 'down' });
@@ -555,11 +557,13 @@ export default class CrosswordGenerator {
    * @returns {object} Word item.
    */
   createWordElements(words, poolSize) {
+    const MIN_POOL_SIZE = 2; // Minimum number of words to keep in pool
+
     if (typeof poolSize !== 'number' || poolSize === 0) {
       poolSize = null;
     }
     else {
-      poolSize = Math.max(2, poolSize);
+      poolSize = Math.max(MIN_POOL_SIZE, poolSize);
     }
 
     // Add index to word element

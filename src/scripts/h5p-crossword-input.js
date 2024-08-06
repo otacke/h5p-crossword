@@ -2,6 +2,12 @@ import Overlay from '@scripts/h5p-crossword-overlay';
 import Util from '@services/util';
 import CrosswordCharList from '@scripts/h5p-crossword-char-list';
 
+/** @constant {number} ANDROID_KEYCODE_229 Android specific keycode */
+const ANDROID_KEYCODE_229 = 229;
+
+/** @constant {number} DEFAULT_DOM_RENDER_TIMEOUT_MS Default timeout for DOM rendering */
+const DEFAULT_DOM_RENDER_TIMEOUT_MS = 25;
+
 /** Class representing the content */
 export default class CrosswordInput {
   /**
@@ -232,12 +238,12 @@ export default class CrosswordInput {
             text: after,
             readOffset: -1 // don't read
           });
-        }, 25); // selectionStart will be 0 before DOM rendered
+        }, DEFAULT_DOM_RENDER_TIMEOUT_MS); // selectionStart will be 0 before DOM rendered
       }, false);
 
       // Only update table if input is valid or using arrow keys
       inputField.addEventListener('keyup', (event) => {
-        if (event.keyCode === 229) {
+        if (event.keyCode === ANDROID_KEYCODE_229) {
           return; // workaround for Android specific code, no event.key equivalent
         }
 

@@ -368,7 +368,7 @@ export default class CrosswordCell {
     this.cell.classList.remove('h5p-crossword-solution-neutral');
 
     if (state) {
-      const className = 'h5p-crossword-solution' + ((state) ? `-${state}` : '');
+      const className = `h5p-crossword-solution${  (state) ? `-${state}` : ''}`;
       this.cell.classList.add(className);
     }
   }
@@ -435,7 +435,7 @@ export default class CrosswordCell {
       return;
     }
 
-    const className = 'h5p-crossword-highlight' + ((type) ? `-${type}` : '');
+    const className = `h5p-crossword-highlight${  (type) ? `-${type}` : ''}`;
     this.cell.classList.add(className);
   }
 
@@ -449,7 +449,7 @@ export default class CrosswordCell {
       this.cell.classList.remove('h5p-crossword-highlight-focus');
     }
     else {
-      const className = 'h5p-crossword-highlight' + ((type) ? `-${type}` : '');
+      const className = `h5p-crossword-highlight${  (type) ? `-${type}` : ''}`;
       this.cell.classList.remove(className);
     }
   }
