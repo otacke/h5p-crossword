@@ -93,43 +93,35 @@
         },
         {
           "label": "Bakgrunnsfarge",
-          "description": "Velg en bakgrunnsfarge. Fargen vil bli brukt i stedet for bakgrunnsbilde, eller som bakgrunn for transparente områder.",
-          "default": "#173354"
+          "description": "Velg en bakgrunnsfarge. Fargen vil bli brukt i stedet for bakgrunnsbilde, eller som bakgrunn for transparente områder."
         },
         {
           "label": "Rutenett-farge",
-          "description": "Velg en farge for rutenettet.",
-          "default": "#000000"
+          "description": "Velg en farge for rutenettet."
         },
         {
           "label": "Bakgrunnsfarge for bokstavruter",
-          "description": "Velg en bakgrunnsfarge for rutene som kan huse bokstaver.",
-          "default": "#ffffff"
+          "description": "Velg en bakgrunnsfarge for rutene som kan huse bokstaver."
         },
         {
           "label": "Skriftfarge i bokstavrutene",
-          "description": "Velg en skriftfarge for rutene som kan huse bokstaver.",
-          "default": "#000000"
+          "description": "Velg en skriftfarge for rutene som kan huse bokstaver."
         },
         {
           "label": "Farge på hint-id",
-          "description": "Velg fargen på hint-id-en i bokstavrutene.",
-          "default": "#606060"
+          "description": "Velg fargen på hint-id-en i bokstavrutene."
         },
         {
           "label": "Bakgrunnsfarge for valgt rute",
-          "description": "Velg bakgrunnsfargen for ei bokstavrute som er valgt og framheva.",
-          "default": "#3e8de8"
+          "description": "Velg bakgrunnsfargen for ei bokstavrute som er valgt og framheva."
         },
         {
           "label": "Tekstfarge for valgt rute",
-          "description": "Velg skriftfargen i ei boktavrute som er valgt og fremheva.",
-          "default": "#ffffff"
+          "description": "Velg skriftfargen i ei boktavrute som er valgt og fremheva."
         },
         {
           "label": "Id-farge ved valgt rute",
-          "description": "Velg id-fargen ved ei bokstavrute som er valgt og fremheva.",
-          "default": "#e0e0e0"
+          "description": "Velg id-fargen ved ei bokstavrute som er valgt og fremheva."
         }
       ]
     },

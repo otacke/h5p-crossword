@@ -93,43 +93,35 @@
         },
         {
           "label": "Couleur d'arrière-plan",
-          "description": "Choisir une couleur d'arrière-plan. Elle sera utilisée soit pour remplacer l'image de fond ou comme arrière-plan pour les zones transparentes.",
-          "default": "#173354"
+          "description": "Choisir une couleur d'arrière-plan. Elle sera utilisée soit pour remplacer l'image de fond ou comme arrière-plan pour les zones transparentes."
         },
         {
           "label": "Couleur de la grille",
-          "description": "Choisir une couleur pour la grille.",
-          "default": "#000000"
+          "description": "Choisir une couleur pour la grille."
         },
         {
           "label": "Couleur d'arrière-plan de la cellule",
-          "description": "Choisir la couleur d'arrière-plan d'une cellule du tableau.",
-          "default": "#ffffff"
+          "description": "Choisir la couleur d'arrière-plan d'une cellule du tableau."
         },
         {
           "label": "Couleur du texte de la cellule",
-          "description": "Choisir la couleur du texte d'une cellule du tableau.",
-          "default": "#000000"
+          "description": "Choisir la couleur du texte d'une cellule du tableau."
         },
         {
           "label": "Couleur des indices numériques",
-          "description": "Choisir la couleur des indices numériques dans les cellules du tableau.",
-          "default": "#606060"
+          "description": "Choisir la couleur des indices numériques dans les cellules du tableau."
         },
         {
           "label": "Couleur de fond des cellules sélectionnées",
-          "description": "Choisir la couleur de fond pour une cellule qui est sélectionnée.",
-          "default": "#3e8de8"
+          "description": "Choisir la couleur de fond pour une cellule qui est sélectionnée."
         },
         {
           "label": "Couleur du texte d'une cellule (sélectionnée)",
-          "description": "Choisir la couleur du texte d'une cellule quand elle est sélectionnée.",
-          "default": "#ffffff"
+          "description": "Choisir la couleur du texte d'une cellule quand elle est sélectionnée."
         },
         {
           "label": "Couleur des indices numériques des cellules sélectionnées",
-          "description": "Choisir la couleur des indices numériques dans les cellules des cellules sélectionnées.",
-          "default": "#e0e0e0"
+          "description": "Choisir la couleur des indices numériques dans les cellules des cellules sélectionnées."
         }
       ]
     },

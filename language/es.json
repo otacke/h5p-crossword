@@ -93,43 +93,35 @@
         },
         {
           "label": "Color del fondo",
-          "description": "Elije un color de fondo. Se usará, en lugar de una imagen de fondo o como fondo para las áreas transparentes.",
-          "default": "#173354"
+          "description": "Elije un color de fondo. Se usará, en lugar de una imagen de fondo o como fondo para las áreas transparentes."
         },
         {
           "label": "Color de rejilla",
-          "description": "Elije un color para la rejilla.",
-          "default": "#000000"
+          "description": "Elije un color para la rejilla."
         },
         {
           "label": "Color del fondo de celda",
-          "description": "Elija el color del fondo para una celda de la tabla.",
-          "default": "#ffffff"
+          "description": "Elija el color del fondo para una celda de la tabla."
         },
         {
           "label": "Color del texto de la celda",
-          "description": "Elije el color del texto para una celda de la tabla.",
-          "default": "#000000"
+          "description": "Elije el color del texto para una celda de la tabla."
         },
         {
           "label": "Color de ID de pista",
-          "description": "Elije el color de la ID de pista dentro de una celda de tabla.",
-          "default": "#606060"
+          "description": "Elije el color de la ID de pista dentro de una celda de tabla."
         },
         {
           "label": "Color del fondo de la celda (resaltada)",
-          "description": "Elije el color del fondo para una celda de tabla que está resaltada.",
-          "default": "#3e8de8"
+          "description": "Elije el color del fondo para una celda de tabla que está resaltada."
         },
         {
           "label": "Color del texto de celda (resaltada)",
-          "description": "Elije el color del texto para una celda de tabla que está resaltada.",
-          "default": "#ffffff"
+          "description": "Elije el color del texto para una celda de tabla que está resaltada."
         },
         {
           "label": "Color de ID de celda (resaltada)",
-          "description": "Elije el color de la ID de pista dentro de una celda de tabla que está resaltada.",
-          "default": "#e0e0e0"
+          "description": "Elije el color de la ID de pista dentro de una celda de tabla que está resaltada."
         }
       ]
     },

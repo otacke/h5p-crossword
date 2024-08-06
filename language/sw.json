@@ -93,43 +93,35 @@
         },
         {
           "label": "Rangi ya Mandharinyuma",
-          "description": "Chagua rangi ya mandharinyuma. Itatumika badala ya picha ya mandharinyuma au kama mandharinyuma kwa maeneo yenye uwazi.",
-          "default": "#173354"
+          "description": "Chagua rangi ya mandharinyuma. Itatumika badala ya picha ya mandharinyuma au kama mandharinyuma kwa maeneo yenye uwazi."
         },
         {
           "label": "Rangi ya gridi",
-          "description": "Chagua rangi kwa gridi hiyo.",
-          "default": "#000000"
+          "description": "Chagua rangi kwa gridi hiyo."
         },
         {
           "label": "Rangi ya mandharinyuma wa seli",
-          "description": "Chagua rangi ya mandharinyuma kwa seli ya jedwali.",
-          "default": "#ffffff"
+          "description": "Chagua rangi ya mandharinyuma kwa seli ya jedwali."
         },
         {
           "label": "Rangi ya maandishi ya seli",
-          "description": "Chagua rangi ya maandishi kwa seli ya jedwali.",
-          "default": "#000000"
+          "description": "Chagua rangi ya maandishi kwa seli ya jedwali."
         },
         {
           "label": "Rangi ya kitambulisho cha kidokezo",
-          "description": "Chagua rangi ya kitambulisho cha kidokezo ndani ya seli ya jedwali.",
-          "default": "#606060"
+          "description": "Chagua rangi ya kitambulisho cha kidokezo ndani ya seli ya jedwali."
         },
         {
           "label": "Rangi ya mandharinyuma ya seli (imeangaziwa)",
-          "description": "Chagua rangi ya mandharinyuma kwa kisanduku cha jedwali ambacho kimeangaziwa.",
-          "default": "#3e8de8"
+          "description": "Chagua rangi ya mandharinyuma kwa kisanduku cha jedwali ambacho kimeangaziwa."
         },
         {
           "label": "Rangi ya maandishi ya seli (iliyoangaziwa)",
-          "description": "Chagua rangi ya maandishi kwa seli ya jedwali ambayo imeangaziwa.",
-          "default": "#ffffff"
+          "description": "Chagua rangi ya maandishi kwa seli ya jedwali ambayo imeangaziwa."
         },
         {
           "label": "Rangi ya kitambulisho cha seli (kilichoangaziwa)",
-          "description": "Chagua rangi ya kitambulisho cha kidokezo ndani ya seli ya jedwali ambacho kimeangaziwa.",
-          "default": "#e0e0e0"
+          "description": "Chagua rangi ya kitambulisho cha kidokezo ndani ya seli ya jedwali ambacho kimeangaziwa."
         }
       ]
     },

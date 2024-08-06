@@ -93,43 +93,35 @@
         },
         {
           "label": "Barva ozadja",
-          "description": "Izbira barvne sheme ozadja. Barva lahko nadomesti sliko ozadja ali prosojna območja.",
-          "default": "#006a8e"
+          "description": "Izbira barvne sheme ozadja. Barva lahko nadomesti sliko ozadja ali prosojna območja."
         },
         {
           "label": "Barva mreže",
-          "description": "Izbira barvne sheme obrob mreže.",
-          "default": "#000000"
+          "description": "Izbira barvne sheme obrob mreže."
         },
         {
           "label": "Barva ozadja celice",
-          "description": "Izbira barvne sheme ozadja celic na mreži.",
-          "default": "#ffffff"
+          "description": "Izbira barvne sheme ozadja celic na mreži."
         },
         {
           "label": "Barva besedila celice",
-          "description": "Izbira barvne sheme besedila v celicah.",
-          "default": "#000000"
+          "description": "Izbira barvne sheme besedila v celicah."
         },
         {
           "label": "Barva številke namiga",
-          "description": "Izbira barvne sheme za številko namiga v celicah.",
-          "default": "#606060"
+          "description": "Izbira barvne sheme za številko namiga v celicah."
         },
         {
           "label": "Barva ozadja poudarjene celice",
-          "description": "Izbira barvne sheme ozadja za poudarjene celice na mreži.",
-          "default": "#3e8de8"
+          "description": "Izbira barvne sheme ozadja za poudarjene celice na mreži."
         },
         {
           "label": "Barva besedila poudarjene celice",
-          "description": "Izbira barvne sheme besedila v poudarjenih celicah.",
-          "default": "#ffffff"
+          "description": "Izbira barvne sheme besedila v poudarjenih celicah."
         },
         {
           "label": "Barva številke poudarjenega namiga",
-          "description": "Izbira barvne sheme za številko namiga v poudarjenih celicah.",
-          "default": "#e0e0e0"
+          "description": "Izbira barvne sheme za številko namiga v poudarjenih celicah."
         }
       ]
     },

@@ -93,43 +93,35 @@
         },
         {
           "label": "Atzeko planoko kolorea",
-          "description": "Aukeratu ezazu atzeko planorako kolore bat. Atzeko planoko irudiaren ordez edo eremu gardenetako atzeko planorako erabiliko da.",
-          "default": "#173354"
+          "description": "Aukeratu ezazu atzeko planorako kolore bat. Atzeko planoko irudiaren ordez edo eremu gardenetako atzeko planorako erabiliko da."
         },
         {
           "label": "Lauki-sarearen kolorea",
-          "description": "Aukeratu ezazu lauki-sarearen kolorea.",
-          "default": "#000000"
+          "description": "Aukeratu ezazu lauki-sarearen kolorea."
         },
         {
           "label": "Gelaxkaren atzeko planoaren kolorea",
-          "description": "Aukeratu ezazu taulako gelaxkaren atzeko planoaren kolorea.",
-          "default": "#ffffff"
+          "description": "Aukeratu ezazu taulako gelaxkaren atzeko planoaren kolorea."
         },
         {
           "label": "Gelaxkaren testuaren kolorea",
-          "description": "Aukeratu ezazu taulako gelaxkaren testuaren kolorea.",
-          "default": "#000000"
+          "description": "Aukeratu ezazu taulako gelaxkaren testuaren kolorea."
         },
         {
           "label": "Pistaren IDaren kolorea",
-          "description": "Aukeratu ezazu taula-gelaxkaren barruko pistaren IDaren kolorea.",
-          "default": "#606060"
+          "description": "Aukeratu ezazu taula-gelaxkaren barruko pistaren IDaren kolorea."
         },
         {
           "label": "Gelaxkaren atzeko planoko kolorea (nabarmenduta)",
-          "description": "Aukeratu ezazu taulako gelaxkaren atzeko planoko kolorea gelaxka nabarmenduta dagoenean.",
-          "default": "#3e8de8"
+          "description": "Aukeratu ezazu taulako gelaxkaren atzeko planoko kolorea gelaxka nabarmenduta dagoenean."
         },
         {
           "label": "Gelaxkaren testuaren kolorea (nabarmenduta)",
-          "description": "Aukeratu ezazu taulako gelaxkaren testuaren kolorea gelaxka nabarmenduta dagoenean.",
-          "default": "#ffffff"
+          "description": "Aukeratu ezazu taulako gelaxkaren testuaren kolorea gelaxka nabarmenduta dagoenean."
         },
         {
           "label": "Gelaxkaren IDaren kolorea (nabarmenduta)",
-          "description": "Aukeratu ezazu nabarmenduta dagoen taula-gelaxkaren barruko pistaren IDaren kolorea.",
-          "default": "#e0e0e0"
+          "description": "Aukeratu ezazu nabarmenduta dagoen taula-gelaxkaren barruko pistaren IDaren kolorea."
         }
       ]
     },

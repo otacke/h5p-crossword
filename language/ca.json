@@ -93,43 +93,35 @@
         },
         {
           "label": "Color de fons",
-          "description": "Tria un color de fons. Es farà servir en lloc de la imatge de fons o com a fons per a zones transparents.",
-          "default": "#173354"
+          "description": "Tria un color de fons. Es farà servir en lloc de la imatge de fons o com a fons per a zones transparents."
         },
         {
           "label": "Color de la graella",
-          "description": "Tria un color de fons per a la graella.",
-          "default": "#000000"
+          "description": "Tria un color de fons per a la graella."
         },
         {
           "label": "Color de fons de cel·la",
-          "description": "Tria el color de fons per a una cel·la de la taula.",
-          "default": "#ffffff"
+          "description": "Tria el color de fons per a una cel·la de la taula."
         },
         {
           "label": "Color del text de la cel·la",
-          "description": "Tria el color del text per a una cel·la de taula.",
-          "default": "#000000"
+          "description": "Tria el color del text per a una cel·la de taula."
         },
         {
           "label": "Color d’identificador de pista",
-          "description": "Tria el color de l’identificador de pista en una cel·la.",
-          "default": "#606060"
+          "description": "Tria el color de l’identificador de pista en una cel·la."
         },
         {
           "label": "Color de fons de cel·la destacada",
-          "description": "Tria el color de fons d’una cel·la destacada.",
-          "default": "#3e8de8"
+          "description": "Tria el color de fons d’una cel·la destacada."
         },
         {
           "label": "Color de text de cel·la destacada",
-          "description": "Tria el color de text d’una cel·la de taula destacada.",
-          "default": "#ffffff"
+          "description": "Tria el color de text d’una cel·la de taula destacada."
         },
         {
           "label": "Color d’identificador de cel·la destacada",
-          "description": "Tria el color d’identificador de pista en una cel·la de taula destacada.",
-          "default": "#e0e0e0"
+          "description": "Tria el color d’identificador de pista en una cel·la de taula destacada."
         }
       ]
     },

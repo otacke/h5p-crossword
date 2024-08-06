@@ -93,43 +93,35 @@
         },
         {
           "label": "Achtergrondkleur",
-          "description": "Kies een achtergrondkleur. Het wordt ofwel gebruikt in plaats van een achtergrondafbeelding, ofwel als achtergrond voor transparante gebieden.",
-          "default": "#173354"
+          "description": "Kies een achtergrondkleur. Het wordt ofwel gebruikt in plaats van een achtergrondafbeelding, ofwel als achtergrond voor transparante gebieden."
         },
         {
           "label": "Rasterkleur",
-          "description": "Kies een kleur voor het raster.",
-          "default": "#000000"
+          "description": "Kies een kleur voor het raster."
         },
         {
           "label": "Achtergrondkleur cel",
-          "description": "Kies de achtergrondkleur voor een rastercel.",
-          "default": "#ffffff"
+          "description": "Kies de achtergrondkleur voor een rastercel."
         },
         {
           "label": "Tekstkleur cel",
-          "description": "Kies de tekstkleur voor een rastercel.",
-          "default": "#000000"
+          "description": "Kies de tekstkleur voor een rastercel."
         },
         {
           "label": "Kleur voor nummer aanwijzing",
-          "description": "Kies de kleur van het aanwijzingsnummer in een rastercel.",
-          "default": "#606060"
+          "description": "Kies de kleur van het aanwijzingsnummer in een rastercel."
         },
         {
           "label": "Achtergrondkleur cel (gemarkeerd)",
-          "description": "Kies de achtergrondkleur voor een rastercel die is gemarkeerd.",
-          "default": "#3e8de8"
+          "description": "Kies de achtergrondkleur voor een rastercel die is gemarkeerd."
         },
         {
           "label": "Tekstkleur cel (gemarkeerd)",
-          "description": "Kies de tekstkleur voor een rastercel die is gemarkeerd.",
-          "default": "#ffffff"
+          "description": "Kies de tekstkleur voor een rastercel die is gemarkeerd."
         },
         {
           "label": "Kleur voor aanwijzingsnummer (gemarkeerd)",
-          "description": "Kies de kleur van het aanwijzingsnummer in een rastercel die is gemarkeerd.",
-          "default": "#e0e0e0"
+          "description": "Kies de kleur van het aanwijzingsnummer in een rastercel die is gemarkeerd."
         }
       ]
     },

@@ -93,43 +93,35 @@
         },
         {
           "label": "Bakgrunnsfarge",
-          "description": "Vel ein bakgrunnsfarge. Fargen vil bli brukt i staden for bakgrunnsbiletet, eller som bakgrunn for transparente område.",
-          "default": "#173354"
+          "description": "Vel ein bakgrunnsfarge. Fargen vil bli brukt i staden for bakgrunnsbiletet, eller som bakgrunn for transparente område."
         },
         {
           "label": "Rutenettfarge",
-          "description": "Vel ein farge for rutenettet.",
-          "default": "#000000"
+          "description": "Vel ein farge for rutenettet."
         },
         {
           "label": "Bakgrunnsfarge for boksruter",
-          "description": "Vel ein bakgrunnsfarge for rutene som kan huse bokstavar.",
-          "default": "#ffffff"
+          "description": "Vel ein bakgrunnsfarge for rutene som kan huse bokstavar."
         },
         {
           "label": "Skriftfarge i bokstavrutene",
-          "description": "Vel ein skriftfarge for rutene som kan huse bokstavar.",
-          "default": "#000000"
+          "description": "Vel ein skriftfarge for rutene som kan huse bokstavar."
         },
         {
           "label": "Farge på hint-id",
-          "description": "Vel fargen på hint-id-en i bokstavrutene.",
-          "default": "#606060"
+          "description": "Vel fargen på hint-id-en i bokstavrutene."
         },
         {
           "label": "Bakgrunnsfarge for vald rute",
-          "description": "Vel bakgrunnsfargen for ei bokstavrute som er vald og framheva.",
-          "default": "#3e8de8"
+          "description": "Vel bakgrunnsfargen for ei bokstavrute som er vald og framheva."
         },
         {
           "label": "Tekstfarge for vald rute",
-          "description": "Vel skriftfargen for ei bokstavrute som er vald og framheva.",
-          "default": "#ffffff"
+          "description": "Vel skriftfargen for ei bokstavrute som er vald og framheva."
         },
         {
           "label": "Id-farge ved vald og framheva rute",
-          "description": "Vel id-fargen ved ei bokstavrute som er vald og framheva.",
-          "default": "#e0e0e0"
+          "description": "Vel id-fargen ved ei bokstavrute som er vald og framheva."
         }
       ]
     },

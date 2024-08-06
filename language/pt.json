@@ -93,43 +93,35 @@
         },
         {
           "label": "Cor de fundo",
-          "description": "Escolha uma cor de fundo. Será usada ao invés de uma imagem de fundo ou como fundo para áreas transparentes.",
-          "default": "#173354"
+          "description": "Escolha uma cor de fundo. Será usada ao invés de uma imagem de fundo ou como fundo para áreas transparentes."
         },
         {
           "label": "Cor da grade",
-          "description": "Escolha uma cor para a grade.",
-          "default": "#000000"
+          "description": "Escolha uma cor para a grade."
         },
         {
           "label": "Cor de fundo da célula",
-          "description": "Escolha a cor de fundo para uma célula da tabela.",
-          "default": "#ffffff"
+          "description": "Escolha a cor de fundo para uma célula da tabela."
         },
         {
           "label": "Cor do texto da célula",
-          "description": "Escolha a cor do texto para uma célula da tabela.",
-          "default": "#000000"
+          "description": "Escolha a cor do texto para uma célula da tabela."
         },
         {
           "label": "Cor de identificação da pista",
-          "description": "Escolha a cor da identificação da pista dentro de uma célula da tabela.",
-          "default": "#606060"
+          "description": "Escolha a cor da identificação da pista dentro de uma célula da tabela."
         },
         {
           "label": "Cor de fundo da célula (destacada)",
-          "description": "Escolha a cor de fundo para uma célula da tabela que é destacada.",
-          "default": "#3e8de8"
+          "description": "Escolha a cor de fundo para uma célula da tabela que é destacada."
         },
         {
           "label": "Cor do texto da célula (destacada)",
-          "description": "Escolha a cor do texto para uma célula da tabela que é destacada.",
-          "default": "#ffffff"
+          "description": "Escolha a cor do texto para uma célula da tabela que é destacada."
         },
         {
           "label": "Cor de identificação da célula (destacada)",
-          "description": "Escolha a cor da identificação da pista dentro de uma célula da tabela que é destacada.",
-          "default": "#e0e0e0"
+          "description": "Escolha a cor da identificação da pista dentro de uma célula da tabela que é destacada."
         }
       ]
     },

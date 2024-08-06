@@ -93,43 +93,35 @@
         },
         {
           "label": "Cor de fondo",
-          "description": "Escolle a cor de fondo. Usarase en lugar da imaxe de fondo ou como imaxe de fondo en zonas transparentes.",
-          "default": "#173354"
+          "description": "Escolle a cor de fondo. Usarase en lugar da imaxe de fondo ou como imaxe de fondo en zonas transparentes."
         },
         {
           "label": "Cor da grella",
-          "description": "Escolle a cor da grella.",
-          "default": "#000000"
+          "description": "Escolle a cor da grella."
         },
         {
           "label": "Cor de fondo da cela",
-          "description": "Escolle a cor de fondo para a cela dunha táboa.",
-          "default": "#ffffff"
+          "description": "Escolle a cor de fondo para a cela dunha táboa."
         },
         {
           "label": "Cor do texto da cela",
-          "description": "Escolle a cor do texto da cela dunha táboa.",
-          "default": "#000000"
+          "description": "Escolle a cor do texto da cela dunha táboa."
         },
         {
           "label": "Cor do id dunha definición",
-          "description": "Escolle a cor da id dunha definición dentro da cela dunha táboa.",
-          "default": "#606060"
+          "description": "Escolle a cor da id dunha definición dentro da cela dunha táboa."
         },
         {
           "label": "Cor do fondo dunha cela (resaltada)",
-          "description": "Escolle a cor do fondo nunha cela resaltada.",
-          "default": "#3e8de8"
+          "description": "Escolle a cor do fondo nunha cela resaltada."
         },
         {
           "label": "Cor do texto da cela (resaltada)",
-          "description": "Escolle a cor do texto nunha cela resaltada.",
-          "default": "#ffffff"
+          "description": "Escolle a cor do texto nunha cela resaltada."
         },
         {
           "label": "Cor da id da cela (resaltada)",
-          "description": "Escolle a cor da id dunha definición dentro dunha cela resaltada nunha táboa.",
-          "default": "#e0e0e0"
+          "description": "Escolle a cor da id dunha definición dentro dunha cela resaltada nunha táboa."
         }
       ]
     },

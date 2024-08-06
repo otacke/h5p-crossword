@@ -93,43 +93,35 @@
         },
         {
           "label": "배경색",
-          "description": "배경색을 선택하세요. 배경이미지 혹은 투명한 영역에 대한 배경으로 사용됩니다.",
-          "default": "#173354"
+          "description": "배경색을 선택하세요. 배경이미지 혹은 투명한 영역에 대한 배경으로 사용됩니다."
         },
         {
           "label": "격자 색",
-          "description": "격자의 색을 선택하세요.",
-          "default": "#000000"
+          "description": "격자의 색을 선택하세요."
         },
         {
           "label": "칸 배경색",
-          "description": "표의 칸 배경색을 선택하세요.",
-          "default": "#ffffff"
+          "description": "표의 칸 배경색을 선택하세요."
         },
         {
           "label": "표의 칸 글자색",
-          "description": "표의 칸 글자색을 선택하세요.",
-          "default": "#000000"
+          "description": "표의 칸 글자색을 선택하세요."
         },
         {
           "label": "낱말 힌트 아이디 색",
-          "description": "표의 칸 안에 낱말 힌트 아이디 색을 선택하세요.",
-          "default": "#606060"
+          "description": "표의 칸 안에 낱말 힌트 아이디 색을 선택하세요."
         },
         {
           "label": "표의 칸 배경색(강조됨)",
-          "description": "강조되는 표의 칸 색깔을 선택하세요.",
-          "default": "#3e8de8"
+          "description": "강조되는 표의 칸 색깔을 선택하세요."
         },
         {
           "label": "표의 칸 글자 색(강조됨)",
-          "description": "강조되는 표의 칸 문자색을 선택하세요.",
-          "default": "#ffffff"
+          "description": "강조되는 표의 칸 문자색을 선택하세요."
         },
         {
           "label": "표의 칸 아이디 색(강조됨)",
-          "description": "강조되는 표 칸안의 낱말 힌트 아이디 색을 선택하세요.",
-          "default": "#e0e0e0"
+          "description": "강조되는 표 칸안의 낱말 힌트 아이디 색을 선택하세요."
         }
       ]
     },

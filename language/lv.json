@@ -93,43 +93,35 @@
         },
         {
           "label": "Fona krāsa",
-          "description": "Izvēlieties fona krāsu. Tas tiks izmantots vai nu fona attēla vietā, vai kā fons caurspīdīgiem laukumiem.",
-          "default": "#173354"
+          "description": "Izvēlieties fona krāsu. Tas tiks izmantots vai nu fona attēla vietā, vai kā fons caurspīdīgiem laukumiem."
         },
         {
           "label": "Režģa krāsa",
-          "description": "Izvēlieties režģa krāsu.",
-          "default": "#000000"
+          "description": "Izvēlieties režģa krāsu."
         },
         {
           "label": "Šūnas fona krāsa",
-          "description": "Izvēlieties tabulas šūnas fona krāsu.",
-          "default": "#ffffff"
+          "description": "Izvēlieties tabulas šūnas fona krāsu."
         },
         {
           "label": "Šūnas teksta krāsa",
-          "description": "Izvēlieties tabulas šūnas teksta krāsu.",
-          "default": "#000000"
+          "description": "Izvēlieties tabulas šūnas teksta krāsu."
         },
         {
           "label": "Pavediena ID krāsa",
-          "description": "Izvēlieties pavediena ID krāsu tabulas šūnā.",
-          "default": "#606060"
+          "description": "Izvēlieties pavediena ID krāsu tabulas šūnā."
         },
         {
           "label": "Šūnas fona krāsa (izcelta)",
-          "description": "Izvēlieties fona krāsu izceltai tabulas šūnai.",
-          "default": "#3e8de8"
+          "description": "Izvēlieties fona krāsu izceltai tabulas šūnai."
         },
         {
           "label": "Šūnas teksta krāsa (izcelta)",
-          "description": "Izvēlieties teksta krāsu izceltai tabulas šūnai.",
-          "default": "#ffffff"
+          "description": "Izvēlieties teksta krāsu izceltai tabulas šūnai."
         },
         {
           "label": "Šūnas ID krāsa (izcelta)",
-          "description": "Izvēlieties pavediena ID krāsu iezīmētajā tabulas šūnā.",
-          "default": "#e0e0e0"
+          "description": "Izvēlieties pavediena ID krāsu iezīmētajā tabulas šūnā."
         }
       ]
     },

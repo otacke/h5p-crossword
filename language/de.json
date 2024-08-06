@@ -93,43 +93,35 @@
         },
         {
           "label": "Hintergrundfarbe",
-          "description": "Wähle eine Hintergrundfarbe. Sie wird entweder statt eines Hintergrundbildes benutzt oder dort wo das Bild transparent ist.",
-          "default": "#173354"
+          "description": "Wähle eine Hintergrundfarbe. Sie wird entweder statt eines Hintergrundbildes benutzt oder dort wo das Bild transparent ist."
         },
         {
           "label": "Gitterfarbe",
-          "description": "Wähle eine Farbe für das Gitter.",
-          "default": "#000000"
+          "description": "Wähle eine Farbe für das Gitter."
         },
         {
           "label": "Hintergrundfarbe für Zelle",
-          "description": "Wähle die Hintergrundfarbe einer Tabellenzelle.",
-          "default": "#ffffff"
+          "description": "Wähle die Hintergrundfarbe einer Tabellenzelle."
         },
         {
           "label": "Textfarbe für Zelle",
-          "description": "Wähle die Textfarbe einer Tabellenzelle.",
-          "default": "#000000"
+          "description": "Wähle die Textfarbe einer Tabellenzelle."
         },
         {
           "label": "Farbe der Hinweisnummer",
-          "description": "Wähle die Farbe der Hinweisnummer innerhalb einer Tabellenzelle.",
-          "default": "#606060"
+          "description": "Wähle die Farbe der Hinweisnummer innerhalb einer Tabellenzelle."
         },
         {
           "label": "Hintergrundfarbe für Zelle (ausgewählt)",
-          "description": "Wähle die Hintergrundfarbe einer ausgewählten Tabellenzelle.",
-          "default": "#3e8de8"
+          "description": "Wähle die Hintergrundfarbe einer ausgewählten Tabellenzelle."
         },
         {
           "label": "Textfarbe für Zelle (ausgewählt)",
-          "description": "Wähle die Textfarbe einer ausgewählten Tabellenzelle.",
-          "default": "#ffffff"
+          "description": "Wähle die Textfarbe einer ausgewählten Tabellenzelle."
         },
         {
           "label": "Farbe der Hinweisnummer (ausgewählt)",
-          "description": "Wähle die Farbe der Hinweisnummer innerhalb einer ausgewählten Tabellenzelle.",
-          "default": "#e0e0e0"
+          "description": "Wähle die Farbe der Hinweisnummer innerhalb einer ausgewählten Tabellenzelle."
         }
       ]
     },

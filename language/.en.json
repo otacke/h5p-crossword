@@ -93,43 +93,35 @@
         },
         {
           "label": "Background color",
-          "description": "Choose a background color. It will either be used instead of a background image or as background for transparent areas.",
-          "default": "#173354"
+          "description": "Choose a background color. It will either be used instead of a background image or as background for transparent areas."
         },
         {
           "label": "Grid color",
-          "description": "Choose a color for the grid.",
-          "default": "#000000"
+          "description": "Choose a color for the grid."
         },
         {
           "label": "Cell background color",
-          "description": "Choose the background color for a table cell.",
-          "default": "#ffffff"
+          "description": "Choose the background color for a table cell."
         },
         {
           "label": "Cell text color",
-          "description": "Choose the text color for a table cell.",
-          "default": "#000000"
+          "description": "Choose the text color for a table cell."
         },
         {
           "label": "Clue id color",
-          "description": "Choose the color of the clue id inside a table cell.",
-          "default": "#606060"
+          "description": "Choose the color of the clue id inside a table cell."
         },
         {
           "label": "Cell background color (highlighted)",
-          "description": "Choose the background color for a table cell that is highlighted.",
-          "default": "#3e8de8"
+          "description": "Choose the background color for a table cell that is highlighted."
         },
         {
           "label": "Cell text color (highlighted)",
-          "description": "Choose the text color for a table cell that is highlighted.",
-          "default": "#ffffff"
+          "description": "Choose the text color for a table cell that is highlighted."
         },
         {
           "label": "Cell id color (highlighted)",
-          "description": "Choose the color of the clue id inside a table cell that is highlighted.",
-          "default": "#e0e0e0"
+          "description": "Choose the color of the clue id inside a table cell that is highlighted."
         }
       ]
     },
@@ -293,7 +285,7 @@
         {
           "label": "Your result",
           "description": "@score and @total are variables and will be replaced by their respective values.",
-          "default": "You got @score out of @total points."
+          "default": "You got @score out of @total points"
         }
       ]
     }

@@ -93,43 +93,35 @@
         },
         {
           "label": "Fono spalva",
-          "description": "Choose a background color. It will either be used instead of a background image or as background for transparent areas.",
-          "default": "#173354"
+          "description": "Choose a background color. It will either be used instead of a background image or as background for transparent areas."
         },
         {
           "label": "Tinklelio spalva",
-          "description": "Pasirinkite tinklelio spalvą.",
-          "default": "#000000"
+          "description": "Pasirinkite tinklelio spalvą."
         },
         {
           "label": "Langelio fono spalva",
-          "description": "Pasirinkite lentelės langelio fono spalvą.",
-          "default": "#ffffff"
+          "description": "Pasirinkite lentelės langelio fono spalvą."
         },
         {
           "label": "Langelio teksto spalva",
-          "description": "Pasirinkite lentelės langelio teksto spalvą.",
-          "default": "#000000"
+          "description": "Pasirinkite lentelės langelio teksto spalvą."
         },
         {
           "label": "Užuominos id spalva",
-          "description": "Pasirinkite užuominos ID spalvą lentelės langelyje.",
-          "default": "#606060"
+          "description": "Pasirinkite užuominos ID spalvą lentelės langelyje."
         },
         {
           "label": "Langelio fono spalva (paryškinta)",
-          "description": "Pasirinkite paryškinto lentelės langelio fono spalvą.",
-          "default": "#3e8de8"
+          "description": "Pasirinkite paryškinto lentelės langelio fono spalvą."
         },
         {
           "label": "Langelio teksto spalva (paryškinta)",
-          "description": "Pasirinkite paryškinto lentelės langelio teksto spalvą.",
-          "default": "#ffffff"
+          "description": "Pasirinkite paryškinto lentelės langelio teksto spalvą."
         },
         {
           "label": "Langelio ID spalva (paryškinta)",
-          "description": "Choose the color of the clue id inside a table cell that is highlighted.",
-          "default": "#e0e0e0"
+          "description": "Choose the color of the clue id inside a table cell that is highlighted."
         }
       ]
     },
