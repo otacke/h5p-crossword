@@ -217,11 +217,19 @@ class Util {
   }
 
   /**
+   * Test whether OS is Windows.
+   * @returns {boolean} True if the OS is Windows, else false
+   */
+  static isWindows() {
+    return navigator.userAgent.toLowerCase().includes('windows');
+  }
+
+  /**
    * Test whether OS is MacOS.
    * @returns {boolean} True if the OS is MacOS, else false.
    */
   static isMacOS() {
-    return navigator.userAgent.includes('Mac OS');
+    return navigator.userAgent.toLowerCase().includes('mac os');
   }
 }
 

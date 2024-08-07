@@ -684,12 +684,15 @@ export default class CrosswordInput {
 
     // Reduce width of wrapper by scrollbar width
     if (Util.isSafari()) {
+      // Safari always hides scrollbar
       this.content.style.setProperty('--scrollbar-width', '7px');
     }
     else if (Util.isChrome() && Util.isMacOS()) {
+      // Chrome on MacOS hides scrollbar
       this.content.style.setProperty('--scrollbar-width', '16px');
     }
-    else if (Util.isFirefox()) {
+    else if (Util.isFirefox() && !Util.isWindows()) {
+      // Firefox hides scrollbar except on Windows
       this.content.style.setProperty('--scrollbar-width', '12px');
     }
     else {
