@@ -34,17 +34,21 @@ export default class CrosswordInput {
     this.content = document.createElement('div');
     this.content.classList.add('h5p-crossword-input-container');
 
+    const safariFirefoxWapper = document.createElement('div');
+    safariFirefoxWapper.classList.add('h5p-crossword-safari-firefox-wrapper');
+    this.content.appendChild(safariFirefoxWapper);
+
     const fieldsAcross = this.buildInputFieldsGroup({
       words: this.params.words.filter((word) => word.orientation === 'across'),
       title: params.l10n.across
     });
-    this.content.appendChild(fieldsAcross);
+    safariFirefoxWapper.appendChild(fieldsAcross);
 
     const fieldsDown = this.buildInputFieldsGroup({
       words: this.params.words.filter((word) => word.orientation === 'down'),
       title: params.l10n.down
     });
-    this.content.appendChild(fieldsDown);
+    safariFirefoxWapper.appendChild(fieldsDown);
 
     this.overlay = new Overlay(
       {
@@ -646,9 +650,12 @@ export default class CrosswordInput {
    */
   resize(params = {}) {
     if (params.height) {
-      this.content.style.setProperty('--h5p-crossword-input-container-height', `${params.height}px`);
-      this.content.classList.toggle(
-        'has-scrollbar', this.content.scrollHeight > this.content.clientHeight
+      this.content.style.setProperty(
+        '--h5p-crossword-input-container-height', `${params.height}px`
+      );
+
+      this.compensateForScrollbar(
+        this.content.scrollHeight > this.content.clientHeight
       );
     }
 
@@ -656,6 +663,38 @@ export default class CrosswordInput {
       this.extraClueInstance.trigger('resize');
     }
     this.overlay.resize();
+  }
+
+  /*
+   * Browsers handle scrollbars differently :-/
+   * Firefox, Safari and Chrome on MacOS do not (fully) reduce the width of
+   * the inner container when a scrollbar is present, but only let it appear
+   * when interacted with and put it on top of the content.
+   * Looks slick, but I wonder where this would be the expected outcome.
+   * Worked around here. Not using CSS, because it cannot reliably detect
+   * Safari in all its versions and I wanted to keep the logic in one place.
+   */
+  compensateForScrollbar(hasScrollbar) {
+    this.content.classList.toggle('has-scrollbar', hasScrollbar);
+
+    if (!hasScrollbar) {
+      this.content.style.removeProperty('--scrollbar-width');
+      return;
+    }
+
+    // Reduce width of wrapper by scrollbar width
+    if (Util.isSafari()) {
+      this.content.style.setProperty('--scrollbar-width', '7px');
+    }
+    else if (Util.isChrome() && Util.isMacOS()) {
+      this.content.style.setProperty('--scrollbar-width', '16px');
+    }
+    else if (Util.isFirefox()) {
+      this.content.style.setProperty('--scrollbar-width', '12px');
+    }
+    else {
+      this.content.style.removeProperty('--scrollbar-width');
+    }
   }
 
   /**

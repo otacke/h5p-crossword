@@ -247,6 +247,7 @@
   }
 
   .h5p-crossword-input-container {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     height: var(--h5p-crossword-input-container-height);
@@ -256,6 +257,11 @@
     &.has-scrollbar {
       padding-right: 1rem;
     }
+  }
+
+  .h5p-crossword-safari-firefox-wrapper {
+    box-sizing: border-box;
+    width: calc(100% - var(--scrollbar-width, 0px));
   }
 
   .h5p-crossword-input-fields-group {

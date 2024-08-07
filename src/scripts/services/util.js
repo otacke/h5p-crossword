@@ -189,6 +189,40 @@ class Util {
   static isControlKey(event = {}) {
     return Util.CONTROL_KEY_VALUES.includes(event.key);
   }
+
+  /**
+   * Test whether current browser is Safari.
+   * @returns {boolean} True if the browser is Safari, else false.
+   */
+  static isSafari() {
+    return /WebKit/.test(navigator.userAgent) &&
+      !/Chrome/.test(navigator.userAgent) &&
+      !/CriOS/.test(navigator.userAgent);
+  };
+
+  /**
+   * Test whether current browser is Chrome.
+   * @returns {boolean} True if the browser is Chrome, else false.
+   */
+  static isChrome() {
+    return !!window.chrome;
+  }
+
+  /**
+   * Test whether current browser is Firefox.
+   * @returns {boolean} True if the browser is Firefox, else false.
+   */
+  static isFirefox() {
+    return navigator.userAgent.toLowerCase().includes('firefox');
+  }
+
+  /**
+   * Test whether OS is MacOS.
+   * @returns {boolean} True if the OS is MacOS, else false.
+   */
+  static isMacOS() {
+    return navigator.userAgent.includes('Mac OS');
+  }
 }
 
 /** @constant {string[]} KeyEventListener key values of control symbols */
