@@ -677,7 +677,10 @@ export default class CrosswordInput {
   compensateForScrollbar(hasScrollbar) {
     this.content.classList.toggle('has-scrollbar', hasScrollbar);
 
-    if (!hasScrollbar) {
+    this.browserHidesScrollbar =
+      this.browserHidesScrollbar ?? Util.browserHidesScrollbar();
+
+    if (!hasScrollbar || !this.browserHidesScrollbar) {
       this.content.style.removeProperty('--scrollbar-width');
       return;
     }
