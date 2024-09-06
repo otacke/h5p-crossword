@@ -45,9 +45,15 @@ export default class CrosswordGenerator {
         return newWord;
       });
 
-    // This is an index of the positions of the char in the crossword (so we know where we can potentially place words)
-    // example {'a' : [{'row' : 10, 'column' : 5}, {'row' : 62, 'column' :17}], {'row' : 54, 'column' : 12}], 'b' : [{'row' : 3, 'column' : 13}]}
-    // where the two item arrays are the row and column of where the letter occurs
+    /*
+     * This is an index of the positions of the char in the crossword (so we know where we can potentially place words)
+     * example
+     * {
+     *   'a' : [{'row' : 10, 'column' : 5}, {'row' : 62, 'column' :17}], {'row' : 54, 'column' : 12}],
+     *   'b' : [{'row' : 3, 'column' : 13}]
+     * }
+     * where the two item arrays are the row and column of where the letter occurs
+     */
     this.indexChar = {};
 
     // these words are the words that can't be placed on the crossword
@@ -105,7 +111,9 @@ export default class CrosswordGenerator {
       if (presets.length > 0) {
         // Place all presets
         presets.forEach((preset) => {
-          if (this.canPlaceAnswerAt(preset.answer, { row: preset.row, column: preset.column, orientation: preset.orientation }) !== false) {
+          if (this.canPlaceAnswerAt(
+            preset.answer, { row: preset.row, column: preset.column, orientation: preset.orientation }
+          ) !== false) {
             this.placeAnswerAt(
               preset,
               { row: preset.row, column: preset.column, orientation: preset.orientation }
@@ -144,7 +152,9 @@ export default class CrosswordGenerator {
           row -= Math.floor(wordElement.answer.length / 2); // eslint-disable-line no-magic-numbers
         }
 
-        if (this.canPlaceAnswerAt(wordElement.answer, { row: row, column: column, orientation: startOrientation }) !== false) {
+        if (this.canPlaceAnswerAt(
+          wordElement.answer, { row: row, column: column, orientation: startOrientation }
+        ) !== false) {
           this.placeAnswerAt(
             wordElement,
             { row: row, column: column, orientation: startOrientation }
@@ -359,7 +369,10 @@ export default class CrosswordGenerator {
    * @returns {boolean} True, if word can be placed.
    */
   canPlaceAnswerAt(answer, position) {
-    if (position.row < 0 || position.row >= this.cells.length || position.column < 0 || position.column >= this.cells[position.row].length) {
+    if (
+      position.row < 0 || position.row >= this.cells.length ||
+      position.column < 0 || position.column >= this.cells[position.row].length
+    ) {
       return false; // out of bounds
     }
 
@@ -386,25 +399,42 @@ export default class CrosswordGenerator {
         return false; // can't have a word directly to the left
       }
 
-      if (position.column + answer.length < this.cells[position.row].length && this.cells[position.row][position.column + answer.length] !== null) {
+      if (
+        position.column + answer.length < this.cells[position.row].length &&
+        this.cells[position.row][position.column + answer.length] !== null
+      ) {
         return false; // can't have word directly to the right
       }
 
       // check the row above to make sure there isn't another word
       // running parallel. It is ok if there is a character above, only if
       // the character below it intersects with the current word
-      for (let row = position.row - 1, column = position.column, i = 0; row >= 0 && column < position.column + answer.length; column++, i++) {
+      for (
+        let row = position.row - 1, column = position.column, i = 0;
+        row >= 0 && column < position.column + answer.length;
+        column++, i++
+      ) {
         const isEmpty = (this.cells[row][column] === null);
-        const isIntersection = this.cells[position.row][column] !== null && this.cells[position.row][column].char === answer.charAt(i);
+        const isIntersection =
+          this.cells[position.row][column] !== null &&
+          this.cells[position.row][column].char === answer.charAt(i);
+
         if (!isEmpty && !isIntersection) {
           return false;
         }
       }
 
       // same deal as above, we just search in the row below the word
-      for (let r = position.row + 1, c = position.column, i = 0; r < this.cells.length && c < position.column + answer.length; c++, i++) {
+      for (
+        let r = position.row + 1, c = position.column, i = 0;
+        r < this.cells.length && c < position.column + answer.length;
+        c++, i++
+      ) {
         const isEmpty = (this.cells[r][c] === null);
-        const isIntersection = this.cells[position.row][c] !== null && this.cells[position.row][c].char === answer.charAt(i);
+        const isIntersection =
+          this.cells[position.row][c] !== null &&
+          this.cells[position.row][c].char === answer.charAt(i);
+
         if (!isEmpty && !isIntersection) {
           return false;
         }
@@ -442,7 +472,10 @@ export default class CrosswordGenerator {
         return false; // can't have a word directly above
       }
 
-      if (position.row + answer.length < this.cells.length && this.cells[position.row + answer.length][position.column] !== null) {
+      if (
+        position.row + answer.length < this.cells.length &&
+        this.cells[position.row + answer.length][position.column] !== null
+      ) {
         return false; // can't have a word directly below
       }
 
@@ -450,20 +483,37 @@ export default class CrosswordGenerator {
       // word running parallel. It is ok if there is a character to the
       // left, only if the character to the right intersects with the
       // current word
-      for (let column = position.column - 1, row = position.row, i = 0; column >= 0 && row < position.row + answer.length; row++, i++) {
+      for (
+        let column = position.column - 1, row = position.row, i = 0;
+        column >= 0 && row < position.row + answer.length; row++,
+        i++
+      ) {
         const isEmpty = this.cells[row][column] === null;
-        const isIntersection = this.cells[row][position.column] !== null && this.cells[row][position.column].char === answer.charAt(i);
+
+        const isIntersection =
+          this.cells[row][position.column] !== null &&
+          this.cells[row][position.column].char === answer.charAt(i);
+
         const can_place_here = isEmpty || isIntersection;
+
         if (!can_place_here) {
           return false;
         }
       }
 
       // same deal, but look at the column to the right
-      for (let column = position.column + 1, row = position.row, i = 0; row < position.row + answer.length && column < this.cells[row].length; row++, i++) {
+      for (
+        let column = position.column + 1, row = position.row, i = 0;
+        row < position.row + answer.length && column < this.cells[row].length;
+        row++, i++
+      ) {
         const isEmpty = this.cells[row][column] === null;
-        const isIntersection = this.cells[row][position.column] !== null && this.cells[row][position.column].char === answer.charAt(i);
+
+        const isIntersection = this.cells[row][position.column] !== null &&
+          this.cells[row][position.column].char === answer.charAt(i);
+
         const can_place_here = isEmpty || isIntersection;
+
         if (!can_place_here) {
           return false;
         }
@@ -505,8 +555,12 @@ export default class CrosswordGenerator {
         const row = point.row;
         const column = point.column;
         // the c - i, and r - i here compensate for the offset of character in the answer
-        const intersectionsAcross = this.canPlaceAnswerAt(answer, { row: row, column: column - i, orientation: 'across' });
-        const intersectionsDown = this.canPlaceAnswerAt(answer, { row: row - i, column: column, orientation: 'down' });
+        const intersectionsAcross = this.canPlaceAnswerAt(
+          answer, { row: row, column: column - i, orientation: 'across' }
+        );
+        const intersectionsDown = this.canPlaceAnswerAt(
+          answer, { row: row - i, column: column, orientation: 'down' }
+        );
 
         if (intersectionsAcross !== false) {
           bestPositions.push({

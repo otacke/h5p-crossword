@@ -295,7 +295,9 @@ export default class CrosswordTable {
         }
 
         // Try to find random cell that contains char looked for and has not been used
-        const candidateCells = Util.shuffleArray(cells.filter((cell) => cell.getSolution() === character && result.indexOf(cell) === -1));
+        const candidateCells = Util.shuffleArray(
+          cells.filter((cell) => cell.getSolution() === character && result.indexOf(cell) === -1)
+        );
         if (candidateCells.length === 0) {
           canHaveSolutionWord = false;
           return;
@@ -437,7 +439,9 @@ export default class CrosswordTable {
     // If cell at position is a crossection, retrieve complete answer for corresponding word
     const invertedClueId = this.cells[position.row][position.column].getClueId(invertedOrientation);
     if (invertedClueId) {
-      const invertedCells = [].concat(...this.cells).filter((cell) => cell.getClueId(invertedOrientation) === invertedClueId);
+      const invertedCells = [].concat(...this.cells)
+        .filter((cell) => cell.getClueId(invertedOrientation) === invertedClueId);
+
       const invertedText = invertedCells
         .reduce((result, current) => {
           return result + (current.answer || ' ');
@@ -593,10 +597,17 @@ export default class CrosswordTable {
     }
 
     // Check for possible orientations
-    const left = position.column > 0 && this.cells[position.row][position.column - 1].getSolution();
-    const right = position.column < this.params.dimensions.columns - 1 && this.cells[position.row][position.column + 1].getSolution();
-    const up = position.row > 0 && this.cells[position.row - 1][position.column].getSolution();
-    const down = position.row < this.params.dimensions.rows - 1 && this.cells[position.row + 1][position.column].getSolution();
+    const left = position.column > 0 &&
+      this.cells[position.row][position.column - 1].getSolution();
+
+    const right = position.column < this.params.dimensions.columns - 1 &&
+      this.cells[position.row][position.column + 1].getSolution();
+
+    const up = position.row > 0 &&
+      this.cells[position.row - 1][position.column].getSolution();
+
+    const down = position.row < this.params.dimensions.rows - 1 &&
+      this.cells[position.row + 1][position.column].getSolution();
 
     if (orientation === 'across' && !left && !right) {
       orientation = 'down';
@@ -665,7 +676,11 @@ export default class CrosswordTable {
       if (!cell.getClueId('across')) {
         this.setcurrentOrientation('down', position);
       }
-      else if (this.currentPosition.row === position.row && this.currentPosition.column === position.column && this.currentOrientation === 'across') {
+      else if (
+        this.currentPosition.row === position.row &&
+        this.currentPosition.column === position.column &&
+        this.currentOrientation === 'across'
+      ) {
         this.setcurrentOrientation('down', position);
       }
       else {
@@ -697,7 +712,13 @@ export default class CrosswordTable {
       return;
     }
 
-    if (event.relatedTarget && (event.relatedTarget.classList.contains('h5p-crossword-cell') || event.relatedTarget.classList.contains('h5p-crossword-cell-content'))) {
+    if (
+      event.relatedTarget &&
+      (
+        event.relatedTarget.classList.contains('h5p-crossword-cell') ||
+        event.relatedTarget.classList.contains('h5p-crossword-cell-content')
+      )
+    ) {
       return; // Focus already handled by click/key listeners.
     }
 
@@ -812,7 +833,9 @@ export default class CrosswordTable {
       return;
     }
 
-    const wordElement = this.params.words.filter((word) => word.clueId === clueId && word.orientation === orientation)[0];
+    const wordElement = this.params.words.filter(
+      (word) => word.clueId === clueId && word.orientation === orientation
+    )[0];
 
     [].concat(...this.cells)
       .filter((cell) => cell.getClueId(orientation) === clueId)
@@ -842,7 +865,10 @@ export default class CrosswordTable {
   buildAriaLabel(params) {
     const gridPosition = `${this.params.a11y.row} ${params.row + 1}, ${this.params.a11y.column} ${params.column + 1}`;
     const clue = `${params.clueId} ${this.params.a11y[params.orientation]}. ${params.clue}`;
-    const wordPosition = `${this.params.a11y.letterSevenOfNine.replace('@position', params.position + 1).replace('@length', params.length)}`;
+
+    const wordPosition = this.params.a11y.letterSevenOfNine
+      .replace('@position', params.position + 1)
+      .replace('@length', params.length);
 
     return `${gridPosition}. ${clue}, ${wordPosition}.`;
   }
@@ -1059,7 +1085,8 @@ export default class CrosswordTable {
     return this.params.words
       .map((word) => {
         // The below replaceAll makes sure we don't get any unwanted XAPI_PLACEHOLDERs in the description:
-        const clue = `${word.clueId} ${this.params.l10n[word.orientation]}: ${word.clue.replaceAll(/_{10,}/gi, '_________')}`;
+        const clue =
+          `${word.clueId} ${this.params.l10n[word.orientation]}: ${word.clue.replaceAll(/_{10,}/gi, '_________')}`;
 
         const placeholders = [];
         if (this.params.scoreWords) {

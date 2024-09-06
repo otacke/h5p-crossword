@@ -10,7 +10,9 @@ export default class CrosswordSolutionWord {
    */
   constructor(params = {}) {
     this.solutionWord = Util.toUpperCase(params.solutionWord.replace(/\s/g, ''), Util.UPPERCASE_EXCEPTIONS);
-    this.scaleWidth = Math.max(params.tableWidth, this.solutionWord.length); // TODO factor based on actual length/margin
+    this.scaleWidth = Math.max(
+      params.tableWidth, this.solutionWord.length
+    ); // TODO factor based on actual length/margin
 
     this.cells = this.createCells(this.solutionWord);
     this.content = this.createSolution(this.cells);

@@ -47,8 +47,10 @@ export default class Crossword extends H5P.Question {
         across: 'across',
         down: 'down',
         checkAnswer: 'Check answer',
+        // eslint-disable-next-line max-len
         couldNotGenerateCrossword: 'Could not generate a crossword with the given words. Please try again with fewer words or words that have more characters in common.',
         couldNotGenerateCrosswordTooFewWords: 'Could not generate a crossword. You need at least two words.',
+        // eslint-disable-next-line max-len
         problematicWords: 'Some words could not be placed. If you are using fixed words, please make sure that their position doesn\'t prevent other words from being placed. Words with the same alignment may not be placed touching each other. Problematic word(s): @words',
         showSolution: 'Show solution',
         tryAgain: 'Retry',
@@ -57,6 +59,7 @@ export default class Crossword extends H5P.Question {
         submitAnswer: 'Submit',
       },
       a11y: {
+        // eslint-disable-next-line max-len
         crosswordGrid: 'Crossword grid. Use arrow keys to navigate and the keyboard to enter characters. Alternatively, use Tab to navigate to type the answers in Fill in the Blanks style fields instead of the grid.',
         column: 'column',
         row: 'row',
@@ -510,7 +513,8 @@ export default class Crossword extends H5P.Question {
    */
   getDescription() {
     // The below replaceAll makes sure we don't get any unwanted XAPI_PLACEHOLDERs in the description
-    const introduction = this.params.taskDescription.replaceAll(/_{10,}/gi, '_________') || Crossword.DEFAULT_DESCRIPTION;
+    const introduction = this.params.taskDescription
+      .replaceAll(/_{10,}/gi, '_________') || Crossword.DEFAULT_DESCRIPTION;
     const fields = this.content.getXAPIDescription();
     return `${introduction}${fields}`;
   }

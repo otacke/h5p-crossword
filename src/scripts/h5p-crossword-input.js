@@ -135,7 +135,11 @@ export default class CrosswordInput {
             orientation: word.orientation,
             clue: word.clue
           };
-          extraClue.setAttribute('aria-label', this.params.a11y.extraClueFor.replace('@clue', this.buildAriaLabel(ariaLabelParams)));
+
+          extraClue.setAttribute(
+            'aria-label', this.params.a11y.extraClueFor.replace('@clue', this.buildAriaLabel(ariaLabelParams))
+          );
+
           extraClue.setAttribute('title', this.params.l10n.extraClue);
           clueContent.appendChild(extraClue);
 
@@ -285,7 +289,9 @@ export default class CrosswordInput {
           orientation: word.orientation,
           cursorPosition: cursorPosition,
           text: inputField.value,
-          readOffset: (['Backspace', 'ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown', 'Delete'].includes(event.key) ? 0 : 1)
+          readOffset: (
+            ['Backspace', 'ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown', 'Delete'].includes(event.key) ? 0 : 1
+          )
         });
       });
 
@@ -449,7 +455,10 @@ export default class CrosswordInput {
    */
   fillFields(params) {
     params.forEach((param) => {
-      const fields = this.inputFields.filter((field) => field.orientation === param.orientation && field.clueId === param.clueId);
+      const fields = this.inputFields.filter(
+        (field) => field.orientation === param.orientation && field.clueId === param.clueId
+      );
+
       if (fields.length > 0) {
         this.setInputFieldValue(fields[0].inputField, param.text);
       }
@@ -467,7 +476,10 @@ export default class CrosswordInput {
       field.clue.classList.remove('h5p-crossword-input-fields-group-clue-highlight-focus');
     });
 
-    const fields = this.inputFields.filter((field) => field.orientation === params.orientation && field.clueId === params.clueId);
+    const fields = this.inputFields.filter(
+      (field) => field.orientation === params.orientation && field.clueId === params.clueId
+    );
+
     if (fields.length > 0) {
       fields[0].clue.classList.add('h5p-crossword-input-fields-group-clue-highlight-focus');
     }
@@ -578,8 +590,14 @@ export default class CrosswordInput {
         }
 
         const ariaLabels = [];
-        ariaLabels.push(`${this.params.a11y.letterSevenOfNine.replace('@position', index + 1).replace('@length', cellInfos.length)}`);
-        ariaLabels.push((!cellInfo.answer || cellInfo.answer.trim() === '') ? this.params.a11y.empty : cellInfo.answer);
+        ariaLabels.push(
+          `${this.params.a11y.letterSevenOfNine.replace('@position', index + 1).replace('@length', cellInfos.length)}`
+        );
+
+        ariaLabels.push(
+          (!cellInfo.answer || cellInfo.answer.trim() === '') ? this.params.a11y.empty : cellInfo.answer
+        );
+
         if (result === 'correct') {
           ariaLabels.push(this.params.a11y.correct);
           ariaLabels.push(`1 ${this.params.a11y.point}`);

@@ -297,7 +297,10 @@ export default class CrosswordCell {
       return; // Empty
     }
 
-    if (this.params.solution === ' ' && (!this.answer || this.answer.trim() === '' || this.answer === Util.CHARACTER_PLACEHOLDER)) {
+    if (
+      this.params.solution === ' ' &&
+        (!this.answer || this.answer.trim() === '' || this.answer === Util.CHARACTER_PLACEHOLDER)
+    ) {
       return; // Space not relevant for score
     }
 

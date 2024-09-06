@@ -132,7 +132,11 @@ export default class Overlay {
    */
   updateFocusableElements() {
     this.focusableElements = []
-      .slice.call(this.overlay.querySelectorAll('video, audio, button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+      .slice.call(
+        this.overlay.querySelectorAll(
+          'video, audio, button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )
+      )
       .filter((element) => element.getAttribute('disabled') !== 'true' && element.getAttribute('disabled') !== true);
   }
 
