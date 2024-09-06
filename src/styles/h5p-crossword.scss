@@ -321,6 +321,10 @@
   }
 
   .h5p-crossword-extra-clue-instance-wrapper {
+    &.h5p-advanced-text {
+      word-break: break-word; // relevant when zoomed in like 400%
+    }
+
     &.h5p-audio-wrapper {
       width: 40em;
       height: 32px;
