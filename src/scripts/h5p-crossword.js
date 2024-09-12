@@ -1,9 +1,18 @@
 // Import required classes
 import CrosswordContent from '@scripts/components/h5p-crossword-content.js';
 import Util from '@services/util.js';
+import QuestionTypeContract from '@mixins/question-type-contract.js';
+import XAPI from '@mixins/xapi.js';
+import '@styles/h5p-crossword.scss';
 
 /** @constant {number} DOM_REGISTER_DELAY_MS Delay before resizing after DOM registered. */
 const DOM_REGISTER_DELAY_MS = 100;
+
+/** @constant {string} DEFAULT_DESCRIPTION Default description. */
+export const DEFAULT_DESCRIPTION = 'Crossword';
+
+/** @constant {object} view states */
+export const VIEW_STATES = { task: 0, results: 1, solutions: 2 };
 
 /**
  * Class for H5P Crossword.
@@ -17,6 +26,8 @@ export default class Crossword extends H5P.Question {
    */
   constructor(params, contentId, extras = {}) {
     super('crossword'); // CSS class selector for content's iframe: h5p-crossword
+
+    Util.addMixins(Crossword, [QuestionTypeContract, XAPI]);
 
     this.params = params;
     this.contentId = contentId;
@@ -257,7 +268,7 @@ export default class Crossword extends H5P.Question {
    * Check answer.
    */
   checkAnswer() {
-    if (this.getViewState().id !== Crossword.VIEW_STATES.task) {
+    if (this.getViewState().id !== VIEW_STATES.task) {
       return; // Prevent double checking
     }
 
@@ -320,171 +331,6 @@ export default class Crossword extends H5P.Question {
   }
 
   /**
-   * Check if result has been submitted or input has been given.
-   * @returns {boolean} True, if answer was given.
-   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
-   */
-  getAnswerGiven() {
-    if (!this.content) {
-      return false;
-    }
-
-    return this.content.getAnswerGiven();
-  }
-
-  /**
-   * Get latest score.
-   * @returns {number} latest score.
-   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-2}
-   */
-  getScore() {
-    if (!this.content) {
-      return 0;
-    }
-
-    return this.content.getScore();
-  }
-
-  /**
-   * Get maximum possible score.
-   * @returns {number} Score necessary for mastering.
-   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-3}
-   */
-  getMaxScore() {
-    if (!this.content) {
-      return 0;
-    }
-
-    return this.content.getMaxScore();
-  }
-
-  /**
-   * Show solutions.
-   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-4}
-   */
-  showSolutions() {
-    if (!this.content) {
-      return;
-    }
-
-    this.setViewState('solutions');
-
-    this.hideButton('check-answer');
-    this.hideButton('show-solution');
-
-    this.content.showSolutions();
-
-    this.trigger('resize');
-  }
-
-  /**
-   * Reset task.
-   * @param {object} [params] Parameters.
-   * @param {boolean} [params.keepCorrectAnswers] If true, correct answers should be kept.
-   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
-   */
-  resetTask(params = {}) {
-    if (!this.content) {
-      return;
-    }
-
-    if (
-      this.getViewState().id !== Crossword.VIEW_STATES.results ||
-      this.getScore() === this.getMaxScore()
-    ) {
-      params.keepCorrectAnswers = false;
-    }
-
-    this.contentWasReset = !params.keepCorrectAnswers;
-
-    if (this.initialButtons.check) {
-      this.showButton('check-answer');
-    }
-    else {
-      this.hideButton('check-answer');
-    }
-
-    if (this.initialButtons.showSolution) {
-      this.showButton('show-solution');
-    }
-    else {
-      this.hideButton('show-solution');
-    }
-
-    if (this.initialButtons.retry) {
-      this.showButton('try-again');
-    }
-    else {
-      this.hideButton('try-again');
-    }
-
-    this.setViewState('task');
-
-    this.trigger('resize');
-
-    this.removeFeedback();
-
-    this.content.reset({ keepCorrectAnswers: params.keepCorrectAnswers });
-    this.content.enable();
-  }
-
-  /**
-   * Get xAPI data.
-   * @returns {object} XAPI statement.
-   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
-   */
-  getXAPIData() {
-    return {
-      statement: this.getXAPIAnswerEvent().data.statement
-    };
-  }
-
-  /**
-   * Build xAPI answer event.
-   * @returns {H5P.XAPIEvent} XAPI answer event.
-   */
-  getXAPIAnswerEvent() {
-    const xAPIEvent = this.createXAPIEvent('answered');
-    xAPIEvent.setScoredResult(this.getScore(), this.getMaxScore(), this,
-      true, this.isPassed());
-    xAPIEvent.data.statement.result.response = this.content.getXAPIResponse();
-
-    return xAPIEvent;
-  }
-
-  /**
-   * Create an xAPI event for Dictation.
-   * @param {string} verb Short id of the verb we want to trigger.
-   * @returns {H5P.XAPIEvent} Event template.
-   */
-  createXAPIEvent(verb) {
-    const xAPIEvent = this.createXAPIEventTemplate(verb);
-    Util.extend(
-      xAPIEvent.getVerifiedStatementValue(['object', 'definition']),
-      this.getxAPIDefinition());
-    return xAPIEvent;
-  }
-
-  /**
-   * Get the xAPI definition for the xAPI object.
-   * @returns {object} XAPI definition.
-   */
-  getxAPIDefinition() {
-    const definition = {};
-    definition.name = {};
-    definition.name[this.languageTag] = this.getTitle();
-    definition.name['en-US'] = definition.name[this.languageTag]; // Fallback
-    definition.description = {};
-    definition.description[this.languageTag] = `${this.getDescription()}`;
-    definition.description['en-US'] = definition.description[this.languageTag]; // Fallback
-    definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
-    definition.interactionType = 'fill-in';
-    definition.correctResponsesPattern = this.content.getXAPICorrectResponsesPattern();
-
-    return definition;
-  }
-
-  /**
    * Determine whether the task has been passed by the user.
    * @returns {boolean} True if user passed or task is not scored.
    */
@@ -501,35 +347,10 @@ export default class Crossword extends H5P.Question {
     if (this.extras.metadata) {
       raw = this.extras.metadata.title;
     }
-    raw = raw || Crossword.DEFAULT_DESCRIPTION;
+    raw = raw || DEFAULT_DESCRIPTION;
 
     // H5P Core function: createTitle
     return H5P.createTitle(raw);
-  }
-
-  /**
-   * Get tasks description.
-   * @returns {string} Description.
-   */
-  getDescription() {
-    // The below replaceAll makes sure we don't get any unwanted XAPI_PLACEHOLDERs in the description
-    const introduction = this.params.taskDescription
-      .replaceAll(/_{10,}/gi, '_________') || Crossword.DEFAULT_DESCRIPTION;
-    const fields = this.content.getXAPIDescription();
-    return `${introduction}${fields}`;
-  }
-
-  /**
-   * Answer call to return the current state.
-   * @returns {object} Current state.
-   */
-  getCurrentState() {
-    if (!this.getAnswerGiven()) {
-      // Nothing relevant to store, but previous state in DB must be cleared after reset
-      return this.contentWasReset ? {} : undefined;
-    }
-
-    return this.content.getCurrentState();
   }
 
   /**
@@ -555,8 +376,8 @@ export default class Crossword extends H5P.Question {
   getViewState() {
     let state = 'undefined';
 
-    for (const key in Crossword.VIEW_STATES) {
-      if (Crossword.VIEW_STATES[key] === this.viewState) {
+    for (const key in VIEW_STATES) {
+      if (VIEW_STATES[key] === this.viewState) {
         state = key;
         break;
       }
@@ -575,21 +396,15 @@ export default class Crossword extends H5P.Question {
   setViewState(state) {
     if (
       typeof state === 'string' &&
-      Crossword.VIEW_STATES[state] !== undefined
+      VIEW_STATES[state] !== undefined
     ) {
-      this.viewState = Crossword.VIEW_STATES[state];
+      this.viewState = VIEW_STATES[state];
     }
     else if (
       typeof state === 'number' &&
-      Object.values(Crossword.VIEW_STATES).includes(state)
+      Object.values(VIEW_STATES).includes(state)
     ) {
       this.viewState = state;
     }
   }
 }
-
-/** @constant {string} */
-Crossword.DEFAULT_DESCRIPTION = 'Crossword';
-
-/** @constant {object} view states */
-Crossword.VIEW_STATES = { task: 0, results: 1, solutions: 2 };
