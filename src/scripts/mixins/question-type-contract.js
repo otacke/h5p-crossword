@@ -137,4 +137,13 @@ export default class QuestionTypeContract {
 
     return this.content.getCurrentState();
   }
+
+  /**
+   * Set current state.
+   * Candidate for question type contract in H5P core.
+   * @param {object} state State to set, must match return value from getCurrentState.
+   */
+  setCurrentState(state = {}) {
+    this.content.setCurrentState(state);
+  }
 }

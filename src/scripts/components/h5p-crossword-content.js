@@ -2,6 +2,7 @@ import CrosswordClueAnnouncer from '@components/h5p-crossword-clue-announcer.js'
 import CrosswordInput from '@components/h5p-crossword-input.js';
 import CrosswordTable from '@components/h5p-crossword-table.js';
 import CrosswordSolutionWord from '@components/h5p-crossword-solution-word.js';
+import Util from '@services/util.js';
 import CrosswordGenerator from '@services/h5p-crossword-generator.js';
 import './h5p-crossword-content.scss';
 
@@ -33,29 +34,55 @@ export default class CrosswordContent {
 
     this.answerGiven = false;
 
+    this.setCurrentState(this.params.previousState);
+  }
+
+  /**
+   * Set current state.
+   * @param {object} state State to set, must match return value from getCurrentState.
+   */
+  setCurrentState(state = {}) {
+    state = this.sanitizeState(state);
+
+    this.content.innerHTML = ''; // Clean state
+
+    // Only support uppercase
+    this.params.words = (this.params.words || [])
+      .filter((word) => {
+        return (
+          typeof word.answer !== 'undefined' &&
+          typeof word.clue !== 'undefined'
+        );
+      })
+      .map((word) => {
+        word.answer = Util.stripHTML(Util.htmlDecode(Util.toUpperCase(word.answer, Util.UPPERCASE_EXCEPTIONS)));
+        word.clue = Util.stripHTML(Util.htmlDecode(word.clue));
+        return word;
+      });
+
     // Restore previous cells or create crossword
-    if (this.params.previousState && this.params.previousState.crosswordLayout) {
-      this.crosswordLayout = this.params.previousState.crosswordLayout;
+    if (state?.crosswordLayout) {
+      this.crosswordLayout = state.crosswordLayout;
     }
     else {
       const errorMessages = [];
       let crosswordGenerator;
       let grid;
 
-      if (params.words.length < MIN_WORDS_FOR_CROSSWORD) {
+      if (this.params.words.length < MIN_WORDS_FOR_CROSSWORD) {
         errorMessages.push(params.l10n.couldNotGenerateCrosswordTooFewWords);
       }
       else {
         crosswordGenerator = new CrosswordGenerator({
-          words: params.words,
+          words: this.params.words,
           config: {
-            poolSize: params.poolSize
+            poolSize: this.params.poolSize
           }
         });
         grid = crosswordGenerator.getSquareGrid(MAXIMUM_TRIES);
 
         if (!grid) {
-          errorMessages.push(params.l10n.couldNotGenerateCrossword);
+          errorMessages.push(this.params.l10n.couldNotGenerateCrossword);
         }
       }
 
@@ -63,7 +90,7 @@ export default class CrosswordContent {
       if (badWords?.length) {
         badWords = badWords.map((badWord) => `${badWord.answer}`).join(', ');
 
-        errorMessages.push(params.l10n.problematicWords.replace(/@words/g, badWords));
+        errorMessages.push(this.params.l10n.problematicWords.replace(/@words/g, badWords));
       }
 
       if (errorMessages.length) {
@@ -90,6 +117,14 @@ export default class CrosswordContent {
     // Clue announcer
     this.clueAnnouncer = new CrosswordClueAnnouncer();
     tableWrapper.appendChild(this.clueAnnouncer.getDOM());
+
+    this.crosswordLayout.result = this.crosswordLayout.result.map((word, index) => {
+      word.clue = this.params.words[index].clue;
+      word.answer = this.params.words[index].answer;
+      word.extraClue = this.params.words[index].extraClue;
+
+      return word;
+    });
 
     // Table
     this.table = new CrosswordTable(
@@ -169,26 +204,62 @@ export default class CrosswordContent {
     this.content.appendChild(this.inputarea.getDOM());
 
     // Restore previous cells
-    if (this.params.previousState.cells) {
-      this.table.setAnswers(this.params.previousState.cells);
+    if (state.cells) {
+      this.table.setAnswers(state.cells);
       this.answerGiven = true;
     }
 
     // Restore previous focus
-    if (this.params.previousState.focus) {
-      if (this.params.previousState.focus.position && this.params.previousState.focus.position.row) {
-        this.table.setcurrentOrientation(
-          this.params.previousState.focus.orientation,
-          this.params.previousState.focus.position
-        );
+    if (typeof state.focus?.position?.row === 'number') {
+      this.table.setcurrentOrientation(
+        state.focus.orientation,
+        state.focus.position
+      );
 
-        this.table.focusCell(this.params.previousState.focus.position);
-      }
+      this.table.focusCell(state.focus.position);
     }
 
     this.overrideCSS(this.params.theme);
 
+    this.resize();
     this.callbacks.onInitialized(true);
+  }
+
+  /**
+   * Sanitize state.
+   * TODO: This is just rudimentary, should be improved.
+   * @param {object} state Previous state object.
+   * @returns {object} Sanitized state object.
+   */
+  sanitizeState(state = {}) {
+    if (state.crosswordLayout) {
+      if (typeof state.crosswordLayout?.cols !== 'number') {
+        delete state.crosswordLayout.cols;
+      }
+
+      if (typeof state.crosswordLayout?.rows !== 'number') {
+        delete state.crosswordLayout.rows;
+      }
+    }
+
+    if (
+      !Array.isArray(state.cells) ||
+      state.cells.some((char) => typeof char !== 'string' && char !== undefined && char !== null)
+    ) {
+      delete state.cells;
+    }
+
+    if (typeof state.focus?.position?.row !== 'number' || typeof state.focus?.position?.column !== 'number') {
+      delete state.focus;
+    }
+
+    if (state.focus) {
+      if (state.focus.orientation !== 'across' && state.focus.orientation !== 'down') {
+        delete state.focus.orientation;
+      }
+    }
+
+    return state;
   }
 
   /**
@@ -317,11 +388,20 @@ export default class CrosswordContent {
       return;
     }
 
-    return {
-      crosswordLayout: this.crosswordLayout,
-      cells,
-      focus
+    const crosswordLayout = {
+      cols: this.crosswordLayout.cols,
+      rows: this.crosswordLayout.rows,
+      result: this.crosswordLayout.result.map((word) => {
+        return {
+          clueId: word.clueId,
+          orientation: word.orientation,
+          startx: word.startx,
+          starty: word.starty,
+        };
+      })
     };
+
+    return { crosswordLayout, cells, focus };
   }
 
   /**
