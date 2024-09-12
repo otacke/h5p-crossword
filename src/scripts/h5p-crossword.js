@@ -138,20 +138,6 @@ export default class Crossword extends H5P.Question {
       this.previousState = {};
     }
 
-    // Only support uppercase
-    this.params.words = (this.params.words || [])
-      .filter((word) => {
-        return (
-          typeof word.answer !== 'undefined' &&
-          typeof word.clue !== 'undefined'
-        );
-      })
-      .map((word) => {
-        word.answer = Util.stripHTML(Util.htmlDecode(Util.toUpperCase(word.answer, Util.UPPERCASE_EXCEPTIONS)));
-        word.clue = Util.stripHTML(Util.htmlDecode(word.clue));
-        return word;
-      });
-
     this.content = new CrosswordContent(
       {
         scoreWords: this.params.behaviour.scoreWords,
