@@ -50,15 +50,15 @@ export default class XAPI {
     return definition;
   }
 
-    /**
+  /**
    * Get tasks description.
    * @returns {string} Description.
    */
-    getXAPIDescription() {
-      // The below replaceAll makes sure we don't get any unwanted XAPI_PLACEHOLDERs in the description
-      const introduction = this.params.taskDescription
-        .replaceAll(/_{10,}/gi, '_________') || DEFAULT_DESCRIPTION;
-      const fields = this.content.getXAPIDescription();
-      return `${introduction}${fields}`;
-    }
+  getXAPIDescription() {
+    // The below replaceAll makes sure we don't get any unwanted XAPI_PLACEHOLDERs in the description
+    const introduction = this.params.taskDescription
+      .replaceAll(/_{10,}/gi, '_________') || DEFAULT_DESCRIPTION;
+    const fields = this.content.getXAPIDescription();
+    return `${introduction}${fields}`;
+  }
 }
