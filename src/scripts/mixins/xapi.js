@@ -1,6 +1,9 @@
 import Util from '@services/util.js';
 import { DEFAULT_DESCRIPTION } from '@scripts/h5p-crossword.js';
 
+/** @constant {string} XAPI_PLACEHOLDER Placeholder for a gap. */
+export const XAPI_PLACEHOLDER = '__________';
+
 /**
  * Mixin containing methods for xapi stuff.
  */

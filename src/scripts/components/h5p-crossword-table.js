@@ -1,6 +1,7 @@
 import CrosswordCell from '@components/h5p-crossword-cell.js';
 import Util from '@services/util.js';
 import './h5p-crossword-table.scss';
+import { XAPI_PLACEHOLDER  } from '@mixins/xapi.js';
 
 /** @constant {number} CELL_FONT_SIZE_DIVIDER Divisor found by testing */
 export const CELL_FONT_SIZE_DIVIDER = 2;
@@ -313,11 +314,19 @@ export default class CrosswordTable {
   /**
    * Mark cells with solution word ids and circles if possible.
    * @param {string} solutionWord Solution word.
+   * @param {number[]} positions Positions of solution word.
    * @returns {boolean} True, if possibe, else false.
    */
-  addSolutionWord(solutionWord) {
+  addSolutionWord(solutionWord, positions = []) {
     if (!solutionWord || solutionWord === '') {
       return false;
+    }
+
+    if (positions.length) {
+      positions.forEach((position) => {
+        this.cells[position.row][position.column].addSolutionWordIdMarker(position.solutionWordId);
+      });
+      return true;
     }
 
     const solutionWordCells = this.findSolutionWordCells(solutionWord);
@@ -1091,11 +1100,11 @@ export default class CrosswordTable {
 
         const placeholders = [];
         if (this.params.scoreWords) {
-          placeholders.push(CrosswordTable.XAPI_PLACEHOLDER);
+          placeholders.push(XAPI_PLACEHOLDER);
         }
         else {
           while (placeholders.length < word.answer.length) {
-            placeholders.push(CrosswordTable.XAPI_PLACEHOLDER);
+            placeholders.push(XAPI_PLACEHOLDER);
           }
         }
 
@@ -1103,6 +1112,21 @@ export default class CrosswordTable {
       })
       .join('');
   }
-}
 
-CrosswordTable.XAPI_PLACEHOLDER = '__________';
+  /**
+   * Get solution word cell positions.
+   * @returns {object[]} Solution word cell positions.
+   */
+  getSolutionWordCellPositions() {
+    return this.cells
+      .flat()
+      .filter(((cell) => cell.getInformation().solutionWordId !== null))
+      .map((cell) => {
+        return {
+          row: cell.getPosition().row,
+          column: cell.getPosition().column,
+          solutionWordId: cell.getInformation().solutionWordId
+        };
+      });
+  }
+}

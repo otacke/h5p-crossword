@@ -161,7 +161,7 @@ export default class CrosswordContent {
     tableWrapper.appendChild(this.table.getDOM());
     this.content.appendChild(tableWrapper);
 
-    const canHaveSolutionWord = this.table.addSolutionWord(this.params.solutionWord);
+    const canHaveSolutionWord = this.table.addSolutionWord(this.params.solutionWord, state.solutionCells);
     if (this.params.solutionWord !== '') {
       if (canHaveSolutionWord) {
         this.solutionWord = new CrosswordSolutionWord({
@@ -388,6 +388,9 @@ export default class CrosswordContent {
       return;
     }
 
+    // Position of the solution word cells in the crossword
+    const solutionCells = this.table?.getSolutionWordCellPositions();
+
     const crosswordLayout = {
       cols: this.crosswordLayout.cols,
       rows: this.crosswordLayout.rows,
@@ -401,7 +404,7 @@ export default class CrosswordContent {
       })
     };
 
-    return { crosswordLayout, cells, focus };
+    return { crosswordLayout, cells, focus, solutionCells };
   }
 
   /**
