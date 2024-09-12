@@ -697,7 +697,7 @@ export default class CrosswordGenerator {
           continue;
         }
 
-        if (cell.down && cell.down.isStartOfWord) {
+        if (cell.down?.isStartOfWord) {
           result.push({
             clue: this.getWordElement(cell.down.index, 'clue'),
             answer: this.getWordElement(cell.down.index, 'answer'),
@@ -705,11 +705,12 @@ export default class CrosswordGenerator {
             startx: c + 1,
             starty: r + 1,
             orientation: 'down',
-            clueId: nextClueId
+            clueId: nextClueId,
+            index: cell.down.index
           });
         }
 
-        if (cell.across && cell.across.isStartOfWord) {
+        if (cell.across?.isStartOfWord) {
           result.push({
             clue: this.getWordElement(cell.across.index, 'clue'),
             answer: this.getWordElement(cell.across.index, 'answer'),
@@ -717,11 +718,12 @@ export default class CrosswordGenerator {
             startx: c + 1,
             starty: r + 1,
             orientation: 'across',
-            clueId: nextClueId
+            clueId: nextClueId,
+            index: cell.across.index
           });
         }
 
-        if (cell.down && cell.down.isStartOfWord || cell.across && cell.across.isStartOfWord) {
+        if (cell.down?.isStartOfWord || cell.across?.isStartOfWord) {
           nextClueId++;
         }
       }

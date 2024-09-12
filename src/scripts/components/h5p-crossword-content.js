@@ -118,10 +118,10 @@ export default class CrosswordContent {
     this.clueAnnouncer = new CrosswordClueAnnouncer();
     tableWrapper.appendChild(this.clueAnnouncer.getDOM());
 
-    this.crosswordLayout.result = this.crosswordLayout.result.map((word, index) => {
-      word.clue = this.params.words[index].clue;
-      word.answer = this.params.words[index].answer;
-      word.extraClue = this.params.words[index].extraClue;
+    this.crosswordLayout.result = this.crosswordLayout.result.map((word) => {
+      word.clue = this.params.words[word.index].clue;
+      word.answer = this.params.words[word.index].answer;
+      word.extraClue = this.params.words[word.index].extraClue;
 
       return word;
     });
@@ -396,6 +396,7 @@ export default class CrosswordContent {
       rows: this.crosswordLayout.rows,
       result: this.crosswordLayout.result.map((word) => {
         return {
+          index: word.index,
           clueId: word.clueId,
           orientation: word.orientation,
           startx: word.startx,
