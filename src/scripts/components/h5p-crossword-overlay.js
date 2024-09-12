@@ -1,4 +1,5 @@
-import Util from '@services/util';
+import Util from '@services/util.js';
+import './h5p-crossword-overlay.scss';
 
 /** Class representing the content */
 export default class Overlay {
@@ -65,7 +66,7 @@ export default class Overlay {
     // Blocker
     this.blocker = document.createElement('div');
     this.blocker.classList.add('h5p-crossword-overlay-blocker');
-    this.blocker.classList.add('h5p-crossword-display-none');
+    this.blocker.classList.add('display-none');
   }
 
   /**
@@ -151,7 +152,7 @@ export default class Overlay {
     this.blockerAppended = true;
 
     this.overlay.classList.remove('h5p-crossword-invisible');
-    this.blocker.classList.remove('h5p-crossword-display-none');
+    this.blocker.classList.remove('display-none');
     this.buttonClose.removeAttribute('disabled', 'disabled');
 
     setTimeout(() => {
@@ -187,7 +188,7 @@ export default class Overlay {
   hide() {
     this.isVisible = false;
     this.overlay.classList.add('h5p-crossword-invisible');
-    this.blocker.classList.add('h5p-crossword-display-none');
+    this.blocker.classList.add('display-none');
     this.buttonClose.setAttribute('disabled', 'disabled');
   }
 

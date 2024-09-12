@@ -1,8 +1,9 @@
-import CrosswordClueAnnouncer from '@scripts/h5p-crossword-clue-announcer';
-import CrosswordInput from '@scripts/h5p-crossword-input';
-import CrosswordTable from '@scripts/h5p-crossword-table';
-import CrosswordSolutionWord from '@scripts/h5p-crossword-solution-word';
-import CrosswordGenerator from '@scripts/h5p-crossword-generator';
+import CrosswordClueAnnouncer from '@components/h5p-crossword-clue-announcer.js';
+import CrosswordInput from '@components/h5p-crossword-input.js';
+import CrosswordTable from '@components/h5p-crossword-table.js';
+import CrosswordSolutionWord from '@components/h5p-crossword-solution-word.js';
+import CrosswordGenerator from '@services/h5p-crossword-generator.js';
+import './h5p-crossword-content.scss';
 
 /** @constant {number} MIN_WORDS_FOR_CROSSWORD Minimum number of words for crossword. */
 const MIN_WORDS_FOR_CROSSWORD = 2;

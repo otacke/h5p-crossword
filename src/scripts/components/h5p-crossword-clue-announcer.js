@@ -1,3 +1,5 @@
+import './h5p-crossword-clue-announcer.scss';
+
 /** Class representing the content */
 export default class CrosswordClueAnnouncer {
   /**
@@ -56,14 +58,14 @@ export default class CrosswordClueAnnouncer {
    * Show.
    */
   show() {
-    this.content.classList.remove('h5p-crossword-display-none');
+    this.content.classList.remove('display-none');
   }
 
   /**
    * Hide.
    */
   hide() {
-    this.content.classList.add('h5p-crossword-display-none');
+    this.content.classList.add('display-none');
   }
 
   /**

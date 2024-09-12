@@ -1,4 +1,5 @@
-import Util from '@services/util';
+import Util from '@services/util.js';
+import './h5p-crossword-cell.scss';
 
 /** Class representing a cell */
 export default class CrosswordCell {

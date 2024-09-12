@@ -1,0 +1,22 @@
+.h5p-crossword-solution-word-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .h5p-crossword-solution-word {
+    border-spacing: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 0.5em;
+
+    .h5p-crossword-cell {
+      border: 0.1em solid #000000;
+      border-right: 0;
+
+      &:last-child {
+        border-right: 0.1em solid #000000;
+      }
+    }
+  }
+}
