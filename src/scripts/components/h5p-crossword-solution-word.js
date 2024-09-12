@@ -1,6 +1,7 @@
-import CrosswordCell from '@scripts/h5p-crossword-cell';
-import Util from '@services/util';
-import { CELL_FONT_SIZE_DIVIDER } from '@scripts/h5p-crossword-table.js';
+import CrosswordCell from '@components/h5p-crossword-cell.js';
+import Util from '@services/util.js';
+import { CELL_FONT_SIZE_DIVIDER } from '@components/h5p-crossword-table.js';
+import './h5p-crossword-solution-word.scss';
 
 /** Class representing the content */
 export default class CrosswordSolutionWord {

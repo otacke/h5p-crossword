@@ -1,6 +1,6 @@
 // Import required classes
-import CrosswordContent from '@scripts/h5p-crossword-content';
-import Util from '@services/util';
+import CrosswordContent from '@scripts/components/h5p-crossword-content.js';
+import Util from '@services/util.js';
 
 /** @constant {number} DOM_REGISTER_DELAY_MS Delay before resizing after DOM registered. */
 const DOM_REGISTER_DELAY_MS = 100;

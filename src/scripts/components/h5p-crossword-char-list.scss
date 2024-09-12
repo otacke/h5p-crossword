@@ -1,0 +1,91 @@
+@import '@styles/h5p-crossword-main';
+
+.h5p-crossword-input-fields-group-solution-container {
+  position: relative;
+  width: calc(100% - .5em);
+  left: .25em;
+
+  .h5p-crossword-input-fields-group-solution-inner {
+    background: #fbfbfb;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    font-size: 0.9em;
+    line-height: 1em;
+    text-align: left;
+    position: relative;
+
+    .h5p-crossword-input-fields-group-solution-word {
+      position: relative;
+      z-index: 3;
+      display: inline-flex;
+      flex-wrap: wrap;
+      /* Compensating the value in https://github.com/h5p/h5p-question/blob/3676a7053120fcfe439747d7bcc8206755d7b4c3/styles/question.css#L327 */
+      padding-right: 1.615384615em;
+      padding-bottom: .5em;
+      padding-left: .5em;
+
+      .h5p-crossword-input-fields-group-solution-char-wrapper {
+        border-radius: .25em;
+        color: inherit;
+        line-height: 1em;
+        margin-right: .25em;
+        margin-top: .5em;
+        padding: .15em;
+        position: relative;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        &.h5p-crossword-solution-no-input {
+          background-color: $color-neutral-light;
+          border: 1px solid $color-neutral-light;
+          color: $color-neutral-dark;
+          display: inline-block;
+          height: 1em;
+
+          &.h5p-crossword-solution-no-char {
+            width: 1em;
+          }
+        }
+
+        &.h5p-crossword-solution-correct {
+          background: $color-correct-light;
+          border: 1px solid $color-correct-light;
+          color: $color-correct-dark;
+
+          &::after {
+            color: $color-correct-dark;
+            content: "\f00c";
+            font-family: H5PFontAwesome4;
+            padding-left: .25em;
+            right: .5em;
+            text-decoration: none;
+            top: 0;
+          }
+        }
+
+        &.h5p-crossword-solution-wrong {
+          background-color: $color-wrong-light;
+          border: 1px solid $color-wrong-light;
+          color: $color-wrong-dark;
+
+          &::after {
+            color: $color-wrong-dark;
+            content: "\f00d";
+            font-family: H5PFontAwesome4;
+            padding-left: .25em;
+            right: .5em;
+            text-decoration: none;
+            top: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &.display-none {
+    display: none;
+  }
+}

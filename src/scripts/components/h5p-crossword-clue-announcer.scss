@@ -1,0 +1,29 @@
+.h5p-crossword-clue-announcer {
+  display: flex;
+  flex-wrap: nowrap;
+  font-size: 0.75em;
+  height: 2em;
+  width: 100%;
+
+  .h5p-crossword-clue-announcer-clue-id {
+    font-weight: bold;
+    padding-right: 0.5em;
+    white-space: nowrap;
+  }
+
+  .h5p-crossword-clue-announcer-clue {
+    overflow: hidden;
+    padding-right: 0.5em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .h5p-crossword-clue-announcer-answer-length {
+    font-style: italic;
+  }
+
+  &.display-none {
+    display: none;
+  }
+}
+

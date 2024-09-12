@@ -1,0 +1,30 @@
+.h5p-crossword-grid {
+  border: 0.05em solid #000000;
+  border-spacing: 0;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  .h5p-crossword-cell.h5p-crossword-cell-empty {
+    background-color: #000000;
+  }
+
+  &.h5p-crossword-grid-background-image {
+    background-size: cover;
+
+    .h5p-crossword-cell.h5p-crossword-cell-empty {
+      background-color: transparent;
+    }
+  }
+
+  th,
+  td {
+    border: 0.05em solid #000000;
+  }
+
+  thead,
+  th {
+    padding: 0;
+    visibility: hidden;
+  }
+}

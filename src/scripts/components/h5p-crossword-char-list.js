@@ -1,4 +1,5 @@
-import Util from '@services/util';
+import Util from '@services/util.js';
+import './h5p-crossword-char-list.scss';
 
 /** Class representing the content */
 export default class CrosswordCharList {
@@ -36,7 +37,7 @@ export default class CrosswordCharList {
   buildListContainer(params) {
     const content = document.createElement('div');
     content.classList.add('h5p-crossword-input-fields-group-solution-container');
-    content.classList.add('h5p-crossword-display-none');
+    content.classList.add('display-none');
 
     const listWrapper = document.createElement('div');
     listWrapper.classList.add('h5p-crossword-input-fields-group-solution-inner');
@@ -208,14 +209,14 @@ export default class CrosswordCharList {
    * Show solution.
    */
   show() {
-    this.content.classList.remove('h5p-crossword-display-none');
+    this.content.classList.remove('display-none');
   }
 
   /**
    * Hide solution.
    */
   hide() {
-    this.content.classList.add('h5p-crossword-display-none');
+    this.content.classList.add('display-none');
   }
 
   /**

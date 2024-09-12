@@ -1,5 +1,6 @@
-import CrosswordCell from '@scripts/h5p-crossword-cell';
-import Util from '@services/util';
+import CrosswordCell from '@components/h5p-crossword-cell.js';
+import Util from '@services/util.js';
+import './h5p-crossword-table.scss';
 
 /** @constant {number} CELL_FONT_SIZE_DIVIDER Divisor found by testing */
 export const CELL_FONT_SIZE_DIVIDER = 2;

@@ -1,6 +1,7 @@
-import Overlay from '@scripts/h5p-crossword-overlay';
-import Util from '@services/util';
-import CrosswordCharList from '@scripts/h5p-crossword-char-list';
+import Overlay from '@components/h5p-crossword-overlay.js';
+import Util from '@services/util.js';
+import CrosswordCharList from '@components/h5p-crossword-char-list.js';
+import './h5p-crossword-input.scss';
 
 /** @constant {number} ANDROID_KEYCODE_229 Android specific keycode */
 const ANDROID_KEYCODE_229 = 229;
