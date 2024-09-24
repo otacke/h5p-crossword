@@ -28,7 +28,7 @@
           },
           {
             "label": "Fest ord til rutenett",
-            "description": "Huk av dersom du vil feste ordet til ein spesifikk posisjon i rutenettet. Words with the same alignment may not be placed touching each other."
+            "description": "Huk av dersom du vil feste ordet til ein spesifikk posisjon i rutenettet. Ord med same justering kan ikkje vere i kontakt med kvarande."
           },
           {
             "label": "Rad",
@@ -55,7 +55,7 @@
     },
     {
       "label": "Løysingsord",
-      "description": "Vel om du vil leggje til eit løysingsord som er sett saman av bokstavar i rutenettet. Løysingsordet vil berre visast dersom alle dei korrekte bokstavane er på plass i kryssordet. Merk: Det finst ikkje tilgjengelegheitsstøtte for denne funksjonen endå."
+      "description": "Vel om du vil legge til eit løysingsord som er sett saman av bokstavar i rutenettet. Løysingsordet vil berre visast dersom alle dei korrekte bokstavane er på plass i kryssordet. Merk: Det finst ikkje tilgjengelegheitsstøtte for denne funksjonen endå."
     },
     {
       "label": "Tilbakemelding på heile oppgåva",
@@ -93,7 +93,7 @@
         },
         {
           "label": "Bakgrunnsfarge",
-          "description": "Vel ein bakgrunnsfarge. Fargen vil bli brukt i staden for bakgrunnsbiletet, eller som bakgrunn for transparente område."
+          "description": "Vel ein bakgrunnsfarge. Fargen vil bli brukt i staden for bakgrunnsbiletet eller som bakgrunn for gjennomsiktige område."
         },
         {
           "label": "Rutenettfarge",
@@ -126,7 +126,7 @@
       ]
     },
     {
-      "label": "Innstillingar for oppgåveoppførsel",
+      "label": "Oppgåveinnstillingar",
       "description": "Desse vala gir deg kontroll over korleis oppgåva oppfører seg.",
       "fields": [
         {
@@ -142,7 +142,7 @@
         },
         {
           "label": "Gi straff",
-          "description": "Dersom denne funksjonen er vald, vil kvart svar som er feil gi eit fråtrekk på eitt poeng."
+          "description": "Dersom denne funksjonen er vald, vil kvart svar som er feil, gi eit fråtrekk på eitt poeng."
         },
         {
           "label": "Aktiver \"Prøv igjen\""
@@ -151,8 +151,8 @@
           "label": "Aktiver \"Fasit\""
         },
         {
-          "label": "Keep correct answers on retry",
-          "description": "If this option is enabled, correct answers will be kept when the user retries the task unless full score was achieved."
+          "label": "Behald rette svar ved nytt forsøk",
+          "description": "Dersom dette er valt, blir rette svar ståande når brukaren prøver på nytt, med mindre hen oppnådde maksimal poengsum."
         }
       ]
     },
@@ -194,7 +194,7 @@
         {
           "label": "Problematiske ord",
           "description": "Gi opp ord som har skapt problem ved generering av kryssordet. @words er ein plasshaldar som vil bli erstatta med orda du gir opp.",
-          "default": "Some words could not be placed. Dersom du bruker ord som er festa til ein bestemd posisjon, sørg for at posisjonen til desse orda ikkje hindrar at andre ord kan finne ei plassering. Words with the same alignment may not be placed touching each other. Problematiske ord: @words"
+          "default": "Nokre ord kunne ikkje plasserast. Dersom du bruker ord som er festa til ein bestemd posisjon: Sørg for at posisjonen deira ikkje hindrar at andre ord kan finne ei plassering. Ord med same justering kan ikkje plasserast i kontakt med kvarandre. Problematiske ord: @words"
         },
         {
           "label": "Ekstra hint",
@@ -267,12 +267,12 @@
         },
         {
           "description": "Gir opp kor langt ordet er. @length er ein variabel og vil bli bytt ut med den respektive verdien sin.",
-          "label": "Ordlengd",
+          "label": "Ordlengde",
           "default": "Ordet har @length bokstavar"
         },
         {
           "label": "Tekstalternativ for \"Sjekk\"-knapp",
-          "default": "Sjekk bokstavane. Svara vil bli merkte som rett, feil eller ubesvart."
+          "default": "Sjekk bokstavane. Svara vil bli merkte som rette, feil eller ubesvarte."
         },
         {
           "label": "Tekstalternativ for \"Vis fasit\"-knapp",
