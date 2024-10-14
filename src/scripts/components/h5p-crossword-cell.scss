@@ -1,5 +1,4 @@
-@import '@styles/h5p-crossword-main';
-
+@use '@styles/main';
 .h5p-crossword-cell {
   background-color: white;
   margin: 0;
@@ -102,7 +101,7 @@
   &.h5p-crossword-solution-correct {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      background: $color-correct-light;
+      background: main.$color-correct-light;
     }
 
     &.h5p-crossword-highlight-normal {
@@ -116,14 +115,14 @@
   &.h5p-crossword-solution-wrong {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      background: $color-wrong-light;
+      background: main.$color-wrong-light;
     }
   }
 
   &.h5p-crossword-solution-neutral {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      background: $color-neutral-light;
+      background: main.$color-neutral-light;
     }
   }
 
@@ -180,10 +179,10 @@
   }
 
   &.h5p-crossword-solution-correct {
-    background: $color-correct-light;
+    background: main.$color-correct-light;
 
     .h5p-crossword-cell-canvas {
-      color: $color-correct-dark;
+      color: main.$color-correct-dark;
     }
   }
 
@@ -192,31 +191,31 @@
   }
 
   &.h5p-crossword-solution-wrong {
-    background: $color-wrong-light;
+    background: main.$color-wrong-light;
   }
 
   &.h5p-crossword-solution-neutral {
-    background: $color-neutral-light;
+    background: main.$color-neutral-light;
   }
 
   &.h5p-crossword-solution-wrong .h5p-crossword-cell-canvas {
-    color: $color-wrong-dark;
+    color: main.$color-wrong-dark;
   }
 
   &.h5p-crossword-solution-neutral:not(.h5p-crossword-highlight-normal) .h5p-crossword-cell-canvas {
-    color: $color-neutral-dark;
+    color: main.$color-neutral-dark;
   }
 
   &.h5p-crossword-solution-correct .h5p-crossword-cell-solution-word-circle {
-    border-color: $color-correct-dark;
+    border-color: main.$color-correct-dark;
   }
 
   &.h5p-crossword-solution-wrong .h5p-crossword-cell-solution-word-circle {
-    border-color: $color-wrong-dark;
+    border-color: main.$color-wrong-dark;
   }
 
   &.h5p-crossword-solution-neutral .h5p-crossword-cell-solution-word-circle {
-    border-color: $color-neutral-dark;
+    border-color: main.$color-neutral-dark;
   }
 }
 

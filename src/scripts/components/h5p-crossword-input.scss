@@ -1,5 +1,4 @@
-@import '@styles/h5p-crossword-main';
-
+@use '@styles/main';
 .h5p-crossword-input-container {
   box-sizing: border-box;
   display: flex;
@@ -53,18 +52,18 @@
             .h5p-crossword-input-fields-group-extra-clue {
               background: none;
               border: none;
-              color: $color-joubelui-button;
+              color: main.$color-joubelui-button;
               cursor: pointer;
               padding-left: 0.3em;
 
               &:not(:disabled) {
                 &:focus,
                 &:hover {
-                  color: $color-joubelui-button-hover;
+                  color: main.$color-joubelui-button-hover;
                 }
 
                 &:active {
-                  color: $color-joubelui-button-active;
+                  color: main.$color-joubelui-button-active;
                 }
               }
 

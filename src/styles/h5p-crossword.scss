@@ -1,10 +1,9 @@
-@import '@styles/h5p-crossword-main';
-
+@use '@styles/main';
 /*
  * TODO: Replace with container queries in respective components once Safari 18 is out and tthus he latest three
  * versions of all major browsers support container queries.
  */
-@media screen and (max-width: $breakpoint-mobile-clues-column) {
+@media screen and (max-width: main.$breakpoint-mobile-clues-column) {
   .h5p-crossword {
     .h5p-crossword-content {
       flex-direction: column;
@@ -36,7 +35,7 @@
   }
 }
 
-@media screen and (min-width: $breakpoint-mobile-clues-column) {
+@media screen and (min-width: main.$breakpoint-mobile-clues-column) {
   .h5p-crossword {
     .h5p-crossword-clue-announcer {
       display: none;
@@ -53,7 +52,7 @@
   }
 }
 
-@media screen and (min-width: $breakpoint-clues-column-clues-row) {
+@media screen and (min-width: main.$breakpoint-clues-column-clues-row) {
   .h5p-crossword .h5p-crossword-input-container {
     flex-direction: row;
     width: 50%;

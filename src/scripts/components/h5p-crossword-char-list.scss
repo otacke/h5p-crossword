@@ -1,5 +1,4 @@
-@import '@styles/h5p-crossword-main';
-
+@use '@styles/main';
 .h5p-crossword-input-fields-group-solution-container {
   position: relative;
   width: calc(100% - .5em);
@@ -39,9 +38,9 @@
         }
 
         &.h5p-crossword-solution-no-input {
-          background-color: $color-neutral-light;
-          border: 1px solid $color-neutral-light;
-          color: $color-neutral-dark;
+          background-color: main.$color-neutral-light;
+          border: 1px solid main.$color-neutral-light;
+          color: main.$color-neutral-dark;
           display: inline-block;
           height: 1em;
 
@@ -51,12 +50,12 @@
         }
 
         &.h5p-crossword-solution-correct {
-          background: $color-correct-light;
-          border: 1px solid $color-correct-light;
-          color: $color-correct-dark;
+          background: main.$color-correct-light;
+          border: 1px solid main.$color-correct-light;
+          color: main.$color-correct-dark;
 
           &::after {
-            color: $color-correct-dark;
+            color: main.$color-correct-dark;
             content: "\f00c";
             font-family: H5PFontAwesome4;
             padding-left: .25em;
@@ -67,12 +66,12 @@
         }
 
         &.h5p-crossword-solution-wrong {
-          background-color: $color-wrong-light;
-          border: 1px solid $color-wrong-light;
-          color: $color-wrong-dark;
+          background-color: main.$color-wrong-light;
+          border: 1px solid main.$color-wrong-light;
+          color: main.$color-wrong-dark;
 
           &::after {
-            color: $color-wrong-dark;
+            color: main.$color-wrong-dark;
             content: "\f00d";
             font-family: H5PFontAwesome4;
             padding-left: .25em;
