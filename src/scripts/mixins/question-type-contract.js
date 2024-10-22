@@ -1,4 +1,4 @@
-import VIEW_STATES from '@scripts/h5p-crossword.js';
+import { VIEW_STATES } from '@scripts/h5p-crossword.js';
 
 /**
  * Mixin containing methods for H5P Question Type contract.
