@@ -708,6 +708,7 @@ export default class CrosswordInput {
     if (Util.isSafari()) {
       // Safari always hides scrollbar
       this.content.style.setProperty('--scrollbar-width', '7px');
+      this.content.classList.add('safari');
     }
     else if (Util.isChrome() && Util.isMacOS()) {
       // Chrome on MacOS hides scrollbar
