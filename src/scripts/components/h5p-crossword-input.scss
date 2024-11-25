@@ -99,7 +99,9 @@
   }
 
   &.has-scrollbar {
-    padding-right: 1rem;
+    &:not(.safari) {
+      padding-right: 1rem;
+    }
 
     &.safari {
       overflow-y: scroll;
