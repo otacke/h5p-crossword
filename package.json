@@ -1,6 +1,6 @@
 {
   "name": "h5p-crossword",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Example H5P Content Type for getting started",
   "private": true,
   "scripts": {
