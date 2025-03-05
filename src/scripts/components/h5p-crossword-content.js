@@ -345,7 +345,7 @@ export default class CrosswordContent {
    * @returns {number} Score.
    */
   getScore() {
-    if (this.params.words.length < MIN_WORDS_FOR_CROSSWORD) {
+    if (this.params.words.length < MIN_WORDS_FOR_CROSSWORD || !this.table) {
       return 0;
     }
 
@@ -357,7 +357,7 @@ export default class CrosswordContent {
    * @returns {number} Maximum score.
    */
   getMaxScore() {
-    if (this.params.words.length < MIN_WORDS_FOR_CROSSWORD) {
+    if (this.params.words.length < MIN_WORDS_FOR_CROSSWORD || !this.table) {
       return 0;
     }
 
