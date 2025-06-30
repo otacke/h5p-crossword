@@ -2,7 +2,7 @@
   "semantics": [
     {
       "label": "Navodilo udeležencem",
-      "description": "Opis reševanja zadane naloge."
+      "description": "Opis reševanja naloge."
     },
     {
       "label": "Gesla",
@@ -28,7 +28,7 @@
           },
           {
             "label": "Zakleni geslo na mrežo",
-            "description": "Geslo bo zaklenjeno na točno določeno mesto na mreži. Words with the same alignment may not be placed touching each other."
+            "description": "Geslo bo zaklenjeno na točno določeno mesto na mreži. Gesla z enako poravnavo se morda ne bodo mogla dotikati."
           },
           {
             "label": "Vrstica",
@@ -151,8 +151,8 @@
           "label": "Omogoči gumb \"Prikaži rešitev\""
         },
         {
-          "label": "Keep correct answers on retry",
-          "description": "If this option is enabled, correct answers will be kept when the user retries the task unless full score was achieved."
+          "label": "Ohrani pravilne odgovore",
+          "description": "Ob ponovnem reševanju križanke se ohranijo potrjeni pravilni odgovori."
         }
       ]
     },
@@ -172,8 +172,8 @@
           "default": "Preveri"
         },
         {
-          "label": "Text for \"Submit\" button",
-          "default": "Submit"
+          "label": "Besedilo za gumb \"Oddaj\"",
+          "default": "Oddaj"
         },
         {
           "label": "Besedilo za gumb \"Poskusi ponovno\"",
@@ -194,7 +194,7 @@
         {
           "label": "Problematična gesla",
           "description": "Navedba gesel, ki so povzročile težave pri ustvarjanju križanke. @words je spremenljivka.",
-          "default": "Some words could not be placed. Če uporabljate zaklenjena gesla, pazite, da njihov položaj ne preprečuje postavljanja drugih gesel. Words with the same alignment may not be placed touching each other. Problematična gesla: @words"
+          "default": "Nekaterih gesel ni bilo mogoče postaviti. Če uporabljate zaklenjena gesla, pazite, da njihov položaj ne preprečuje postavljanja drugih. Gesla z enako poravnavo se morda ne bodo mogla dotikati. Problematična gesla: @words"
         },
         {
           "label": "Besedilo za dodaten namig",
