@@ -10,12 +10,26 @@ export default class CrosswordSolutionWord {
    * @param {object} params Parameters.
    */
   constructor(params = {}) {
-    this.solutionWord = Util.toUpperCase(params.solutionWord, Util.UPPERCASE_EXCEPTIONS);
+    const paddedCellsWithMarkers = params.cellsWithMarkers.reduce((result, cell, index) => {
+      const expectedPosition = index + 1;
+
+      if (cell === undefined || cell.solutionWordId === expectedPosition) {
+        result.push(cell);
+      }
+      else {
+        const missingCellsCount = cell.solutionWordId - expectedPosition;
+        result.push(...Array(missingCellsCount).fill(undefined), cell);
+      }
+
+      return result;
+    }, []);
+
+    this.solutionWord = paddedCellsWithMarkers.map((cell) => cell?.getSolution() || ' ');
     this.scaleWidth = Math.max(
       params.tableWidth, this.solutionWord.length
     ); // TODO factor based on actual length/margin
 
-    this.cells = this.createCells(this.solutionWord);
+    this.cells = this.createCells(paddedCellsWithMarkers);
     this.content = this.createSolution(this.cells);
   }
 
@@ -52,23 +66,22 @@ export default class CrosswordSolutionWord {
 
   /**
    * Create cells.
-   * @param {string} solutionWord Solution word.
+   * @param {CrosswordCell[]} cellsWithMarkers Cells with markers.
    * @returns {CrosswordCell[]} Cells.
    */
-  createCells(solutionWord) {
-    const cells = Util.createArray(solutionWord.length);
-    solutionWord
-      .split('')
-      .forEach((character, index) => {
-        cells[index] = new CrosswordCell({
-          width: 100 / solutionWord.length, // eslint-disable-line no-magic-numbers
-          solution: solutionWord[index],
-          clueIdMarker: index + 1 // Technically, it's a solution marker ...
-        });
-        cells[index].disable();
+  createCells(cellsWithMarkers) {
+    const cellWidth = 100 / cellsWithMarkers.length; // eslint-disable-line no-magic-numbers
+
+    return cellsWithMarkers.map((cell, index) => {
+      const crosswordCell = new CrosswordCell({
+        width: cellWidth,
+        solution: cell?.getSolution() || ' ',
+        clueIdMarker: cell ? index + 1 : ' ' // Technically, it's a solution marker ...
       });
 
-    return cells;
+      crosswordCell.disable();
+      return crosswordCell;
+    });
   }
 
   /**

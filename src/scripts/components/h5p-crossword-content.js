@@ -161,11 +161,11 @@ export default class CrosswordContent {
     tableWrapper.appendChild(this.table.getDOM());
     this.content.appendChild(tableWrapper);
 
-    const canHaveSolutionWord = this.table.addSolutionWord(this.params.solutionWord, state.solutionCells);
+    const cellsWithMarkers = this.table.addSolutionWord(this.params.solutionWord, state.solutionCells);
     if (this.params.solutionWord !== '') {
-      if (canHaveSolutionWord) {
+      if (cellsWithMarkers.length > 0) {
         this.solutionWord = new CrosswordSolutionWord({
-          solutionWord: this.params.solutionWord,
+          cellsWithMarkers: cellsWithMarkers,
           tableWidth: this.crosswordLayout.cols
         });
         tableWrapper.appendChild(this.solutionWord.getDOM());

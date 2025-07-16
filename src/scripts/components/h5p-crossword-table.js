@@ -300,7 +300,7 @@ export default class CrosswordTable {
         const candidateCells = Util.shuffleArray(
           cells.filter((cell) => cell.getSolution() === character && result.indexOf(cell) === -1)
         );
-        if (candidateCells.length === 0) {
+        if (candidateCells.length === 0 && character !== ' ') {
           canHaveSolutionWord = false;
           return;
         }
@@ -315,26 +315,30 @@ export default class CrosswordTable {
    * Mark cells with solution word ids and circles if possible.
    * @param {string} solutionWord Solution word.
    * @param {number[]} positions Positions of solution word.
-   * @returns {boolean} True, if possibe, else false.
+   * @returns {object} Cells with markers or empty array if no solution word.
    */
   addSolutionWord(solutionWord, positions = []) {
+    const cellsWithMarkers = [];
+
     if (!solutionWord || solutionWord === '') {
-      return false;
+      return cellsWithMarkers;
     }
 
     if (positions.length) {
       positions.forEach((position) => {
         this.cells[position.row][position.column].addSolutionWordIdMarker(position.solutionWordId);
+        cellsWithMarkers.push(this.cells[position.row][position.column]);
       });
-      return true;
+      return cellsWithMarkers;
     }
 
     const solutionWordCells = this.findSolutionWordCells(solutionWord);
     solutionWordCells.forEach((cell, index) => {
-      cell.addSolutionWordIdMarker(index + 1);
+      cell?.addSolutionWordIdMarker(index + 1);
+      cellsWithMarkers.push(cell);
     });
 
-    return (solutionWordCells.length > 0);
+    return cellsWithMarkers;
   }
 
   /**
