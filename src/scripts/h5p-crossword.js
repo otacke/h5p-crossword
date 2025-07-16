@@ -156,7 +156,7 @@ export default class Crossword extends H5P.Question {
         },
         a11y: this.params.a11y,
         poolSize: this.params.behaviour.poolSize,
-        solutionWord: Util.toUpperCase(this.params.solutionWord.replace(/'\s'/g, ''), Util.UPPERCASE_EXCEPTIONS),
+        solutionWord: Util.toUpperCase(this.params.solutionWord, Util.UPPERCASE_EXCEPTIONS),
         words: this.params.words,
         previousState: this.previousState
       },
