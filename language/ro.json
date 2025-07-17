@@ -1,0 +1,293 @@
+{
+  "semantics": [
+    {
+      "label": "Descrierea sarcinii",
+      "description": "Descrieți sarcina aici."
+    },
+    {
+      "label": "cuvinte",
+      "widgets": [
+        {
+          "label": "Implicit"
+        }
+      ],
+      "entity": "Cuvânt",
+      "field": {
+        "label": "Cuvânt",
+        "fields": [
+          {
+            "label": "Indiciu",
+            "description": "Indiciu care ar trebui să ducă la răspuns."
+          },
+          {
+            "label": "Răspuns",
+            "description": "Răspunsul la indiciu."
+          },
+          {
+            "label": "Indiciu suplimentar"
+          },
+          {
+            "label": "Fixează cuvântul pe careu",
+            "description": "Bifați dacă doriți să fixați cuvântul într-o anumită poziție pe careu. Cuvintele cu aceeași aliniere nu pot fi plasate atingându-se."
+          },
+          {
+            "label": "Rând",
+            "description": "Indexul rândului de unde ar trebui să înceapă răspunsul."
+          },
+          {
+            "label": "Coloană",
+            "description": "Indexul coloanei de unde ar trebui să înceapă răspunsul."
+          },
+          {
+            "label": "Orientare",
+            "description": "Orientarea pentru răspuns.",
+            "options": [
+              {
+                "label": "Orizontal"
+              },
+              {
+                "label": "Vertical"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Cuvânt soluție generală",
+      "description": "Opțional, adăugați un cuvânt soluție care poate fi derivat din anumite caractere de pe careu. Acesta va fi vizibil doar dacă toate caracterele sale pot fi găsite în rebus. Vă rugăm să rețineți: Nu există încă suport de accesibilitate pentru această funcționalitate."
+    },
+    {
+      "label": "Feedback general",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Implicit"
+            }
+          ],
+          "label": "Definiți feedback personalizat pentru orice interval de scor",
+          "description": "Faceți clic pe butonul „Adăugați interval” pentru a adăuga câte intervale aveți nevoie. Exemplu: 0-20% Scor slab, 21-91% Scor mediu, 91-100% Scor excelent!",
+          "entity": "interval",
+          "field": {
+            "fields": [
+              {
+                "label": "Interval de scor"
+              },
+              {},
+              {
+                "label": "Feedback pentru intervalul de scor definit",
+                "placeholder": "Completați feedbackul"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Temă",
+      "fields": [
+        {
+          "label": "Imagine de fundal",
+          "description": "Selectați o imagine de fundal opțională. Aceasta va fi scalată pentru a se potrivi fundalului fără a o deforma."
+        },
+        {
+          "label": "Culoare de fundal",
+          "description": "Alegeți o culoare de fundal. Aceasta va fi utilizată fie în locul unei imagini de fundal, fie ca fundal pentru zonele transparente."
+        },
+        {
+          "label": "Culoarea grilei",
+          "description": "Alegeți o culoare pentru grilă."
+        },
+        {
+          "label": "Culoare de fundal pentru celulă",
+          "description": "Alegeți culoarea de fundal pentru o celulă a tabelului."
+        },
+        {
+          "label": "Culoarea textului din celulă",
+          "description": "Alegeți culoarea textului pentru o celulă a tabelului."
+        },
+        {
+          "label": "Culoarea ID-ului indiciului",
+          "description": "Alegeți culoarea ID-ului indiciului dintr-o celulă a tabelului."
+        },
+        {
+          "label": "Culoare de fundal pentru celulă (evidențiată)",
+          "description": "Alegeți culoarea de fundal pentru o celulă a tabelului care este evidențiată."
+        },
+        {
+          "label": "Culoarea textului din celulă (evidențiată)",
+          "description": "Alegeți culoarea textului pentru o celulă a tabelului care este evidențiată."
+        },
+        {
+          "label": "Culoarea ID-ului indiciului (evidențiată)",
+          "description": "Alegeți culoarea ID-ului indiciului dintr-o celulă a tabelului care este evidențiată."
+        }
+      ]
+    },
+    {
+      "label": "Setări de comportament",
+      "description": "Aceste opțiuni vă vor permite să controlați modul în care se comportă sarcina.",
+      "fields": [
+        {
+          "label": "Numărul de cuvinte de afișat",
+          "description": "Creați un set aleatoriu de cuvinte din totalul disponibil. Setul va conține întotdeauna cel puțin toate cuvintele care au fost fixate pe careu, indiferent de această setare. O valoare goală sau 0 înseamnă utilizarea tuturor cuvintelor."
+        },
+        {
+          "label": "Activați feedbackul instantaneu"
+        },
+        {
+          "label": "Punctaj pe cuvinte",
+          "description": "Dacă această opțiune este activată, cuvintele vor fi numărate pentru a determina scorul. Altfel, vor fi numărate caracterele corecte."
+        },
+        {
+          "label": "Aplicați penalizări",
+          "description": "Dacă această opțiune este activată, fiecare răspuns greșit va primi o penalizare de -1 punct."
+        },
+        {
+          "label": "Activați „Reîncercare”"
+        },
+        {
+          "label": "Activați „Soluție”"
+        },
+        {
+          "label": "Păstrați răspunsurile corecte la reîncercare",
+          "description": "Dacă această opțiune este activată, răspunsurile corecte vor fi păstrate atunci când utilizatorul reîncearcă sarcina, cu excepția cazului în care s-a obținut scorul maxim."
+        }
+      ]
+    },
+    {
+      "label": "Interfață utilizator",
+      "fields": [
+        {
+          "label": "Etichetă pentru orizontal",
+          "default": "Orizontal"
+        },
+        {
+          "label": "Etichetă pentru vertical",
+          "default": "Vertical"
+        },
+        {
+          "label": "Text pentru butonul „Verifică”",
+          "default": "Verifică"
+        },
+        {
+          "label": "Text pentru butonul „Trimite”",
+          "default": "Trimite"
+        },
+        {
+          "label": "Text pentru butonul „Reîncearcă”",
+          "default": "Reîncearcă"
+        },
+        {
+          "label": "Text pentru butonul „Arată soluția”",
+          "default": "Arată soluția"
+        },
+        {
+          "label": "Nu se poate crea rebusul",
+          "default": "Nu s-a putut genera un rebus cu cuvintele date. Vă rugăm să încercați din nou cu mai puține cuvinte sau cuvinte care au mai multe caractere în comun."
+        },
+        {
+          "label": "Nu se poate crea rebusul (prea puține cuvinte)",
+          "default": "Nu s-a putut genera un rebus. Aveți nevoie de cel puțin două cuvinte."
+        },
+        {
+          "label": "Cuvinte problematice",
+          "description": "Lista cuvintelor care au cauzat probleme la generarea rebusului. @words este un substituent care va fi înlocuit cu cuvintele problematice.",
+          "default": "Unele cuvinte nu au putut fi plasate. Dacă utilizați cuvinte fixe, asigurați-vă că poziția lor nu împiedică plasarea altor cuvinte. Cuvintele cu aceeași aliniere nu pot fi plasate atingându-se. Cuvânt(e) problematic(e): @words"
+        },
+        {
+          "label": "Indiciu suplimentar",
+          "default": "Indiciu suplimentar"
+        },
+        {
+          "label": "Închide fereastra",
+          "default": "Închide fereastra"
+        }
+      ]
+    },
+    {
+      "label": "Cititor de ecran",
+      "fields": [
+        {
+          "label": "Descrierea grilei de rebus",
+          "default": "Grilă de rebus. Folosiți tastele săgeți pentru a naviga și tastatura pentru a introduce caractere. Alternativ, folosiți tasta Tab pentru a naviga și a tasta răspunsurile în câmpuri de tip „Completați spațiile libere” în loc de grilă."
+        },
+        {
+          "label": "Coloană",
+          "default": "Coloană"
+        },
+        {
+          "label": "Rând",
+          "default": "Rând"
+        },
+        {
+          "label": "Orizontal",
+          "default": "Orizontal"
+        },
+        {
+          "label": "Vertical",
+          "default": "Vertical"
+        },
+        {
+          "label": "Gol",
+          "default": "Gol"
+        },
+        {
+          "description": "Anunțarea rezultatului. @clue este o variabilă și va fi înlocuită cu indiciul respectiv.",
+          "label": "Rezultat pentru",
+          "default": "Rezultat pentru: @clue"
+        },
+        {
+          "label": "Corect",
+          "default": "Corect"
+        },
+        {
+          "label": "Greșit",
+          "default": "Greșit"
+        },
+        {
+          "label": "Punct",
+          "default": "punct"
+        },
+        {
+          "description": "Anunțarea soluției. @clue și @solution sunt variabile și vor fi înlocuite cu valorile respective.",
+          "label": "Soluție pentru",
+          "default": "Pentru @clue soluția este: @solution"
+        },
+        {
+          "description": "Anunțarea indiciului suplimentar. @clue este o variabilă și va fi înlocuită cu valoarea respectivă.",
+          "label": "Indiciu suplimentar pentru",
+          "default": "Deschide indiciu suplimentar pentru @clue"
+        },
+        {
+          "description": "Anunțarea poziției curente. @position și @length sunt variabile și vor fi înlocuite cu valorile lor respective.",
+          "label": "Literă",
+          "default": "Litera @position din @length"
+        },
+        {
+          "description": "Anunțarea lungimii cuvântului. @length este o variabilă și va fi înlocuită cu valoarea respectivă.",
+          "label": "Lungimea cuvântului",
+          "default": "Cuvânt de @length litere"
+        },
+        {
+          "label": "Descriere pentru tehnologia asistivă pentru butonul „Verifică”",
+          "default": "Verifică caracterele. Răspunsurile vor fi marcate ca fiind corecte, incorecte sau fără răspuns."
+        },
+        {
+          "label": "Descriere pentru tehnologia asistivă pentru butonul „Arată soluția”",
+          "default": "Arată soluția. Rebusul va fi completat cu soluția sa corectă."
+        },
+        {
+          "label": "Descriere pentru tehnologia asistivă pentru butonul „Reîncearcă”",
+          "default": "Reîncearcă sarcina. Resetează toate răspunsurile și începe sarcina de la capăt."
+        },
+        {
+          "label": "Rezultatul tău",
+          "description": "@score și @total sunt variabile și vor fi înlocuite cu valorile lor respective.",
+          "default": "Ați obținut @score din @total puncte"
+        }
+      ]
+    }
+  ]
+}
