@@ -29,7 +29,7 @@
     "eslint-config-snordian-h5p": "github:otacke/eslint-config-snordian-h5p",
     "mini-css-extract-plugin": "^2.9.4",
     "regenerator-runtime": "^0.14.1",
-    "sass": "^1.90.0",
+    "sass": "^1.91.0",
     "sass-loader": "^16.0.5",
     "webpack": "^5.101.3",
     "webpack-cli": "^6.0.1"
