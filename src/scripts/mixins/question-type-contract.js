@@ -120,7 +120,7 @@ export default class QuestionTypeContract {
    */
   getXAPIData() {
     return {
-      statement: this.getXAPIAnswerEvent().data.statement
+      statement: this.getXAPIAnswerEvent().data.statement,
     };
   }
 

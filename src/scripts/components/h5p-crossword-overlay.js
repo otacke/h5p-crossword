@@ -16,11 +16,11 @@ export default class Overlay {
       styleBase: 'h5p-crossword-overlay',
       position: {
         offsetHorizontal : 0,
-        offsetVertical : 0
+        offsetVertical : 0,
       },
       l10n: {
-        closeWindow: 'Close'
-      }
+        closeWindow: 'Close',
+      },
     }, params);
 
     this.callbacks = callbacks;
@@ -135,8 +135,8 @@ export default class Overlay {
     this.focusableElements = []
       .slice.call(
         this.overlay.querySelectorAll(
-          'video, audio, button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        )
+          'video, audio, button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        ),
       )
       .filter((element) => element.getAttribute('disabled') !== 'true' && element.getAttribute('disabled') !== true);
   }

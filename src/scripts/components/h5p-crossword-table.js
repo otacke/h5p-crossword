@@ -64,12 +64,12 @@ export default class CrosswordTable {
 
           this.setcurrentOrientation('across', {
             row: parseInt(target.dataset.row),
-            column: parseInt(target.dataset.col) + 1
+            column: parseInt(target.dataset.col) + 1,
           });
 
           this.moveTo({
             row: parseInt(target.dataset.row),
-            column: parseInt(target.dataset.col) + 1
+            column: parseInt(target.dataset.col) + 1,
           });
           break;
 
@@ -78,12 +78,12 @@ export default class CrosswordTable {
 
           this.setcurrentOrientation('across', {
             row: parseInt(target.dataset.row),
-            column: parseInt(target.dataset.col) - 1
+            column: parseInt(target.dataset.col) - 1,
           });
 
           this.moveTo({
             row: parseInt(target.dataset.row),
-            column: parseInt(target.dataset.col) - 1
+            column: parseInt(target.dataset.col) - 1,
           });
           break;
 
@@ -92,12 +92,12 @@ export default class CrosswordTable {
 
           this.setcurrentOrientation('across', {
             row: parseInt(target.dataset.row) + 1,
-            column: parseInt(target.dataset.col)
+            column: parseInt(target.dataset.col),
           });
 
           this.moveTo({
             row: parseInt(target.dataset.row) + 1,
-            column: parseInt(target.dataset.col)
+            column: parseInt(target.dataset.col),
           });
           break;
 
@@ -106,12 +106,12 @@ export default class CrosswordTable {
 
           this.setcurrentOrientation('across', {
             row: parseInt(target.dataset.row) - 1,
-            column: parseInt(target.dataset.col)
+            column: parseInt(target.dataset.col),
           });
 
           this.moveTo({
             row: parseInt(target.dataset.row) - 1,
-            column: parseInt(target.dataset.col)
+            column: parseInt(target.dataset.col),
           });
           break;
 
@@ -130,15 +130,15 @@ export default class CrosswordTable {
           if (event.ctrlKey) {
             this.moveTo({
               row: this.params.dimensions.rows - 1,
-              column: this.params.dimensions.columns - 1
+              column: this.params.dimensions.columns - 1,
             });
           }
           else {
             this.moveTo({
               row: parseInt(target.dataset.row),
               column: document.querySelector(
-                `[data-row="${target.dataset.row}"]:last-of-type`
-              ).dataset.col
+                `[data-row="${target.dataset.row}"]:last-of-type`,
+              ).dataset.col,
             });
           }
           break;
@@ -195,7 +195,7 @@ export default class CrosswordTable {
           row: row,
           column: column,
           solution: null,
-          id: null
+          id: null,
         };
       }
     }
@@ -219,7 +219,7 @@ export default class CrosswordTable {
           clue: cell.clue,
           clueIdAcross: (cell.orientation === 'across') ? cell.clueId : stemCells[row][column].clueIdAcross,
           clueIdDown: (cell.orientation === 'down') ? cell.clueId : stemCells[row][column].clueIdDown,
-          clueIdMarker: (i === 0) ? cell.clueId : stemCells[row][column].clueIdMarker
+          clueIdMarker: (i === 0) ? cell.clueId : stemCells[row][column].clueIdMarker,
         };
 
         if (cell.orientation === 'down') {
@@ -241,7 +241,7 @@ export default class CrosswordTable {
         solution: param.solution,
         solutionIndex: param.solutionIndex,
         solutionLength: param.solutionLength,
-        width: 100 / dimensions.columns, // eslint-disable-line no-magic-numbers
+        width: 100 / dimensions.columns,  
         clueIdMarker: param.clueIdMarker,
         clue: param.clue,
         clueIdAcross: param.clueIdAcross,
@@ -253,8 +253,8 @@ export default class CrosswordTable {
         a11y: {
           correct: this.params.a11y.correct,
           wrong: this.params.a11y.wrong,
-          empty: this.params.a11y.empty
-        }
+          empty: this.params.a11y.empty,
+        },
       },
       {
         onClick: ((position) => {
@@ -268,7 +268,7 @@ export default class CrosswordTable {
         }),
         onRead: ((text) => {
           this.callbacks.onRead(text);
-        })
+        }),
       });
     });
 
@@ -298,7 +298,7 @@ export default class CrosswordTable {
 
         // Try to find random cell that contains char looked for and has not been used
         const candidateCells = Util.shuffleArray(
-          cells.filter((cell) => cell.getSolution() === character && result.indexOf(cell) === -1)
+          cells.filter((cell) => cell.getSolution() === character && result.indexOf(cell) === -1),
         );
         if (candidateCells.length === 0 && character !== ' ') {
           canHaveSolutionWord = false;
@@ -465,7 +465,7 @@ export default class CrosswordTable {
       updates.push({
         clueId: invertedClueId,
         orientation: invertedOrientation,
-        text: invertedText
+        text: invertedText,
       });
     }
 
@@ -481,7 +481,7 @@ export default class CrosswordTable {
     updates.push({
       clueId: clueId,
       orientation: this.currentOrientation,
-      text: text
+      text: text,
     });
 
     return updates;
@@ -512,7 +512,7 @@ export default class CrosswordTable {
           inputFieldUpdates: this.getUpdates(information.position),
           clueId: information.clueId,
           solutionWordId: information.solutionWordId || null,
-          checkFilled: true
+          checkFilled: true,
         });
       }
     });
@@ -648,7 +648,7 @@ export default class CrosswordTable {
 
     [].concat(...this.cells).forEach((cell) => {
       answerWasKept = cell.reset(
-        { keepCorrectAnswers: params.keepCorrectAnswers }
+        { keepCorrectAnswers: params.keepCorrectAnswers },
       ) || answerWasKept;
     });
 
@@ -781,7 +781,7 @@ export default class CrosswordTable {
       inputFieldUpdates: this.getUpdates(params.position),
       clueId: params.clueId,
       solutionWordId: params.solutionWordId || null,
-      checkFilled: true
+      checkFilled: true,
     }, quiet);
   }
 
@@ -804,7 +804,7 @@ export default class CrosswordTable {
         clueId: word.clueId,
         orientation: word.orientation,
         answer: word.answer,
-        score: this.getWordScore(word.clueId, word.orientation)
+        score: this.getWordScore(word.clueId, word.orientation),
       };
     });
 
@@ -848,7 +848,7 @@ export default class CrosswordTable {
     }
 
     const wordElement = this.params.words.filter(
-      (word) => word.clueId === clueId && word.orientation === orientation
+      (word) => word.clueId === clueId && word.orientation === orientation,
     )[0];
 
     [].concat(...this.cells)
@@ -863,7 +863,7 @@ export default class CrosswordTable {
           orientation: orientation,
           clue: wordElement.clue,
           position: index,
-          length: wordElement.answer.length
+          length: wordElement.answer.length,
         };
         cell.setAriaLabel(this.buildAriaLabel(ariaLabelParams));
 
@@ -894,7 +894,7 @@ export default class CrosswordTable {
   getFocus() {
     return {
       position: this.currentPosition,
-      orientation: this.currentOrientation
+      orientation: this.currentOrientation,
     };
   }
 
@@ -934,7 +934,7 @@ export default class CrosswordTable {
     // Report focus change
     this.callbacks.onFocus({
       clueId: this.cells[position.row][position.column].getClueId(this.currentOrientation),
-      orientation: this.currentOrientation
+      orientation: this.currentOrientation,
     });
 
     if (!keepFocus) {
@@ -964,7 +964,7 @@ export default class CrosswordTable {
       const answerBefore = cell.getAnswer();
       cell.setAnswer(
         params.text[index] || '',
-        (params.readOffset === -1) ? false : index === params.cursorPosition - params.readOffset
+        (params.readOffset === -1) ? false : index === params.cursorPosition - params.readOffset,
       );
       hasSomeCellChanged = hasSomeCellChanged ||
         answerBefore !== cell.getAnswer();
@@ -980,11 +980,11 @@ export default class CrosswordTable {
           orientation: (params.orientation === 'across') ? 'down' : 'across',
           text: crossedWordInfos.reduce((result, info) => {
             return `${result}${info.answer || ' '}`;
-          }, '')
+          }, ''),
         }];
 
         this.callbacks.onInput({
-          inputFieldUpdates: inputFieldUpdates
+          inputFieldUpdates: inputFieldUpdates,
         });
       }
 
@@ -1003,7 +1003,7 @@ export default class CrosswordTable {
 
     // Check if table is filled
     this.callbacks.onInput({
-      checkFilled: hasSomeCellChanged
+      checkFilled: hasSomeCellChanged,
     });
   }
 
@@ -1129,7 +1129,7 @@ export default class CrosswordTable {
         return {
           row: cell.getPosition().row,
           column: cell.getPosition().column,
-          solutionWordId: cell.getInformation().solutionWordId
+          solutionWordId: cell.getInformation().solutionWordId,
         };
       });
   }

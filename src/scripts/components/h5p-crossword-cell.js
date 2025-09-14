@@ -14,7 +14,7 @@ export default class CrosswordCell {
     this.params = Util.extend({
       instantFeedback: false,
       clueIdMarker: null,
-      solution: null
+      solution: null,
     }, params);
 
     // Callbacks
@@ -253,7 +253,7 @@ export default class CrosswordCell {
       position: this.position,
       score: this.getScore(),
       solution: this.params.solution,
-      solutionWordId: this.solutionWordId || null
+      solutionWordId: this.solutionWordId || null,
     };
   }
 
@@ -394,7 +394,7 @@ export default class CrosswordCell {
     else {
       this.cellCanvas.innerText = Util.toUpperCase(
         answer.replace(new RegExp(Util.CHARACTER_PLACEHOLDER, 'g'), ' '),
-        Util.UPPERCASE_EXCEPTIONS
+        Util.UPPERCASE_EXCEPTIONS,
       );
       this.answer = Util.toUpperCase(answer, Util.UPPERCASE_EXCEPTIONS);
     }

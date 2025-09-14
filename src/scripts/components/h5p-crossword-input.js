@@ -20,8 +20,8 @@ export default class CrosswordInput {
     this.params = Util.extend({
       l10n: {
         extraClue: 'Extra clue',
-        closeWindow: 'Close Window'
-      }
+        closeWindow: 'Close Window',
+      },
     }, params);
 
     this.callbacks = callbacks || {};
@@ -41,21 +41,21 @@ export default class CrosswordInput {
 
     const fieldsAcross = this.buildInputFieldsGroup({
       words: this.params.words.filter((word) => word.orientation === 'across'),
-      title: params.l10n.across
+      title: params.l10n.across,
     });
     safariFirefoxWapper.appendChild(fieldsAcross);
 
     const fieldsDown = this.buildInputFieldsGroup({
       words: this.params.words.filter((word) => word.orientation === 'down'),
-      title: params.l10n.down
+      title: params.l10n.down,
     });
     safariFirefoxWapper.appendChild(fieldsDown);
 
     this.overlay = new Overlay(
       {
         l10n: {
-          closeWindow: this.params.l10n.closeWindow
-        }
+          closeWindow: this.params.l10n.closeWindow,
+        },
       },
       {
         onClose: () => {
@@ -63,8 +63,8 @@ export default class CrosswordInput {
         },
         onRead: ((text) => {
           this.callbacks.onRead(text);
-        })
-      }
+        }),
+      },
     );
     params.overlayContainer.appendChild(this.overlay.getDOM());
   }
@@ -134,11 +134,11 @@ export default class CrosswordInput {
           const ariaLabelParams = {
             clueId: word.clueId,
             orientation: word.orientation,
-            clue: word.clue
+            clue: word.clue,
           };
 
           extraClue.setAttribute(
-            'aria-label', this.params.a11y.extraClueFor.replace('@clue', this.buildAriaLabel(ariaLabelParams))
+            'aria-label', this.params.a11y.extraClueFor.replace('@clue', this.buildAriaLabel(ariaLabelParams)),
           );
 
           extraClue.setAttribute('title', this.params.l10n.extraClue);
@@ -166,7 +166,7 @@ export default class CrosswordInput {
             this.extraClueInstance = H5P.newRunnable(
               word.extraClue,
               this.params.contentId,
-              H5P.jQuery(instanceWrapper)
+              H5P.jQuery(instanceWrapper),
             );
           });
 
@@ -180,7 +180,7 @@ export default class CrosswordInput {
         clueId: word.clueId,
         orientation: word.orientation,
         clue: word.clue,
-        length: word.answer.length
+        length: word.answer.length,
       };
       inputField.setAttribute('aria-label', this.buildAriaLabel(ariaLabelParams));
       inputField.setAttribute('autocomplete', 'off');
@@ -203,7 +203,7 @@ export default class CrosswordInput {
             orientation: word.orientation,
             cursorPosition: Math.min(inputField.selectionStart, word.answer.length - 1),
             text: inputField.value,
-            readOffset: -1 // don't read
+            readOffset: -1, // don't read
           });
         }, 0); // selectionStart will be 0 before DOM rendered
       });
@@ -235,7 +235,7 @@ export default class CrosswordInput {
         this.tableUpdateTimeout = setTimeout(() => {
           const after = this.applySamsungWorkaround(
             before,
-            Util.toUpperCase(inputField.value, Util.UPPERCASE_EXCEPTIONS)
+            Util.toUpperCase(inputField.value, Util.UPPERCASE_EXCEPTIONS),
           );
           this.setInputFieldValue(inputField, after);
           inputField.setSelectionRange(start + 1, start + 1);
@@ -245,7 +245,7 @@ export default class CrosswordInput {
             orientation: word.orientation,
             cursorPosition: Math.min(start + 1, word.answer.length - 1),
             text: after,
-            readOffset: -1 // don't read
+            readOffset: -1, // don't read
           });
         }, DEFAULT_DOM_RENDER_TIMEOUT_MS); // selectionStart will be 0 before DOM rendered
       }, false);
@@ -278,7 +278,7 @@ export default class CrosswordInput {
         else if (event.code === 'End' || event.code === 'ArrowDown') {
           cursorPosition = Math.min(
             inputField.value.length,
-            inputField.getAttribute('maxLength') - 1
+            inputField.getAttribute('maxLength') - 1,
           );
         }
 
@@ -292,7 +292,7 @@ export default class CrosswordInput {
           text: inputField.value,
           readOffset: (
             ['Backspace', 'ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown', 'Delete'].includes(event.key) ? 0 : 1
-          )
+          ),
         });
       });
 
@@ -306,7 +306,7 @@ export default class CrosswordInput {
 
         const text = event.clipboardData.getData('text');
         this.setInputFieldValue(
-          inputField, text.substring(0, inputField.getAttribute('maxLength'))
+          inputField, text.substring(0, inputField.getAttribute('maxLength')),
         );
       });
 
@@ -315,8 +315,8 @@ export default class CrosswordInput {
 
       const solution = new CrosswordCharList({
         a11y: {
-          listLabel: listLabel
-        }
+          listLabel: listLabel,
+        },
       });
       wrapper.appendChild(solution.getDOM());
 
@@ -325,7 +325,7 @@ export default class CrosswordInput {
         inputField: inputField,
         orientation: word.orientation,
         clueId: word.clueId,
-        solution: solution
+        solution: solution,
       });
 
       inputFieldsGroup.appendChild(wrapper);
@@ -457,7 +457,7 @@ export default class CrosswordInput {
   fillFields(params) {
     params.forEach((param) => {
       const fields = this.inputFields.filter(
-        (field) => field.orientation === param.orientation && field.clueId === param.clueId
+        (field) => field.orientation === param.orientation && field.clueId === param.clueId,
       );
 
       if (fields.length > 0) {
@@ -478,7 +478,7 @@ export default class CrosswordInput {
     });
 
     const fields = this.inputFields.filter(
-      (field) => field.orientation === params.orientation && field.clueId === params.clueId
+      (field) => field.orientation === params.orientation && field.clueId === params.clueId,
     );
 
     if (fields.length > 0) {
@@ -525,7 +525,7 @@ export default class CrosswordInput {
         ariaLabel: `${ariaLabels.join('. ')}.`,
         char: field.inputField.value.replace(Util.CHARACTER_PLACEHOLDER, ' '),
         result: result,
-        scoreExplanation: scoreExplanation
+        scoreExplanation: scoreExplanation,
       }]);
     });
   }
@@ -592,11 +592,11 @@ export default class CrosswordInput {
 
         const ariaLabels = [];
         ariaLabels.push(
-          `${this.params.a11y.letterSevenOfNine.replace('@position', index + 1).replace('@length', cellInfos.length)}`
+          `${this.params.a11y.letterSevenOfNine.replace('@position', index + 1).replace('@length', cellInfos.length)}`,
         );
 
         ariaLabels.push(
-          (!cellInfo.answer || cellInfo.answer.trim() === '') ? this.params.a11y.empty : cellInfo.answer
+          (!cellInfo.answer || cellInfo.answer.trim() === '') ? this.params.a11y.empty : cellInfo.answer,
         );
 
         if (result === 'correct') {
@@ -612,7 +612,7 @@ export default class CrosswordInput {
           ariaLabel: `${ariaLabels.join('. ')}.`,
           char: char.replace(Util.CHARACTER_PLACEHOLDER, ' ') || '&nbsp;',
           result: result,
-          scoreExplanation: scoreExplanation
+          scoreExplanation: scoreExplanation,
         });
       });
 
@@ -670,11 +670,11 @@ export default class CrosswordInput {
   resize(params = {}) {
     if (params.height) {
       this.content.style.setProperty(
-        '--h5p-crossword-input-container-height', `${params.height}px`
+        '--h5p-crossword-input-container-height', `${params.height}px`,
       );
 
       this.compensateForScrollbar(
-        this.content.scrollHeight > this.content.clientHeight
+        this.content.scrollHeight > this.content.clientHeight,
       );
     }
 

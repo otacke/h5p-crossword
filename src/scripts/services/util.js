@@ -296,7 +296,7 @@ Util.CONTROL_KEY_VALUES = [
   'Escape', 'PageUp', 'PageDown', 'End', 'Home', 'ArrowLeft', 'ArrowUp',
   'ArrowRight', 'ArrowDown', 'Insert', 'Delete', 'Meta', 'ContextMenu',
   'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12',
-  'NumLock', 'ScrollLock'
+  'NumLock', 'ScrollLock',
 ];
 
 /**
@@ -306,8 +306,8 @@ Util.CONTROL_KEY_VALUES = [
 Util.UPPERCASE_EXCEPTIONS = [
   {
     lowerCase: 'ß',
-    upperCase: '\u1e9e' // LATIN CAPITAL LETTER SHARP S
-  }
+    upperCase: '\u1e9e', // LATIN CAPITAL LETTER SHARP S
+  },
 ];
 
 /** @constant {string} Placeholder in text input fields */

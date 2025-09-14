@@ -26,7 +26,7 @@ export default class CrosswordSolutionWord {
 
     this.solutionWord = paddedCellsWithMarkers.map((cell) => cell?.getSolution() || ' ');
     this.scaleWidth = Math.max(
-      params.tableWidth, this.solutionWord.length
+      params.tableWidth, this.solutionWord.length,
     ); // TODO factor based on actual length/margin
 
     this.cells = this.createCells(paddedCellsWithMarkers);
@@ -70,13 +70,13 @@ export default class CrosswordSolutionWord {
    * @returns {CrosswordCell[]} Cells.
    */
   createCells(cellsWithMarkers) {
-    const cellWidth = 100 / cellsWithMarkers.length; // eslint-disable-line no-magic-numbers
+    const cellWidth = 100 / cellsWithMarkers.length;  
 
     return cellsWithMarkers.map((cell, index) => {
       const crosswordCell = new CrosswordCell({
         width: cellWidth,
         solution: cell?.getSolution() || ' ',
-        clueIdMarker: cell ? index + 1 : ' ' // Technically, it's a solution marker ...
+        clueIdMarker: cell ? index + 1 : ' ', // Technically, it's a solution marker ...
       });
 
       crosswordCell.disable();

@@ -13,16 +13,16 @@ export default class CrosswordGenerator {
       words: [
         {
           answer: 'BAT',
-          clue: 'BAT'
+          clue: 'BAT',
         },
         {
           answer: 'CAT',
-          clue: 'CAT'
-        }
+          clue: 'CAT',
+        },
       ],
       config: {
-        poolSize: 0
-      }
+        poolSize: 0,
+      },
     }, params || {});
 
     // Sanitization
@@ -32,7 +32,7 @@ export default class CrosswordGenerator {
         const newWord = {
           answer: Util.toUpperCase(word.answer, Util.UPPERCASE_EXCEPTIONS),
           clue: word.clue,
-          extraClue: word.extraClue
+          extraClue: word.extraClue,
         };
 
         // data item must have row and column and orientation or none of them
@@ -112,11 +112,11 @@ export default class CrosswordGenerator {
         // Place all presets
         presets.forEach((preset) => {
           if (this.canPlaceAnswerAt(
-            preset.answer, { row: preset.row, column: preset.column, orientation: preset.orientation }
+            preset.answer, { row: preset.row, column: preset.column, orientation: preset.orientation },
           ) !== false) {
             this.placeAnswerAt(
               preset,
-              { row: preset.row, column: preset.column, orientation: preset.orientation }
+              { row: preset.row, column: preset.column, orientation: preset.orientation },
             );
           }
           else {
@@ -153,11 +153,11 @@ export default class CrosswordGenerator {
         }
 
         if (this.canPlaceAnswerAt(
-          wordElement.answer, { row: row, column: column, orientation: startOrientation }
+          wordElement.answer, { row: row, column: column, orientation: startOrientation },
         ) !== false) {
           this.placeAnswerAt(
             wordElement,
-            { row: row, column: column, orientation: startOrientation }
+            { row: row, column: column, orientation: startOrientation },
           );
         }
         else {
@@ -310,7 +310,7 @@ export default class CrosswordGenerator {
 
     this.cells[position.row][position.column][position.orientation] = {
       isStartOfWord: (charIndex === 0),
-      index: wordElement.index
+      index: wordElement.index,
     };
   }
 
@@ -556,10 +556,10 @@ export default class CrosswordGenerator {
         const column = point.column;
         // the c - i, and r - i here compensate for the offset of character in the answer
         const intersectionsAcross = this.canPlaceAnswerAt(
-          answer, { row: row, column: column - i, orientation: 'across' }
+          answer, { row: row, column: column - i, orientation: 'across' },
         );
         const intersectionsDown = this.canPlaceAnswerAt(
-          answer, { row: row - i, column: column, orientation: 'down' }
+          answer, { row: row - i, column: column, orientation: 'down' },
         );
 
         if (intersectionsAcross !== false) {
@@ -567,7 +567,7 @@ export default class CrosswordGenerator {
             intersections: intersectionsAcross,
             row: row,
             column: column - i,
-            orientation: 'across'
+            orientation: 'across',
           });
         }
 
@@ -577,8 +577,8 @@ export default class CrosswordGenerator {
               intersections: intersectionsDown,
               row: row - i,
               column: column,
-              orientation: 'down'
-            }
+              orientation: 'down',
+            },
           );
         }
       }
@@ -706,7 +706,7 @@ export default class CrosswordGenerator {
             starty: r + 1,
             orientation: 'down',
             clueId: nextClueId,
-            index: cell.down.index
+            index: cell.down.index,
           });
         }
 
@@ -719,7 +719,7 @@ export default class CrosswordGenerator {
             starty: r + 1,
             orientation: 'across',
             clueId: nextClueId,
-            index: cell.across.index
+            index: cell.across.index,
           });
         }
 
@@ -732,7 +732,7 @@ export default class CrosswordGenerator {
     return {
       rows: rows,
       cols: cols,
-      result: result
+      result: result,
     };
   }
 }

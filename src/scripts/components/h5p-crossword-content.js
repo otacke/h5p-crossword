@@ -76,8 +76,8 @@ export default class CrosswordContent {
         crosswordGenerator = new CrosswordGenerator({
           words: this.params.words,
           config: {
-            poolSize: this.params.poolSize
-          }
+            poolSize: this.params.poolSize,
+          },
         });
         grid = crosswordGenerator.getSquareGrid(MAXIMUM_TRIES);
 
@@ -135,7 +135,7 @@ export default class CrosswordContent {
         contentId: this.contentId,
         dimensions: {
           rows: this.crosswordLayout.rows,
-          columns: this.crosswordLayout.cols
+          columns: this.crosswordLayout.cols,
         },
         instantFeedback: this.params.instantFeedback,
         solutionWord: this.params.solutionWord,
@@ -143,8 +143,8 @@ export default class CrosswordContent {
         a11y: this.params.a11y,
         l10n: {
           across: this.params.l10n.across,
-          down: this.params.l10n.down
-        }
+          down: this.params.l10n.down,
+        },
       },
       {
         onInput: ((params, quiet) => {
@@ -155,8 +155,8 @@ export default class CrosswordContent {
         }),
         onRead: ((text) => {
           this.callbacks.onRead(text);
-        })
-      }
+        }),
+      },
     );
     tableWrapper.appendChild(this.table.getDOM());
     this.content.appendChild(tableWrapper);
@@ -166,13 +166,13 @@ export default class CrosswordContent {
       if (cellsWithMarkers.length > 0) {
         this.solutionWord = new CrosswordSolutionWord({
           cellsWithMarkers: cellsWithMarkers,
-          tableWidth: this.crosswordLayout.cols
+          tableWidth: this.crosswordLayout.cols,
         });
         tableWrapper.appendChild(this.solutionWord.getDOM());
       }
       else {
         console.warn(
-          'H5P.Crossword: There are not enough matching characters for the overall solution word in the crossword.'
+          'H5P.Crossword: There are not enough matching characters for the overall solution word in the crossword.',
         );
       }
     }
@@ -188,9 +188,9 @@ export default class CrosswordContent {
           across: this.params.l10n.across,
           down: this.params.l10n.down,
           extraClue: this.params.l10n.extraClue,
-          closeWindow: this.params.l10n.closeWindow
+          closeWindow: this.params.l10n.closeWindow,
         },
-        a11y: this.params.a11y
+        a11y: this.params.a11y,
       },
       {
         onFieldInput: ((params) => {
@@ -198,8 +198,8 @@ export default class CrosswordContent {
         }),
         onRead: ((text) => {
           this.callbacks.onRead(text);
-        })
-      }
+        }),
+      },
     );
     this.content.appendChild(this.inputarea.getDOM());
 
@@ -213,7 +213,7 @@ export default class CrosswordContent {
     if (typeof state.focus?.position?.row === 'number') {
       this.table.setcurrentOrientation(
         state.focus.orientation,
-        state.focus.position
+        state.focus.position,
       );
 
       this.table.focusCell(state.focus.position);
@@ -319,12 +319,12 @@ export default class CrosswordContent {
     this.inputarea.reset();
 
     const answerWasKept = this.table.reset(
-      { keepCorrectAnswers: params.keepCorrectAnswers }
+      { keepCorrectAnswers: params.keepCorrectAnswers },
     );
 
     if (this.solutionWord) {
       this.solutionWord.reset(
-        { keepCorrectAnswers: params.keepCorrectAnswers }
+        { keepCorrectAnswers: params.keepCorrectAnswers },
       );
     }
 
@@ -402,7 +402,7 @@ export default class CrosswordContent {
           startx: word.startx,
           starty: word.starty,
         };
-      })
+      }),
     };
 
     return { crosswordLayout, cells, focus, solutionCells };
@@ -495,7 +495,7 @@ export default class CrosswordContent {
         clue: wordData[0].clue,
         orientation: this.params.l10n[wordData[0].orientation],
         clueId: wordData[0].clueId,
-        answerLength: wordData[0].answer.length
+        answerLength: wordData[0].answer.length,
       });
     }
 
@@ -528,14 +528,14 @@ export default class CrosswordContent {
   overrideCSS(theme = {}) {
     // Grid override
     if (theme.gridColor) {
-      // eslint-disable-next-line max-len
+      // eslint-disable-next-line @stylistic/js/max-len
       this.addStyle(`.h5p-crossword .h5p-crossword-grid th, .h5p-crossword .h5p-crossword-grid td,.h5p-crossword .h5p-crossword-grid{border-color:${theme.gridColor}};`);
     }
 
     // Normal cell overrides
     if (theme.cellBackgroundColor) {
       this.addStyle(`.h5p-crossword .h5p-crossword-cell{background-color:${theme.cellBackgroundColor}};`);
-      // eslint-disable-next-line max-len
+      // eslint-disable-next-line @stylistic/js/max-len
       this.addStyle(`.h5p-crossword .h5p-crossword-cell-clue-id-marker{background-color:${theme.cellBackgroundColor}};`);
     }
 
@@ -549,23 +549,23 @@ export default class CrosswordContent {
 
     // Highlighted cell overrides
     if (theme.cellBackgroundColorHighlight) {
-      // eslint-disable-next-line max-len
+      // eslint-disable-next-line @stylistic/js/max-len
       this.addStyle(`.h5p-crossword .h5p-crossword-cell:not(.h5p-crossword-solution-correct):not(.h5p-crossword-solution-wrong):not(.h5p-crossword-solution-neutral).h5p-crossword-highlight-normal{background-color:${theme.cellBackgroundColorHighlight}};`);
-      // eslint-disable-next-line max-len
+      // eslint-disable-next-line @stylistic/js/max-len
       this.addStyle(`.h5p-crossword .h5p-crossword-cell.h5p-crossword-highlight-normal .h5p-crossword-cell-clue-id-marker, .h5p-crossword .h5p-crossword-cell.h5p-crossword-highlight-normal .h5p-crossword-cell-solution-word-marker{background-color:${theme.cellBackgroundColorHighlight}}`);
-      // eslint-disable-next-line max-len
+      // eslint-disable-next-line @stylistic/js/max-len
       this.addStyle(`.h5p-crossword .h5p-crossword-input-fields-group-wrapper-clue.h5p-crossword-input-fields-group-clue-highlight-focus .h5p-crossword-input-fields-group-clue-id{background-color:${theme.cellBackgroundColorHighlight}}`);
     }
 
     if (theme.clueIdColorHighlight) {
-      // eslint-disable-next-line max-len
+      // eslint-disable-next-line @stylistic/js/max-len
       this.addStyle(`.h5p-crossword .h5p-crossword-cell.h5p-crossword-highlight-normal .h5p-crossword-cell-clue-id-marker, .h5p-crossword .h5p-crossword-cell.h5p-crossword-highlight-normal .h5p-crossword-cell-solution-word-marker{color:${theme.clueIdColorHighlight}}`);
     }
 
     if (theme.cellColorHighlight) {
-      // eslint-disable-next-line max-len
+      // eslint-disable-next-line @stylistic/js/max-len
       this.addStyle(`.h5p-crossword .h5p-crossword-cell.h5p-crossword-highlight-normal .h5p-crossword-cell-canvas{color:${theme.cellColorHighlight}};`);
-      // eslint-disable-next-line max-len
+      // eslint-disable-next-line @stylistic/js/max-len
       this.addStyle(`.h5p-crossword .h5p-crossword-input-fields-group-wrapper-clue.h5p-crossword-input-fields-group-clue-highlight-focus .h5p-crossword-input-fields-group-clue-id{color:${theme.cellColorHighlight}}`);
     }
   }

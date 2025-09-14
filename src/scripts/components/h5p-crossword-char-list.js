@@ -10,14 +10,14 @@ export default class CrosswordCharList {
   constructor(params = {}) {
     this.params = Util.extend({
       a11y: {
-        listLabel: ''
-      }
+        listLabel: '',
+      },
     }, params);
 
     this.charMarked = null;
 
     this.content = this.buildListContainer({
-      listLabel: this.params.a11y.listLabel
+      listLabel: this.params.a11y.listLabel,
     });
   }
 
@@ -250,7 +250,7 @@ export default class CrosswordCharList {
 
     this.tabindexState = {
       list: this.list.getAttribute('tabindex'),
-      listItems: listItems
+      listItems: listItems,
     };
 
     this.list.setAttribute('tabindex', '-1');
