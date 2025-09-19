@@ -215,7 +215,7 @@ class Util {
 
   /**
    * Determine whether an event was
-   * @param {*} event Keyboard event.
+   * @param {KeyboardEvent} event Keyboard event.
    * @returns {boolean} Whether the event was a control key.
    */
   static isControlKey(event = {}) {
