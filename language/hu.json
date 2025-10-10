@@ -1,0 +1,293 @@
+{
+  "semantics": [
+    {
+      "label": "Feladat leírása",
+      "description": "Itt adja meg a feladat leírását. "
+    },
+    {
+      "label": "szavak",
+      "widgets": [
+        {
+          "label": "Alapértelmezett"
+        }
+      ],
+      "entity": "Szó",
+      "field": {
+        "label": "Szó",
+        "fields": [
+          {
+            "label": "Meghatározás",
+            "description": "A keresett kifejezéshez kapcsolódó meghatározás."
+          },
+          {
+            "label": "Válasz",
+            "description": "A meghatározáshoz tartozó jó válasz."
+          },
+          {
+            "label": "További segítség"
+          },
+          {
+            "label": "Szó rögzítése a rácson",
+            "description": "Bekapcsolása esetén a szót egy adott helyre lehet rögzíteni a rácson. Az azonos elrendezésű szavak nem érintkezhetnek."
+          },
+          {
+            "label": "Sor",
+            "description": "A sor száma, ahol a válasz kezdődjön."
+          },
+          {
+            "label": "Oszlop",
+            "description": "Az oszlop száma, ahol a válasz kezdődjön."
+          },
+          {
+            "label": "Tájolás",
+            "description": "A válasz iránya.",
+            "options": [
+              {
+                "label": "Vízszintes"
+              },
+              {
+                "label": "Függőleges"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Fő rejtvény",
+      "description": "Megadható egy olyan keresett szó vagy kifejezés, amely a rács bizonyos karaktereiből áll elő, végső megfejtésként. Csak akkor lesz látható, ha az összes betűje megtalálható a keresztrejtvényben. Megjegyzés: Ehhez a funkcióhoz még nem áll rendelkezésre akadálymentesítési támogatás."
+    },
+    {
+      "label": "Globális visszajelzés",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Alapértelmezett"
+            }
+          ],
+          "label": "Egyéni visszajelzés megadása tetszőleges eredmény intervallumokra",
+          "description": "Kattintson az \"Új intervallum\" gombra további intervallumok hozzáadásához. Például: 0-20% Rossz eredmény, 21-91% Átlagos eredmény, 91-100% Kimagasló eredmény!",
+          "entity": "intervallum",
+          "field": {
+            "fields": [
+              {
+                "label": "Eredmény intervallum"
+              },
+              {},
+              {
+                "label": "Visszajelzés az adott eredmény intervallumnál",
+                "placeholder": "Adja meg a visszajelzést"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Stílus",
+      "fields": [
+        {
+          "label": "Háttérkép",
+          "description": "Háttérkép hozzáadása (nem kötelező). A háttér kitöltéséhez megnyújtás nélkül lesz átméretezve és igazítva."
+        },
+        {
+          "label": "Háttérszín",
+          "description": "Válasszon háttérszínt! Vagy a háttérkép helyett, vagy az átlátszó területek háttereként lesz használva."
+        },
+        {
+          "label": "Rács színe",
+          "description": "Válasszon színt a rácsvonalakhoz!"
+        },
+        {
+          "label": "Cellák háttérszíne",
+          "description": "Válasszon színt a cellák háttérszínéhez!"
+        },
+        {
+          "label": "Cellaszöveg színe",
+          "description": "Válasszon színt a cellákban használt szövegekhez!"
+        },
+        {
+          "label": "Meghatározás azonosítójának színe",
+          "description": "Válasszon színt a cellában megjelenő, a meghatározást megadó azonosítóhoz!"
+        },
+        {
+          "label": "Cellák háttérszíne (kijelölve)",
+          "description": "Válasszon színt a kijelölt cellák háttérszínéhez!"
+        },
+        {
+          "label": "Cellaszöveg színe (kijelölve)",
+          "description": "Válasszon színt a kijelölt cellák szövegéhez!"
+        },
+        {
+          "label": "Cellák azonosítójának színe (kijelölve)",
+          "description": "Válasszon színt a kijelölt cellában megjelenő, a meghatározást megadó azonosítóhoz!"
+        }
+      ]
+    },
+    {
+      "label": "Viselkedési beállítások",
+      "description": "Ezekkel a beállításokkal szabályozható a feladat viselkedése.",
+      "fields": [
+        {
+          "label": "Megjelenítendő szavak száma",
+          "description": "Véletlenszerű halmaz kiválasztása a rendelkezésre álló szavakból. A halmaz mindig tartalmazni fogja a rácson fixen rögzített összes szót, függetlenül az itt alkalmazott beállítástól. Az üres vagy 0 érték az összes szó használatát jelenti."
+        },
+        {
+          "label": "Azonnali visszajelzés"
+        },
+        {
+          "label": "Szavak pontozása",
+          "description": "Engedélyezése esetén a szavak száma alapján történik a pontszám meghatározása. Különben a helyesen beírt betűk alapján járnak pontok."
+        },
+        {
+          "label": "Büntetőpont alkalmazása",
+          "description": "Engedélyezése esetén minden rossz válasz -1 pontot jelent büntetésként."
+        },
+        {
+          "label": "\"Újra\" engedélyezve"
+        },
+        {
+          "label": "\"Megoldás\" engedélyezve"
+        },
+        {
+          "label": "Helyes válaszok megtartása újrapróbálkozáskor",
+          "description": "Engedélyezése esetén a helyes válaszok megmaradnak, amikor a felhasználó újra megkísérli a feladatot, kivéve, ha maximális pontszámot ért el."
+        }
+      ]
+    },
+    {
+      "label": "Felhasználói felület",
+      "fields": [
+        {
+          "label": "Felirat a vízszinteshez",
+          "default": "Vízszintes"
+        },
+        {
+          "label": "Felirat a függőlegeshez",
+          "default": "Függőleges"
+        },
+        {
+          "label": "\"Ellenőrzés\" gomb szövege",
+          "default": "Ellenőrzés"
+        },
+        {
+          "label": "\"Leadás\" gomb szövege",
+          "default": "Leadás"
+        },
+        {
+          "label": "\"Újra\" gomb szövege",
+          "default": "Újra"
+        },
+        {
+          "label": "\"Megoldás mutatása\" gomb felülírása",
+          "default": "Megoldás mutatása"
+        },
+        {
+          "label": "A keresztrejtvény nem hozható létre",
+          "default": "Nem sikerült keresztrejtvényt létrehozni a megadott szavakkal. Próbálkozzon újra kevesebb szóval vagy több közös betűvel rendelkező szóval."
+        },
+        {
+          "label": "A keresztrejtvény nem hozható létre (túl kevés szó)",
+          "default": "Nem sikerült keresztrejtvényt létrehozni. Legalább két szóra szükség van."
+        },
+        {
+          "label": "Problémás szavak",
+          "description": "A szavak felsorolása, amelyek problémát okoztak a keresztrejtvény létrehozása során. A @words egy helyőrző, amelyet az aktuális problémás szavak helyettesítenek.",
+          "default": "Néhány szó nem helyezhető el. Ha fixen rögzített szavakat használ, győződjön meg róla, hogy a pozíciójuk nem akadályozza meg más szavak elhelyezését! Az azonos elrendezésű szavak nem érintkezhetnek. Problémás szó(szavak): @words"
+        },
+        {
+          "label": "További segítség",
+          "default": "További segítség"
+        },
+        {
+          "label": "Ablak bezárása",
+          "default": "Ablak bezárása"
+        }
+      ]
+    },
+    {
+      "label": "Szövegfelolvasó",
+      "fields": [
+        {
+          "label": "Keresztrejtvény rács leírása",
+          "default": "Keresztrejtvény rács. Használja a nyílbillentyűket a navigáláshoz és a billentyűzetet a betűk beviteléhez. Alternatív megoldásként a Tab billentyű használatával is navigálhat, hogy a válaszokat a hiányzó szavak megadásához hasonló stílusban tudja megadni a rácson való lépkedés helyett."
+        },
+        {
+          "label": "Oszlop",
+          "default": "Oszlop"
+        },
+        {
+          "label": "Sor",
+          "default": "Sor"
+        },
+        {
+          "label": "Vízszintes",
+          "default": "Vízszintes"
+        },
+        {
+          "label": "Függőleges",
+          "default": "Függőleges"
+        },
+        {
+          "label": "Üres",
+          "default": "Üres"
+        },
+        {
+          "description": "Eredmény bejelentő. A @clue egy változó, és helyébe a megfelelő meghatározás kerül.",
+          "label": "Eredmény a következőre",
+          "default": "Eredmény a következőre: @clue"
+        },
+        {
+          "label": "Helyes",
+          "default": "Helyes"
+        },
+        {
+          "label": "Helytelen",
+          "default": "Helytelen"
+        },
+        {
+          "label": "Pont",
+          "default": "pont"
+        },
+        {
+          "description": "Megoldás bejelentő. A @clue és a @solution változók, és helyükbe a megfelelő értékek kerülnek.",
+          "label": "Megoldás a",
+          "default": "@clue esetében a megoldás: @solution"
+        },
+        {
+          "description": "Extra segítség bejelentő. A @clue egy változó, és helyébe a megfelelő érték kerül.",
+          "label": "További segítség a",
+          "default": "További segítség megnyitása a(z) @clue mellé"
+        },
+        {
+          "description": "Az aktuális pozíció bejelentése. A @position és a @length változók, és helyükbe a megfelelő értékek kerülnek.",
+          "label": "Betű",
+          "default": "@position. betű a @length közül"
+        },
+        {
+          "description": "A szóhossz bejelentése. A @length egy változó, és helyébe a megfelelő érték kerül.",
+          "label": "Szó hossza",
+          "default": "@length betűs szó"
+        },
+        {
+          "label": "\"Ellenőrzés\" gomb leírása támogató-segítő eszközöknek",
+          "default": "Betűk ellenőrzése. A válaszokat helyesnek, helytelennek vagy megválaszolatlannak jelöli."
+        },
+        {
+          "label": "\"Megoldás mutatása\" gomb leírása támogató-segítő eszközöknek",
+          "default": "Megoldás mutatása. A keresztrejtvény helyes megoldásának beírása."
+        },
+        {
+          "label": "\"Újra\" gomb leírása támogató-segítő eszközöknek",
+          "default": "Feladat újrapróbálása. Minden válasz visszaállítása és a feladat újrakezdése."
+        },
+        {
+          "label": "Az ön eredménye",
+          "description": "A @score és a @total változók, és helyükbe a megfelelő értékek kerülnek.",
+          "default": "Ön @score pontot kapott a(z) @total pontból"
+        }
+      ]
+    }
+  ]
+}
