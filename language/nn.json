@@ -131,7 +131,7 @@
       "fields": [
         {
           "label": "Antal ord som skal visast",
-          "description": "Lag ei tilfeldig samling av ord frå databasen. Samlinga vil alltid som eit minimum innehalde dei orda som er festa til rutenettet. Er dette feltet tomt eller har verdien 0, betyr det at alle orda er brukte."
+          "description": "Lag ei tilfeldig samling av ord frå databasen. Samlinga vil alltid som eit minimum innehalde dei orda som er festet til rutenettet. Er dette feltet tomt eller har verdien 0, betyr det at alle orda er brukte."
         },
         {
           "label": "Aktiver direkte tilbakemelding"
@@ -194,7 +194,7 @@
         {
           "label": "Problematiske ord",
           "description": "Gi opp ord som har skapt problem ved generering av kryssordet. @words er ein plasshaldar som vil bli erstatta med orda du gir opp.",
-          "default": "Nokre ord kunne ikkje plasserast. Dersom du bruker ord som er festa til ein bestemd posisjon: Sørg for at posisjonen deira ikkje hindrar at andre ord kan finne ei plassering. Ord med same justering kan ikkje plasserast i kontakt med kvarandre. Problematiske ord: @words"
+          "default": "Nokre ord kunne ikkje bli plasserte. Dersom du bruker ord som er festa til ein bestemd posisjon: Sørg for at posisjonen deira ikkje hindrar at andre ord kan finne ei plassering. Ord med same justering kan ikkje plasserast i kontakt med kvarandre. Problematiske ord: @words"
         },
         {
           "label": "Ekstra hint",
@@ -276,7 +276,7 @@
         },
         {
           "label": "Tekstalternativ for \"Vis fasit\"-knapp",
-          "default": "Vis fasiten. Kryssordet vi bli korrekt fylt ut."
+          "default": "Vis fasiten. Kryssordet vil bli korrekt fylt ut."
         },
         {
           "label": "Tekstalternativ for \"Prøv igjen\"-knapp",
