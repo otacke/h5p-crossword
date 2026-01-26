@@ -151,8 +151,8 @@
           "label": "Activer le bouton \"Solution\""
         },
         {
-          "label": "Keep correct answers on retry",
-          "description": "If this option is enabled, correct answers will be kept when the user retries the task unless full score was achieved."
+          "label": "Garder les réponses correctes lors de la nouvelle tentative",
+          "description": "Si cette option est activée, les réponses correctes seront conservées lorsque l'utilisateur réessaiera la tâche, à moins que le score complet n'ait été atteint."
         }
       ]
     },
