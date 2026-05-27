@@ -1,13 +1,49 @@
+// === NEUD Design Token System ===
+// Maps SCSS variables to --h5p-theme-* CSS custom properties
+// All component SCSS files use @use '@styles/main' as main; and reference main.$<variable>
+
+// === Color Tokens ===
+$color-ui-base: var(--h5p-theme-ui-base);
+$color-text-primary: var(--h5p-theme-text-primary);
+$color-text-secondary: var(--h5p-theme-text-secondary);
+$color-stroke-1: var(--h5p-theme-stroke-1);
+$color-stroke-2: var(--h5p-theme-stroke-2);
+
+// Feedback colors
+$color-correct-dark: var(--h5p-theme-feedback-correct-main);
+$color-correct-light: var(--h5p-theme-feedback-correct-secondary);
+$color-wrong-dark: var(--h5p-theme-feedback-incorrect-main);
+$color-wrong-light: var(--h5p-theme-feedback-incorrect-secondary);
+$color-neutral-dark: var(--h5p-theme-feedback-neutral-main);
+$color-neutral-light: var(--h5p-theme-feedback-neutral-secondary);
+
+// JoubelUI button (used in crossword-input.scss for extra clue button)
+$color-joubelui-button: var(--h5p-theme-main-cta-base);
+$color-joubelui-button-hover: var(--h5p-theme-main-cta-light);
+$color-joubelui-button-active: var(--h5p-theme-main-cta-dark);
+
+// Crossword-specific highlight color (blue)
+$color-crossword-highlight: var(--h5p-theme-crossword-highlight, #3e8de8);
+$color-crossword-highlight-correct: var(--h5p-theme-crossword-highlight-correct, #2e7d32);
+$color-crossword-highlight-wrong: var(--h5p-theme-crossword-highlight-wrong, #c62828);
+$color-crossword-highlight-neutral: var(--h5p-theme-crossword-highlight-neutral, #3e8de8);
+
+// === Font Size Tokens ===
+$font-size-l: var(--h5p-theme-font-size-l);
+$font-size-m: var(--h5p-theme-font-size-m);
+$font-size-s: var(--h5p-theme-font-size-s);
+
+// === Spacing Tokens ===
+$spacing-xxs: var(--h5p-theme-spacing-xxs);
+$spacing-xs: var(--h5p-theme-spacing-xs);
+$spacing-s: var(--h5p-theme-spacing-s);
+$spacing-m: var(--h5p-theme-spacing-m);
+
+// === Border Radius Tokens ===
+$border-radius-medium: var(--h5p-theme-border-radius-medium);
+$border-radius-large: var(--h5p-theme-border-radius-large);
+$border-radius-small: var(--h5p-theme-border-radius-small);
+
+// === Original local variables (kept for breakpoint use) ===
 $breakpoint-mobile-clues-column: 46.25em;
 $breakpoint-clues-column-clues-row: 80em;
-
-$color-correct-dark: #255c41;
-$color-correct-light: #9dd8bb;
-$color-wrong-dark: #b71c1c;
-$color-wrong-light: #f7d0d0;
-$color-neutral-dark: #b5691c;
-$color-neutral-light: #f7e3cf;
-
-$color-joubelui-button: #1a73d9;
-$color-joubelui-button-hover: #1356a3;
-$color-joubelui-button-active: #104888;

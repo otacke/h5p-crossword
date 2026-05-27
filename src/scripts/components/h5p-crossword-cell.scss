@@ -1,6 +1,6 @@
-@use '@styles/main';
+@use '@styles/main' as main;
 .h5p-crossword-cell {
-  background-color: white;
+  background-color: main.$color-ui-base;
   margin: 0;
   outline: none;
   padding: 0;
@@ -16,7 +16,7 @@
 
   .h5p-crossword-cell-solution-word-circle {
     background-color: transparent;
-    border: 0.075em solid #bbbbbb;
+    border: 0.075em solid main.$color-text-secondary;
     border-radius: 50%;
     height: calc(100% - 0.15em);
     left: 50%;
@@ -27,9 +27,9 @@
   }
 
   .h5p-crossword-cell-solution-word-marker {
-    background-color: white;
+    background-color: main.$color-ui-base;
     bottom: 0;
-    color: #606060;
+    color: main.$color-text-primary;
     font-size: 0.5em;
     line-height: 0.5em;
     padding: 0.4em 0.3em 0.4em 0.4em;
@@ -53,7 +53,7 @@
       border: 0;
       caret-color: transparent;
       color: transparent;
-      font-size: 1.2em;
+      font-size: main.$font-size-l;
       height: 100%;
       left: 0;
       margin: 0;
@@ -70,8 +70,8 @@
     .h5p-crossword-cell-canvas {
       background-color: transparent;
       border: 0;
-      color: #000000;
-      font-size: 1.2em;
+      color: main.$color-text-primary;
+      font-size: main.$font-size-l;
       margin: 0;
       padding: 0;
       text-align: center;
@@ -79,8 +79,8 @@
     }
 
     .h5p-crossword-cell-clue-id-marker {
-      background-color: white;
-      color: #606060;
+      background-color: main.$color-ui-base;
+      color: main.$color-text-primary;
       font-size: 0.5em;
       left: 0;
       line-height: 0.5em;
@@ -94,7 +94,7 @@
   &.h5p-crossword-highlight-normal {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      background: #3e8de8;
+      background: main.$color-crossword-highlight;
     }
   }
 
@@ -107,7 +107,7 @@
     &.h5p-crossword-highlight-normal {
       .h5p-crossword-cell-clue-id-marker,
       .h5p-crossword-cell-solution-word-marker {
-        background: #75a1a9;
+        background: main.$color-crossword-highlight-correct;
       }
     }
   }
@@ -129,31 +129,31 @@
   &.h5p-crossword-solution-wrong.h5p-crossword-highlight-normal {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      background: #c0a1bf;
+      background: main.$color-crossword-highlight-wrong;
     }
   }
 
   &.h5p-crossword-solution-neutral.h5p-crossword-highlight-normal {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      background: #ddc0a4;
+      background: main.$color-crossword-highlight-neutral;
     }
   }
 
   &:not(.h5p-crossword-solution-correct):not(.h5p-crossword-solution-wrong):not(.h5p-crossword-solution-neutral).h5p-crossword-highlight-normal {
-    background-color: #3e8de8;
+    background-color: main.$color-crossword-highlight;
   }
 
   &.h5p-crossword-solution-correct.h5p-crossword-highlight-normal {
-    background-color: #75a1a9;
+    background-color: main.$color-crossword-highlight-correct;
   }
 
   &.h5p-crossword-solution-wrong.h5p-crossword-highlight-normal {
-    background-color: #c0a1bf;
+    background-color: main.$color-crossword-highlight-wrong;
   }
 
   &.h5p-crossword-solution-neutral.h5p-crossword-highlight-normal {
-    background-color: #ddc0a4;
+    background-color: main.$color-crossword-highlight-neutral;
   }
 
   &.h5p-crossword-highlight-focus {
@@ -163,19 +163,19 @@
 
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      color: white;
+      color: main.$color-ui-base;
     }
   }
 
   &.h5p-crossword-highlight-normal {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      color: #e0e0e0;
+      color: main.$color-text-secondary;
     }
   }
 
   &.h5p-crossword-highlight-focus {
-    color: white;
+    color: main.$color-ui-base;
   }
 
   &.h5p-crossword-solution-correct {
@@ -187,7 +187,7 @@
   }
 
   &.h5p-crossword-highlight-normal .h5p-crossword-cell-canvas {
-    color: white;
+    color: main.$color-ui-base;
   }
 
   &.h5p-crossword-solution-wrong {
