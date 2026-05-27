@@ -23,10 +23,10 @@ $color-joubelui-button-hover: var(--h5p-theme-main-cta-light);
 $color-joubelui-button-active: var(--h5p-theme-main-cta-dark);
 
 // Crossword-specific highlight color (blue)
-$color-crossword-highlight: var(--h5p-theme-crossword-highlight, #3e8de8);
-$color-crossword-highlight-correct: var(--h5p-theme-crossword-highlight-correct, #2e7d32);
-$color-crossword-highlight-wrong: var(--h5p-theme-crossword-highlight-wrong, #c62828);
-$color-crossword-highlight-neutral: var(--h5p-theme-crossword-highlight-neutral, #3e8de8);
+$color-crossword-highlight: var(--h5p-theme-main-cta-base);
+$color-crossword-highlight-correct: var(--h5p-theme-feedback-correct-main);
+$color-crossword-highlight-wrong: var(--h5p-theme-feedback-incorrect-main);
+$color-crossword-highlight-neutral: var(--h5p-theme-feedback-neutral-main);
 
 // === Font Size Tokens ===
 $font-size-l: var(--h5p-theme-font-size-l);
