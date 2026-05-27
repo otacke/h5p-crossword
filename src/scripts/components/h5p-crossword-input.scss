@@ -12,9 +12,11 @@
     width: calc(100% - var(--scrollbar-width, 0px));
 
     .h5p-crossword-input-fields-group {
+      color: var(--h5p-theme-text-primary);
       margin-top: main.$spacing-s;
 
       .h5p-crossword-input-fields-group-title {
+        font-size: var(--h5p-theme-font-size-s);
         font-weight: 600;
       }
 
