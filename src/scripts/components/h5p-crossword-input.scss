@@ -1,4 +1,4 @@
-@use '@styles/main';
+@use '@styles/main' as main;
 .h5p-crossword-input-container {
   box-sizing: border-box;
   display: flex;
@@ -12,18 +12,18 @@
     width: calc(100% - var(--scrollbar-width, 0px));
 
     .h5p-crossword-input-fields-group {
-      margin-top: 1em;
+      margin-top: main.$spacing-s;
 
       .h5p-crossword-input-fields-group-title {
-        font-weight: bold;
+        font-weight: 600;
       }
 
       .h5p-crossword-input-fields-group-wrapper {
         display: flex;
         flex-direction: column;
-        margin-bottom: 1em;
+        margin-bottom: main.$spacing-s;
 
-        .h5p-crossword-input-fields-group-wrapper-clue {
+        .h5p-crossword-input-fields-group-clue {
           align-items: baseline;
           display: flex;
           flex-direction: row;
@@ -68,23 +68,23 @@
               }
 
               &:disabled {
-                color: #aaaaaa;
+                color: main.$color-text-secondary;
                 cursor: auto;
               }
 
               &::after {
                 content: "\E88F";
                 font-family: 'Material Icons';
-                font-size: 1.2em;
-                font-weight: bold;
+                font-size: main.$font-size-l;
+                font-weight: 600;
               }
             }
           }
 
           &.h5p-crossword-input-fields-group-clue-highlight-focus .h5p-crossword-input-fields-group-clue-id {
-            background-color: #3e8de8;
-            color: white;
-            font-weight: bold;
+            background-color: main.$color-crossword-highlight;
+            color: main.$color-ui-base;
+            font-weight: 600;
           }
         }
 
@@ -100,7 +100,7 @@
 
   &.has-scrollbar {
     &:not(.safari) {
-      padding-right: 1rem;
+      padding-right: main.$spacing-s;
     }
 
     &.safari {

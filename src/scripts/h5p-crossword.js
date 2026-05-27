@@ -4,6 +4,7 @@ import Util from '@services/util.js';
 import QuestionTypeContract from '@mixins/question-type-contract.js';
 import XAPI from '@mixins/xapi.js';
 import '@styles/h5p-crossword.scss';
+import '@styles/h5p-crossword-buttons.scss';
 
 /** @constant {number} DOM_REGISTER_DELAY_MS Delay before resizing after DOM registered. */
 const DOM_REGISTER_DELAY_MS = 100;
@@ -25,7 +26,7 @@ export default class Crossword extends H5P.Question {
    * @param {object} [extras] Saved state, metadata, etc.
    */
   constructor(params, contentId, extras = {}) {
-    super('crossword'); // CSS class selector for content's iframe: h5p-crossword
+    super('crossword', { theme: true }); // CSS class selector for content's iframe: h5p-crossword
 
     Util.addMixins(Crossword, [QuestionTypeContract, XAPI]);
 
@@ -232,6 +233,8 @@ export default class Crossword extends H5P.Question {
     }, {
       contentData: this.extras,
       textIfSubmitting: this.params.l10n.submitAnswer,
+      styleType: 'primary-cta',
+      icon: 'check',
     });
 
     // Show solution button
@@ -239,7 +242,10 @@ export default class Crossword extends H5P.Question {
       this.showSolutions();
     }, this.initialButtons.showSolution, {
       'aria-label': this.params.a11y.showSolution,
-    }, {});
+    }, {
+      styleType: 'secondary-cta',
+      icon: 'solution',
+    });
 
     // Retry button
     this.addButton('try-again', this.params.l10n.tryAgain, () => {
@@ -248,7 +254,10 @@ export default class Crossword extends H5P.Question {
       );
     }, this.initialButtons.retry, {
       'aria-label': this.params.a11y.retry,
-    }, {});
+    }, {
+      styleType: 'secondary-cta',
+      icon: 'retry',
+    });
   }
 
   /**

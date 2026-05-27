@@ -1,12 +1,13 @@
+@use '@styles/main' as main;
 .h5p-crossword-grid {
-  border: 0.05em solid #000000;
+  border: 0.05em solid main.$color-text-primary;
   border-spacing: 0;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
 
   .h5p-crossword-cell.h5p-crossword-cell-empty {
-    background-color: #000000;
+    background-color: main.$color-text-primary;
   }
 
   &.h5p-crossword-grid-background-image {
@@ -19,7 +20,7 @@
 
   th,
   td {
-    border: 0.05em solid #000000;
+    border: 0.05em solid main.$color-text-primary;
   }
 
   thead,
