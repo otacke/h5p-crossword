@@ -16,7 +16,7 @@
       margin-top: main.$spacing-s;
 
       .h5p-crossword-input-fields-group-title {
-        font-size: var(--h5p-theme-font-size-s);
+        // font-size: var(--h5p-theme-font-size-s);
         font-weight: 600;
       }
 
@@ -25,10 +25,11 @@
         flex-direction: column;
         margin-bottom: main.$spacing-s;
 
-        .h5p-crossword-input-fields-group-clue {
+        .h5p-crossword-input-fields-group-wrapper-clue {
           align-items: baseline;
           display: flex;
           flex-direction: row;
+          flex-wrap: wrap;
           line-height: 1.25em;
 
           .h5p-crossword-input-fields-group-clue-id {
@@ -43,6 +44,11 @@
           }
 
           .h5p-crossword-input-fields-group-clue-content {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: baseline;
+
             .h5p-crossword-input-fields-group-clue {
               padding-right: 0.5em;
             }
