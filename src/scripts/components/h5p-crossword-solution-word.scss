@@ -1,4 +1,3 @@
-@use '@styles/main' as main;
 .h5p-crossword-solution-word-wrapper {
   display: flex;
   flex-direction: row;
@@ -9,14 +8,14 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: main.$spacing-xs;
+    margin-top: var(--h5p-theme-spacing-xs);
 
     .h5p-crossword-cell {
-      border: 0.1em solid main.$color-text-primary;
+      border: 0.1em solid var(--h5p-theme-text-primary);
       border-right: 0;
 
       &:last-child {
-        border-right: 0.1em solid main.$color-text-primary;
+        border-right: 0.1em solid var(--h5p-theme-text-primary);
       }
     }
   }

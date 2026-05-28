@@ -1,6 +1,5 @@
-@use '@styles/main' as main;
 .h5p-crossword-cell {
-  background-color: main.$color-ui-base;
+  background-color: var(--h5p-theme-ui-base);
   margin: 0;
   outline: none;
   padding: 0;
@@ -16,7 +15,7 @@
 
   .h5p-crossword-cell-solution-word-circle {
     background-color: transparent;
-    border: 0.075em solid main.$color-text-secondary;
+    border: 0.075em solid var(--h5p-theme-text-secondary);
     border-radius: 50%;
     height: calc(100% - 0.15em);
     left: 50%;
@@ -27,9 +26,9 @@
   }
 
   .h5p-crossword-cell-solution-word-marker {
-    background-color: main.$color-ui-base;
+    background-color: var(--h5p-theme-ui-base);
     bottom: 0;
-    color: main.$color-text-primary;
+    color: var(--h5p-theme-text-primary);
     font-size: 0.5em;
     line-height: 0.5em;
     padding: 0.4em 0.3em 0.4em 0.4em;
@@ -53,7 +52,7 @@
       border: 0;
       caret-color: transparent;
       color: transparent;
-      font-size: main.$font-size-l;
+      font-size: var(--h5p-theme-font-size-l);
       height: 100%;
       left: 0;
       margin: 0;
@@ -70,8 +69,8 @@
     .h5p-crossword-cell-canvas {
       background-color: transparent;
       border: 0;
-      color: main.$color-text-primary;
-      font-size: main.$font-size-l;
+      color: var(--h5p-theme-text-primary);
+      font-size: var(--h5p-theme-font-size-l);
       margin: 0;
       padding: 0;
       text-align: center;
@@ -79,8 +78,8 @@
     }
 
     .h5p-crossword-cell-clue-id-marker {
-      background-color: main.$color-ui-base;
-      color: main.$color-text-primary;
+      background-color: var(--h5p-theme-ui-base);
+      color: var(--h5p-theme-text-primary);
       font-size: 0.5em;
       left: 0;
       line-height: 0.5em;
@@ -94,20 +93,20 @@
   &.h5p-crossword-highlight-normal {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      background: main.$color-crossword-highlight;
+      background: var(--h5p-theme-main-cta-base);
     }
   }
 
   &.h5p-crossword-solution-correct {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      background: main.$color-correct-light;
+      background: var(--h5p-theme-feedback-correct-secondary);
     }
 
     &.h5p-crossword-highlight-normal {
       .h5p-crossword-cell-clue-id-marker,
       .h5p-crossword-cell-solution-word-marker {
-        background: main.$color-crossword-highlight-correct;
+        background: var(--h5p-theme-feedback-correct-main);
       }
     }
   }
@@ -115,107 +114,106 @@
   &.h5p-crossword-solution-wrong {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      background: main.$color-wrong-light;
+      background: var(--h5p-theme-feedback-incorrect-secondary);
     }
   }
 
   &.h5p-crossword-solution-neutral {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      background: main.$color-neutral-light;
+      background: var(--h5p-theme-feedback-neutral-secondary);
     }
   }
 
   &.h5p-crossword-solution-wrong.h5p-crossword-highlight-normal {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      background: main.$color-crossword-highlight-wrong;
+      background: var(--h5p-theme-feedback-incorrect-main);
     }
   }
 
   &.h5p-crossword-solution-neutral.h5p-crossword-highlight-normal {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      background: main.$color-crossword-highlight-neutral;
+      background: var(--h5p-theme-feedback-neutral-main);
     }
   }
 
   &:not(.h5p-crossword-solution-correct):not(.h5p-crossword-solution-wrong):not(.h5p-crossword-solution-neutral).h5p-crossword-highlight-normal {
-    background-color: main.$color-crossword-highlight;
+    background-color: var(--h5p-theme-main-cta-base);
   }
 
   &.h5p-crossword-solution-correct.h5p-crossword-highlight-normal {
-    background-color: main.$color-crossword-highlight-correct;
+    background-color: var(--h5p-theme-feedback-correct-main);
   }
 
   &.h5p-crossword-solution-wrong.h5p-crossword-highlight-normal {
-    background-color: main.$color-crossword-highlight-wrong;
+    background-color: var(--h5p-theme-feedback-incorrect-main);
   }
 
   &.h5p-crossword-solution-neutral.h5p-crossword-highlight-normal {
-    background-color: main.$color-crossword-highlight-neutral;
+    background-color: var(--h5p-theme-feedback-neutral-main);
   }
 
   &.h5p-crossword-highlight-focus {
     border-color: rgba(232, 153, 62, 0.8);
-    box-shadow: 0 0 0.2em 0.2em #e8993e;
+    box-shadow: 0 0 0.2em 0.2em var(--h5p-theme-contrast-cta);
     z-index: 1;
 
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      color: main.$color-ui-base;
+      color: var(--h5p-theme-ui-base);
     }
   }
 
   &.h5p-crossword-highlight-normal {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      color: main.$color-text-secondary;
+      color: var(--h5p-theme-text-secondary);
     }
   }
 
   &.h5p-crossword-highlight-focus {
-    color: main.$color-ui-base;
+    color: var(--h5p-theme-ui-base);
   }
 
   &.h5p-crossword-solution-correct {
-    background: main.$color-correct-light;
+    background: var(--h5p-theme-feedback-correct-secondary);
 
     .h5p-crossword-cell-canvas {
-      color: main.$color-correct-dark;
+      color: var(--h5p-theme-feedback-correct-main);
     }
   }
 
   &.h5p-crossword-highlight-normal .h5p-crossword-cell-canvas {
-    color: main.$color-ui-base;
+    color: var(--h5p-theme-ui-base);
   }
 
   &.h5p-crossword-solution-wrong {
-    background: main.$color-wrong-light;
+    background: var(--h5p-theme-feedback-incorrect-secondary);
   }
 
   &.h5p-crossword-solution-neutral {
-    background: main.$color-neutral-light;
+    background: var(--h5p-theme-feedback-neutral-secondary);
   }
 
   &.h5p-crossword-solution-wrong .h5p-crossword-cell-canvas {
-    color: main.$color-wrong-dark;
+    color: var(--h5p-theme-feedback-incorrect-main);
   }
 
   &.h5p-crossword-solution-neutral:not(.h5p-crossword-highlight-normal) .h5p-crossword-cell-canvas {
-    color: main.$color-neutral-dark;
+    color: var(--h5p-theme-feedback-neutral-main);
   }
 
   &.h5p-crossword-solution-correct .h5p-crossword-cell-solution-word-circle {
-    border-color: main.$color-correct-dark;
+    border-color: var(--h5p-theme-feedback-correct-main);
   }
 
   &.h5p-crossword-solution-wrong .h5p-crossword-cell-solution-word-circle {
-    border-color: main.$color-wrong-dark;
+    border-color: var(--h5p-theme-feedback-incorrect-main);
   }
 
   &.h5p-crossword-solution-neutral .h5p-crossword-cell-solution-word-circle {
-    border-color: main.$color-neutral-dark;
+    border-color: var(--h5p-theme-feedback-neutral-main);
   }
 }
-

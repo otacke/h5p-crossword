@@ -1,4 +1,3 @@
-@use '@styles/main' as main;
 .h5p-crossword-overlay-outer-wrapper {
   border: 0;
   border-radius: 0;
@@ -17,7 +16,7 @@
   z-index: 10;
 
   .h5p-crossword-overlay-button-close {
-    background: main.$color-ui-base;
+    background: var(--h5p-theme-ui-base);
     position: absolute;
     top: -1.1em;
     right: -1.1em;
@@ -26,13 +25,13 @@
     border: none;
     padding: 3px;
     line-height: 1;
-    color: main.$color-wrong-dark;
+    color: var(--h5p-theme-feedback-incorrect-main);
     z-index: 3;
 
     &:after {
       font-family: 'h5p-theme';
       content: '\e910';
-      border: 1px solid main.$color-wrong-dark;
+      border: 1px solid var(--h5p-theme-feedback-incorrect-main);
       text-align: center;
       border-radius: 50%;
       width: 1.5em;
@@ -44,14 +43,14 @@
 
   .h5p-crossword-overlay-content {
     align-items: center;
-    background-color: main.$color-ui-base;
+    background-color: var(--h5p-theme-ui-base);
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     height: 100%;
     overflow: hidden;
     overflow-y: auto;
-    padding: main.$spacing-s;
+    padding: var(--h5p-theme-spacing-s);
 
     .h5p-crossword-extra-clue-instance-wrapper {
       &.h5p-advanced-text {
