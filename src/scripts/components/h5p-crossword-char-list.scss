@@ -38,9 +38,9 @@
         }
 
         &.h5p-crossword-solution-no-input {
-          background-color: var(--h5p-theme-feedback-neutral-secondary);
-          border: 1px solid var(--h5p-theme-feedback-neutral-secondary);
-          color: var(--h5p-theme-feedback-neutral-main);
+          background-color: var(--h5p-theme-feedback-neutral-main);
+          border: 1px solid var(--h5p-theme-feedback-neutral-main);
+          color: var(--h5p-theme-feedback-neutral-secondary);
           display: inline-block;
           height: 1em;
 

@@ -122,7 +122,7 @@
   &.h5p-crossword-solution-neutral {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      background: var(--h5p-theme-feedback-neutral-secondary);
+      background: var(--h5p-theme-feedback-neutral-main);
     }
   }
 
@@ -136,7 +136,7 @@
   &.h5p-crossword-solution-neutral.h5p-crossword-highlight-normal {
     .h5p-crossword-cell-clue-id-marker,
     .h5p-crossword-cell-solution-word-marker {
-      background: var(--h5p-theme-feedback-neutral-main);
+      background: var(--h5p-theme-feedback-neutral-secondary);
     }
   }
 
@@ -153,7 +153,7 @@
   }
 
   &.h5p-crossword-solution-neutral.h5p-crossword-highlight-normal {
-    background-color: var(--h5p-theme-feedback-neutral-main);
+    background-color: var(--h5p-theme-feedback-neutral-secondary);
   }
 
   &.h5p-crossword-highlight-focus {
@@ -195,7 +195,7 @@
   }
 
   &.h5p-crossword-solution-neutral {
-    background: var(--h5p-theme-feedback-neutral-secondary);
+    background: var(--h5p-theme-feedback-neutral-main);
   }
 
   &.h5p-crossword-solution-wrong .h5p-crossword-cell-canvas {
@@ -203,7 +203,7 @@
   }
 
   &.h5p-crossword-solution-neutral:not(.h5p-crossword-highlight-normal) .h5p-crossword-cell-canvas {
-    color: var(--h5p-theme-feedback-neutral-main);
+    color: var(--h5p-theme-feedback-neutral-secondary);
   }
 
   &.h5p-crossword-solution-correct .h5p-crossword-cell-solution-word-circle {
@@ -215,6 +215,6 @@
   }
 
   &.h5p-crossword-solution-neutral .h5p-crossword-cell-solution-word-circle {
-    border-color: var(--h5p-theme-feedback-neutral-main);
+    border-color: var(--h5p-theme-feedback-neutral-secondary);
   }
 }
