@@ -4,7 +4,6 @@ import Util from '@services/util.js';
 import QuestionTypeContract from '@mixins/question-type-contract.js';
 import XAPI from '@mixins/xapi.js';
 import '@styles/h5p-crossword.scss';
-import '@styles/h5p-crossword-buttons.scss';
 
 /** @constant {number} DOM_REGISTER_DELAY_MS Delay before resizing after DOM registered. */
 const DOM_REGISTER_DELAY_MS = 100;
