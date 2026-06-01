@@ -95,22 +95,9 @@
         }
 
         .h5p-crossword-input-fields-group-input {
-          font-family: var(--h5p-theme-font-name);
-          font-size: var(--h5p-theme-font-size-m);
-          font-weight: 600;
           text-transform: uppercase;
           letter-spacing: 0.1em;
-          margin-top: 0.25em;
-          min-width: 6em;
-          min-height: calc(var(--h5p-theme-font-size-m) * 1.2);
-          padding: calc(var(--h5p-theme-spacing-xs) / 2) 0 calc(var(--h5p-theme-spacing-xs) / 2) var(--h5p-theme-spacing-xxs);
-          border-radius: var(--h5p-theme-border-radius-medium);
-          background-color: var(--h5p-theme-ui-base);
-          border: 2px solid var(--h5p-theme-alternative-darker);
-          color: var(--h5p-theme-text-primary);
-          text-overflow: ellipsis;
-          overflow: hidden;
-          white-space: nowrap;
+          margin-top: calc(0.25 * var(--h5p-theme-spacing-s));
           width: calc(100% - 8px); /* 8px = padding + border-width, TODO: Set in JS */
         }
       }
