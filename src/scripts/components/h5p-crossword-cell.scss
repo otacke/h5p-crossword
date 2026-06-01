@@ -157,8 +157,7 @@
   }
 
   &.h5p-crossword-highlight-focus {
-    border-color: color-mix(in srgb, var(--h5p-theme-main-cta-base) 60%, transparent); /* Use main-cta with opacity to match highlight theme, replacing original orange #e8993e */
-    box-shadow: 0 0 0.2em 0.2em var(--h5p-theme-contrast-cta);
+    outline: 4px solid color-mix(in srgb, var(--h5p-theme-main-cta-base), var(--h5p-theme-ui-base));
     z-index: 1;
 
     .h5p-crossword-cell-clue-id-marker,
