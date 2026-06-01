@@ -29,8 +29,8 @@
     z-index: 3;
 
     &:after {
-      font-family: 'h5p-theme';
-      content: '\e910';
+      font-family: 'H5PFontAwesome4';
+      content: '\f00d';
       border: 1px solid var(--h5p-theme-feedback-incorrect-main);
       text-align: center;
       border-radius: 50%;
