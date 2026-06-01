@@ -38,8 +38,8 @@
         }
 
         &.h5p-crossword-solution-no-input {
-          background-color: var(--h5p-theme-feedback-neutral-main);
-          border: 1px solid var(--h5p-theme-feedback-neutral-main);
+          background-color: var(--h5p-theme-feedback-neutral-third);
+          border: 1px solid var(--h5p-theme-feedback-neutral-third);
           color: var(--h5p-theme-feedback-neutral-secondary);
           display: inline-block;
           height: 1em;
@@ -68,10 +68,10 @@
         &.h5p-crossword-solution-wrong {
           background-color: var(--h5p-theme-feedback-incorrect-secondary);
           border: 1px solid var(--h5p-theme-feedback-incorrect-secondary);
-          color: var(--h5p-theme-feedback-incorrect-main);
+          color: var(--crossword-wrong-color);
 
           &::after {
-            color: var(--h5p-theme-feedback-incorrect-main);
+            color: var(--crossword-wrong-color);
             content: "\e902";
             font-family: h5p-theme;
             padding-left: calc(0.25 * var(--h5p-theme-spacing-s));
