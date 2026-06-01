@@ -1,7 +1,8 @@
 .h5p-crossword-input-fields-group-solution-container {
+  --solution-container-offset: calc(0.25 * var(--h5p-theme-spacing-s));
   position: relative;
-  width: calc(100% - var(--h5p-theme-spacing-s));
-  left: calc(var(--h5p-theme-spacing-xs) / 2);
+  width: calc(100% - 2 * var(--solution-container-offset));
+  left: var(--solution-container-offset);
 
   .h5p-crossword-input-fields-group-solution-inner {
     background: #fbfbfb; /* Mimics disabled input field state, no matching NEUD token */
