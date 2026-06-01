@@ -30,9 +30,9 @@
     background-color: var(--h5p-theme-ui-base);
     bottom: 0;
     color: var(--h5p-theme-text-third);
-    font-size: 0.5em;
-    line-height: 0.5em;
-    padding: 0.4em 0.3em 0.4em 0.4em;
+    font-size: calc(0.5 * var(--h5p-theme-font-size-m));
+    line-height: 1;
+    padding: calc(0.4 * var(--h5p-theme-spacing-s)) calc(0.3 * var(--h5p-theme-spacing-s)) calc(0.4 * var(--h5p-theme-spacing-s)) calc(0.4 * var(--h5p-theme-spacing-s));
     position: absolute;
     right: 0;
   }
@@ -81,10 +81,10 @@
     .h5p-crossword-cell-clue-id-marker {
       background-color: var(--h5p-theme-ui-base);
       color: var(--h5p-theme-text-third);
-      font-size: 0.5em;
+      font-size: calc(0.5 * var(--h5p-theme-font-size-m));
       left: 0;
-      line-height: 0.5em;
-      padding: 0.4em 0.4em 0.4em 0.3em;
+      line-height: 1;
+      padding: calc(0.4 * var(--h5p-theme-spacing-s)) calc(0.4 * var(--h5p-theme-spacing-s)) calc(0.4 * var(--h5p-theme-spacing-s)) calc(0.3 * var(--h5p-theme-spacing-s));
       position: absolute;
       top: 0;
     }
