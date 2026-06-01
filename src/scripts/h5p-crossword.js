@@ -236,22 +236,22 @@ export default class Crossword extends H5P.Question {
       icon: 'check',
     });
 
-    // Show solution button — initially hidden, shown after checking if errors exist
+    // Show solution button
     this.addButton('show-solution', this.params.l10n.showSolution, () => {
       this.showSolutions();
-    }, false, {
+    }, this.initialButtons.showSolution, {
       'aria-label': this.params.a11y.showSolution,
     }, {
       styleType: 'secondary',
       icon: 'show-solutions',
     });
 
-    // Retry button — initially hidden, shown after checking if errors exist
+    // Retry button
     this.addButton('try-again', this.params.l10n.tryAgain, () => {
       this.resetTask(
         { keepCorrectAnswers: this.params.behaviour.keepCorrectAnswers },
       );
-    }, false, {
+    }, this.initialButtons.retry, {
       'aria-label': this.params.a11y.retry,
     }, {
       styleType: 'secondary',
@@ -296,87 +296,12 @@ export default class Crossword extends H5P.Question {
     );
 
     if (this.params.behaviour.enableSolutionsButton) {
-      // Only show solution button if there are errors (not all correct)
-      const hasErrors = score < maxScore;
-      if (hasErrors) {
-        this.showButton('show-solution');
-      }
+      this.showButton('show-solution');
     }
 
     if (this.params.behaviour.enableRetry) {
-      // Only show retry if there are errors (not all correct)
-      const hasErrors = score < maxScore;
-      if (hasErrors) {
-        this.showButton('try-again');
-      }
+      this.showButton('try-again');
     }
-  }
-
-  /**
-   * Toggle button visibility based on current view state.
-   * Mirrors Blanks' toggleButtonVisibility(state) pattern.
-   * @param {string} state - 'task' | 'results' | 'solutions'
-   */
-  toggleButtonVisibility(state) {
-    if (state === 'task') {
-      // Task in progress: show check button, hide solution/retry
-      this.showButton('check-answer');
-      this.hideButton('show-solution');
-      this.hideButton('try-again');
-    }
-    else if (state === 'results') {
-      // Results shown: check button already hidden in checkAnswer()
-      // solution/retry are shown conditionally in checkAnswer() itself
-    }
-    else if (state === 'solutions') {
-      // Showing solution: hide check/show-solution, keep retry available
-      this.hideButton('check-answer');
-      this.hideButton('show-solution');
-      if (this.params.behaviour.enableRetry) {
-        this.showButton('try-again');
-      }
-    }
-  }
-
-  /**
-   * Show solutions.
-   */
-  showSolutions() {
-    this.setViewState('solutions');
-    this.toggleButtonVisibility('solutions');
-    this.content.showSolutions();
-  }
-
-  /**
-   * Reset task.
-   * @param {object} options - Reset options.
-   */
-  resetTask(options = {}) {
-    // Re-implement mixin logic (question-type-contract.js) since our override
-    // prevents addMixins from merging it in. Must keep in sync with mixin changes.
-    if (!this.content) {
-      return;
-    }
-
-    if (
-      this.getViewState().id !== VIEW_STATES.results ||
-      this.getScore() === this.getMaxScore()
-    ) {
-      options.keepCorrectAnswers = false;
-    }
-
-    this.contentWasReset = !options.keepCorrectAnswers;
-
-    this.setViewState('task');
-    this.trigger('resize');
-    this.removeFeedback();
-    this.content.reset({ keepCorrectAnswers: options.keepCorrectAnswers });
-    this.content.enable();
-
-    // Reset button visibility to initial state: only check button visible
-    this.hideButton('show-solution');
-    this.hideButton('try-again');
-    this.showButton('check-answer');
   }
 
   /**
