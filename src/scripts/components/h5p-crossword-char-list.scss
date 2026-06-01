@@ -4,7 +4,7 @@
   left: calc(var(--h5p-theme-spacing-xs) / 2);
 
   .h5p-crossword-input-fields-group-solution-inner {
-    background: var(--h5p-theme-ui-base);
+    background: #fbfbfb; /* Mimics disabled input field state, no matching NEUD token */
     border-bottom: 1px solid var(--h5p-theme-stroke-2);
     border-left: 1px solid var(--h5p-theme-stroke-2);
     border-right: 1px solid var(--h5p-theme-stroke-2);
