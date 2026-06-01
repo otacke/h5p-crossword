@@ -27,7 +27,6 @@
           align-items: baseline;
           display: flex;
           flex-direction: row;
-          flex-wrap: wrap;
           line-height: 1.25em;
 
           .h5p-crossword-input-fields-group-clue-id {
@@ -44,7 +43,6 @@
           .h5p-crossword-input-fields-group-clue-content {
             display: flex;
             flex-direction: row;
-            flex-wrap: wrap;
             align-items: baseline;
 
             .h5p-crossword-input-fields-group-clue {
