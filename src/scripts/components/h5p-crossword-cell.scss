@@ -15,14 +15,15 @@
 
   .h5p-crossword-cell-solution-word-circle {
     background-color: transparent;
-    border: 0.075em solid var(--h5p-theme-text-secondary);
+    border: calc(0.075 * var(--h5p-theme-spacing-s)) solid var(--h5p-theme-text-secondary);
     border-radius: 50%;
-    height: calc(100% - 0.15em);
+    --circle-inset: calc(0.15 * var(--h5p-theme-spacing-s));
+    height: calc(100% - var(--circle-inset));
     left: 50%;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: calc(100% - 0.15em);
+    width: calc(100% - var(--circle-inset));
   }
 
   .h5p-crossword-cell-solution-word-marker {
