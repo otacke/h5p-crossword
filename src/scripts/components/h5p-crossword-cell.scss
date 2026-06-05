@@ -31,8 +31,8 @@
     background-color: var(--h5p-theme-ui-base);
     bottom: 0;
     color: var(--h5p-theme-text-third);
-    font-size: calc(0.5 * var(--h5p-theme-font-size-m));
-    line-height: 1;
+    font-size: 0.5em;
+    line-height: 0.5em;
     padding: calc(0.4 * var(--h5p-theme-spacing-s)) calc(0.3 * var(--h5p-theme-spacing-s)) calc(0.4 * var(--h5p-theme-spacing-s)) calc(0.4 * var(--h5p-theme-spacing-s));
     position: absolute;
     right: 0;
@@ -54,7 +54,7 @@
       border: 0;
       caret-color: transparent;
       color: transparent;
-      font-size: var(--h5p-theme-font-size-l);
+      font-size: 1.2em;
       height: 100%;
       left: 0;
       margin: 0;
@@ -72,7 +72,7 @@
       background-color: transparent;
       border: 0;
       color: var(--h5p-theme-text-primary);
-      font-size: var(--h5p-theme-font-size-l);
+      font-size: 1.2em;
       margin: 0;
       padding: 0;
       text-align: center;
@@ -82,9 +82,9 @@
     .h5p-crossword-cell-clue-id-marker {
       background-color: var(--h5p-theme-ui-base);
       color: var(--h5p-theme-text-third);
-      font-size: calc(0.5 * var(--h5p-theme-font-size-m));
+      font-size: 0.5em;
       left: 0;
-      line-height: 1;
+      line-height: 0.5em;
       padding: calc(0.4 * var(--h5p-theme-spacing-s)) calc(0.4 * var(--h5p-theme-spacing-s)) calc(0.4 * var(--h5p-theme-spacing-s)) calc(0.3 * var(--h5p-theme-spacing-s));
       position: absolute;
       top: 0;
