@@ -199,7 +199,7 @@
   }
 
   &.h5p-crossword-solution-wrong .h5p-crossword-cell-canvas {
-    color: var(--crossword-wrong-color);
+    color: var(--h5p-theme-feedback-incorrect-main);
   }
 
   &.h5p-crossword-solution-neutral:not(.h5p-crossword-highlight-normal) .h5p-crossword-cell-canvas {
@@ -211,7 +211,7 @@
   }
 
   &.h5p-crossword-solution-wrong .h5p-crossword-cell-solution-word-circle {
-    border-color: var(--crossword-wrong-color);
+    border-color: var(--h5p-theme-feedback-incorrect-third);
   }
 
   &.h5p-crossword-solution-neutral .h5p-crossword-cell-solution-word-circle {
