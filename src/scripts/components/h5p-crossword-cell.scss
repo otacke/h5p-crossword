@@ -14,10 +14,11 @@
   }
 
   .h5p-crossword-cell-solution-word-circle {
+    --circle-inset: calc(0.15 * var(--h5p-theme-spacing-s));
+
     background-color: transparent;
     border: calc(0.075 * var(--h5p-theme-spacing-s)) solid var(--h5p-theme-text-secondary);
     border-radius: 50%;
-    --circle-inset: calc(0.15 * var(--h5p-theme-spacing-s));
     height: calc(100% - var(--circle-inset));
     left: 50%;
     position: absolute;
