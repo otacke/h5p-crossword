@@ -1,5 +1,5 @@
-$breakpoint-mobile-clues-column: 46.25em;
-$breakpoint-clues-column-clues-row: 80em;
+$breakpoint-mobile-clues-column: 46.25rem;
+$breakpoint-clues-column-clues-row: 80rem;
 
 .h5p-crossword {
   --icon-fontawesome-xmark: "\f00d";
@@ -7,51 +7,44 @@ $breakpoint-clues-column-clues-row: 80em;
   --icon-h5ptheme-cross: "\e902";
 }
 
-/*
- * TODO: Replace with container queries in respective components once Safari 18 is out and tthus he latest three
- * versions of all major browsers support container queries.
- */
-@media screen and (max-width: $breakpoint-mobile-clues-column) {
-  .h5p-crossword {
-    .h5p-crossword-content {
-      flex-direction: column;
-    }
+// Beware, H5P.Question is already establishing a container, so we cannot set in on .h5p-crossword.
+@container h5p-theme-evaluation-container (max-width: #{$breakpoint-mobile-clues-column}) {
+  .h5p-crossword-content {
+    flex-direction: column;
+  }
 
-    .h5p-crossword-input-fields-group {
-      margin-top: 1em;
-    }
+  .h5p-crossword-input-fields-group {
+    margin-top: var(--h5p-theme-spacing-s);
+  }
 
-    .h5p-crossword-input-container,
-    .h5p-crossword-table-wrapper {
-      width: 100%;
-      height: auto;
-    }
+  .h5p-crossword-input-container,
+  .h5p-crossword-table-wrapper {
+    width: 100%;
+    height: auto;
+  }
 
-    .h5p-crossword-overlay-outer-wrapper {
-      max-height: calc(100% - 5em);
-    }
+  .h5p-crossword-overlay-outer-wrapper {
+    max-height: calc(100% - calc(5 * var(--h5p-theme-spacing-s)));
   }
 }
 
-@media screen and (min-width: $breakpoint-mobile-clues-column) {
-  .h5p-crossword {
-    .h5p-crossword-clue-announcer {
-      display: none;
-    }
+@container h5p-theme-evaluation-container (min-width: #{$breakpoint-mobile-clues-column}) {
+  .h5p-crossword-clue-announcer {
+    display: none;
+  }
 
-    .h5p-crossword-table-wrapper {
-      margin-right: 1em;
-      width: 100%;
-    }
+  .h5p-crossword-table-wrapper {
+    margin-right: var(--h5p-theme-spacing-s);
+    width: 100%;
+  }
 
-    .h5p-crossword-input-container .h5p-crossword-input-fields-group:first-child {
-      margin-top: 0;
-    }
+  .h5p-crossword-input-container .h5p-crossword-input-fields-group:first-child {
+    margin-top: 0;
   }
 }
 
-@media screen and (min-width: $breakpoint-clues-column-clues-row) {
-  .h5p-crossword .h5p-crossword-input-container {
+@container h5p-theme-evaluation-container (min-width: #{$breakpoint-clues-column-clues-row}) {
+  .h5p-crossword-input-container {
     flex-direction: row;
     width: 50%;
 
@@ -60,7 +53,7 @@ $breakpoint-clues-column-clues-row: 80em;
       width: 100%;
 
       &:first-child {
-        margin-right: 1em;
+        margin-right: var(--h5p-theme-spacing-s);
       }
     }
   }
