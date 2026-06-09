@@ -2,7 +2,8 @@
   display: flex;
   flex-wrap: nowrap;
   font-size: var(--h5p-theme-font-size-s);
-  height: 2em;
+  height: var(--h5p-theme-font-size-xl);
+  margin-bottom: calc(0.25 * var(--h5p-theme-spacing-s));
   width: 100%;
 
   .h5p-crossword-clue-announcer-clue-id {
