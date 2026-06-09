@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 0.5em;
+    margin-top: var(--h5p-theme-spacing-xs);
 
     .h5p-crossword-cell {
       border: 0.1em solid var(--h5p-theme-text-primary);
