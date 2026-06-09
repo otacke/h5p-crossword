@@ -1,16 +1,17 @@
 .h5p-crossword-input-fields-group-solution-container {
   --solution-container-offset: calc(0.25 * var(--h5p-theme-spacing-s));
+
+  left: var(--solution-container-offset);
   position: relative;
   width: calc(100% - 2 * var(--solution-container-offset));
-  left: var(--solution-container-offset);
 
   .h5p-crossword-input-fields-group-solution-inner {
     background: #fbfbfb; /* Mimics disabled input field state, no matching NEUD token */
     border-bottom: 1px solid var(--h5p-theme-stroke-2);
     border-left: 1px solid var(--h5p-theme-stroke-2);
     border-right: 1px solid var(--h5p-theme-stroke-2);
-    font-size: 0.9em;
-    line-height: 1em;
+    font-size: var(--h5p-theme-font-size-s);
+    line-height: var(--h5p-theme-font-size-s);
     text-align: left;
     position: relative;
 
@@ -21,16 +22,15 @@
       flex-wrap: wrap;
       /* Compensating the value in https://github.com/h5p/h5p-question/blob/3676a7053120fcfe439747d7bcc8206755d7b4c3/styles/question.css#L327 */
       padding-right: 1.615384615em;
-      padding-bottom: .5em;
-      padding-left: .5em;
+      padding-bottom: var(--h5p-theme-spacing-xxs);
+      padding-left: var(--h5p-theme-spacing-xxs);
 
       .h5p-crossword-input-fields-group-solution-char-wrapper {
         border-radius: var(--h5p-theme-border-radius-small);
         color: inherit;
-        line-height: 1em;
-        margin-right: .25em;
-        margin-top: .5em;
-        padding: .15em;
+        margin-right: calc(0.25 * var(--h5p-theme-spacing-s));
+        margin-top: var(--h5p-theme-spacing-xxs);
+        padding: calc(0.15 * var(--h5p-theme-spacing-s));
         position: relative;
 
         .h5p-question-plus-one-container {
@@ -45,7 +45,7 @@
             position: unset;
           }
         }
-        
+
         &:last-child {
           margin-right: 0;
         }
@@ -55,10 +55,9 @@
           border: 1px solid var(--h5p-theme-feedback-neutral-third);
           color: var(--h5p-theme-feedback-neutral-secondary);
           display: inline-block;
-          height: 1em;
 
           &.h5p-crossword-solution-no-char {
-            width: 1em;
+            width: var(--h5p-theme-spacing-s);
           }
         }
 
@@ -69,12 +68,10 @@
 
           &::after {
             color: var(--h5p-theme-feedback-correct-main);
-            content: "\e903";
+            content: var(--icon-h5ptheme-check);
             font-family: h5p-theme;
-            padding-left: .25em;
-            right: .5em;
+            padding-inline-start: calc(0.25 * var(--h5p-theme-spacing-s));
             text-decoration: none;
-            top: 0;
           }
         }
 
@@ -85,12 +82,10 @@
 
           &::after {
             color: var(--h5p-theme-feedback-incorrect-main);
-            content: "\e902";
+            content: var(--icon-h5ptheme-cross);
             font-family: h5p-theme;
-            padding-left: .25em;
-            right: .5em;
+            padding-inline-start: calc(0.25 * var(--h5p-theme-spacing-s));
             text-decoration: none;
-            top: 0;
           }
         }
       }
