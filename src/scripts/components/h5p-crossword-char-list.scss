@@ -33,6 +33,19 @@
         padding: .15em;
         position: relative;
 
+        .h5p-question-plus-one-container {
+          /* Compensating for H5P.Question values */
+          bottom: calc(1.923076923em * 0.638297872);
+          right: calc(-1.923076923em + 0.5 * var(--h5p-theme-spacing-s));
+          position: absolute;
+
+          .h5p-question-plus-one,
+          .h5p-question-minus-one {
+            display: inline-block;
+            position: unset;
+          }
+        }
+        
         &:last-child {
           margin-right: 0;
         }
