@@ -2,6 +2,7 @@ $breakpoint-mobile-clues-column: 46.25em;
 $breakpoint-clues-column-clues-row: 80em;
 
 .h5p-crossword {
+  --icon-fontawesome-xmark: "\f00d";
   --icon-h5ptheme-check: "\e903";
   --icon-h5ptheme-cross: "\e902";
 }
@@ -27,17 +28,7 @@ $breakpoint-clues-column-clues-row: 80em;
     }
 
     .h5p-crossword-overlay-outer-wrapper {
-      width: 100%;
       max-height: calc(100% - 5em);
-      width: calc(100% - 4em);
-    }
-
-    .h5p-crossword-extra-clue-instance-wrapper {
-      &.h5p-audio-wrapper,
-      &.h5p-video,
-      &.h5p-image {
-        width: 100%;
-      }
     }
   }
 }
