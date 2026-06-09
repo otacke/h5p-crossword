@@ -1,8 +1,8 @@
-@use '@styles/main';
 .h5p-crossword-input-container {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  font-size: var(--h5p-theme-font-size-m);
   height: var(--h5p-crossword-input-container-height);
   overflow-y: auto;
   width: 50%;
@@ -12,37 +12,42 @@
     width: calc(100% - var(--scrollbar-width, 0px));
 
     .h5p-crossword-input-fields-group {
-      margin-top: 1em;
+      color: var(--h5p-theme-text-primary);
+      margin-top: var(--h5p-theme-spacing-s);
 
       .h5p-crossword-input-fields-group-title {
-        font-weight: bold;
+        font-weight: 600;
       }
 
       .h5p-crossword-input-fields-group-wrapper {
         display: flex;
         flex-direction: column;
-        margin-bottom: 1em;
+        margin-bottom: var(--h5p-theme-spacing-s);
 
         .h5p-crossword-input-fields-group-wrapper-clue {
           align-items: baseline;
           display: flex;
           flex-direction: row;
-          line-height: 1.25em;
+          gap: calc(0.25 * var(--h5p-theme-spacing-s));
+          line-height: 1.25;
 
           .h5p-crossword-input-fields-group-clue-id {
             border-radius: 50%;
             flex-shrink: 0;
             font-style: italic;
-            height: 1.75em;
-            line-height: 1.75em;
-            margin-right: 0.2em;
+            height: var(--h5p-theme-spacing-m);
+            line-height: var(--h5p-theme-spacing-m);
             text-align: center;
-            width: 1.75em;
+            width: var(--h5p-theme-spacing-m);
           }
 
           .h5p-crossword-input-fields-group-clue-content {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+
             .h5p-crossword-input-fields-group-clue {
-              padding-right: 0.5em;
+              padding-right: var(--h5p-theme-spacing-xxs);
             }
 
             .h5p-crossword-input-fields-group-answer-length {
@@ -52,46 +57,47 @@
             .h5p-crossword-input-fields-group-extra-clue {
               background: none;
               border: none;
-              color: main.$color-joubelui-button;
+              color: var(--h5p-theme-main-cta-base);
               cursor: pointer;
-              padding-left: 0.3em;
+              padding: 0 0 0 calc(0.25 * var(--h5p-theme-spacing-s));
 
               &:not(:disabled) {
                 &:focus,
                 &:hover {
-                  color: main.$color-joubelui-button-hover;
+                  color: var(--h5p-theme-main-cta-light);
                 }
 
                 &:active {
-                  color: main.$color-joubelui-button-active;
+                  color: var(--h5p-theme-main-cta-dark);
                 }
               }
 
               &:disabled {
-                color: #aaaaaa;
+                color: var(--h5p-theme-text-secondary);
                 cursor: auto;
               }
 
               &::after {
                 content: "\E88F";
                 font-family: 'Material Icons';
-                font-size: 1.2em;
-                font-weight: bold;
+                font-size: var(--h5p-theme-font-size-l);
+                font-weight: 600;
               }
             }
           }
 
           &.h5p-crossword-input-fields-group-clue-highlight-focus .h5p-crossword-input-fields-group-clue-id {
-            background-color: #3e8de8;
-            color: white;
-            font-weight: bold;
+            background-color: var(--h5p-theme-main-cta-base);
+            color: var(--h5p-theme-ui-base);
+            font-weight: 600;
           }
         }
 
         .h5p-crossword-input-fields-group-input {
-          letter-spacing: 0.1em;
-          margin-top: 0.25em;
+          font-size: var(--h5p-theme-font-size-m);
           text-transform: uppercase;
+          letter-spacing: calc(0.1 * var(--h5p-theme-font-size-m));
+          margin-top: calc(0.25 * var(--h5p-theme-spacing-s));
           width: calc(100% - 8px); /* 8px = padding + border-width, TODO: Set in JS */
         }
       }
@@ -100,7 +106,7 @@
 
   &.has-scrollbar {
     &:not(.safari) {
-      padding-right: 1rem;
+      padding-right: var(--h5p-theme-spacing-s);
     }
 
     &.safari {
@@ -112,7 +118,7 @@
 
       &::-webkit-scrollbar-thumb {
         background-color: rgba(0, 0, 0, 0.5);
-        border-radius: 10px;
+        border-radius: var(--h5p-theme-border-radius-medium);
       }
 
       &::-webkit-scrollbar-track {

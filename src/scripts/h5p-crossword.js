@@ -25,7 +25,7 @@ export default class Crossword extends H5P.Question {
    * @param {object} [extras] Saved state, metadata, etc.
    */
   constructor(params, contentId, extras = {}) {
-    super('crossword'); // CSS class selector for content's iframe: h5p-crossword
+    super('crossword', { theme: true }); // CSS class selector for content's iframe: h5p-crossword
 
     Util.addMixins(Crossword, [QuestionTypeContract, XAPI]);
 
@@ -232,6 +232,8 @@ export default class Crossword extends H5P.Question {
     }, {
       contentData: this.extras,
       textIfSubmitting: this.params.l10n.submitAnswer,
+      styleType: 'primary-cta',
+      icon: 'check',
     });
 
     // Show solution button
@@ -239,7 +241,10 @@ export default class Crossword extends H5P.Question {
       this.showSolutions();
     }, this.initialButtons.showSolution, {
       'aria-label': this.params.a11y.showSolution,
-    }, {});
+    }, {
+      styleType: 'secondary',
+      icon: 'show-solutions',
+    });
 
     // Retry button
     this.addButton('try-again', this.params.l10n.tryAgain, () => {
@@ -248,7 +253,10 @@ export default class Crossword extends H5P.Question {
       );
     }, this.initialButtons.retry, {
       'aria-label': this.params.a11y.retry,
-    }, {});
+    }, {
+      styleType: 'secondary',
+      icon: 'retry',
+    });
   }
 
   /**

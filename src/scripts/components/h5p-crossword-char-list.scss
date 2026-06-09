@@ -1,16 +1,17 @@
-@use '@styles/main';
 .h5p-crossword-input-fields-group-solution-container {
+  --solution-container-offset: calc(0.25 * var(--h5p-theme-spacing-s));
+
+  left: var(--solution-container-offset);
   position: relative;
-  width: calc(100% - .5em);
-  left: .25em;
+  width: calc(100% - 2 * var(--solution-container-offset));
 
   .h5p-crossword-input-fields-group-solution-inner {
-    background: #fbfbfb;
-    border-bottom: 1px solid #ddd;
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    font-size: 0.9em;
-    line-height: 1em;
+    background: #fbfbfb; /* Mimics disabled input field state, no matching NEUD token */
+    border-bottom: 1px solid var(--h5p-theme-stroke-2);
+    border-left: 1px solid var(--h5p-theme-stroke-2);
+    border-right: 1px solid var(--h5p-theme-stroke-2);
+    font-size: var(--h5p-theme-font-size-s);
+    line-height: var(--h5p-theme-font-size-s);
     text-align: left;
     position: relative;
 
@@ -21,63 +22,70 @@
       flex-wrap: wrap;
       /* Compensating the value in https://github.com/h5p/h5p-question/blob/3676a7053120fcfe439747d7bcc8206755d7b4c3/styles/question.css#L327 */
       padding-right: 1.615384615em;
-      padding-bottom: .5em;
-      padding-left: .5em;
+      padding-bottom: var(--h5p-theme-spacing-xxs);
+      padding-left: var(--h5p-theme-spacing-xxs);
 
       .h5p-crossword-input-fields-group-solution-char-wrapper {
-        border-radius: .25em;
+        border-radius: var(--h5p-theme-border-radius-small);
         color: inherit;
-        line-height: 1em;
-        margin-right: .25em;
-        margin-top: .5em;
-        padding: .15em;
+        margin-right: calc(0.25 * var(--h5p-theme-spacing-s));
+        margin-top: var(--h5p-theme-spacing-xxs);
+        padding: calc(0.15 * var(--h5p-theme-spacing-s));
         position: relative;
+
+        .h5p-question-plus-one-container {
+          /* Compensating for H5P.Question values */
+          bottom: calc(1.923076923em * 0.638297872);
+          right: calc(-1.923076923em + 0.5 * var(--h5p-theme-spacing-s));
+          position: absolute;
+
+          .h5p-question-plus-one,
+          .h5p-question-minus-one {
+            display: inline-block;
+            position: unset;
+          }
+        }
 
         &:last-child {
           margin-right: 0;
         }
 
         &.h5p-crossword-solution-no-input {
-          background-color: main.$color-neutral-light;
-          border: 1px solid main.$color-neutral-light;
-          color: main.$color-neutral-dark;
+          background-color: var(--h5p-theme-feedback-neutral-third);
+          border: 1px solid var(--h5p-theme-feedback-neutral-third);
+          color: var(--h5p-theme-feedback-neutral-secondary);
           display: inline-block;
-          height: 1em;
 
           &.h5p-crossword-solution-no-char {
-            width: 1em;
+            width: var(--h5p-theme-spacing-s);
           }
         }
 
         &.h5p-crossword-solution-correct {
-          background: main.$color-correct-light;
-          border: 1px solid main.$color-correct-light;
-          color: main.$color-correct-dark;
+          background: var(--h5p-theme-feedback-correct-secondary);
+          border: 1px solid var(--h5p-theme-feedback-correct-secondary);
+          color: var(--h5p-theme-feedback-correct-main);
 
           &::after {
-            color: main.$color-correct-dark;
-            content: "\f00c";
-            font-family: H5PFontAwesome4;
-            padding-left: .25em;
-            right: .5em;
+            color: var(--h5p-theme-feedback-correct-main);
+            content: var(--icon-h5ptheme-check);
+            font-family: h5p-theme;
+            padding-inline-start: calc(0.25 * var(--h5p-theme-spacing-s));
             text-decoration: none;
-            top: 0;
           }
         }
 
         &.h5p-crossword-solution-wrong {
-          background-color: main.$color-wrong-light;
-          border: 1px solid main.$color-wrong-light;
-          color: main.$color-wrong-dark;
+          background-color: var(--h5p-theme-feedback-incorrect-secondary);
+          border: 1px solid var(--h5p-theme-feedback-incorrect-secondary);
+          color: var(--h5p-theme-feedback-incorrect-main);
 
           &::after {
-            color: main.$color-wrong-dark;
-            content: "\f00d";
-            font-family: H5PFontAwesome4;
-            padding-left: .25em;
-            right: .5em;
+            color: var(--h5p-theme-feedback-incorrect-main);
+            content: var(--icon-h5ptheme-cross);
+            font-family: h5p-theme;
+            padding-inline-start: calc(0.25 * var(--h5p-theme-spacing-s));
             text-decoration: none;
-            top: 0;
           }
         }
       }

@@ -1,19 +1,20 @@
 .h5p-crossword-clue-announcer {
   display: flex;
   flex-wrap: nowrap;
-  font-size: 0.75em;
-  height: 2em;
+  font-size: var(--h5p-theme-font-size-s);
+  height: var(--h5p-theme-font-size-xl);
+  margin-bottom: calc(0.25 * var(--h5p-theme-spacing-s));
   width: 100%;
 
   .h5p-crossword-clue-announcer-clue-id {
     font-weight: bold;
-    padding-right: 0.5em;
+    padding-right: var(--h5p-theme-spacing-xs);
     white-space: nowrap;
   }
 
   .h5p-crossword-clue-announcer-clue {
     overflow: hidden;
-    padding-right: 0.5em;
+    padding-right: var(--h5p-theme-spacing-xs);
     text-overflow: ellipsis;
     white-space: nowrap;
   }
@@ -26,4 +27,3 @@
     display: none;
   }
 }
-
