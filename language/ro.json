@@ -94,34 +94,6 @@
         {
           "label": "Culoare de fundal",
           "description": "Alegeți o culoare de fundal. Aceasta va fi utilizată fie în locul unei imagini de fundal, fie ca fundal pentru zonele transparente."
-        },
-        {
-          "label": "Culoarea grilei",
-          "description": "Alegeți o culoare pentru grilă."
-        },
-        {
-          "label": "Culoare de fundal pentru celulă",
-          "description": "Alegeți culoarea de fundal pentru o celulă a tabelului."
-        },
-        {
-          "label": "Culoarea textului din celulă",
-          "description": "Alegeți culoarea textului pentru o celulă a tabelului."
-        },
-        {
-          "label": "Culoarea ID-ului indiciului",
-          "description": "Alegeți culoarea ID-ului indiciului dintr-o celulă a tabelului."
-        },
-        {
-          "label": "Culoare de fundal pentru celulă (evidențiată)",
-          "description": "Alegeți culoarea de fundal pentru o celulă a tabelului care este evidențiată."
-        },
-        {
-          "label": "Culoarea textului din celulă (evidențiată)",
-          "description": "Alegeți culoarea textului pentru o celulă a tabelului care este evidențiată."
-        },
-        {
-          "label": "Culoarea ID-ului indiciului (evidențiată)",
-          "description": "Alegeți culoarea ID-ului indiciului dintr-o celulă a tabelului care este evidențiată."
         }
       ]
     },

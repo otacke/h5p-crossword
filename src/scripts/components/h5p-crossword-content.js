@@ -219,8 +219,6 @@ export default class CrosswordContent {
       this.table.focusCell(state.focus.position);
     }
 
-    this.overrideCSS(this.params.theme);
-
     this.resize();
     this.callbacks.onInitialized(true);
   }
@@ -519,55 +517,6 @@ export default class CrosswordContent {
     this.inputarea.disable();
     this.inputarea.unhighlight();
     this.clueAnnouncer.reset();
-  }
-
-  /**
-   * Override CSS with custom colors.
-   * @param {object} theme Theme settings.
-   */
-  overrideCSS(theme = {}) {
-    // Grid override
-    if (theme.gridColor) {
-      // eslint-disable-next-line @stylistic/js/max-len
-      this.addStyle(`.h5p-crossword .h5p-crossword-grid th, .h5p-crossword .h5p-crossword-grid td,.h5p-crossword .h5p-crossword-grid{border-color:${theme.gridColor}};`);
-    }
-
-    // Normal cell overrides
-    if (theme.cellBackgroundColor) {
-      this.addStyle(`.h5p-crossword .h5p-crossword-cell{background-color:${theme.cellBackgroundColor}};`);
-      // eslint-disable-next-line @stylistic/js/max-len
-      this.addStyle(`.h5p-crossword .h5p-crossword-cell-clue-id-marker{background-color:${theme.cellBackgroundColor}};`);
-    }
-
-    if (theme.clueIdColor) {
-      this.addStyle(`.h5p-crossword .h5p-crossword-cell-clue-id-marker{color:${theme.clueIdColor}};`);
-    }
-
-    if (theme.cellColor) {
-      this.addStyle(`.h5p-crossword .h5p-crossword-cell-canvas{color:${theme.cellColor}};`);
-    }
-
-    // Highlighted cell overrides
-    if (theme.cellBackgroundColorHighlight) {
-      // eslint-disable-next-line @stylistic/js/max-len
-      this.addStyle(`.h5p-crossword .h5p-crossword-cell:not(.h5p-crossword-solution-correct):not(.h5p-crossword-solution-wrong):not(.h5p-crossword-solution-neutral).h5p-crossword-highlight-normal{background-color:${theme.cellBackgroundColorHighlight}};`);
-      // eslint-disable-next-line @stylistic/js/max-len
-      this.addStyle(`.h5p-crossword .h5p-crossword-cell.h5p-crossword-highlight-normal .h5p-crossword-cell-clue-id-marker, .h5p-crossword .h5p-crossword-cell.h5p-crossword-highlight-normal .h5p-crossword-cell-solution-word-marker{background-color:${theme.cellBackgroundColorHighlight}}`);
-      // eslint-disable-next-line @stylistic/js/max-len
-      this.addStyle('.h5p-crossword .h5p-crossword-input-fields-group-wrapper-clue.h5p-crossword-input-fields-group-clue-highlight-focus .h5p-crossword-input-fields-group-clue-id{background-color:var(--h5p-theme-main-cta-base)}');
-    }
-
-    if (theme.clueIdColorHighlight) {
-      // eslint-disable-next-line @stylistic/js/max-len
-      this.addStyle(`.h5p-crossword .h5p-crossword-cell.h5p-crossword-highlight-normal .h5p-crossword-cell-clue-id-marker, .h5p-crossword .h5p-crossword-cell.h5p-crossword-highlight-normal .h5p-crossword-cell-solution-word-marker{color:${theme.clueIdColorHighlight}}`);
-    }
-
-    if (theme.cellColorHighlight) {
-      // eslint-disable-next-line @stylistic/js/max-len
-      this.addStyle(`.h5p-crossword .h5p-crossword-cell.h5p-crossword-highlight-normal .h5p-crossword-cell-canvas{color:${theme.cellColorHighlight}};`);
-      // eslint-disable-next-line @stylistic/js/max-len
-      this.addStyle(`.h5p-crossword .h5p-crossword-input-fields-group-wrapper-clue.h5p-crossword-input-fields-group-clue-highlight-focus .h5p-crossword-input-fields-group-clue-id{color:${theme.cellColorHighlight}}`);
-    }
   }
 
   /**

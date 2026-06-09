@@ -8,9 +8,9 @@ H5PUpgrades['H5P.Crossword'] = (function () {
        *
        * Add new background parameter, was black by default.
        * Add new scoreWords parameter, was false by default.
-       *
-       * @param {Object} parameters
-       * @param {function} finished
+       * @param {object} parameters Content parameters.
+       * @param {function} finished Callback when finished.
+       * @param {object} extras Extra parameters such as metadata, etc.
        */
       2: function (parameters, finished, extras) {
         parameters.behaviour.backgroundColor = '#000000';
@@ -22,9 +22,9 @@ H5PUpgrades['H5P.Crossword'] = (function () {
        * Asynchronous content upgrade hook.
        *
        * Add new applyPenalties parameter, was true by default.
-       *
-       * @param {Object} parameters
-       * @param {function} finished
+       * @param {object} parameters Content parameters.
+       * @param {function} finished Callback when finished.
+       * @param {object} extras Extra parameters such as metadata, etc.
        */
       3: function (parameters, finished, extras) {
         parameters.behaviour.applyPenalties = true;
@@ -35,9 +35,9 @@ H5PUpgrades['H5P.Crossword'] = (function () {
        * Asynchronous content upgrade hook.
        *
        * Move options to new theme group.
-       *
-       * @param {Object} parameters
-       * @param {function} finished
+       * @param {object} parameters Content parameters.
+       * @param {function} finished Callback when finished.
+       * @param {object} extras Extra parameters such as metadata, etc.
        */
       4: function (parameters, finished, extras) {
         if (parameters && parameters.behaviour) {
@@ -49,7 +49,7 @@ H5PUpgrades['H5P.Crossword'] = (function () {
             clueIdColor: '#606060',
             cellBackgroundColorHighlight: '#3e8de8',
             cellColorHighlight: '#ffffff',
-            clueIdColorHighlight: '#e0e0e0'
+            clueIdColorHighlight: '#e0e0e0',
           };
 
           if (parameters.behaviour.backgroundImage) {
@@ -64,7 +64,22 @@ H5PUpgrades['H5P.Crossword'] = (function () {
         }
 
         finished(null, parameters, extras);
+      },
+    },
+    5: function (parameters, finished, extras) {
+      if (parameters?.theme) {
+        delete parameters.theme.gridColor;
+        delete parameters.theme.cellBackgroundColor;
+        delete parameters.theme.cellColor;
+        delete parameters.theme.clueIdColor;
+        delete parameters.theme.cellBackgroundColorHighlight;
+        delete parameters.theme.cellColorHighlight;
+        delete parameters.theme.clueIdColorHighlight;
+
+        if (parameters.theme.backgroundColor === '#173354') {
+          parameters.theme.backgroundColor = 'color-mix(in srgb, var(--h5p-theme-main-cta-base), #000000 50%)';
+        }
       }
-    }
+    },
   };
 })();

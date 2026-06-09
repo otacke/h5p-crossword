@@ -94,34 +94,6 @@
         {
           "label": "Háttérszín",
           "description": "Válasszon háttérszínt! Vagy a háttérkép helyett, vagy az átlátszó területek háttereként lesz használva."
-        },
-        {
-          "label": "Rács színe",
-          "description": "Válasszon színt a rácsvonalakhoz!"
-        },
-        {
-          "label": "Cellák háttérszíne",
-          "description": "Válasszon színt a cellák háttérszínéhez!"
-        },
-        {
-          "label": "Cellaszöveg színe",
-          "description": "Válasszon színt a cellákban használt szövegekhez!"
-        },
-        {
-          "label": "Meghatározás azonosítójának színe",
-          "description": "Válasszon színt a cellában megjelenő, a meghatározást megadó azonosítóhoz!"
-        },
-        {
-          "label": "Cellák háttérszíne (kijelölve)",
-          "description": "Válasszon színt a kijelölt cellák háttérszínéhez!"
-        },
-        {
-          "label": "Cellaszöveg színe (kijelölve)",
-          "description": "Válasszon színt a kijelölt cellák szövegéhez!"
-        },
-        {
-          "label": "Cellák azonosítójának színe (kijelölve)",
-          "description": "Válasszon színt a kijelölt cellában megjelenő, a meghatározást megadó azonosítóhoz!"
         }
       ]
     },

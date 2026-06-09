@@ -94,34 +94,6 @@
         {
           "label": "Hintergrundfarbe",
           "description": "Wähle eine Hintergrundfarbe. Sie wird entweder statt eines Hintergrundbildes benutzt oder dort wo das Bild transparent ist."
-        },
-        {
-          "label": "Gitterfarbe",
-          "description": "Wähle eine Farbe für das Gitter."
-        },
-        {
-          "label": "Hintergrundfarbe für Zelle",
-          "description": "Wähle die Hintergrundfarbe einer Tabellenzelle."
-        },
-        {
-          "label": "Textfarbe für Zelle",
-          "description": "Wähle die Textfarbe einer Tabellenzelle."
-        },
-        {
-          "label": "Farbe der Hinweisnummer",
-          "description": "Wähle die Farbe der Hinweisnummer innerhalb einer Tabellenzelle."
-        },
-        {
-          "label": "Hintergrundfarbe für Zelle (ausgewählt)",
-          "description": "Wähle die Hintergrundfarbe einer ausgewählten Tabellenzelle."
-        },
-        {
-          "label": "Textfarbe für Zelle (ausgewählt)",
-          "description": "Wähle die Textfarbe einer ausgewählten Tabellenzelle."
-        },
-        {
-          "label": "Farbe der Hinweisnummer (ausgewählt)",
-          "description": "Wähle die Farbe der Hinweisnummer innerhalb einer ausgewählten Tabellenzelle."
         }
       ]
     },

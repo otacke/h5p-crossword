@@ -94,34 +94,6 @@
         {
           "label": "Barva ozadja",
           "description": "Izbira barvne sheme ozadja. Barva lahko nadomesti sliko ozadja ali prosojna območja."
-        },
-        {
-          "label": "Barva mreže",
-          "description": "Izbira barvne sheme obrob mreže."
-        },
-        {
-          "label": "Barva ozadja celice",
-          "description": "Izbira barvne sheme ozadja celic na mreži."
-        },
-        {
-          "label": "Barva besedila celice",
-          "description": "Izbira barvne sheme besedila v celicah."
-        },
-        {
-          "label": "Barva številke namiga",
-          "description": "Izbira barvne sheme za številko namiga v celicah."
-        },
-        {
-          "label": "Barva ozadja poudarjene celice",
-          "description": "Izbira barvne sheme ozadja za poudarjene celice na mreži."
-        },
-        {
-          "label": "Barva besedila poudarjene celice",
-          "description": "Izbira barvne sheme besedila v poudarjenih celicah."
-        },
-        {
-          "label": "Barva številke poudarjenega namiga",
-          "description": "Izbira barvne sheme za številko namiga v poudarjenih celicah."
         }
       ]
     },

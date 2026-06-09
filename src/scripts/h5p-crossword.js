@@ -44,7 +44,7 @@ export default class Crossword extends H5P.Question {
     this.params = Util.extend({
       solutionWord: '',
       theme: {
-        backgroundColor: '#173354',
+        backgroundColor: 'color-mix(in srgb, var(--h5p-theme-main-cta-base), #000000 50%)',
       },
       behaviour: {
         enableSolutionsButton: true,
@@ -93,27 +93,14 @@ export default class Crossword extends H5P.Question {
       },
     }, this.params);
 
+    if (this.params.theme.backgroundColor === '#173354') {
+      this.params.theme.backgroundColor = 'color-mix(in srgb, var(--h5p-theme-main-cta-base), #000000 50%)';
+    }
+
     // Ensure to consider enableRetry for keepCorrectAnswers
     this.params.keepCorrectAnswers =
       this.params.behaviour.enableRetry &&
       this.params.behaviour.keepCorrectAnswers;
-
-    /*
-     * Remove values that match the default, so the regular stylesheet values
-     * will be used to still allow CSS overrides via H5P's hook.
-     */
-    this.params.theme = this.getDifference(
-      this.params.theme,
-      {
-        gridColor: '#000000',
-        cellBackgroundColor: '#ffffff',
-        cellColor: '#000000',
-        clueIdColor: '#606060',
-        cellBackgroundColorHighlight: '#3e8de8',
-        cellColorHighlight: '#ffffff',
-        clueIdColorHighlight: '#e0e0e0',
-      },
-    );
 
     // Set buttons
     this.initialButtons = {
