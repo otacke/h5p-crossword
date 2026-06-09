@@ -57,9 +57,20 @@
             .h5p-crossword-input-fields-group-extra-clue {
               background: none;
               border: none;
+              border-radius: 50%;
               color: var(--h5p-theme-main-cta-base);
               cursor: pointer;
-              padding: 0 0 0 calc(0.25 * var(--h5p-theme-spacing-s));
+              flex-shrink: 0;
+              height: var(--h5p-theme-spacing-s);
+              margin-inline: calc(0.25 * var(--h5p-theme-spacing-s));
+              padding: 0;
+              position: relative;
+              width: var(--h5p-theme-spacing-s);
+
+              &:focus-visible {
+                outline: 2px ridge var(--h5p-theme-contrast-cta-white);
+                outline-offset: 2px;
+              }
 
               &:not(:disabled) {
                 &:focus,
@@ -78,10 +89,14 @@
               }
 
               &::after {
-                content: "\E88F";
-                font-family: 'Material Icons';
-                font-size: var(--h5p-theme-font-size-l);
+                content: var(--icon-h5ptheme-info);
+                font-family: "h5p-theme";
+                font-size: var(--h5p-theme-font-size-m);
                 font-weight: 600;
+                left: 50%;
+                position: absolute;
+                top: 50%;
+                transform: translate(-50%, -50%);
               }
             }
           }
@@ -94,11 +109,23 @@
         }
 
         .h5p-crossword-input-fields-group-input {
+          background-color: var(--h5p-theme-ui-base);
+          border: 2px solid var(--h5p-theme-alternative-darker);
+          border-radius: var(--h5p-theme-border-radius-medium);
+          box-sizing: border-box;
+          color: var(--h5p-theme-text-primary);
           font-size: var(--h5p-theme-font-size-m);
-          text-transform: uppercase;
           letter-spacing: calc(0.1 * var(--h5p-theme-font-size-m));
-          margin-top: calc(0.25 * var(--h5p-theme-spacing-s));
-          width: calc(100% - 8px); /* 8px = padding + border-width, TODO: Set in JS */
+          margin-block-start: calc(0.25 * var(--h5p-theme-spacing-s));
+          margin-inline-start: calc(0.25 * var(--h5p-theme-spacing-s));
+          text-transform: uppercase;
+          width: calc(100% - calc(0.5 * var(--h5p-theme-spacing-s)));
+
+          &:focus-visible {
+            border-color: var(--h5p-theme-contrast-cta-white);
+            box-shadow: 0 0 0.5em 0 var(--h5p-theme-contrast-cta-white);
+            outline: 1px ridge var(--h5p-theme-contrast-cta-white);
+          }
         }
       }
     }
