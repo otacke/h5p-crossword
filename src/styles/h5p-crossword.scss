@@ -1,6 +1,11 @@
 $breakpoint-mobile-clues-column: 46.25em;
 $breakpoint-clues-column-clues-row: 80em;
 
+.h5p-crossword {
+  --icon-h5ptheme-check: "\e903";
+  --icon-h5ptheme-cross: "\e902";
+}
+
 /*
  * TODO: Replace with container queries in respective components once Safari 18 is out and tthus he latest three
  * versions of all major browsers support container queries.
