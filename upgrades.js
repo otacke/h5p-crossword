@@ -79,6 +79,8 @@ H5PUpgrades['H5P.Crossword'] = (function () {
             parameters.theme.backgroundColor = 'color-mix(in srgb, var(--h5p-theme-main-cta-base), #000000 50%)';
           }
         }
+
+        finished(null, parameters, extras);
       },
     },
   };
