@@ -65,21 +65,21 @@ H5PUpgrades['H5P.Crossword'] = (function () {
 
         finished(null, parameters, extras);
       },
-    },
-    5: function (parameters, finished, extras) {
-      if (parameters?.theme) {
-        delete parameters.theme.gridColor;
-        delete parameters.theme.cellBackgroundColor;
-        delete parameters.theme.cellColor;
-        delete parameters.theme.clueIdColor;
-        delete parameters.theme.cellBackgroundColorHighlight;
-        delete parameters.theme.cellColorHighlight;
-        delete parameters.theme.clueIdColorHighlight;
+      7: function (parameters, finished, extras) {
+        if (parameters?.theme) {
+          delete parameters.theme.gridColor;
+          delete parameters.theme.cellBackgroundColor;
+          delete parameters.theme.cellColor;
+          delete parameters.theme.clueIdColor;
+          delete parameters.theme.cellBackgroundColorHighlight;
+          delete parameters.theme.cellColorHighlight;
+          delete parameters.theme.clueIdColorHighlight;
 
-        if (parameters.theme.backgroundColor === '#173354') {
-          parameters.theme.backgroundColor = 'color-mix(in srgb, var(--h5p-theme-main-cta-base), #000000 50%)';
+          if (parameters.theme.backgroundColor === '#173354') {
+            parameters.theme.backgroundColor = 'color-mix(in srgb, var(--h5p-theme-main-cta-base), #000000 50%)';
+          }
         }
-      }
+      },
     },
   };
 })();
