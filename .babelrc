@@ -1,9 +1,10 @@
 {
   "presets": ["@babel/preset-env"],
-  "plugins": [
-    ["@babel/plugin-transform-classes", {
-      "loose": true
-    }],
-    ["@babel/plugin-transform-destructuring"]
-  ]
+  "plugins": ["@babel/plugin-transform-classes"],
+  "assumptions": {
+    "setClassMethods": true,
+    "constantSuper": true,
+    "superIsCallableConstructor": true,
+    "noClassCalls": true
+  }
 }
