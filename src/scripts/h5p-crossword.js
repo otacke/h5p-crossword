@@ -259,7 +259,7 @@ export default class Crossword extends H5P.Question {
    * @param {string} text Text to read.
    */
   handleRead(text) {
-    this.read(text);
+    this.read(Util.stripHTML(text));
   }
 
   /**
