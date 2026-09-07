@@ -251,6 +251,10 @@
           "default": "Тэмдэгтүүдийг шалгана уу. Хариултуудыг зөв, буруу, хариултгүй гэж тэмдэглэнэ."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "\"Шийдэл харуулах\" товчлуурын туслах технологийн тайлбар",
           "default": "Шийдлийг харуул. Кроссворд нь зөв шийдлээр дүүрэн байх болно."
         },

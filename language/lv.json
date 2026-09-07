@@ -251,6 +251,10 @@
           "default": "Pārbaudīt rakstzīmes. Atbildes tiks atzīmētas kā pareizas, nepareizas, vai neatbildētas."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "Pogas \"Rādīt risinājumu\" apraksts asistīvajām tehnoloģijām",
           "default": "Parādīt risinājumu. Krustvārdu mīkla tiks aizpildīta ar pareizo risinājumu."
         },

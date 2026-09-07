@@ -251,6 +251,10 @@
           "default": "Sjekk bokstavene. Svarene vil merkes som riktig, feil eller ubesvart."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "Tekstalternativ for \"Vis fasit\"-knapp",
           "default": "Vis fasiten. Kryssordet vi bli korrekt fylt ut."
         },

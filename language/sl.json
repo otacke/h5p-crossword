@@ -251,6 +251,10 @@
           "default": "Preveri pravilnost vnesenih znakov. Odgovori bodo označeni kot pravilni, nepravilni ali brez odgovora."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "Opis gumba \"Prikaži rešitev\" za bralnike zaslona",
           "default": "Prikaže rešitev in križanko napolni s pravilnimi gesli."
         },

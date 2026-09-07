@@ -251,6 +251,10 @@
           "default": "Comprova els caràcters. Les respostes es marquen com a correctes, incorrectes o sense resposta."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "Descripció d’ajuda per al botó \"Mostra la solució\"",
           "default": "Mostra la solució. A l’encreuat apareix la solució correcta."
         },

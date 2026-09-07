@@ -173,12 +173,14 @@ export default class Crossword extends H5P.Question {
    * Add all the buttons that shall be passed to H5P.Question.
    */
   addButtons() {
+    let isSubmitting = this.extras?.standalone && (this.extras?.isScoringEnabled || this.extras?.isReportingEnabled);
+
     // Check answer button
     this.addButton('check-answer', this.params.l10n.checkAnswer, () => {
       this.checkAnswer();
       this.trigger(this.getXAPIAnswerEvent());
     }, this.initialButtons.check, {
-      'aria-label': this.params.a11y.check,
+      'aria-label': isSubmitting ? this.params.a11y.submitAndcheck : this.params.a11y.check,
     }, {
       contentData: this.extras,
       textIfSubmitting: this.params.l10n.submitAnswer,

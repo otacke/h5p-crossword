@@ -251,6 +251,10 @@
           "default": "Check the characters. The responses will be marked as correct, incorrect, or unanswered."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "Assistive technology description for \"Show Solution\" button",
           "default": "Show the solution. The crossword will be filled with its correct solution."
         },

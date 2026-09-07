@@ -251,6 +251,10 @@
           "default": "Controlla i personaggi. Le risposte verranno contrassegnate come corrette, errate o senza risposta."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "Descrizione della tecnologia assistiva per il pulsante \"Mostra soluzione\".",
           "default": "Mostra la soluzione. Il cruciverba sarà riempito con la sua soluzione corretta."
         },

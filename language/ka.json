@@ -251,6 +251,10 @@
           "default": "სიმბოლოების შემოწმება. პასუხები მოინიშნება როგორც სწორი, მცდარი ან პასუხგაუცემელი."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "დამხმარე ტექნოლოგიის აღწერა \"ამოხსნის ჩვენების\" ღილაკისთვის",
           "default": "ამოხსნის ჩვენება. კროსვორდი შეივსება სწორი პასუხებით."
         },

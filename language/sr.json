@@ -251,6 +251,10 @@
           "default": "Проверите знакове. Одговори ће бити означени као тачни, нетачни или без одговора."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "Опис помоћне технологије за \"Прикажи решења\" дугме",
           "default": "Покажите решење. Укрштеница ће бити испуњена њеним тачним решењем."
         },

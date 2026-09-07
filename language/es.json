@@ -251,6 +251,10 @@
           "default": "Comprueba los caracteres. Las respuestas serán marcadas como correctas, incorrectas, o sin contestar."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "Descripción para las tecnologías de asistencia del botón \"Mostrar solución\"",
           "default": "Mostrar la solución. El crucigrama se completará con su solución correcta."
         },

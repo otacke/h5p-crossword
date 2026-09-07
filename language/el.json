@@ -251,6 +251,10 @@
           "default": "Ελέγξτε τους χαρακτήρες. Οι απαντήσεις θα επισημανθούν ως σωστές, λανθασμένες ή αναπάντητες."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "Περιγραφή υποστηρικτικής τεχνολογίας για το κουμπί \"Εμφάνιση λύσης\"",
           "default": "Εμφάνιση της λύσης. Το σταυρόλεξο θα συμπληρωθεί με τη σωστή λύση του."
         },

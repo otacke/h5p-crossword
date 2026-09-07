@@ -251,6 +251,10 @@
           "default": "Betűk ellenőrzése. A válaszokat helyesnek, helytelennek vagy megválaszolatlannak jelöli."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "\"Megoldás mutatása\" gomb leírása támogató-segítő eszközöknek",
           "default": "Megoldás mutatása. A keresztrejtvény helyes megoldásának beírása."
         },

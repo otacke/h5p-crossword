@@ -251,6 +251,10 @@
           "default": "Controleer de letters. De antwoorden worden gemarkeerd als juist, onjuist of niet-beantwoord."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "Ondersteunende technologie beschrijving voor de knop \"Toon oplossing\"",
           "default": "Toon de oplossing. De kruiswoordpuzzel wordt gevuld met de juiste oplossing."
         },

@@ -251,6 +251,10 @@
           "default": "Comproba os caracteres. As respostas marcaranse como correctas, incorrectas ou sen responder."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "Descrición do botón \"Amosar solución\" para as tecnoloxías de asistencia",
           "default": "Amosar a solución. Completarase o encrucillado coas súas solucións correctas."
         },

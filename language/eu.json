@@ -251,6 +251,10 @@
           "default": "Egiaztatu karaktereak. Erantzuna zuzen, oker edo erantzun gabeko gisa markatuko da."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "\"Erakutsi emaitza\" botoiaren laguntza-teknologientzako etiketa",
           "default": "Erakutsi emaitza. Gurutzegrama emaitza zuzenekin beteko da."
         },

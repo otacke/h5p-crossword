@@ -251,6 +251,10 @@
           "default": "Überprüfe die Eingaben. Die Antworten werden als richtig, falsch oder unbeantwortet markiert."
         },
         {
+          "label": "Vorlesewerkzeug-Beschreibung für den \"Absenden\"-Button",
+          "default": "Sende die Antwort überprüfe die Eingaben. Die Antworten werden als richtig, falsch oder unbeantwortet markiert"
+        },
+        {
           "label": "Vorlesewerkzeug-Beschreibung für den \"Lösung anzeigen\"-Button",
           "default": "Zeige die Lösung. Das Kreuzworträtsel wird mit der richtigen Lösung gefüllt."
         },

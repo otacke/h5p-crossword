@@ -251,6 +251,10 @@
           "default": "Vérifier les caractères. Les réponses seront marquées correctes, incorrectes ou sans réponse."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "Description des technologies d'assistance pour le bouton \"Afficher la solution\"",
           "default": "Afficher la solution. Le mot-croisé sera ensuite rempli avec la solution correcte."
         },

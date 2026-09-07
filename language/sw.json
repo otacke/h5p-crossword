@@ -251,6 +251,10 @@
           "default": "Weka alama herufi hizo. Majibu yatatiwa alama kuwa sahihi, siyo sahihi au haijajibiwa."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "Maelezo ya teknolojia ya usaidizi kwa kitufe cha \"Onyesha Suluhisho\"",
           "default": "Onyesha suluhisho hilo. Neno mtambuka litajazwa na suluhisho lake sahihi."
         },

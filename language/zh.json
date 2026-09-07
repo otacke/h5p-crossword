@@ -251,6 +251,10 @@
           "default": "检查字符。答案将被标记为正确、错误或未回答。"
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "“显示答案”按钮的辅助技术描述",
           "default": "显示答案。填字游戏将被填入正确答案。"
         },

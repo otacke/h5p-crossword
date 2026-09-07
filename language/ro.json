@@ -251,6 +251,10 @@
           "default": "Verifică caracterele. Răspunsurile vor fi marcate ca fiind corecte, incorecte sau fără răspuns."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "Descriere pentru tehnologia asistivă pentru butonul „Arată soluția”",
           "default": "Arată soluția. Rebusul va fi completat cu soluția sa corectă."
         },

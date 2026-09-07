@@ -251,6 +251,10 @@
           "default": "تحقق من الأحرف. سيتم تحديد الردود بأنها صحيحة أو غير صحيحة أو لم يتم الإجابة عليها."
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "وصف تقنية المساعدة لزر \"عرض الحلول\"",
           "default": "اعرض الحل. ستملأ الكلمات المتقاطعة بحلها الصحيح."
         },

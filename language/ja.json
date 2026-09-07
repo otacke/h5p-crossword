@@ -251,6 +251,10 @@
           "default": "文字を確認してください。回答は、正解、不正解、または未回答としてマークされます。"
         },
         {
+          "label": "Assistive technology description for \"Submit\" button",
+          "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
           "label": "「ソリューションの表示」ボタンの支援技術の説明",
           "default": "解決策を示してください。クロスワードは正しい解決策で満たされます。"
         },
