@@ -533,7 +533,6 @@
         "label": "Assistive technology description for \"Submit\" button",
         "importance": "low",
         "default": "Submit the answer and check the characters. The responses will be marked as correct, incorrect, or unanswered.",
-        "status": "new"
       },
       {
         "name": "showSolution",
