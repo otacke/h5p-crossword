@@ -55,8 +55,8 @@ export default class CrosswordContent {
         );
       })
       .map((word) => {
-        word.answer = Util.stripHTML(Util.htmlDecode(Util.toUpperCase(word.answer, Util.UPPERCASE_EXCEPTIONS)));
-        word.clue = Util.stripHTML(Util.htmlDecode(word.clue));
+        word.answer = Util.htmlToText(Util.toUpperCase(word.answer, Util.UPPERCASE_EXCEPTIONS));
+        word.clue = Util.htmlToText(word.clue);
         return word;
       });
 

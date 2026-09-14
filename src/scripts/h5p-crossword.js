@@ -68,7 +68,7 @@ export default class Crossword extends H5P.Question {
 
     // Sanitize for use as text
     for (let word in this.params.l10n) {
-      this.params.l10n[word] = Util.stripHTML(Util.htmlDecode(this.params.l10n[word]));
+      this.params.l10n[word] = Util.htmlToText(this.params.l10n[word]);
     }
 
     // H5P.Question will add a . after yourResult for readspeaker
@@ -261,7 +261,7 @@ export default class Crossword extends H5P.Question {
    * @param {string} text Text to read.
    */
   handleRead(text) {
-    this.read(Util.stripHTML(text));
+    this.read(Util.htmlToText(text));
   }
 
   /**

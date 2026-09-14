@@ -53,24 +53,13 @@ class Util {
   }
 
   /**
-   * Retrieve true string from HTML encoded string.
-   * @param {string} input Input string.
-   * @returns {string} Output string.
-   */
-  static htmlDecode(input) {
-    var dparser = new DOMParser().parseFromString(input, 'text/html');
-    return dparser.documentElement.textContent;
-  }
-
-  /**
-   * Retrieve string without HTML tags.
+   * Retrieve plain text from HTML, removing tags and decoding entities.
    * @param {string} html Input string.
    * @returns {string} Output string.
    */
-  static stripHTML(html) {
-    const div = document.createElement('div');
-    div.innerHTML = html;
-    return div.textContent || div.innerText || '';
+  static htmlToText(html) {
+    const dparser = new DOMParser().parseFromString(html, 'text/html');
+    return dparser.body.textContent || '';
   }
 
   /**
